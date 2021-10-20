@@ -1,4 +1,4 @@
 package nido.backnido.entity;
 
-public class Categoria {
+public class Category {
 }

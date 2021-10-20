@@ -1,4 +1,4 @@
 package nido.backnido.controller;
 
-public class CategoriaController {
+public class CategoryController {
 }

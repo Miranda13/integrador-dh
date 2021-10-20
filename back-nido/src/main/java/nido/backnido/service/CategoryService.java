@@ -1,4 +1,4 @@
 package nido.backnido.service;
 
-public class CategoriaService {
+public class CategoryService {
 }
