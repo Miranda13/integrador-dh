@@ -15,6 +15,7 @@
 	<description>Backend to nido&apos;s project</description>
 	<properties>
 		<java.version>11</java.version>
+		<skipTests>true</skipTests>
 	</properties>
 	<dependencies>
 		<dependency>
