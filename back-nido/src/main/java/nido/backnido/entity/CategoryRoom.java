@@ -19,8 +19,9 @@ public class CategoryRoom {
     private Integer numberOfBeds;
     private Double price;
 
-    @Column(name = "images_image_id")
-    @OneToOne(mappedBy = "imageId")
+    //Se comenta el código para hacer las pruebas ya que salia error por que la entidad ImageIdFk no existe para hacer la FK
+   // @Column(name = "images_image_id")
+  //  @OneToOne(mappedBy = "imageId")
     private Long imageIdFK;
 
 }

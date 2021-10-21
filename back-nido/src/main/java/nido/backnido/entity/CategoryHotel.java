@@ -19,8 +19,8 @@ public class CategoryHotel {
     private String title;
     private String description;
 
-    @Column(name = "images_image_id")
-    @OneToOne(mappedBy = "imageId")
-    private Long imageIdFK;
+//    @Column(name = "images_image_id")
+//    @OneToOne(mappedBy = "imageId")
+//    private Long imageIdFK;
 
 }
