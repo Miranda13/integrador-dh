@@ -1,7 +1,7 @@
 package nido.backnido.service.implementations;
 
 import nido.backnido.entity.CategoryRoom;
-import nido.backnido.entity.DTO.CategoryRoomDTO;
+import nido.backnido.entity.dto.CategoryRoomDTO;
 import nido.backnido.repository.CategoryRoomRepository;
 import nido.backnido.service.CategoryRoomService;
 import org.modelmapper.ModelMapper;

@@ -1,7 +1,7 @@
 package nido.backnido.service;
 
 import nido.backnido.entity.CategoryHotel;
-import nido.backnido.entity.DTO.CategoryHotelDTO;
+import nido.backnido.entity.dto.CategoryHotelDTO;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package nido.backnido.service.implementations;
 
 import nido.backnido.entity.CategoryHotel;
-import nido.backnido.entity.DTO.CategoryHotelDTO;
+import nido.backnido.entity.dto.CategoryHotelDTO;
 import nido.backnido.repository.CategoryHotelRepository;
 import nido.backnido.service.CategoryHotelService;
 import org.modelmapper.ModelMapper;

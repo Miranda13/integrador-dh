@@ -1,6 +1,8 @@
 package nido.backnido.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import javax.persistence.*;
 @Table(name = "categories_rooms")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CategoryRoom {
 //    Cuando esté el script dump final hay que verificar que la entidad esta mappeado correctamente (price especificamente)
 
@@ -19,8 +23,8 @@ public class CategoryRoom {
     private Integer numberOfBeds;
     private Double price;
 
-    @Column(name = "images_image_id")
-    @OneToOne(mappedBy = "imageId")
-    private Long imageIdFK;
+//    @Column(name = "images_image_id")
+//    @OneToOne(mappedBy = "imageId")
+    private Long imagesImageId;
 
 }

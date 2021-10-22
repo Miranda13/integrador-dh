@@ -1,7 +1,7 @@
 package nido.backnido.service;
 
 import nido.backnido.entity.CategoryRoom;
-import nido.backnido.entity.DTO.CategoryRoomDTO;
+import nido.backnido.entity.dto.CategoryRoomDTO;
 
 import java.util.List;
 
