@@ -2,10 +2,14 @@ package nido.backnido.controller;
 
 import nido.backnido.entity.CategoryHotel;
 import nido.backnido.entity.DTO.CategoryHotelDTO;
+import nido.backnido.exception.CustomBindingException;
 import nido.backnido.service.CategoryHotelService;
+import nido.backnido.utils.UtilsException;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -32,13 +36,19 @@ public class CategoryHotelController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createCategory(@RequestBody CategoryHotel categoryHotel){
+    public void createCategory(@RequestBody @Valid  CategoryHotel categoryHotel, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            throw new CustomBindingException("Errores encontrados, por favor compruebe e intente nuevamente", HttpStatus.BAD_REQUEST.value(),UtilsException.fieldBindingErrors(bindingResult));
+        }
         categoryHotelService.create(categoryHotel);
     }
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public void update(@RequestBody CategoryHotel categoryHotel){
+    public void update(@RequestBody @Valid CategoryHotel categoryHotel, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            throw new CustomBindingException ("Errores encontrados, por favor compruebe e intente nuevamente",HttpStatus.BAD_REQUEST.value(),UtilsException.fieldBindingErrors(bindingResult));
+        }
         categoryHotelService.update(categoryHotel);
     }
 
