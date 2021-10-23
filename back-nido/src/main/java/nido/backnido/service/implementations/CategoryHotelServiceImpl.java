@@ -53,9 +53,14 @@ public class CategoryHotelServiceImpl implements CategoryHotelService {
 
     @Override
     public void update(CategoryHotel updatedCategory) {
-        if(updatedCategory != null){
-            categoryHotelRepository.save(updatedCategory);
+        if(updatedCategory.getCategoryHotelId() != null){
+            categoryHotelRepository.findById(updatedCategory.getCategoryHotelId()).orElseThrow(()->
+                    new CustomBaseException("Categoria no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value())
+         );
+        }else{
+           throw  new CustomBaseException("El id de la categoria no puede estar vacio, por favor compruebe", HttpStatus.BAD_REQUEST.value());
         }
+        categoryHotelRepository.save(updatedCategory);
     }
 
     @Override
