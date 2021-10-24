@@ -4,14 +4,18 @@ import nido.backnido.entity.CategoryHotel;
 import nido.backnido.entity.dto.CategoryHotelDTO;
 import nido.backnido.repository.CategoryHotelRepository;
 import nido.backnido.service.CategoryHotelService;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -19,9 +23,6 @@ class CategoryHotelServiceImplTest {
 
     @Autowired
     CategoryHotelService categoryHotelService;
-
-    @Autowired
-    CategoryHotelRepository categoryHotelRepository;
 
     @BeforeAll
     public void setup() {
@@ -31,45 +32,33 @@ class CategoryHotelServiceImplTest {
 
     }
 
-//    @AfterAll
-//    public void teardown(){
-//
-//        categoryHotelService.delete(1L);
-//        categoryHotelService.delete(2L);
-//
-//    }
+    @AfterAll
+    public void teardown(){
 
-    @Test
-    public void listAndRegisterTest() {
-
-        List<CategoryHotelDTO> categoryRes = categoryHotelService.getAll();
-
-        CategoryHotelDTO res1 = categoryRes.get(0);
-        CategoryHotelDTO res2 = categoryRes.get(1);
-
-        assertEquals("Default Title 1", res1.getTitle());
-        assertEquals("Default Description 1", res1.getDescription());
-        assertEquals(1, res1.getImagesImageId());
-
-        assertEquals("Default Title 2", res2.getTitle());
-        assertEquals("Default Description 2", res2.getDescription());
-        assertEquals(2, res2.getImagesImageId());
+        categoryHotelService.deleteByCategoryTitle("Updated");
+        categoryHotelService.deleteByCategoryTitle("Default");
 
     }
 
     @Test
     public void findCategoryByTitleTest() {
 
-        List<CategoryHotelDTO> findRes = categoryHotelRepository.findByCategoryTitle("Default");
-
-        assertEquals("Default Title 1", findRes.get(0).getTitle());
-        assertEquals("Default Description 1", findRes.get(0).getDescription());
-        assertEquals(1, findRes.get(0).getImagesImageId());
-
-        assertEquals("Default Title 2", findRes.get(1).getTitle());
-        assertEquals("Default Description 2", findRes.get(1).getDescription());
-        assertEquals(2, findRes.get(1).getImagesImageId());
-
+        List<CategoryHotelDTO> findRes = categoryHotelService.findByCategoryTitle("Default");
+        assertEquals(2, findRes.size());
+        assertEquals(CategoryHotelDTO.class, findRes.get(0).getClass());
     }
 
+    @Test
+    public void listAllTest() {
+        List<CategoryHotelDTO> categoryRes = categoryHotelService.getAll();
+
+        assertEquals(2, categoryRes.size());
+    }
+
+//    @Test
+//    public void getByIdTest() {
+//
+//        assertEquals(CategoryHotelDTO.class, categoryHotelService.getById(1L).getClass());
+//
+//    }
 }

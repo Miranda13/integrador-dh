@@ -36,14 +36,14 @@ public class CategoryHotelServiceImpl implements CategoryHotelService {
     @Override
     public CategoryHotelDTO getById(Long id) {
 
-        CategoryHotelDTO responseDTO = null;
+        CategoryHotelDTO dtoResponse = null;
         Optional<CategoryHotel> response = categoryHotelRepository.findById(id);
 
         if (response.isPresent()){
-            responseDTO = modelMapper.map(response, CategoryHotelDTO.class);
+            dtoResponse = modelMapper.map(response, CategoryHotelDTO.class);
         }
 
-        return responseDTO;
+        return dtoResponse;
     }
 
     @Override
@@ -66,5 +66,25 @@ public class CategoryHotelServiceImpl implements CategoryHotelService {
         if(categoryHotelRepository.findById(id).isPresent()) {
             categoryHotelRepository.deleteById(id);
         }
+    }
+
+    @Override
+    public void deleteByCategoryTitle(String title) {
+        if(title != null) {
+            categoryHotelRepository.deleteByCategoryTitle(title);
+        }
+
+    }
+
+    @Override
+    public List<CategoryHotelDTO> findByCategoryTitle(String title) {
+
+        List<CategoryHotelDTO> dtoResponse = new ArrayList<>();
+
+        for (CategoryHotel category : categoryHotelRepository.findByCategoryTitle(title)) {
+            dtoResponse.add(modelMapper.map(category, CategoryHotelDTO.class));
+        }
+
+        return dtoResponse;
     }
 }
