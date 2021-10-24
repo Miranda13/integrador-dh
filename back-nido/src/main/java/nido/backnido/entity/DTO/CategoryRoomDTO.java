@@ -10,6 +10,6 @@ public class CategoryRoomDTO {
     private Integer capacity;
     private Integer numberOfBeds;
     private Double price;
-    private Long imageIdFK;
+    private Long imagesImageId;
 
 }

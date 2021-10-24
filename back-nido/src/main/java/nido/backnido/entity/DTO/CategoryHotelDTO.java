@@ -9,6 +9,6 @@ public class CategoryHotelDTO {
 
     private String title;
     private String description;
-    private Long imageIdFK;
+    private Long imagesImageId;
 
 }
