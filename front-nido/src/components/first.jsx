@@ -1,6 +1,12 @@
+import React, {Fragment} from "react";
+import Searcher from "./Searcher";
+
 function FirstComponent() {
     return (
-      <p> Nido works !</p>
+      <Fragment>
+      <Searcher/> 
+      </Fragment>
+  
     );
 }
 
