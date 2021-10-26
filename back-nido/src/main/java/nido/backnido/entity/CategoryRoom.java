@@ -19,19 +19,16 @@ public class CategoryRoom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryRoomId;
     @NotNull
-    @NotBlank
     private Integer capacity;
     @NotNull
-    @NotBlank
     private Integer numberOfBeds;
     @NotNull
-    @NotBlank
     @Min(value=0,message = "Por favor ingrese un numero positivo")
     private Double price;
 
     //Se comenta el código para hacer las pruebas ya que salia error por que la entidad ImageIdFk no existe para hacer la FK
    // @Column(name = "images_image_id")
   //  @OneToOne(mappedBy = "imageId")
-    private Long imageIdFK;
+    private Long imagesImageId;
 
 }
