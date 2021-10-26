@@ -1,0 +1,23 @@
+[
+    {
+        "img" : "./img/Faena.jpg",
+        "category" : "Hotel 5 estrellas",
+        "title" : "Hotel Faena",
+        "location":" Martha Salotti 445, C1107 CMB, Buenos Aires",
+        "description":"En el corazón de Puerto Madero, disfruta de un hotel inspirado en las pasiones de Buenos Aires. más..."
+    },
+    {
+        "img" : "./img/.jpg",
+        "category" : "Hotel 5 estrellas",
+        "title" : "Recoleta Grand Hotel",
+        "location":"Av. Gral. Las Heras 1745, C1018 CABA",
+        "description":"En el corazón de Recoleta, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más..."
+    },
+    {
+        "img" : "./img/RecoletaGrand.jpg",
+        "category" : "Hotel 5 estrellas",
+        "title" : "Recoleta Grand Hotel",
+        "location":"Av. Gral. Las Heras 1745, C1018 CABA",
+        "description":"En el corazón de Recoleta, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más..."
+    }
+]
