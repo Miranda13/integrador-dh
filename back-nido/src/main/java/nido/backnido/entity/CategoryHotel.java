@@ -27,6 +27,6 @@ public class CategoryHotel {
 
 //    @Column(name = "images_image_id")
 //    @OneToOne(mappedBy = "imageId")
-    private Long imageIdFK;
+    private Long imagesImageId;
 
 }
