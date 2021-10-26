@@ -70,4 +70,24 @@ public class CategoryHotelServiceImpl implements CategoryHotelService {
         );
         categoryHotelRepository.deleteById(id);
     }
+
+    @Override
+    public void deleteByCategoryTitle(String title) {
+        if(title != null) {
+            categoryHotelRepository.deleteByCategoryTitle(title);
+        }
+
+    }
+
+    @Override
+    public List<CategoryHotelDTO> findByCategoryTitle(String title) {
+
+        List<CategoryHotelDTO> dtoResponse = new ArrayList<>();
+
+        for (CategoryHotel category : categoryHotelRepository.findByCategoryTitle(title)) {
+            dtoResponse.add(modelMapper.map(category, CategoryHotelDTO.class));
+        }
+
+        return dtoResponse;
+    }
 }
