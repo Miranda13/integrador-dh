@@ -1,11 +1,13 @@
 package nido.backnido.service.implementations;
 
 import nido.backnido.entity.CategoryRoom;
-import nido.backnido.entity.dto.CategoryRoomDTO;
+import nido.backnido.entity.DTO.CategoryRoomDTO;
+import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.CategoryRoomRepository;
 import nido.backnido.service.CategoryRoomService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -35,15 +37,10 @@ public class CategoryRoomServiceImpl implements CategoryRoomService {
 
     @Override
     public CategoryRoomDTO getById(Long id) {
-
-        CategoryRoomDTO responseDTO = null;
-        Optional<CategoryRoom> response = categoryRoomRepository.findById(id);
-
-        if (response.isPresent()){
-            responseDTO = modelMapper.map(response, CategoryRoomDTO.class);
-        }
-
-        return responseDTO;
+        CategoryRoom response = categoryRoomRepository.findById(id).orElseThrow(() ->
+                new CustomBaseException("Categoria no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value())
+        );
+        return modelMapper.map(response, CategoryRoomDTO.class);
     }
 
     @Override
@@ -56,16 +53,22 @@ public class CategoryRoomServiceImpl implements CategoryRoomService {
 
     @Override
     public void update(CategoryRoom updatedCategory) {
-        if(updatedCategory != null){
-            categoryRoomRepository.save(updatedCategory);
+        if(updatedCategory.getCategoryRoomId() != null){
+            categoryRoomRepository.findById(updatedCategory.getCategoryRoomId()).orElseThrow(()->
+                    new CustomBaseException("Categoria no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value())
+            );
+        }else{
+            throw  new CustomBaseException("El id de la categoria no puede estar vacio, por favor compruebe", HttpStatus.BAD_REQUEST.value());
         }
+        categoryRoomRepository.save(updatedCategory);
     }
 
     @Override
     public void delete(Long id) {
-        if(categoryRoomRepository.findById(id).isPresent()) {
-            categoryRoomRepository.deleteById(id);
-        }
+        categoryRoomRepository.findById(id).orElseThrow(()->
+                new CustomBaseException("Categoria con el id: "+ id + " no encontrada por favor compruebe el id e intente nuevamente ",HttpStatus.BAD_REQUEST.value())
+        );
+        categoryRoomRepository.deleteById(id);
     }
 
 }

@@ -1,11 +1,13 @@
 package nido.backnido.service.implementations;
 
 import nido.backnido.entity.CategoryHotel;
-import nido.backnido.entity.dto.CategoryHotelDTO;
+import nido.backnido.entity.DTO.CategoryHotelDTO;
+import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.CategoryHotelRepository;
 import nido.backnido.service.CategoryHotelService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -35,15 +37,10 @@ public class CategoryHotelServiceImpl implements CategoryHotelService {
 
     @Override
     public CategoryHotelDTO getById(Long id) {
-
-        CategoryHotelDTO dtoResponse = null;
-        Optional<CategoryHotel> response = categoryHotelRepository.findById(id);
-
-        if (response.isPresent()){
-            dtoResponse = modelMapper.map(response, CategoryHotelDTO.class);
-        }
-
-        return dtoResponse;
+        CategoryHotel response = categoryHotelRepository.findById(id).orElseThrow(()->
+         new CustomBaseException("Categoria no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value())
+        );
+        return modelMapper.map(response, CategoryHotelDTO.class);
     }
 
     @Override
@@ -56,16 +53,22 @@ public class CategoryHotelServiceImpl implements CategoryHotelService {
 
     @Override
     public void update(CategoryHotel updatedCategory) {
-        if(updatedCategory != null){
-            categoryHotelRepository.save(updatedCategory);
+        if(updatedCategory.getCategoryHotelId() != null){
+            categoryHotelRepository.findById(updatedCategory.getCategoryHotelId()).orElseThrow(()->
+                    new CustomBaseException("Categoria no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value())
+         );
+        }else{
+           throw  new CustomBaseException("El id de la categoria no puede estar vacio, por favor compruebe", HttpStatus.BAD_REQUEST.value());
         }
+        categoryHotelRepository.save(updatedCategory);
     }
 
     @Override
     public void delete(Long id) {
-        if(categoryHotelRepository.findById(id).isPresent()) {
-            categoryHotelRepository.deleteById(id);
-        }
+        categoryHotelRepository.findById(id).orElseThrow(()->
+            new CustomBaseException("Categoria con el id: "+ id + " no encontrada por favor compruebe el id e intente nuevamente ",HttpStatus.BAD_REQUEST.value())
+        );
+        categoryHotelRepository.deleteById(id);
     }
 
     @Override

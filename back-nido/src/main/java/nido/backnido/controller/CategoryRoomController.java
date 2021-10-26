@@ -1,9 +1,12 @@
 package nido.backnido.controller;
 
 import nido.backnido.entity.CategoryHotel;
+import nido.backnido.entity.CategoryRoom;
 import nido.backnido.entity.DTO.CategoryHotelDTO;
+import nido.backnido.entity.DTO.CategoryRoomDTO;
 import nido.backnido.exception.CustomBindingException;
 import nido.backnido.service.CategoryHotelService;
+import nido.backnido.service.CategoryRoomService;
 import nido.backnido.utils.UtilsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
@@ -13,49 +16,48 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/categoryhotel")
-public class CategoryHotelController {
+@RequestMapping("api/v1/categoryroom")
+public class CategoryRoomController {
 
-    private final CategoryHotelService categoryHotelService;
+    private final CategoryRoomService categoryRoomService;
 
-    public CategoryHotelController(CategoryHotelService categoryHotelService) {
-        this.categoryHotelService = categoryHotelService;
+    public CategoryRoomController(CategoryRoomService categoryRoomService) {
+        this.categoryRoomService = categoryRoomService;
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<CategoryHotelDTO> getAll(){
-        return categoryHotelService.getAll();
+    public List<CategoryRoomDTO> getAll(){
+        return categoryRoomService.getAll();
     }
 
     @GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CategoryHotelDTO getById(@PathVariable Long id){
-        return categoryHotelService.getById(id);
+    public CategoryRoomDTO getById(@PathVariable Long id){
+        return categoryRoomService.getById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createCategory(@RequestBody @Valid  CategoryHotel categoryHotel, BindingResult bindingResult){
+    public void createCategory(@RequestBody @Valid CategoryRoom categoryRoom, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
-            throw new CustomBindingException("Errores encontrados, por favor compruebe e intente nuevamente", HttpStatus.BAD_REQUEST.value(),UtilsException.fieldBindingErrors(bindingResult));
+            throw new CustomBindingException("Errores encontrados, por favor compruebe e intente nuevamente", HttpStatus.BAD_REQUEST.value(), UtilsException.fieldBindingErrors(bindingResult));
         }
-        categoryHotelService.create(categoryHotel);
+        categoryRoomService.create(categoryRoom);
     }
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public void update(@RequestBody @Valid CategoryHotel categoryHotel, BindingResult bindingResult){
+    public void update(@RequestBody @Valid CategoryRoom categoryRoom, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             throw new CustomBindingException ("Errores encontrados, por favor compruebe e intente nuevamente",HttpStatus.BAD_REQUEST.value(),UtilsException.fieldBindingErrors(bindingResult));
         }
-        categoryHotelService.update(categoryHotel);
+        categoryRoomService.update(categoryRoom);
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id){
-        categoryHotelService.delete(id);
+        categoryRoomService.delete(id);
     }
-
 }
