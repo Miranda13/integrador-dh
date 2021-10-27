@@ -11,7 +11,7 @@ public interface CategoryRoomService {
 
     List<CategoryRoomDTO> getAll();
     CategoryRoomDTO getById(Long id);
+    List<CategoryRoomDTO> findByNumberOfBeds(@Param("numberOfBeds")int numberOfBeds);
     void create(CategoryRoom newCategory);
     void update(CategoryRoom updatedCategory);
-    void delete(Long id);
-}
+    void delete(Long id);}

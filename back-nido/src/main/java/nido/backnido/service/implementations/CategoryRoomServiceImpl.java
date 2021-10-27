@@ -1,7 +1,9 @@
 package nido.backnido.service.implementations;
 
+import nido.backnido.entity.CategoryHotel;
 import nido.backnido.entity.CategoryRoom;
-import nido.backnido.entity.DTO.CategoryRoomDTO;
+import nido.backnido.entity.dto.CategoryHotelDTO;
+import nido.backnido.entity.dto.CategoryRoomDTO;
 import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.CategoryRoomRepository;
 import nido.backnido.service.CategoryRoomService;
@@ -12,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CategoryRoomServiceImpl implements CategoryRoomService {
@@ -41,6 +42,17 @@ public class CategoryRoomServiceImpl implements CategoryRoomService {
                 new CustomBaseException("Categoria no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value())
         );
         return modelMapper.map(response, CategoryRoomDTO.class);
+    }
+
+    @Override
+    public List<CategoryRoomDTO> findByNumberOfBeds(int numberOfBeds) {
+        List<CategoryRoomDTO> dtoResponse = new ArrayList<>();
+
+        for (CategoryRoom category : categoryRoomRepository.findByNumberOfBeds(numberOfBeds)) {
+            dtoResponse.add(modelMapper.map(category, CategoryRoomDTO.class));
+        }
+
+        return dtoResponse;
     }
 
     @Override

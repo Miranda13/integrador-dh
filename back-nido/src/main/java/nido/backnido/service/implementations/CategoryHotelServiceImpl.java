@@ -1,7 +1,7 @@
 package nido.backnido.service.implementations;
 
 import nido.backnido.entity.CategoryHotel;
-import nido.backnido.entity.DTO.CategoryHotelDTO;
+import nido.backnido.entity.dto.CategoryHotelDTO;
 import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.CategoryHotelRepository;
 import nido.backnido.service.CategoryHotelService;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CategoryHotelServiceImpl implements CategoryHotelService {

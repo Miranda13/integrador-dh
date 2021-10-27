@@ -1,11 +1,8 @@
 package nido.backnido.controller;
 
-import nido.backnido.entity.CategoryHotel;
 import nido.backnido.entity.CategoryRoom;
-import nido.backnido.entity.DTO.CategoryHotelDTO;
-import nido.backnido.entity.DTO.CategoryRoomDTO;
+import nido.backnido.entity.dto.CategoryRoomDTO;
 import nido.backnido.exception.CustomBindingException;
-import nido.backnido.service.CategoryHotelService;
 import nido.backnido.service.CategoryRoomService;
 import nido.backnido.utils.UtilsException;
 import org.springframework.http.HttpStatus;

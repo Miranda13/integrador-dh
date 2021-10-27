@@ -1,7 +1,7 @@
 package nido.backnido.controller;
 
 import nido.backnido.entity.CategoryHotel;
-import nido.backnido.entity.DTO.CategoryHotelDTO;
+import nido.backnido.entity.dto.CategoryHotelDTO;
 import nido.backnido.exception.CustomBindingException;
 import nido.backnido.service.CategoryHotelService;
 import nido.backnido.utils.UtilsException;
