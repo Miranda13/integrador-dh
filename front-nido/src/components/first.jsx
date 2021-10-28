@@ -1,34 +1,12 @@
-import FormRegister from './FormRegister/index';
-import Login from './FormLogin/index';
-import { useState } from 'react';
-function FirstComponent() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+// import React from "react";
+// import Cards from "./Cards";
+// import '@fortawesome/fontawesome-free/css/all.min.css';
 
-  function submitForm() {
-    setIsSubmitted(true);
-  }
-  return (
-    <>
-      <p> Nido works !</p>
-      {/* Aca deberia usarse las rutas para mostrar un formulario u otro
-      {!isSubmitted ?
-        <FormRegister submitForm={submitForm} />
-        :
-        <>
-           Consecuencias al haber registrado correctamente todos los datos
-          {console.log("Se registro correctamente")}
-        </>
-      } */}
-      {!isSubmitted ?
-        <Login submitForm={submitForm} />
-        :
-        <>
-          {/* Consecuencias al haber registrado correctamente todos los datos */}
-          {console.log("Se logeo correctamente")}
-        </>
-      }
-    </>
-  );
-}
+// function FirstComponent() {
+//     return(
+//       <Cards className=""></Cards>
+//     )
 
-export default FirstComponent;
+// }
+
+// export default FirstComponent;

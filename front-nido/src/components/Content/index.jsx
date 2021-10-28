@@ -1,6 +1,9 @@
 import React from "react";
 import {CategoryCard} from "../CategoryCard/index";
+import  Recomendations  from "../Recomendations";
 import "./Content.css";
+
+
 
 class Content  extends React.Component {
 render(){    
@@ -37,6 +40,7 @@ render(){
                  </div></div>
                 <div className="content_recomendaciones">
                     <h2>Recomendaciones</h2>
+                    <Recomendations/>
                 </div>
             
         </React.StrictMode>

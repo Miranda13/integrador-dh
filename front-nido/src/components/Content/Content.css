@@ -1,12 +1,16 @@
 
 .content-superior{
-    padding-left: 20px;;
+    padding: 0 20px;
+    
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 .content_cards{
     display:flex;
     justify-content: space-between;
     background-color: #fff;
-    margin: 0px 0px 20px 0px;
+    margin: 0px 0px 0px 0px;
     flex-wrap: no-wrap;
     max-width: 100%;
    
