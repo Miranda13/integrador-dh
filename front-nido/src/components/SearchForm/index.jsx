@@ -1,15 +1,15 @@
 import React from "react";
-
+import Searcher from '../Searcher';
 class SearchForm extends React.Component {
   render() {
     return (
       <div className="searchForm">
         <form>
-          <input type="text" placeholder="Componente de jose"  className="searchForm__input"/>     
+          <Searcher />
         </form>
-      
+
       </div>
     );
   }
 }
-export  {SearchForm};
+export { SearchForm };
