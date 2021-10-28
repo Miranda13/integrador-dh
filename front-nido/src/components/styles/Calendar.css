@@ -64,12 +64,12 @@
 .react-datepicker-wrapper {
     width: 30%;
     margin-top: 1rem;
-    padding: .2em;
+    padding: 0px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
     border: transparent;
     border-radius: 6px;
     background-color: var(--light-medium-color);
-    height: 50px;
+    height: 40px;
     /*AQUUI********/
     position: relative;
     margin-right: 1rem;
@@ -80,7 +80,7 @@
 /*aqui*/
 .react-datepicker-wrapper::after {
     content: "\f272";
-    font-size: 2rem;
+    font-size:  var(--font-size-icon);
     font-family: 'Font Awesome 5 free';
     position: absolute;
     top: 8px;
@@ -88,8 +88,8 @@
 }
 
 .react-datepicker__input-container>input {
-    width: 100%;
-    padding: .2em;
+    width: 250px;
+    padding: 0px;
 
     /*aqui*/
     padding-inline-start: 43px;

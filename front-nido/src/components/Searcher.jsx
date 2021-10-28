@@ -20,7 +20,7 @@ function Searcher() {
             <form className="container-searcher__form">
                 <Location className="container-searcher__form__location" zIndexCalendar={handleZindexCalendar} />
                 <Calendar className="container-searcher__form__calendar" />
-                <button className="container-searcher__form__button">Buscar</button>
+                <button className="container-searcher__form__button button-2">Buscar</button>
             </form>
         </div>
     )
