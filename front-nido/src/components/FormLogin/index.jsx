@@ -1,4 +1,4 @@
-import useForm from '../hooks/useForm';
+import useForm from '../hooks/useFormRegister';
 import validate from '../assets/js/validateLogin';
 import './FormLogin.css';
 
@@ -9,21 +9,21 @@ export default function FormLogin({ submitForm }) {
     }
     const { handleChange, values, handleSubmit, errors } = useForm(objectValues, submitForm, validate);
     return (
-        <> <h2>Iniciar sesión</h2> 
+        <> <h2>Iniciar sesión</h2>
             <form onSubmit={handleSubmit} className="form">
-            
+
                 {errors.auth && <span>{errors.auth}</span>}
                 <br />
-               <div className="form__body"> 
-                    <label htmlFor="email" className="form__label">Correo electrónico</label>                      
-                    <div>          
-                    <input name="email" type="email" onChange={handleChange} value={values.email} className="form__input"/> 
+                <div className="form__body">
+                    <label htmlFor="email" className="form__label">Correo electrónico</label>
+                    <div>
+                        <input name="email" type="email" onChange={handleChange} value={values.email} className="form__input" />
                         {errors.email && <span className="form_error">{errors.email}</span>}
-                    </div>                
-                    <label htmlFor="password" className="form__label">Contraseña</label>               
-                    <div>    
-                        <input name="password" type="password" onChange={handleChange} value={values.password} className="form__input"/>
-                    {errors.password && <span  className="form_error">{errors.password}</span>}
+                    </div>
+                    <label htmlFor="password" className="form__label">Contraseña</label>
+                    <div>
+                        <input name="password" type="password" onChange={handleChange} value={values.password} className="form__input" />
+                        {errors.password && <span className="form_error">{errors.password}</span>}
                     </div>
                 </div>
                 <button type="submit" className="button-1">Ingresar</button>
