@@ -1,0 +1,74 @@
+.form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    /* width: 400px; */
+    /* margin-top: 200px; */
+}
+
+
+.register-form{
+    margin-top: 100px
+}
+#name{
+    width: 218px !important;
+}
+#surname{
+    width: 218px !important;
+}
+
+#email{
+    width: 448px !important;
+}
+.form__body--two{
+    display: flex;
+    /* flex-wrap: no-wrap; */
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
+    width: 450px;
+    /* margin-top: 100px; */
+}
+
+.form__body--two-label{
+    display:flex;
+    flex-direction: column;
+    /* flex-wrap:wrap !important; */
+}
+
+.form__label{
+    font-size: var(--font-size-4);
+}
+.form__input{
+    border: 1px solid #fff;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); 
+    width: 448px;
+    margin: 5px 0px 10px 0px;
+}
+.form__text{
+    font-size: var(--font-size-5);
+}
+.form__text a{
+    text-decoration: none;
+    color:blue    
+}
+
+
+.form_error{
+    color: red;
+    font-size: var(--font-size-5);
+    margin-bottom: 10px;
+    display: block; 
+    text-align: end;
+}
+
+.form__input--error{
+    border: 1px solid red;
+}
+
+.container{
+    margin-top:80px
+}

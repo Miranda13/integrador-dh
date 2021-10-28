@@ -6,11 +6,14 @@ import {UserLogged} from "../UserLogged";
 import "./StatusLogin.css";
 
 class StatusLogin extends React.Component {
-  
+    
+
     render() {
    
     return (
         <React.StrictMode>
+     
+           
             <div className="status-login">
                 <Button 
                     name={"Iniciar Sesión"} 
@@ -22,7 +25,7 @@ class StatusLogin extends React.Component {
                     id={'signin'}
                     onClick={this.props.onClick}
                 /> 
-               {/* <UserLogged/>  */}
+                <UserLogged/>  
             </div>
         </React.StrictMode>
     );

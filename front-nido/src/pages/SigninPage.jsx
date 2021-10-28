@@ -1,9 +1,9 @@
 import React from "react";
-// import  "../styles/index.css";
+
 import {Header} from "../components/Header";
 import {Footer} from "../components/Footer";
 import {MenuMobile} from "../components/MenuMobile";
-import {FormRegister} from "../components/FormRegister";
+import FormRegister from "../components/FormRegister";
 
 
 class SigninPage extends React.Component {
@@ -13,7 +13,9 @@ render(){
         <React.StrictMode>
             <div className="wrapper">
                 <Header/>
-                {/* <FormRegister/>  */}
+                <div className="container">
+                <FormRegister/> 
+            </div>    
                 <Footer/>
                 <MenuMobile/> 
             </div>
