@@ -34,6 +34,12 @@ public class CategoryHotelController {
         return categoryHotelService.getById(id);
     }
 
+    @GetMapping("/search")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CategoryHotelDTO> getByTitle(@RequestParam String title){
+        return categoryHotelService.findByCategoryTitle(title);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void createCategory(@RequestBody @Valid  CategoryHotel categoryHotel, BindingResult bindingResult){
@@ -47,7 +53,7 @@ public class CategoryHotelController {
     @ResponseStatus(HttpStatus.OK)
     public void update(@RequestBody @Valid CategoryHotel categoryHotel, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
-            throw new CustomBindingException ("Errores encontrados, por favor compruebe e intente nuevamente",HttpStatus.BAD_REQUEST.value(),UtilsException.fieldBindingErrors(bindingResult));
+            throw new CustomBindingException ("Errores encontrados, por favor compruebe e intente nuevamente",HttpStatus.NOT_FOUND.value(),UtilsException.fieldBindingErrors(bindingResult));
         }
         categoryHotelService.update(categoryHotel);
     }

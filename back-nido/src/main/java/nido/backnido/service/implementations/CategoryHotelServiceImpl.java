@@ -36,43 +36,42 @@ public class CategoryHotelServiceImpl implements CategoryHotelService {
 
     @Override
     public CategoryHotelDTO getById(Long id) {
-        CategoryHotel response = categoryHotelRepository.findById(id).orElseThrow(()->
-         new CustomBaseException("Categoria no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value())
+        CategoryHotel response = categoryHotelRepository.findById(id).orElseThrow(() ->
+                new CustomBaseException("Categoria no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value())
         );
         return modelMapper.map(response, CategoryHotelDTO.class);
     }
 
     @Override
     public void create(CategoryHotel newCategory) {
-        if(newCategory != null){
+        if (newCategory != null) {
             categoryHotelRepository.save(newCategory);
         }
-
     }
 
     @Override
-    public void update(CategoryHotel updatedCategory) {
-        if(updatedCategory.getCategoryHotelId() != null){
-            categoryHotelRepository.findById(updatedCategory.getCategoryHotelId()).orElseThrow(()->
-                    new CustomBaseException("Categoria no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value())
-         );
-        }else{
-           throw  new CustomBaseException("El id de la categoria no puede estar vacio, por favor compruebe", HttpStatus.BAD_REQUEST.value());
+    public void update(CategoryHotel updatedCategory) throws CustomBaseException {
+        if (updatedCategory.getCategoryHotelId() != null) {
+            categoryHotelRepository.findById(updatedCategory.getCategoryHotelId()).orElseThrow(() ->
+                    new CustomBaseException("Categoria no encontrada, por favor compruebe", HttpStatus.NOT_FOUND.value())
+            );
+        } else {
+            throw new CustomBaseException("El id de la categoria no puede estar vacio, por favor compruebe", HttpStatus.BAD_REQUEST.value());
         }
         categoryHotelRepository.save(updatedCategory);
     }
 
     @Override
     public void delete(Long id) {
-        categoryHotelRepository.findById(id).orElseThrow(()->
-            new CustomBaseException("Categoria con el id: "+ id + " no encontrada por favor compruebe el id e intente nuevamente ",HttpStatus.BAD_REQUEST.value())
+        categoryHotelRepository.findById(id).orElseThrow(() ->
+                new CustomBaseException("Categoria con el id: " + id + " no encontrada por favor compruebe el id e intente nuevamente ", HttpStatus.BAD_REQUEST.value())
         );
         categoryHotelRepository.deleteById(id);
     }
 
     @Override
     public void deleteByCategoryTitle(String title) {
-        if(title != null) {
+        if (title != null) {
             categoryHotelRepository.deleteByCategoryTitle(title);
         }
 
