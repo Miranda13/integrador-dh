@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 class UserLogged extends React.Component {
 render() {
@@ -7,7 +7,7 @@ render() {
         <React.StrictMode>
             <div className="user-logged">
                 <div className="user-logged__close">
-               <a > <i className="fas fa-times"></i></a>
+               <Link to="/"> <i className="fas fa-times"></i></Link>
                 </div>
                 <div className="user-logged__container">                    
                     <div className="user-logged__container__avatar">
