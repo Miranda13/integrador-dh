@@ -1,11 +1,14 @@
-// import React from "react";
-// import Cards from "./Cards";
-// import '@fortawesome/fontawesome-free/css/all.min.css';
+import React, { Fragment } from "react";
+import Searcher from "./Searcher";
 
-// function FirstComponent() {
-//     return(
-//       <Cards className=""></Cards>
-//     )
+function FirstComponent() {
+  return (
+    <Fragment>
+      <Searcher />
+    </Fragment>
+
+  );
+}
 
 // }
 
