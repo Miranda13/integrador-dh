@@ -219,19 +219,24 @@
     .card-list{
         width: 100%;
     }
-
+    .card-list__image__jpg{
+        width:280px;
+    }
     
 /*LATERAL INFO*/
 
     .card-list__info{
         position: relative;
-        margin-left: 30%;
+        margin-left: 20%;
     }
     
 /*SCORE*/
 
     .card-list__info__score{
         padding-left: 75%;
+    }
+    .cards {
+        margin-left:0px;
     }
 }
 
@@ -242,10 +247,11 @@
 /*MOBILE*/
 
 @media (max-width: 480px) {
-
+   
 /*CARD*/
     .card-list{
         display: flex;
+        position: relative;
         flex-direction: column;
         width: 100%;
         height: 600px;
@@ -254,15 +260,15 @@
 /*LATERAL IMAGE*/
 
     .card-list__image{
-        width: 100%;
+        width: 100px;
         height: 300px;
         margin-left: 0px;
         margin-right: 0px;
     }
         
     .card-list__image__jpg{
-        width: 412px;
-        height: 300px;
+        width: 280px;
+        height: 250px;
     }
         
     .card-list__image__icon{

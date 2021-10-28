@@ -65,4 +65,9 @@ h2{
 
 @media (max-width: 480px) {
     .content-superior{display:none;}
+    .content_recomendaciones{
+       position: relative;
+      
+    }
+
 }

@@ -37,6 +37,7 @@
     position: relative;
     width: 100%;
     /* height: 151px; */
+    
 }
 
 .container-searcher__titulo {
@@ -79,7 +80,10 @@
     }
 
     .container-searcher__form__button {
-        margin: 0;
+        margin-bottom: 10px;
         width: 100%;
+       
     }
+    
+    
 }
