@@ -9,6 +9,10 @@ import { Content } from "../components/Content";
 
 
 class LoginPage extends React.Component {
+    constructor(props) {
+        super(props);
+      }
+
 render(){    
     return (
        
@@ -16,7 +20,7 @@ render(){
             <div className="wrapper">
                 <Header status={"login"}/>  
                 <div className="container">                     
-                  <FormLogin/>     
+                  <FormLogin submitForm={this.props.submitForm}/>     
                 </div>                 
                 <Footer/>
                 <MenuMobile/> 

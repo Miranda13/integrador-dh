@@ -13,7 +13,7 @@ class MenuMobile extends React.Component {
                      MENU
                 </div>
                 <ul>
-                    <li><a href="#">Crear Cuenta</a></li>
+                    <li><a href="/signin">Crear Cuenta</a></li>
                     <hr/>
                     <li><a href="#">Iniciar Sesión</a></li>                 
                 </ul>
