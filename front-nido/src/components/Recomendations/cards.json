@@ -1,0 +1,58 @@
+[
+    {
+        "img" : "https://www.faena.com/sites/default/files/styles/card/public/2020-03/presidencial-suite_05-1920x1470.jpg?h=97566661&itok=7LSW__-m",
+        "category" : "HOTEL",
+        "title" : "Hotel Faena",
+        "location":" Martha Salotti 445",
+        "description":"En el corazón de Puerto Madero, disfruta de un hotel inspirado en las pasiones de Buenos Aires. más..."
+    },
+    {
+        "img" : "https://alvearpalace.com/resources/img/slide1.jpg",
+        "category" : "HOTEL",
+        "title" : "Alvear Palace Hotel",
+        "location":"Av. Alvear 1891",
+        "description":"En el corazón de Recoleta, disfruta de un hotel inspirado en las pasiones de Buenos Aires. más..."
+    },
+    {
+        "img" : "https://m.fourseasons.com/alt/img-opt/~70..0,0000-292,5000-5616,0000-3159,0000/publish/content/dam/fourseasons/images/web/BUE/BUE_370_original.jpg",
+        "category" : "HOTEL",
+        "title" : "Four Seasons Hotel",
+        "location":"Posadas 1086",
+        "description":"En el corazón de Retiro, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más..."
+    },
+    {
+        "img" : "https://images.mirai.com/INFOROOMS/10733683/TgAjBRdBcGO63G4zn5Ho/TgAjBRdBcGO63G4zn5Ho_large.jpg",
+        "category" : "HOTEL",
+        "title" : "Emperador Hotel",
+        "location":"Av. del Libertador 420",
+        "description":"En el corazón de Retiro, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más..."
+    },
+    {
+        "img" : "https://cf.bstatic.com/xdata/images/hotel/max1280x900/254500518.jpg?k=ff9b8ddd191ae933d9284bf74a79471affff389e49157b1526b171946d5f3bd8&o=&hp=1",
+        "category" : "HOTEL",
+        "title" : "Hotel Madero",
+        "location":"Vera Peñaloza 360",
+        "description":"En el corazón de Puerto Madero, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más..."
+    },
+    {
+        "img" : "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2017/06/30/1509/Palacio-Duhau-Park-Hyatt-Buenos-Aires-P345-Park-Deluxe-Balcony.jpg/Palacio-Duhau-Park-Hyatt-Buenos-Aires-P345-Park-Deluxe-Balcony.16x9.jpg?imwidth=1280",
+        "category" : "HOTEL",
+        "title" : "Palacio Duhau Hotel",
+        "location":"Av. Alvear 1661",
+        "description":"En el corazón de Retiro, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más..."
+    },
+    {
+        "img" : "https://www.ahstatic.com/photos/8932_ho_00_p_1024x768.jpg",
+        "category" : "HOTEL",
+        "title" : "Sofitel",
+        "location":"Arroyo 841",
+        "description":"En el corazón de Retiro, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más..."
+    },
+    {
+        "img" : "https://media-cdn.tripadvisor.com/media/photo-m/1280/18/e0/47/bf/recoleta-grand.jpg",
+        "category" : "HOTEL",
+        "title" : "Recoleta Grand Hotel",
+        "location":"Av. Gral. Las Heras 1745",
+        "description":"En el corazón de Recoleta, disfruta de un albergue inspirado en las pasiones de Buenos Aires. más..."
+    }
+]

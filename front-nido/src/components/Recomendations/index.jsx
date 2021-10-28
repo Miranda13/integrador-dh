@@ -1,13 +1,18 @@
-import React from "react";
+import cards from './cards.json';
+import Card from "./Card";
+import './styles/Cards.css';
 
-
-function Recomendations() {
+function Recomendations(){
     return(
-     <div>
-       <p>componente jose</p>
-     </div>
-      )
+        <>
+        <div className="cards">
+        {
+            cards.map(card => {
+            return(<Card key={card.id} card={card}/>)
+        })}
+        </div>
+        </>
+    )
 }
 
 export default Recomendations;
-
