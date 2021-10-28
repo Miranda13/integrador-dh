@@ -1,5 +1,5 @@
-import FormRegister from './FormRegister/Index';
-import Login from './FormLogin/Index';
+import FormRegister from './FormRegister/index';
+import Login from './FormLogin/index';
 import { useState } from 'react';
 function FirstComponent() {
   const [isSubmitted, setIsSubmitted] = useState(false);

@@ -1,0 +1,14 @@
+form-login{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 300px; */
+}
+
+.form-login__input{
+    border: 1px solid #fff;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); 
+    width: 448px;
+    margin: 10px 0px 20px 0px;
+}

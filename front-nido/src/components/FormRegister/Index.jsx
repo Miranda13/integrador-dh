@@ -1,5 +1,6 @@
 import useForm from '../hooks/useForm';
 import validate from '../assets/js/validateRegister';
+
 export default function FormRegister({ submitForm }) {
     const objectValues = {
         email: "",
