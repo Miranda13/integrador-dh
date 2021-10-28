@@ -5,7 +5,7 @@
     background-color: var(--medium-color);
     color: var(--light-color);
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center; 
     padding: 0 20px;

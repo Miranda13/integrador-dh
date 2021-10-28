@@ -14,7 +14,7 @@ render(){
        
         <React.StrictMode>
             <div className="wrapper">
-                <Header/>  
+                <Header status={"login"}/>  
                 <div className="container">                     
                   <FormLogin/>     
                 </div>                 

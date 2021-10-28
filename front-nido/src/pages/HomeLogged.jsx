@@ -8,14 +8,14 @@ import {SearchBar} from "../components/SearchBar";
 import {Content} from "../components/Content";
 import {MenuMobile} from "../components/MenuMobile";
 
-class Home extends React.Component {
+class HomeLogged extends React.Component {
 
 
     render(){    
     return (
        <React.StrictMode>
             <div className="wrapper">
-                <Header status={"inicial"}/>
+                <Header status={"logged"}/>
                 <SearchBar/>
                 <Content/>
                 <Footer/>
@@ -26,4 +26,4 @@ class Home extends React.Component {
     );}
 }
 
-export  {Home};
+export  {HomeLogged};

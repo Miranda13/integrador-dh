@@ -5,8 +5,7 @@ class SearchForm extends React.Component {
     return (
       <div className="searchForm">
         <form>
-          <input type="text" placeholder="Buscar"  className="searchForm__input"/>
-      
+          <input type="text" placeholder="Componente de jose"  className="searchForm__input"/>     
         </form>
       
       </div>

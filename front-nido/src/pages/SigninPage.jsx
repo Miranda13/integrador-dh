@@ -12,7 +12,7 @@ render(){
        
         <React.StrictMode>
             <div className="wrapper">
-                <Header/>
+                <Header status={"signin"}/>
                 <div className="container">
                 <FormRegister/> 
             </div>    
