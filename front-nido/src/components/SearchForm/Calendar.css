@@ -80,7 +80,7 @@
 /*aqui*/
 .react-datepicker-wrapper::after {
     content: "\f272";
-    font-size:  var(--font-size-icon);
+    font-size: var(--font-size-icon);
     font-family: 'Font Awesome 5 free';
     position: absolute;
     top: 8px;
@@ -104,7 +104,7 @@
     font-weight: bold;
     outline: none;
     cursor: pointer;
-    
+
     /*****************/
 }
 
@@ -249,11 +249,12 @@
 }
 
 /*IPAD*/
-@media (min-width: 730px) and (max-width: 1024px){
+@media (min-width: 730px) and (max-width: 1024px) {
     .react-datepicker-wrapper {
         width: 15rem;
     }
-    .react-datepicker{
+
+    .react-datepicker {
         width: 500px;
         height: 370px;
     }
@@ -261,9 +262,9 @@
     .react-datepicker__day-name,
     .react-datepicker__day,
     .react-datepicker__time-name {
-    width: 1.8rem;
-    line-height: 2.1rem;
-}
+        width: 1.8rem;
+        line-height: 2.1rem;
+    }
 }
 
 
@@ -296,13 +297,13 @@
         visibility: visible !important;
     }
 
-    .react-datepicker>.react-datepicker__month-container:nth-child(3) {
+    .react-datepicker>div.react-datepicker__month-container:nth-child(odd) {
         display: none;
     }
 
     .calendar__date-btn {
         width: 90%;
         right: 24px;
-       /* bottom: 12px;*/
+        /* bottom: 12px;*/
     }
 }
