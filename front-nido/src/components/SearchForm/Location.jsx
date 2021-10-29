@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import './styles/Location.css';
+import './Location.css';
 import { useState, useEffect } from 'react';
 
 function Location({ zIndexCalendar }) {

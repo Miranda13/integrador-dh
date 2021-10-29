@@ -1,5 +1,5 @@
 import React from "react";
-import Searcher from '../Searcher';
+import Searcher from './Searcher';
 class SearchForm extends React.Component {
   render() {
     return (
