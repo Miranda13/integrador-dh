@@ -1,7 +1,7 @@
 import React from "react";
 import Calendar from "./Calendar";
 import Location from "./Location";
-import "./styles/Searcher.css";
+import "./Searcher.css";
 import { useState, useEffect } from 'react';
 function Searcher() {
     const [hideCalendar, setHideCalendar] = useState(1);
