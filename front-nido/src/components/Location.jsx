@@ -14,7 +14,21 @@ function Location({ zIndexCalendar }) {
         title_location.style.color = "var(--dark-color)"
     }
     useEffect(() => {
+        window.addEventListener("click", (e) => {
+            console.log(e.target)
+            const inputLocation = document.querySelector(".container-location");
+            const titleLocation = document.querySelector(".container-location__title");
+            const list = document.querySelector(".container-location__list");
+
+            if (e.target !== inputLocation && e.target !== list && e.target !== titleLocation) {
+                setShowList(false);
+            }
+        })
+    }, [])
+
+    useEffect(() => {
         const list = document.querySelector(".container-location__list");
+
         if (showList) {
             list.classList.remove("hideItem");
         } else {
