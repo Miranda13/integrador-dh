@@ -32,6 +32,11 @@
 }
 
 @media (max-width: 480px) {
+    #menu_mini{
+        position: fixed;
+        z-index: 99;
+        right: 0;
+    }
     .header{
         padding: 20px;
     }
@@ -40,8 +45,9 @@
         width:25px;
         height: 15px;
         position: relative;
-        z-index: 10;
+        z-index: 55;
         transition: all 1s ease;
+         translate: 0vw; 
     }
      
     #menu_on span{
@@ -63,8 +69,6 @@
         bottom: 0;
     }
 
-
-
     #menu-mobile{
         position: absolute ;
         display: flex;
@@ -75,6 +79,7 @@
     } 
 
     .menu_sidebar__header{
+        z-index: 50;
         display: flex;
         justify-content: right;
         align-items: end;
@@ -108,7 +113,7 @@
         bottom: 0;
         left:-300px;  
         width: 75%;
-        z-index: 1;     
+        z-index: 50;     
         background-color: var(--light-color);
         opacity: 0;
         transition: all 0.75s ease;
@@ -174,7 +179,7 @@
     #menu_sidebar{
         display: inline-block; 
         position: fixed;
-        height: 668px;
+        /* height: 668px; */
         box-shadow: 0px 0px 10px 0px rgba(0,0,2,0.5); 
     }
 }

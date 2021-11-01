@@ -15,9 +15,9 @@ class Home extends React.Component {
     return (
        <React.StrictMode>
             <div className="wrapper">
-                <Header status={"inicial"}/>
                 <SearchBar/>
                 <Content/>
+                <Header status={"inicial"}/>                            
                 <Footer/>
                 <MenuMobile/> 
 

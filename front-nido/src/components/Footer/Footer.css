@@ -25,7 +25,7 @@
 
  @media (min-width: 730px) and (max-width: 1024px) {
     .footer{
-        bottom:1px;  
+        /* bottom:1px;   */
     }
 }
 

@@ -15,6 +15,7 @@ class Footer extends React.Component {
                 <i className="fab fa-twitter"></i>
                 <i className="fab fa-instagram"></i>            
             </div>
+            
         </footer>
         );
     }

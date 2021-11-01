@@ -7,7 +7,7 @@ class MenuMobile extends React.Component {
         return (
    
           <React.StrictMode>
-         
+         <div id="menu_mini">
               <nav id="menu_sidebar">
                 <div className="menu_sidebar__header">
                      MENU
@@ -32,7 +32,7 @@ class MenuMobile extends React.Component {
                     <span></span>
                 </a>
               </div>
-           
+           </div>
         </React.StrictMode>
         
         );
