@@ -1,5 +1,6 @@
 package nido.backnido.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Images {
+public class Image {
 
     //    TODO Faltan las relaciones
 
@@ -33,8 +34,9 @@ public class Images {
 
     @NotNull
     @NotBlank
-    @Column(name = "products_product_id")
-    private Long productId;
-
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="products_product_id", referencedColumnName="productId")
+    private Product product;
 
 }

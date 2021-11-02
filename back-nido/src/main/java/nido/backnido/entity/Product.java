@@ -1,5 +1,6 @@
 package nido.backnido.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -44,5 +46,11 @@ public class Product {
     @NotBlank
     @Column(name = "categories_category_id")
     private Long category;
+
+    @NotNull
+    @NotBlank
+    @JsonIgnore
+    @OneToMany(mappedBy = "producto")
+    private Set<Image> image;
 
 }
