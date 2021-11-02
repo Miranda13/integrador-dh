@@ -66,6 +66,12 @@
 @media (min-width: 730px) and (max-width: 1024px) and (orientation: landscape) {
 
 }
+@media (min-width: 481px) and (max-width: 729px) {
+    .status-login{
+        display: none;
+    }
+}
+
 
 @media (max-width: 480px) {
     .status-login{

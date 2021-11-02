@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     justify-items: center;
-    /* width: 400px; */
+    /* width: 300px; */
     /* margin-top: 200px; */
 }
 
@@ -14,15 +14,20 @@
     margin-top: 100px
 }
 #name{
-    width: 218px !important;
+    width: 218px;
 }
 #surname{
-    width: 218px !important;
+    width: 218px;
 }
 
 #email{
-    width: 448px !important;
+    width: 448px;
 }
+
+.form__body{
+    /* width: 600px; */
+}
+
 .form__body--two{
     display: flex;
     /* flex-wrap: no-wrap; */
@@ -70,7 +75,7 @@
 }
 
 .container{
-    margin-top:80px
+    margin-top:60px
 }
 
 @media (min-width: 730px) and (max-width: 1024px) {
@@ -84,13 +89,31 @@
 }
 
 @media (max-width: 480px) {
+    .container{
+        padding-top: 260px;
+    }
+
     .form{
+        width: 300px;
+        padding-bottom: 160px;
+    }
+     
+    .form__body--two{      
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        justify-items: center;
-        /* width: 200px; */
+        align-items: flex-start;
+        width: 100px;
+        } 
+      
+        #name{
+            width: 300px;
         }
+        #surname{
+            width: 300px;
+        }
+    .form__input{
+        width: 300px;
+    } 
 }

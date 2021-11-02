@@ -1,25 +1,27 @@
-.card{
+.category-card{
     background-color: #fff;
     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); 
     border-radius: 10px;
-    min-width: 18%;
-    max-width: 280px;
+    /* min-width: 200px; */
+    width: 18vw;
     height: 240px;
-    margin: 10px;
-    /* padding: 10px; */
+  
+
 }
-.card__img{
+.category-card__img{
     background-color: aqua;
     height: 180px;
     border-radius: 10px 10px 0px 0px;
 }
 
-.card__img img{
-height: 100%;  
+.category-card__img img{
+    height: 100%;  
     border-radius: 10px 10px 0px 0px;
+    object-fit: cover;
+    object-position: left center;
 }
 
-.card__content{
+.category-card__content{
     padding: 10px;
     align-items: center;
    
@@ -27,4 +29,22 @@ height: 100%;
 
 .card_content-hoteles{
     font-size: var(--font-size-5);
+}
+
+
+@media (min-width: 480px) and (max-width: 1024px) {
+
+.content_cards{
+    display: flex;
+    
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    }
+    .category-card{
+        width:40vw;
+        margin: 10px 5px;
+    }
 }

@@ -15,7 +15,7 @@ render(){
                 <Header status={"signin"}/>
                 <div className="container">
                 <FormRegister/> 
-            </div>    
+                </div>    
                 <Footer/>
                 <MenuMobile/> 
             </div>
