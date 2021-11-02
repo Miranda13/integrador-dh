@@ -1,7 +1,7 @@
 package nido.backnido.service.implementations;
 
-import nido.backnido.entity.CategoryHotel;
-import nido.backnido.entity.dto.CategoryHotelDTO;
+import nido.backnido.entity.Category;
+import nido.backnido.entity.dto.CategoryDTO;
 import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.CategoryHotelRepository;
 import nido.backnido.service.CategoryHotelService;
@@ -22,12 +22,12 @@ public class CategoryHotelServiceImpl implements CategoryHotelService {
     ModelMapper modelMapper = new ModelMapper();
 
     @Override
-    public List<CategoryHotelDTO> getAll() {
+    public List<CategoryDTO> getAll() {
 
-        List<CategoryHotelDTO> categoryHotelResponse = new ArrayList<>();
+        List<CategoryDTO> categoryHotelResponse = new ArrayList<>();
 
-        for (CategoryHotel category : categoryHotelRepository.findAll()) {
-            categoryHotelResponse.add(modelMapper.map(category, CategoryHotelDTO.class));
+        for (Category category : categoryHotelRepository.findAll()) {
+            categoryHotelResponse.add(modelMapper.map(category, CategoryDTO.class));
         }
 
         return categoryHotelResponse;
@@ -35,24 +35,24 @@ public class CategoryHotelServiceImpl implements CategoryHotelService {
     }
 
     @Override
-    public CategoryHotelDTO getById(Long id) {
-        CategoryHotel response = categoryHotelRepository.findById(id).orElseThrow(() ->
+    public CategoryDTO getById(Long id) {
+        Category response = categoryHotelRepository.findById(id).orElseThrow(() ->
                 new CustomBaseException("Categoria no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value())
         );
-        return modelMapper.map(response, CategoryHotelDTO.class);
+        return modelMapper.map(response, CategoryDTO.class);
     }
 
     @Override
-    public void create(CategoryHotel newCategory) {
+    public void create(Category newCategory) {
         if (newCategory != null) {
             categoryHotelRepository.save(newCategory);
         }
     }
 
     @Override
-    public void update(CategoryHotel updatedCategory) throws CustomBaseException {
-        if (updatedCategory.getCategoryHotelId() != null) {
-            categoryHotelRepository.findById(updatedCategory.getCategoryHotelId()).orElseThrow(() ->
+    public void update(Category updatedCategory) throws CustomBaseException {
+        if (updatedCategory.getCategoryId() != null) {
+            categoryHotelRepository.findById(updatedCategory.getCategoryId()).orElseThrow(() ->
                     new CustomBaseException("Categoria no encontrada, por favor compruebe", HttpStatus.NOT_FOUND.value())
             );
         } else {
@@ -78,12 +78,12 @@ public class CategoryHotelServiceImpl implements CategoryHotelService {
     }
 
     @Override
-    public List<CategoryHotelDTO> findByCategoryTitle(String title) {
+    public List<CategoryDTO> findByCategoryTitle(String title) {
 
-        List<CategoryHotelDTO> dtoResponse = new ArrayList<>();
+        List<CategoryDTO> dtoResponse = new ArrayList<>();
 
-        for (CategoryHotel category : categoryHotelRepository.findByCategoryTitle(title)) {
-            dtoResponse.add(modelMapper.map(category, CategoryHotelDTO.class));
+        for (Category category : categoryHotelRepository.findByCategoryTitle(title)) {
+            dtoResponse.add(modelMapper.map(category, CategoryDTO.class));
         }
 
         return dtoResponse;

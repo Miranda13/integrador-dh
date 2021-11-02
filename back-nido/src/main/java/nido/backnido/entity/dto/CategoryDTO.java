@@ -9,10 +9,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryHotelDTO {
+public class CategoryDTO {
 
     private String title;
     private String description;
-    private Long imagesImageId;
+    private Long urlImage;
 
 }

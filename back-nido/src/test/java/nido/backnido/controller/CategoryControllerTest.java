@@ -1,23 +1,14 @@
 package nido.backnido.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nido.backnido.entity.CategoryHotel;
-import nido.backnido.entity.dto.CategoryHotelDTO;
-import nido.backnido.exception.CustomBindingException;
+import nido.backnido.entity.Category;
 import nido.backnido.repository.CategoryHotelRepository;
 import nido.backnido.service.CategoryHotelService;
-import nido.backnido.service.implementations.CategoryHotelServiceImpl;
-import nido.backnido.utils.UtilsException;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -27,15 +18,12 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(controllers = CategoryHotelController.class)
 @ActiveProfiles("test")
-class CategoryHotelControllerTest {
+class CategoryControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -72,7 +60,7 @@ class CategoryHotelControllerTest {
     @Test // BACKEND-CONTROLLER-NID015
     public void listAllReturnsStatus200Test() throws Exception {
 
-        List<CategoryHotel> expectedResponse = new ArrayList<>();
+        List<Category> expectedResponse = new ArrayList<>();
         expectedResponse.add(buildValidCategory());
 
         BDDMockito.given(categoryHotelRepository.findAll()).willReturn(expectedResponse);
@@ -84,7 +72,7 @@ class CategoryHotelControllerTest {
     @Test // BACKEND-CONTROLLER-NID016
     public void listAllEmptyReturnsSize0Test() throws Exception {
 
-        List<CategoryHotel> expectedResponse = new ArrayList<>();
+        List<Category> expectedResponse = new ArrayList<>();
 
         BDDMockito.given(categoryHotelRepository.findAll()).willReturn(expectedResponse);
 
@@ -94,7 +82,7 @@ class CategoryHotelControllerTest {
 //    @Test // BACKEND-CONTROLLER-NID017
 //    public void validUpdateReturnsStatus200Test() throws Exception {
 //
-//        CategoryHotel expectedResponse = new CategoryHotel(1L, "Updated", "Updated", 2L);
+//        Category expectedResponse = new Category(1L, "Updated", "Updated", 2L);
 //        expectedResponse.setCategoryHotelId(1L);
 //
 //        BDDMockito.given(categoryHotelRepository.findById(anyLong())).willReturn(Optional.of(expectedResponse));
@@ -116,8 +104,8 @@ class CategoryHotelControllerTest {
     @Test // BACKEND-CONTROLLER-NID018
     public void invalidContentUpdateReturnsStatus400Test() throws Exception {
 
-        CategoryHotel expectedResponse = buildInvalidCategory();
-        expectedResponse.setCategoryHotelId(1L);
+        Category expectedResponse = buildInvalidCategory();
+        expectedResponse.setCategoryId(1L);
 
         BDDMockito.given(categoryHotelRepository.findById(1L)).willReturn(Optional.of(buildValidCategory()));
 
@@ -135,7 +123,7 @@ class CategoryHotelControllerTest {
 //        List<String> s = new ArrayList<>();
 //        s.add("Id");
 //
-//        when(categoryHotelRepository.save(any(CategoryHotel.class))).thenThrow(new CustomBindingException("ASD", 404, s));
+//        when(categoryHotelRepository.save(any(Category.class))).thenThrow(new CustomBindingException("ASD", 404, s));
 //
 //        CustomBindingException customBindingException = assertThrows(CustomBindingException.class, () ->
 //                mockMvc.perform(put("http://localhost:8080/api/v1/categoryhotel")
@@ -161,17 +149,17 @@ class CategoryHotelControllerTest {
 
 
 
-    private CategoryHotel buildValidCategory() {
-        CategoryHotel newCategory = new CategoryHotel();
-        newCategory.setCategoryHotelId(1L);
+    private Category buildValidCategory() {
+        Category newCategory = new Category();
+        newCategory.setCategoryId(1L);
         newCategory.setTitle("Familiar");
         newCategory.setDescription("Hotel familiar");
-        newCategory.setImagesImageId(1L);
+        newCategory.setUrlImage("imgur.com/sample");
         return newCategory;
     }
 
-    private CategoryHotel buildInvalidCategory() {
-        CategoryHotel newCategory = new CategoryHotel();
+    private Category buildInvalidCategory() {
+        Category newCategory = new Category();
         return newCategory;
     }
 

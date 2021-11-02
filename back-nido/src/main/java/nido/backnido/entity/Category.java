@@ -11,31 +11,32 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "categories_hotels")
+@Table(name = "categories")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryHotel {
-//    Cuando esté el script dump final hay que verificar que la entidad esta mappeado correctamente
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long categoryHotelId;
+    private Long categoryId;
+
     @NotNull
     @NotBlank
     private String title;
+
     @NotNull
     @NotBlank
     private String description;
 
-//    @Column(name = "images_image_id")
-//    @OneToOne(mappedBy = "imageId")
-    private Long imagesImageId;
+    @NotNull
+    @NotBlank
+    private String urlImage;
 
-    public CategoryHotel(String title, String description, Long imagesImageId) {
+    public Category(String title, String description, String urlImage) {
         this.title = title;
         this.description = description;
-        this.imagesImageId = imagesImageId;
+        this.urlImage = urlImage;
     }
 }
