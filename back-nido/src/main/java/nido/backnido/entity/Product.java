@@ -45,7 +45,8 @@ public class Product {
     @NotNull
     @NotBlank
     @Column(name = "categories_category_id")
-    private Long category;
+    @ManyToOne
+    private Category category;
 
     @NotNull
     @NotBlank
