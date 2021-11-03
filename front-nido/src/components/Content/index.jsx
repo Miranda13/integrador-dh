@@ -40,7 +40,6 @@ render(){
                     </div>
             </div>
             <div className="content_recomendaciones">
-                    <h2>Recomendaciones</h2>
                     <Recomendations/>
             </div>
             

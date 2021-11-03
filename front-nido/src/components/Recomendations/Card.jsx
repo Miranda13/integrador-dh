@@ -1,7 +1,4 @@
 import React from "react";
-import './styles/Card.css';
-
-
 
 function Card(props) {
     const {card} =props;
