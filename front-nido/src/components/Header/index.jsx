@@ -5,16 +5,9 @@ import logo from "../../assets/images/logo.svg";
 import { Button } from "../Button";
 import "./Header.css";
 import { UserLogged } from "../UserLogged";
-
+import useLocalStorage from "../../hooks/useLocalStorage";
 function Header({ onClick }) {
-    const [user, setUser] = useState(null);
-    useEffect(() => {
-        let userLocal = JSON.parse(localStorage.getItem("user"));
-
-        if (userLocal !== null) {
-            setUser(userLocal);
-        }
-    }, [])
+    const [user, setUser] = useLocalStorage("user", null);
     return (
         <div className="header">
             <div className="identity">
@@ -26,7 +19,7 @@ function Header({ onClick }) {
                 </Link>
             </div>
             {
-                user !== null ?
+                user !== null && user !== undefined ?
                     <>
                         <UserLogged />
                     </>

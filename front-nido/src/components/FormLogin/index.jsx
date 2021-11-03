@@ -1,9 +1,7 @@
 import useForm from '../../hooks/useFormRegister';
 import validate from '../../assets/js/validateLogin';
 import './FormLogin.css';
-import { useHistory } from 'react-router-dom';
 export default function FormLogin({ submitForm }) {
-    const history = useHistory();
     const objectValues = {
         email: "",
         password: ""

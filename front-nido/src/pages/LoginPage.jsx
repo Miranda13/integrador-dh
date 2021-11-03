@@ -18,7 +18,7 @@ class LoginPage extends React.Component {
             <React.StrictMode>
                 <div className="wrapper">
                     <div className="container">
-                        <FormLogin submitForm={this.props.submitForm} />
+                        <FormLogin submitForm={this.props.submitForm} storeLogin={this.props.storeLogin} />
                     </div>
                 </div>
             </React.StrictMode>

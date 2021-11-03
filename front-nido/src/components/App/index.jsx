@@ -7,18 +7,19 @@ import { useState } from "react";
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 import MenuMobile from "../MenuMobile";
+import { useEffect } from "react/cjs/react.development";
+
 function App() {
     const [isSubmitted, setIsSubmitted] = useState(false);
-
     function submitForm() {
         setIsSubmitted(true);
     }
-
     return (
         <BrowserRouter>
-            <Header status="login" />
+            <Header />
             <Switch>
-                <Route exact path="/" component={Home} />
+                <Route exact path="/" component={Home}>
+                </Route>
                 <Route exact path="/login" >
 
                     {!isSubmitted ?
