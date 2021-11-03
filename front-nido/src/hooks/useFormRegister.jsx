@@ -21,6 +21,7 @@ export default function useForm(objectValues, callback, validate) {
     useEffect(() => {
         if (Object.keys(errors).length === 0 && isSubmitting) {
             callback();
+            localStorage.setItem('user', JSON.stringify(values))
         }
     })
     return { handleChange, values, handleSubmit, errors }

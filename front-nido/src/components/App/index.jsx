@@ -1,14 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-
-
 import { Home } from "../../pages/Home";
 import { LoginPage } from "../../pages/LoginPage";
 import { SigninPage } from "../../pages/SigninPage";
-import { HomeLogged } from "../../pages/HomeLogged";
 import { useState } from "react";
-
-
+import { Header } from '../Header';
+import { Footer } from '../Footer';
+import MenuMobile from "../MenuMobile";
 function App() {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -16,10 +14,9 @@ function App() {
         setIsSubmitted(true);
     }
 
-
-
     return (
         <BrowserRouter>
+            <Header status="login" />
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" >
@@ -28,13 +25,22 @@ function App() {
                         <LoginPage submitForm={submitForm} />
                         :
                         <>
-                            <Redirect to="/homeLogged" />
+                            <Redirect to="/" />
                         </>
                     }
                 </Route>
-                <Route exact path="/signin" component={SigninPage} />
-                <Route exact path="/homeLogged" component={HomeLogged} />
+                <Route exact path="/signin">
+                    {!isSubmitted ?
+                        <SigninPage submitForm={submitForm} />
+                        :
+                        <>
+                            <Redirect to="/" />
+                        </>
+                    }
+                </Route>
             </Switch>
+            <Footer />
+            <MenuMobile />
         </BrowserRouter>
     )
 }

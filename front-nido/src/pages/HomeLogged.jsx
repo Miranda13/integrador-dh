@@ -1,29 +1,25 @@
 
 
-import React from "react";
+// import React from "react";
 
-import {Header} from "../components/Header";
-import {Footer} from "../components/Footer";
-import {SearchBar} from "../components/SearchBar";
-import {Content} from "../components/Content";
-import {MenuMobile} from "../components/MenuMobile";
+// import { Header } from "../components/Header";
+// import { Footer } from "../components/Footer";
+// import { SearchBar } from "../components/SearchBar";
+// import { Content } from "../components/Content";
 
-class HomeLogged extends React.Component {
+// class HomeLogged extends React.Component {
 
 
-    render(){    
-    return (
-       <React.StrictMode>
-            <div className="wrapper">
-                <Header status={"logged"}/>
-                <SearchBar/>
-                <Content/>
-                <Footer/>
-                <MenuMobile/> 
+//     render() {
+//         return (
+//             <React.StrictMode>
+//                 <div className="wrapper">
+//                     <SearchBar />
+//                     <Content />
+//                 </div>
+//             </React.StrictMode>
+//         );
+//     }
+// }
 
-            </div>
-        </React.StrictMode>
-    );}
-}
-
-export  {HomeLogged};
+// export { HomeLogged };
