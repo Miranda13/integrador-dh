@@ -5,7 +5,7 @@ import nido.backnido.entity.dto.CategoryDTO;
 
 import java.util.List;
 
-public interface CategoryHotelService {
+public interface CategoryService {
 
     List<CategoryDTO> getAll();
     CategoryDTO getById(Long id);

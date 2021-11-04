@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface CategoryHotelRepository extends JpaRepository<Category, Long> {
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 
     @Query("FROM Category c WHERE c.title LIKE CONCAT('%',:title,'%')")
     List<Category> findByCategoryTitle(@Param("title")String title);
