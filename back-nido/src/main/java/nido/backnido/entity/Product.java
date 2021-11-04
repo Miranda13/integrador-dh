@@ -44,14 +44,14 @@ public class Product {
 
     @NotNull
     @NotBlank
-    @Column(name = "categories_category_id")
     @ManyToOne
+    @JoinColumn(name="categories_category_id")
     private Category category;
 
     @NotNull
     @NotBlank
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     @JsonIgnore
-    @OneToMany(mappedBy = "producto")
     private Set<Image> image;
 
 }

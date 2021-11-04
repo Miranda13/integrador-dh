@@ -1,6 +1,7 @@
 package nido.backnido.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,7 +36,8 @@ public class Category {
     @NotBlank
     private String urlImage;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Product> products;
 
     public Category(String title, String description, String urlImage) {
