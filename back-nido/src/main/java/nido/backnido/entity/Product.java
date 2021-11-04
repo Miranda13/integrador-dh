@@ -39,8 +39,9 @@ public class Product {
 
     @NotNull
     @NotBlank
-    @Column(name = "locations_location_id")
-    private Long locationId;
+    @ManyToOne
+    @JoinColumn(name = "locations_location_id")
+    private Location location;
 
     @NotNull
     @NotBlank

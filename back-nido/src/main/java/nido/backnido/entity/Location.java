@@ -1,10 +1,12 @@
 package nido.backnido.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 @Table(name = "locations")
@@ -35,5 +37,9 @@ public class Location {
     @NotNull
     @NotBlank
     private Double longitude;
+
+    @OneToMany(mappedBy = "location",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Product> products;
 
 }
