@@ -1,8 +1,6 @@
 package nido.backnido.service.implementations;
 
-import nido.backnido.entity.Category;
 import nido.backnido.entity.Product;
-import nido.backnido.entity.dto.CategoryDTO;
 import nido.backnido.entity.dto.ProductDTO;
 import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.ProductRepository;
@@ -65,5 +63,27 @@ public class ProductSeviceImpl implements ProductService {
                 new CustomBaseException("Producto con el id: " + id + " no encontrado por favor compruebe el id e intente nuevamente ", HttpStatus.BAD_REQUEST.value())
         );
         productRepository.deleteById(id);
+    }
+
+    @Override
+    public List<ProductDTO> findProductByCategory(String title) {
+        List<ProductDTO> productResponse = new ArrayList<>();
+
+        for (Product product : productRepository.findProductByCategory(title)) {
+            productResponse.add(modelMapper.map(product, ProductDTO.class));
+        }
+
+        return productResponse;
+    }
+
+    @Override
+    public List<ProductDTO> findProductByCity(String city) {
+        List<ProductDTO> productResponse = new ArrayList<>();
+
+        for (Product product : productRepository.findProductByCity(city)) {
+            productResponse.add(modelMapper.map(product, ProductDTO.class));
+        }
+
+        return productResponse;
     }
 }
