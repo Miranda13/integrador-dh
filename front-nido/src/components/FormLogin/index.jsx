@@ -1,7 +1,6 @@
-import useForm from '../hooks/useFormRegister';
-import validate from '../assets/js/validateLogin';
+import useForm from '../../hooks/useFormRegister';
+import validate from '../../assets/js/validateLogin';
 import './FormLogin.css';
-
 export default function FormLogin({ submitForm }) {
     const objectValues = {
         email: "",

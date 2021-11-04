@@ -15,7 +15,6 @@ function Location({ zIndexCalendar }) {
     }
     useEffect(() => {
         window.addEventListener("click", (e) => {
-            console.log(e.target)
             const inputLocation = document.querySelector(".container-location");
             const titleLocation = document.querySelector(".container-location__title");
             const list = document.querySelector(".container-location__list");

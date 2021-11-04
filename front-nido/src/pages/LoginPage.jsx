@@ -1,8 +1,7 @@
 import React from "react";
 //  import  "./login.css";
-import {Header} from "../components/Header";
-import {Footer} from "../components/Footer/";
-import {MenuMobile} from "../components/MenuMobile";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer/";
 import FormLogin from "../components/FormLogin";
 import { Content } from "../components/Content";
 
@@ -11,22 +10,20 @@ import { Content } from "../components/Content";
 class LoginPage extends React.Component {
     constructor(props) {
         super(props);
-      }
+    }
 
-render(){    
-    return (
-       
-        <React.StrictMode>
-            <div className="wrapper">
-                <Header status={"login"}/>  
-                <div className="container">                     
-                  <FormLogin submitForm={this.props.submitForm}/>     
-                </div>                 
-                <Footer/>
-                <MenuMobile/> 
-            </div>
-        </React.StrictMode>
-    );}
+    render() {
+        return (
+
+            <React.StrictMode>
+                <div className="wrapper">
+                    <div className="container">
+                        <FormLogin submitForm={this.props.submitForm} storeLogin={this.props.storeLogin} />
+                    </div>
+                </div>
+            </React.StrictMode>
+        );
+    }
 }
 
-export {LoginPage} ;
+export { LoginPage };
