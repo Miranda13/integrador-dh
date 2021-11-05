@@ -10,7 +10,7 @@ render(){
     return (
         <React.StrictMode>
             <div className="content-superior">
-                    <h2>Buscar por Categorías</h2>
+                    <h2>Buscar por tipo de alojamiento</h2>
                     <div className="content_cards">           
                         <CategoryCard 
                             title={"Una estrella"}  
@@ -32,18 +32,13 @@ render(){
                             image={"https://encancun.com/wp-content/uploads/2018/09/al.jpeg"}
                             cantidad={"56000 "}
                         />
-                        <CategoryCard 
-                            title={"Cinco estrellas"}  
-                            image={"https://i.pinimg.com/originals/8c/ae/12/8cae1241f9a81794ddbd4004ca4149bb.jpg"}
-                            cantidad={"802 "}
-                        />
+                      
                     </div>
             </div>
             <div className="content_recomendaciones">
                     <h2>Recomendaciones</h2>
                     <Recomendations/>
-            </div>
-            
+            </div>           
         </React.StrictMode>
         );
     }
