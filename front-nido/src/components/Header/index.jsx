@@ -18,6 +18,7 @@ function Header({ onClick }) {
                     <p className="identity__slogan">Sentite como en tu hogar</p>
                 </Link>
             </div>
+            <div className="header__buttons">
             {
                 user !== null && user !== undefined ?
                     <>
@@ -37,7 +38,7 @@ function Header({ onClick }) {
                         />
 
                     </>
-            }
+            }</div>
 
         </div>);
 }

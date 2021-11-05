@@ -1,9 +1,8 @@
 import React from "react";
 //  import  "./login.css";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer/";
+
 import FormLogin from "../components/FormLogin";
-import { Content } from "../components/Content";
+
 
 
 
