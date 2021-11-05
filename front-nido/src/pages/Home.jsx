@@ -1,7 +1,7 @@
 
 
 import React from "react";
-import { SearchBar } from "../components/SearchBar";
+import { SearchForm } from "../components/SearchForm";
 import { Content } from "../components/Content";
 
 class Home extends React.Component {
@@ -11,7 +11,7 @@ class Home extends React.Component {
         return (
             <React.StrictMode>
                 <div className="wrapper">
-                    <SearchBar />
+                    <SearchForm />
                     <Content />
                 </div>
             </React.StrictMode>

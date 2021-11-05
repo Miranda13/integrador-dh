@@ -72,15 +72,9 @@ const Calendar = () => {
                 onClickOutside={closeCalendar}
                 dateFormatCalendar={"MMMM"}
             >
-                <button className="calendar__date-btn" onClick={closeCalendar}>Aplicar</button>
+                <button className="calendar__date-btn button-1" onClick={closeCalendar}>Aplicar</button>
             </DatePicker>
         </>
-        // <DatePicker
-        //     selected={startDate}
-        //     onChange={(date) => setStartDate(date)}
-        //     monthsShown={2}
-
-        // />
     );
 };
 
