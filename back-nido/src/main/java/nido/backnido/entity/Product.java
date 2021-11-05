@@ -45,12 +45,12 @@ public class Product {
     @NotNull
     @NotBlank
     @Column(name = "categories_category_id")
-    private Long category;
+    private Long categoryId;
 
     @NotNull
     @NotBlank
     @JsonIgnore
-    @OneToMany(mappedBy = "producto")
-    private Set<Image> image;
+    @OneToMany(mappedBy = "product")
+    private Set<Image> images;
 
 }

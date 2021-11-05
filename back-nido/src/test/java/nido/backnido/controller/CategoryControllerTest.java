@@ -2,8 +2,8 @@ package nido.backnido.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import nido.backnido.entity.Category;
-import nido.backnido.repository.CategoryHotelRepository;
-import nido.backnido.service.CategoryHotelService;
+import nido.backnido.repository.CategoryRepository;
+import nido.backnido.service.CategoryService;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = CategoryHotelController.class)
+@WebMvcTest(controllers = CategoryController.class)
 @ActiveProfiles("test")
 class CategoryControllerTest {
 
@@ -29,10 +29,10 @@ class CategoryControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private CategoryHotelService categoryHotelService;
+    private CategoryService categoryService;
 
     @MockBean
-    private CategoryHotelRepository categoryHotelRepository;
+    private CategoryRepository categoryRepository;
 
     @Autowired
     ObjectMapper objectMapper;
@@ -63,7 +63,7 @@ class CategoryControllerTest {
         List<Category> expectedResponse = new ArrayList<>();
         expectedResponse.add(buildValidCategory());
 
-        BDDMockito.given(categoryHotelRepository.findAll()).willReturn(expectedResponse);
+        BDDMockito.given(categoryRepository.findAll()).willReturn(expectedResponse);
 
         mockMvc.perform(get("http://localhost:8080/api/v1/categoryhotel"))
                 .andExpect(status().isOk());
@@ -74,9 +74,9 @@ class CategoryControllerTest {
 
         List<Category> expectedResponse = new ArrayList<>();
 
-        BDDMockito.given(categoryHotelRepository.findAll()).willReturn(expectedResponse);
+        BDDMockito.given(categoryRepository.findAll()).willReturn(expectedResponse);
 
-        assertEquals(0, categoryHotelService.getAll().size());
+        assertEquals(0, categoryService.getAll().size());
     }
 
 //    @Test // BACKEND-CONTROLLER-NID017
@@ -85,7 +85,7 @@ class CategoryControllerTest {
 //        Category expectedResponse = new Category(1L, "Updated", "Updated", 2L);
 //        expectedResponse.setCategoryHotelId(1L);
 //
-//        BDDMockito.given(categoryHotelRepository.findById(anyLong())).willReturn(Optional.of(expectedResponse));
+//        BDDMockito.given(categoryRepository.findById(anyLong())).willReturn(Optional.of(expectedResponse));
 //
 //        mockMvc.perform(post("http://localhost:8080/api/v1/categoryhotel")
 //                .content(objectMapper.writeValueAsString(buildValidCategory()))
@@ -96,8 +96,8 @@ class CategoryControllerTest {
 //                .contentType("application/json"))
 //                .andExpect(status().isOk());
 //
-//        assertEquals("Updated", categoryHotelService.getById(1L).getTitle());
-//        assertEquals("Updated", categoryHotelService.getById(1L).getDescription());
+//        assertEquals("Updated", categoryService.getById(1L).getTitle());
+//        assertEquals("Updated", categoryService.getById(1L).getDescription());
 //
 //    }
 
@@ -107,7 +107,7 @@ class CategoryControllerTest {
         Category expectedResponse = buildInvalidCategory();
         expectedResponse.setCategoryId(1L);
 
-        BDDMockito.given(categoryHotelRepository.findById(1L)).willReturn(Optional.of(buildValidCategory()));
+        BDDMockito.given(categoryRepository.findById(1L)).willReturn(Optional.of(buildValidCategory()));
 
         mockMvc.perform(put("http://localhost:8080/api/v1/categoryhotel")
                 .content(objectMapper.writeValueAsString(expectedResponse))
@@ -123,7 +123,7 @@ class CategoryControllerTest {
 //        List<String> s = new ArrayList<>();
 //        s.add("Id");
 //
-//        when(categoryHotelRepository.save(any(Category.class))).thenThrow(new CustomBindingException("ASD", 404, s));
+//        when(categoryRepository.save(any(Category.class))).thenThrow(new CustomBindingException("ASD", 404, s));
 //
 //        CustomBindingException customBindingException = assertThrows(CustomBindingException.class, () ->
 //                mockMvc.perform(put("http://localhost:8080/api/v1/categoryhotel")
