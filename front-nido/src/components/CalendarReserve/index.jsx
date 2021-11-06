@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
+import "./CalendarReserve.css";
 import es from 'date-fns/locale/es';
-export default function CalendarReserve() {
+export default function CalendarReserve({ arrayDates }) {
     registerLocale('es', es)
-    const [startDate, setStartDate] = useState();
+    const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState();
     function editNamesDaysWeek() {
         const namesDaysWeek = document.querySelectorAll(".react-datepicker__day-name");
@@ -13,16 +14,20 @@ export default function CalendarReserve() {
             name.innerHTML = name.textContent.substring(0, 1).toUpperCase();
         })
     }
+    const isWeekday = (date) => {
+        const day = date.getDay();
+        return day !== 0 && day !== 6;
+    };
     useEffect(() => {
         editNamesDaysWeek();
     }, [startDate, endDate])
     return (
-        <div>
+        <div className="calendarReserve">
             <DatePicker
                 inline
                 locale="es"
                 minDate={new Date()}
-                maxDate={new Date()}
+                filterDate={isWeekday}
                 renderCustomHeader={({
                     monthDate,
                     customHeaderCount,

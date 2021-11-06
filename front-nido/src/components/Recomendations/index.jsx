@@ -10,7 +10,7 @@ function Recomendations() {
                     cards.map(card => {
                         return (<Card key={card.id} card={card} />)
                     })}
-                <Calendar />
+                <Calendar arrayDates={["2020-11-07", "2020-11-10"]} />
             </div>
 
         </>

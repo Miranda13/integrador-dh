@@ -1,0 +1,22 @@
+.react-datepicker__day--disabled {
+    cursor: default;
+    text-decoration: line-through;
+    color: grey;
+    font-weight: bolder;
+}
+
+.react-datepicker__day--selected:hover,
+.react-datepicker__day--in-range:hover,
+.react-datepicker__day:hover,
+.react-datepicker__day--weekend:hover,
+.react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range) {
+    border-radius: unset;
+    background-color: unset;
+    color: grey;
+}
+
+.calendarReserve>div.react-datepicker__day:not(.react-datepicker__day--disabled) {
+    border-radius: 50%;
+    background-color: var(--main-color);
+    color: var(--light-color);
+}
