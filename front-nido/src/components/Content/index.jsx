@@ -10,7 +10,9 @@ render(){
     return (
         <React.StrictMode>
             <div className="content-superior">
-                    <h2 className="content_category-cards-titulo">Buscar por tipo de alojamiento</h2>
+                    <div className="content_category-cards-titulo">
+                        <h2 >Buscar por tipo de alojamiento</h2>
+                    </div>
                     <div className="content_category-cards"> 
                               
                         <CategoryCard 
