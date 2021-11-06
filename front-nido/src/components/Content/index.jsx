@@ -10,29 +10,27 @@ render(){
     return (
         <React.StrictMode>
             <div className="content-superior">
-                    <div className="content_category-cards-titulo">
-                        <h2>Buscar por tipo de alojamiento</h2>
-                    </div>
+                    <h2 className="content_category-cards-titulo">Buscar por tipo de alojamiento</h2>
                     <div className="content_category-cards"> 
                               
                         <CategoryCard 
-                            title={"Una estrella"}  
-                            image={"https://i.blogs.es/73f834/bunker/1366_2000.jpg"}
+                            title={"Hotel"}  
+                            image={"https://encancun.com/wp-content/uploads/2018/09/al.jpeg"}
                             cantidad={"896502 "}
                         />
                         <CategoryCard 
-                            title={"Dos estrellas"}  
-                            image={"https://cdn.atrapalo.com/hoteles/picture/s/4819/5/8/0.jpg"}
+                            title={"Cabaña"}  
+                            image={"https://http2.mlstatic.com/D_NQ_NP_889471-MLA33060547116_122019-O.jpg"}
                             cantidad={"120 "}
                         />
                         <CategoryCard 
-                            title={"Tres estrellas"}  
-                            image={"https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/itemimages/91/31/91312_v3.jpeg"}
+                            title={"Hostel"}  
+                            image={"https://descubreteviajando.com/wp-content/uploads/2016/09/001.jpg"}
                             cantidad={"6502 "}
                         />
                         <CategoryCard 
-                            title={"Cuatro estrellas"}  
-                            image={"https://encancun.com/wp-content/uploads/2018/09/al.jpeg"}
+                            title={"Departamento"}  
+                            image={"https://www.zonaprop.com.ar/noticias/wp-content/uploads/2016/08/depto-1024x546.jpg"}
                             cantidad={"56000 "}
                         />
                       
