@@ -10,8 +10,11 @@ render(){
     return (
         <React.StrictMode>
             <div className="content-superior">
-                    <h2>Buscar por tipo de alojamiento</h2>
-                    <div className="content_cards">           
+                    <div className="content_category-cards-titulo">
+                        <h2>Buscar por tipo de alojamiento</h2>
+                    </div>
+                    <div className="content_category-cards"> 
+                              
                         <CategoryCard 
                             title={"Una estrella"}  
                             image={"https://i.blogs.es/73f834/bunker/1366_2000.jpg"}

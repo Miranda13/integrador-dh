@@ -26,16 +26,51 @@ h2{
     padding: 0px;
 }
 
+    .content_category-cards{
+        display:flex;
+        justify-content: center;
+        background-color: #fff; 
+        flex-wrap: wrap;
+    }
+
+    h2{
+        color: var(--medium-color)   ;
+        font-size: var(--font-size-1);
+        font-weight: var(--font-weight-bold);
+        padding: 0 10px;
+        margin-bottom: 0px;
+    }
+    
+    .content_category-cards-titulo{
+        color: var(--light-color);
+        font-size: var(--font-size-1);
+        font-weight: var(--font-weight-bold);
+        padding: 0 3vw;
+        width: 100%;
+    }
+
+    .content_recomendaciones{
+        /* background-color: var(--medium-color); */
+        /* padding: 20px 20px; */
+        width: 100%;
+    }
+    
+    .content_recomendaciones h2{
+        color: var(--light-color);
+        font-size: var(--font-size-1);
+        font-weight: var(--font-weight-bold);
+    }
 
 @media (min-width: 760px) and (max-width: 1359px) {
-    .content_cards{
-       padding: 0 10vw;
+    .content_category-cards{
+       max-width:900px;
+       margin: auto;
     }
 }
 
 
 @media (min-width: 1360px) {
-    .content_cards{
+    .content_category-cards{
         /* padding: 0 20px; */
         margin-bottom: 50px;
      }

@@ -38,8 +38,12 @@
 }
 @media (min-width: 761px) and (max-width: 1359px){
      .category-card{
-        /* width: 347px; */
+        max-width: 347px;
+        height: 244px;
     } 
+    .category-card__img{
+        height: 180px;
+    }
 }
 
 @media (min-width: 1360px){
