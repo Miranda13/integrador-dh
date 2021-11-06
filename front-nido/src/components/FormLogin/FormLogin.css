@@ -38,9 +38,7 @@ h2{
     text-align: end;
 }
 
-.form__input--error{
-    border: 1px solid red;
-}
+
 .container{
     /* height: 600px; */
 }

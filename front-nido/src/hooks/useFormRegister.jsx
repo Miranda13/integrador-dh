@@ -6,7 +6,6 @@ export default function useForm(objectValues, callback, validate) {
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setValues({
@@ -14,11 +13,12 @@ export default function useForm(objectValues, callback, validate) {
             [name]: value
         })
     }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors(validate(values));
         setIsSubmitting(true);
-        window.location.assign("/");
+        /* window.location.assign("/"); */
     }
 
     useEffect(() => {
@@ -27,5 +27,6 @@ export default function useForm(objectValues, callback, validate) {
             setUser(values);
         }
     })
+    
     return { handleChange, values, handleSubmit, errors }
 }

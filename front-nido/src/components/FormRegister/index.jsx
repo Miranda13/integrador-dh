@@ -4,6 +4,8 @@ import "./FormRegister.css";
 
 export default function FormRegister({ submitForm }) {
     const objectValues = {
+        name: "",
+        surname: "",
         email: "",
         repeatEmail: "",
         password: "",
@@ -17,11 +19,13 @@ export default function FormRegister({ submitForm }) {
                     <div className="form__body--two">
                         <div className="form__body--two-label">
                             <label htmlFor="name" className="form__label">Nombre</label>
-                            <input id="name" name="name" type="text" className="form__input" />
+                            <input id="name" name="name" type="text" onChange={handleChange} className="form__input" />
+                            {errors.name && <span className="form_error">{errors.name}</span>}
                         </div>
                         <div className="form__body--two-label">
                             <label htmlFor="surname" className="form__label">Apellido</label>
-                            <input id="surname" name="surname" type="text" className="form__input" />
+                            <input id="surname" name="surname" type="text" onChange={handleChange} className="form__input" />
+                            {errors.surname && <span className="form_error">{errors.surname}</span>}
                         </div>
                     </div>
                     <div className="form__body--one">

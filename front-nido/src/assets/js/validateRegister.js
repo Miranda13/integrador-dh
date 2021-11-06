@@ -1,6 +1,18 @@
 export default function validateRegister(values){
     let errors={}
 
+    if(!values.name){
+        errors.name ="Este campo es obligatorio";
+    }else if(!/^[A-Za-z]+$/.test(values.name) ) {
+        errors.name="Nombre invalido";
+    }
+
+    if(!values.surname){
+        errors.surname="Este campo es obligatorio";
+    }else if(!/^[A-Za-z]+$/.test(values.surname) ) {
+        errors.surname="Apellido invalido";
+    }
+
     if(!values.email){
         errors.email="Este campo es obligatorio";
     }else if(!/\S+@\S+\.\S+/.test(values.email)){
