@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import useLocalStorage from "./useLocalStorage";
-export default function useForm(objectValues, callback, validate) {
+export default function useFormRegister(objectValues, callback, validate) {
     const [user, setUser] = useLocalStorage('user', null);
     const [values, setValues] = useState({ ...objectValues })
     const [errors, setErrors] = useState({});
@@ -18,15 +18,14 @@ export default function useForm(objectValues, callback, validate) {
         e.preventDefault();
         setErrors(validate(values));
         setIsSubmitting(true);
-        /* window.location.assign("/"); */
     }
-
+    
     useEffect(() => {
         if (Object.keys(errors).length === 0 && isSubmitting) {
             callback();
             setUser(values);
+            window.location.assign("/login");
         }
     })
-    
     return { handleChange, values, handleSubmit, errors }
 }

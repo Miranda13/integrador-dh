@@ -1,5 +1,5 @@
 import useForm from '../../hooks/useFormRegister';
-import validate from '../../assets/js/validateRegister';
+import validate from '../../assets/js/validation';
 import "./FormRegister.css";
 
 export default function FormRegister({ submitForm }) {
