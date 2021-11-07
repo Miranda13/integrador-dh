@@ -3,12 +3,14 @@
         align-content: center; 
         height: auto;
         width: 100vw;
-        margin-top:20px;
+        margin-top: 80px;
+        margin-bottom: 58px;
+        padding: 2vh;
         background-color: var(--light-medium-color);
     }
     .section-title{
         color: var(--main-color);
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
     .form{
         width: 100vw;
@@ -17,69 +19,39 @@
         align-content: center;
         font-size: var(--font-size-4);
     }
-     .form__body{
-  
-     }
-    
 
-    .form__body--two{      
-    
-        } 
     .form__label, .form__input{
         display: block;
-    } 
-
-    .form__body--one{
-      
     }
-        
-        
+
+    .form_error{
+        margin: 0px;
+        color: red;
+        font-size: var(--font-size-5);
+        display: block; 
+        text-align: end;
+    }
+   
     .form__input{
         height: 30px;
-        padding-top: 0;
         margin-top: 5px;
-        margin-bottom: 5px;
         max-width: 40vh
     } 
     #form__button{
-        padding: 0px;
         margin: 5px;
+    }
+
+    .validation-errors {
+        background-color: #FFE1E1;
+        border: 1px solid #FF0000;
     }
 
 @media (min-width: 761px) and (max-width: 1360px) {
     
     .form__input{
         height: 40px;
-        padding-top: 0;
-        margin-top: 10px;
-        margin-bottom: 20px;
         max-width: 60vh;
-    } 
-  
-    
-     .register-form{
-        margin-top: 100px
     }
-   
-    
-    .form__body{
-     
-    }
-    
-    
-    .form_error{
-        color: red;
-        font-size: var(--font-size-5);
-        margin-bottom: 10px;
-        display: block; 
-        text-align: end;
-    }
-    
-    .form__input--error{
-        border: 1px solid red;
-    }
-     
-
 }
 @media (min-width:1361px) {
     .form__body{
@@ -87,16 +59,13 @@
     }
     .form__input{
         height: 40px;
-        padding-top: 0;
-        margin-top: 5px;
-        margin-bottom: 10px;
         max-width: 448px;
     } 
   .form__body--two{
       display: flex;
       justify-content: space-between;
   }
-    #name,#surname{
+    #name, #surname{
         display: inline;      
         width: 218px;  
     }

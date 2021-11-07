@@ -31,33 +31,33 @@ export default function FormRegister({ submitForm }) {
                     <div className="form__body--one">
                         <label htmlFor="email" className="form__label">Email</label>
                         <div>
-                            <input name="email" type="email" onChange={handleChange} value={values.email} className="form__input" />
+                            <input id="email" name="email" type="email" onChange={handleChange} value={values.email} className="form__input" />
                         </div>
                         {errors.email && <span className="form_error">{errors.email}</span>}
 
                         <label htmlFor="repeatEmail" className="form__label">Repetir email</label>
                         <div>
-                            <input name="repeatEmail" type="email" onChange={handleChange} value={values.repeatEmail} className="form__input" />
+                            <input id="repeatEmail" name="repeatEmail" type="email" onChange={handleChange} value={values.repeatEmail} className="form__input" />
                             {errors.repeatEmail && <span className="form_error">{errors.repeatEmail}</span>}
                         </div>
 
                         <label htmlFor="password" className="form__label">Contraseña</label>
                         
-                        <div><input name="password" type="password" onChange={handleChange} value={values.password} className="form__input" />
+                        <div><input id="password" name="password" type="password" onChange={handleChange} value={values.password} className="form__input" />
                             {errors.password && <span className="form_error">{errors.password}</span>}
                         </div>
 
 
                         <label htmlFor="repeatPassword" className="form__label">Repetir contraseña</label>
                         <div>
-                            <input name="repeatPassword" type="password" onChange={handleChange} value={values.repeatPassword} className="form__input" />
+                            <input id="repeatPassword" name="repeatPassword" type="password" onChange={handleChange} value={values.repeatPassword} className="form__input" />
                             {errors.repeatPassword && <span className="form_error">{errors.repeatPassword}</span>}
                         </div>
                         </div>
                     <br />
                 </div>
                 <button type="submit" className="button-1" id="form__button">Crear cuenta</button>
-                <p className="form__text">¿Ya tienes una cuenta?<a href="/login">Iniciar sesión</a></p>
+                <p className="form__text">¿Ya tienes una cuenta? &nbsp; <a href="/login">Iniciar sesión</a></p>
             </form>
         </>
     )
