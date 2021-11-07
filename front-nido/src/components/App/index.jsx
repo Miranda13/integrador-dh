@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Home } from "../../pages/Home";
+import Home from "../../pages/Home";
 import { LoginPage } from "../../pages/LoginPage";
 import { SigninPage } from "../../pages/SigninPage";
 import { useState } from "react";
@@ -11,14 +11,19 @@ import { useEffect } from "react/cjs/react.development";
 
 function App() {
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [toggle, setToggle] = useState();
+    const handleChangePageHome = () => {
+        setToggle(!toggle);
+    }
     function submitForm() {
         setIsSubmitted(true);
     }
     return (
         <BrowserRouter>
-            <Header />
+            <Header handleChangePageHome={handleChangePageHome} />
             <Switch>
-                <Route exact path="/" component={Home}>
+                <Route exact path="/">
+                    <Home toggle={toggle} />
                 </Route>
                 <Route exact path="/login" >
 

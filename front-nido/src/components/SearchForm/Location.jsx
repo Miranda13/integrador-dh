@@ -1,8 +1,6 @@
-import React, { Fragment } from "react";
 import './Location.css';
 import { useState, useEffect } from 'react';
-
-function Location({ zIndexCalendar }) {
+function Location({ zIndexCalendar, handleLocation }) {
     const [showList, setShowList] = useState(false);
     const handleListLocation = (e) => {
         setShowList(!showList);
@@ -10,8 +8,11 @@ function Location({ zIndexCalendar }) {
     }
     const handleSelectLocation = (e) => {
         const title_location = document.querySelector(".container-location__title");
-        title_location.innerHTML = "" + e.target.childNodes[1]?.textContent + ", " + e.target.childNodes[3]?.textContent;
-        title_location.style.color = "var(--dark-color)"
+        if (e.target.childNodes[1]?.textContent !== undefined && e.target.childNodes[3]?.textContent !== undefined) {
+            title_location.innerHTML = "" + e.target.childNodes[1]?.textContent + ", " + e.target.childNodes[3]?.textContent;
+            title_location.style.color = "var(--dark-color)"
+            handleLocation(e);
+        }
     }
     useEffect(() => {
         window.addEventListener("click", (e) => {

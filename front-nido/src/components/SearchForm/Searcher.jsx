@@ -3,7 +3,7 @@ import Calendar from "./Calendar";
 import Location from "./Location";
 import "./Searcher.css";
 import { useState, useEffect } from 'react';
-function Searcher() {
+function Searcher({ handleLocation }) {
     const [hideCalendar, setHideCalendar] = useState(1);
     const handleZindexCalendar = () => {
         var width = window.innerWidth;
@@ -19,7 +19,7 @@ function Searcher() {
         <div className="container-searcher">
             <h1 className="container-searcher__title">Busca ofertas en hoteles, cabañas y mucho más!</h1>
             <form className="container-searcher__form">
-                <Location className="container-searcher__form__location" zIndexCalendar={handleZindexCalendar} />
+                <Location className="container-searcher__form__location" zIndexCalendar={handleZindexCalendar} handleLocation={handleLocation} />
                 <Calendar className="container-searcher__form__calendar" />
                 <button className="container-searcher__form__button button-search">Buscar</button>
             </form>
