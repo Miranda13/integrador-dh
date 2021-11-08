@@ -36,5 +36,8 @@ public class Location {
     @NotNull
     private Double longitude;
 
+    @OneToMany(mappedBy = "location",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Product> products;
 
 }

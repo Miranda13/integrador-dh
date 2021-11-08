@@ -5,6 +5,7 @@ import nido.backnido.entity.dto.ProductDTO;
 import nido.backnido.exception.CustomBindingException;
 import nido.backnido.service.ProductService;
 import nido.backnido.utils.UtilsException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +21,8 @@ public class ProductController {
 
     private final ProductService productService;
 
+    @Autowired
     public ProductController(ProductService productService) {
-
         this.productService = productService;
     }
 
