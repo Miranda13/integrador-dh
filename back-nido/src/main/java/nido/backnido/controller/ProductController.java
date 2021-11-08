@@ -1,11 +1,8 @@
 package nido.backnido.controller;
 
-import nido.backnido.entity.Category;
 import nido.backnido.entity.Product;
-import nido.backnido.entity.dto.CategoryDTO;
 import nido.backnido.entity.dto.ProductDTO;
 import nido.backnido.exception.CustomBindingException;
-import nido.backnido.service.CategoryService;
 import nido.backnido.service.ProductService;
 import nido.backnido.utils.UtilsException;
 import org.springframework.http.HttpStatus;
@@ -13,6 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+
 import java.util.List;
 
 @RestController
@@ -60,9 +59,12 @@ public class ProductController {
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id){
-
         productService.delete(id);
     }
-
+    @GetMapping("/search")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ProductDTO> findProductByCity(@RequestParam String city){
+        return productService.findProductByCity(city);
+    }
 
 }

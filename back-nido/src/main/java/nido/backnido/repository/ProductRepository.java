@@ -11,12 +11,10 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-//    @Query("FROM Category c WHERE c.title LIKE CONCAT('%',:title,'%')")
-//    List<Product> findProductByCategory(@Param("title")String title);
+    @Query(value = "Select p.* FROM Product p INNER JOIN Category c WHERE c.title LIKE CONCAT('%',:title,'%');", nativeQuery = true)
+    List<Product> findProductByCategory(@Param("title")String title);
+
+    @Query(value= "Select p.* FROM Product p INNER JOIN Location l WHERE l.city LIKE CONCAT('%',:city,'%');", nativeQuery = true)
+    List<Product> findProductByCity(@Param("city")String city);
 
 }
-
-
-/* TODO Implementar métodos de query custom -> Issue #26 */
-// Listar productos según categoría, es decir, nos deberá devolver los productos que pertenezcan a cierta categoría.
-// Listar productos según ciudad, es decir, nos deberá devolver los productos que pertenezcan a cierta ciudad
