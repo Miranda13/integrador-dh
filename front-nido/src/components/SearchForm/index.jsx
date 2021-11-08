@@ -4,7 +4,7 @@ import Searcher from './Searcher';
 class SearchForm extends React.Component {
   render() {
     return (
-      <Searcher handleLocation={this.props.handleLocation} />
+      <Searcher handleSubmit={this.props.handleSubmit} />
     );
   }
 }

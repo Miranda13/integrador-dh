@@ -65,6 +65,7 @@ width: 90vw;
     }
     .container-searcher__form__button {
         width: 21vw;
+        height: 45px;
     }
 }
 

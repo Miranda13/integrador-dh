@@ -5,14 +5,14 @@ import db from "../components/Recomendations/cards.json";
 export default function Home({ toggle }) {
     const [products, setProducts] = useState([]);
     // const [productsFilter, setProductsFilter] = useState([]);
-    const handleLocation = (e) => {
-        if (e.target.childNodes[1]?.textContent !== undefined && e.target.childNodes[3]?.textContent !== undefined) {
-            setProducts(
-                db.filter((product) => {
-                    return product.location.includes("" + e.target.childNodes[1]?.textContent + ", " + e.target.childNodes[3]?.textContent)
-                }
-                ));
-        }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const location= document.querySelector(".container-location__title");
+       /* console.log(location.textContent.split(", "));*/
+       const locationFilter = db.filter((product)=>{
+           return product.location.includes(location.textContent)
+       })
+       setProducts(locationFilter);
     }
     const handleClickCategory = (e) => {
         const productsFilter = db.filter((product) => product.category.toLowerCase() === e.target.id.toLowerCase());
@@ -32,7 +32,7 @@ export default function Home({ toggle }) {
     return (
 
         <div className="wrapper">
-            <SearchForm handleLocation={handleLocation} />
+            <SearchForm handleSubmit={handleSubmit} />
             <Content handleClickCategory={handleClickCategory} products={products} />
         </div>
     );

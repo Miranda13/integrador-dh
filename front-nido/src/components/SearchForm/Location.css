@@ -95,9 +95,13 @@
     
  .container-location {
     width: 34vw;
+    height: 45px;
 }
 .container-location__title::before {
-    top: .4rem;    
+    top: .5rem;    
+}
+.container-location__list {
+    margin-top: 20px;
 }
 
 }

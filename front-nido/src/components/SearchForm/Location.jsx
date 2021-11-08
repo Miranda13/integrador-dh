@@ -1,6 +1,6 @@
 import './Location.css';
 import { useState, useEffect } from 'react';
-function Location({ zIndexCalendar, handleLocation }) {
+function Location({ zIndexCalendar }) {
     const [showList, setShowList] = useState(false);
     const handleListLocation = (e) => {
         setShowList(!showList);
@@ -11,7 +11,7 @@ function Location({ zIndexCalendar, handleLocation }) {
         if (e.target.childNodes[1]?.textContent !== undefined && e.target.childNodes[3]?.textContent !== undefined) {
             title_location.innerHTML = "" + e.target.childNodes[1]?.textContent + ", " + e.target.childNodes[3]?.textContent;
             title_location.style.color = "var(--dark-color)"
-            handleLocation(e);
+            
         }
     }
     useEffect(() => {
@@ -37,7 +37,7 @@ function Location({ zIndexCalendar, handleLocation }) {
     }, [showList])
     return (
         <div className="container-location" onClick={handleListLocation}>
-            <h2 className="container-location__title" >¿A dónde vamos?</h2>
+            <h2 className="container-location__title">¿A dónde vamos?</h2>
             <ul className="container-location__list hideItem">
                 <li className="container-location__list__item" onClick={handleSelectLocation}><i className="fas fa-map-marker-alt"></i><strong>San Carlos de Bariloche</strong><br />Argentina</li>
                 <li className="container-location__list__item" onClick={handleSelectLocation}><i className="fas fa-map-marker-alt"></i><strong>Buenos Aires</strong><br />Argentina</li>

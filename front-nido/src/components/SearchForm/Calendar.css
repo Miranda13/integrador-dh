@@ -63,7 +63,7 @@
 .react-datepicker {
     margin: 0 10px;
     width: 96vw;
-    height: 460px;
+    height: 500px;
     font-family: var(--main-font-family);
     font-size: var(--font-size-4);
     padding-top: 20px;
@@ -103,7 +103,7 @@
     color: #000;
     display: inline-block;
     width: 11vw;
-    line-height: 2.8rem;
+    line-height: 3.5rem;
     text-align: center;
     margin: 0.166rem;
 }
@@ -195,6 +195,7 @@
     .react-datepicker__input-container>input {
         position: absolute;
         margin-top: -18px;
+        height: 45px;
     }
 
     .react-datepicker {
@@ -226,11 +227,12 @@
     }
 
     .calendar__date-btn {
+        width: 60vw;
         height: 40px;
         font-family: var(--main-font-family);
         position: absolute;
         cursor: pointer;
-        right: 5vw;
+        right: 4.3vw;
     }
 }
 
@@ -255,7 +257,7 @@
     .react-datepicker {
         margin-left: 2.5rem;
         width: 50vw;
-        height: 350px;
+        height: 400px;
         display: flex;
     }
 
