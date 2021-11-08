@@ -8,6 +8,7 @@ import { Header } from '../Header';
 import { Footer } from '../Footer';
 import MenuMobile from "../MenuMobile";
 import { useEffect } from "react/cjs/react.development";
+import { ProductPage } from "../../pages/ProductPage";
 
 function App() {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -44,6 +45,9 @@ function App() {
                         </>
                     }
                 </Route>
+                <Route exact path="/product">
+                    <ProductPage/>
+                </Route>    
             </Switch>
             <Footer />
             <MenuMobile />

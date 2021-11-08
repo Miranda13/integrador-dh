@@ -1,0 +1,30 @@
+ {
+       "id": "1",
+       "category": "hotel",
+        "name": "Hotel Catedral",
+        "raiting": "Excelente",
+        "score": "9",
+        "location":{
+            "pais":"Argentina",
+            "provincia":"Buenos Aires",
+            "ciudad":"La Plata",
+            "direccion":"Dirección bla bla",
+            "lat": "-34.920742932456804",
+            "lng": "-57.958130305592064"
+        },
+       
+        "title": "Alójate en el corazón de La Plata",
+        "description": "Este sencillo hotel se encuentra en una calle residencial arbolada, a 4 minutos a pie de la Catedral de La Plata, a 5 de los jardines de Plaza Moreno y a 2 km de la estación de tren La Plata. Las habitaciones, sencillas y con capacidad para 3 personas, cuentan con muebles de madera, Wi‑Fi gratis, televisión por cable y aire acondicionado. El hotel ofrece desayuno gratuito y dispone de un salón en el vestíbulo y una cafetería informal.",
+        "amenities": [ 
+             {"nombre":"cocina", "icono" :"kitchen"}, 
+             {"nombre":"Estacionamiento gratuito", "icono" :"parking"},  
+             {"nombre":"Televisor", "icono" :"tv"},  
+             {"nombre":"pileta", "icono" :"swim"},  
+             {"nombre":"air", "icono" :"air"},   
+             {"nombre":"wifi", "icono" :"wifi"},  
+             {"nombre":"pets", "icono" :"pets"}             
+         ] ,                
+        "normas": "",
+        "salud":"",
+        "cancelacion":""
+   } 
