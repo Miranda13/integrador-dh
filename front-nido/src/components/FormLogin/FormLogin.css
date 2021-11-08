@@ -5,7 +5,6 @@
     justify-content: center;
     align-items: center;
     justify-items: center;
-    /* margin-top: 300px; */
 }
 
 .form__input{
@@ -14,21 +13,15 @@
     width: 448px;
     margin: 10px 0px 10px 0px;
 }
+
 .form__text{
 font-size: var(--font-size-5);
 }
+
 .form__text a{
     text-decoration: none;
     color:blue    
 }
-
-h2{
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: left; */
-}
-
-
 
 .form_error{
     color: red;
@@ -38,11 +31,9 @@ h2{
     text-align: end;
 }
 
-.form__input--error{
-    border: 1px solid red;
-}
-.container{
-    /* height: 600px; */
+.validation-errors {
+    background-color: #FFE1E1;
+    border: 1px solid #FF0000;
 }
 
 @media (max-width: 480px) {
