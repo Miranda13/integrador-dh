@@ -44,6 +44,9 @@ function App() {
                         </>
                     }
                 </Route>
+                <Route path="/product/:id">
+                    {/* Componente de sofi */}
+                </Route>
             </Switch>
             <Footer />
             <MenuMobile />
