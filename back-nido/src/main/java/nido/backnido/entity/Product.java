@@ -37,19 +37,15 @@ public class Product {
 
 
     @NotNull
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "locations_location_id")
     private Location location;
 
     @NotNull
-    @NotBlank
     @ManyToOne
     @JoinColumn(name="categories_category_id")
     private Category category;
 
-    @NotNull
-    @NotBlank
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Image> image;
