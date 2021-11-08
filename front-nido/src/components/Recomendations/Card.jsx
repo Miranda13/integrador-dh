@@ -2,10 +2,10 @@ import {useHistory} from "react-router-dom";
 
 function Card(props) {
     const {card} =props;
-    const history = useHistory();
+    /*const history = useHistory();
     const handleClickProduct = () =>{
         history.push(`/product/${card.id}`);
-    }
+    }*/
     return (
         <div className="card-list">
             <div className="card-list__image">
@@ -40,7 +40,7 @@ function Card(props) {
                     <i className="card-list__info__amenities__icon fas fa-swimmer"></i> 
                 </div>
                 <p className="card-list__info__description">{card.description} <span className="card-list__info__description__more">más..</span> </p>
-                <button className="card-list__info__button" onClick={handleClickProduct}>Ver más</button>
+                <button className="card-list__info__button"/*onClick={handleClickProduct}*/>Ver más</button>
             </div>
         </div>
     )
