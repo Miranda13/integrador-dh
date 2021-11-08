@@ -3,7 +3,7 @@
 }
 
 .react-datepicker-wrapper {
-    width: 96.5vw;
+    width: 100%;
     margin: 0;
     padding: 0px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
@@ -102,7 +102,7 @@
 .react-datepicker__time-name {
     color: #000;
     display: inline-block;
-    width: 3rem;
+    width: 11vw;
     line-height: 2.8rem;
     text-align: center;
     margin: 0.166rem;
@@ -170,17 +170,9 @@
 
 .calendar__date-btn {
     width: 85%;
-    right: 24px;
+    right: 7vw;
     height: 50px;
-    background-color: var(--main-color);
-    box-shadow: 0px 2px 4px rgb(0 0 0 / 12%);
-    border: transparent;
-    border-radius: 6px;
-    font-size: var(--font-size-3);
-    font-family: var(--main-font-family);
-    color: var(--light-color);
     position: absolute;
-    
     bottom: 15px;
     cursor: pointer;
 }
@@ -209,29 +201,33 @@
         height: 370px;
         display: flex;
     }
+  
 
     .react-datepicker__day-name,
     .react-datepicker__day,
     .react-datepicker__time-name {
-        width: 3vw;
-        line-height: 3vh;
+        width: 3.5vw;
+        line-height: 29px;
     }
 
     .react-datepicker>div.react-datepicker__month-container:nth-child(odd) {
         display: block;
     }
+    
+    .react-datepicker__navigation--previous{
+        top: 20px;
+    }
     .react-datepicker__navigation--next {
         right: 31px;
-        top: 30px;
+        top: 20px;
     }
 
     .calendar__date-btn {
-        width: 62vw;
         height: 40px;
         font-family: var(--main-font-family);
         position: absolute;
-        bottom: 15px;
         cursor: pointer;
+        right: 5vw;
     }
 }
 
@@ -255,32 +251,37 @@
     .react-datepicker {
         margin-left: 2.5rem;
         width: 50vw;
-        height: 37vh;
+        height: 350px;
         display: flex;
     }
 
     .react-datepicker__day-name,
     .react-datepicker__day,
     .react-datepicker__time-name {
-        width: 2.8vw;
-        line-height: 3.5vh;
+        width: 2.4vw;
+        line-height: 32px;
     }
 
     .react-datepicker>div.react-datepicker__month-container:nth-child(odd) {
         display: block;
     }
+    .react-datepicker__navigation--previous {
+        top: 25px;
+    }
+
     .react-datepicker__navigation--next {
         right: 31px;
-        top: 30px;
+        top: 25px;
     }
 
     .calendar__date-btn {
         width: 15vw;
         height: 40px;
-        font-family: var(--main-font-family);
+        /*font-family: var(--main-font-family);*/
         position: absolute;
         bottom: 15px;
         cursor: pointer;
+        right: 3vw;
     }
 
 }
