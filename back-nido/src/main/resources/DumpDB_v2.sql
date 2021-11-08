@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema NidoDB
+-- Schema nidodb
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema NidoDB
+-- Schema nidodb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `NidoDB` DEFAULT CHARACTER SET utf8 ;
-USE `NidoDB` ;
+CREATE SCHEMA IF NOT EXISTS `nidodb` DEFAULT CHARACTER SET utf8 ;
+USE `nidodb` ;
 
 -- -----------------------------------------------------
--- Table `NidoDB`.`locations`
+-- Table `nidodb`.`locations`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `NidoDB`.`locations` (
+CREATE TABLE IF NOT EXISTS `nidodb`.`locations` (
   `location_id` BIGINT NOT NULL AUTO_INCREMENT,
   `city` VARCHAR(45) NOT NULL,
   `country` VARCHAR(45) NOT NULL,
@@ -28,9 +28,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `NidoDB`.`categories`
+-- Table `nidodb`.`categories`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `NidoDB`.`categories` (
+CREATE TABLE IF NOT EXISTS `nidodb`.`categories` (
   `category_id` BIGINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(80) NOT NULL,
   `description` VARCHAR(180) NULL,
@@ -40,9 +40,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `NidoDB`.`products`
+-- Table `nidodb`.`products`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `NidoDB`.`products` (
+CREATE TABLE IF NOT EXISTS `nidodb`.`products` (
   `product_id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(80) NOT NULL,
   `description` VARCHAR(180) NULL,
@@ -55,21 +55,21 @@ CREATE TABLE IF NOT EXISTS `NidoDB`.`products` (
   INDEX `fk_products_categories1_idx` (`categories_category_id` ASC) VISIBLE,
   CONSTRAINT `fk_products_locations1`
     FOREIGN KEY (`locations_location_id`)
-    REFERENCES `NidoDB`.`locations` (`location_id`)
+    REFERENCES `nidodb`.`locations` (`location_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_products_categories1`
     FOREIGN KEY (`categories_category_id`)
-    REFERENCES `NidoDB`.`categories` (`category_id`)
+    REFERENCES `nidodb`.`categories` (`category_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `NidoDB`.`images`
+-- Table `nidodb`.`images`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `NidoDB`.`images` (
+CREATE TABLE IF NOT EXISTS `nidodb`.`images` (
   `image_id` BIGINT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(150) NOT NULL,
   `title` VARCHAR(80) NULL,
@@ -78,16 +78,16 @@ CREATE TABLE IF NOT EXISTS `NidoDB`.`images` (
   INDEX `fk_images_products1_idx` (`products_product_id` ASC) VISIBLE,
   CONSTRAINT `fk_images_products1`
     FOREIGN KEY (`products_product_id`)
-    REFERENCES `NidoDB`.`products` (`product_id`)
+    REFERENCES `nidodb`.`products` (`product_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `NidoDB`.`users`
+-- Table `nidodb`.`users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `NidoDB`.`users` (
+CREATE TABLE IF NOT EXISTS `nidodb`.`users` (
   `user_id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `surname` VARCHAR(45) NULL,
@@ -99,9 +99,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `NidoDB`.`reserves`
+-- Table `nidodb`.`reserves`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `NidoDB`.`reserves` (
+CREATE TABLE IF NOT EXISTS `nidodb`.`reserves` (
   `reservation_id` BIGINT NOT NULL AUTO_INCREMENT,
   `date_in` DATE NOT NULL,
   `date_out` DATE NOT NULL,
@@ -112,21 +112,21 @@ CREATE TABLE IF NOT EXISTS `NidoDB`.`reserves` (
   INDEX `fk_reserves_products1_idx` (`products_product_id` ASC) VISIBLE,
   CONSTRAINT `fk_reserves_users1`
     FOREIGN KEY (`users_user_id`)
-    REFERENCES `NidoDB`.`users` (`user_id`)
+    REFERENCES `nidodb`.`users` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_reserves_products1`
     FOREIGN KEY (`products_product_id`)
-    REFERENCES `NidoDB`.`products` (`product_id`)
+    REFERENCES `nidodb`.`products` (`product_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `NidoDB`.`features`
+-- Table `nidodb`.`features`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `NidoDB`.`features` (
+CREATE TABLE IF NOT EXISTS `nidodb`.`features` (
   `feature_id` INT NOT NULL,
   `name` VARCHAR(80) NOT NULL,
   `icon` VARCHAR(50) NOT NULL,
@@ -135,9 +135,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `NidoDB`.`products_has_features`
+-- Table `nidodb`.`products_has_features`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `NidoDB`.`products_has_features` (
+CREATE TABLE IF NOT EXISTS `nidodb`.`products_has_features` (
   `products_product_id` BIGINT NOT NULL,
   `features_feature_id` INT NOT NULL,
   PRIMARY KEY (`products_product_id`, `features_feature_id`),
@@ -145,12 +145,12 @@ CREATE TABLE IF NOT EXISTS `NidoDB`.`products_has_features` (
   INDEX `fk_products_has_features_products1_idx` (`products_product_id` ASC) VISIBLE,
   CONSTRAINT `fk_products_has_features_products1`
     FOREIGN KEY (`products_product_id`)
-    REFERENCES `NidoDB`.`products` (`product_id`)
+    REFERENCES `nidodb`.`products` (`product_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_products_has_features_features1`
     FOREIGN KEY (`features_feature_id`)
-    REFERENCES `NidoDB`.`features` (`feature_id`)
+    REFERENCES `nidodb`.`features` (`feature_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
