@@ -33,10 +33,9 @@ public class Image {
     private String url;
 
     @NotNull
-    @NotBlank
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="products_product_id", referencedColumnName="productId")
+   @JoinColumn(name="products_product_id", referencedColumnName="productId")
     private Product product;
 
 }

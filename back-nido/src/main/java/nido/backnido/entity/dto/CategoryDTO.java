@@ -13,6 +13,6 @@ public class CategoryDTO {
 
     private String title;
     private String description;
-    private Long urlImage;
+    private String urlImage;
 
 }

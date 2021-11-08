@@ -30,27 +30,22 @@ public class Product {
     private String name;
 
     @NotNull
-    @NotBlank
     private Boolean availability;
 
     @NotNull
-    @NotBlank
     private Integer score;
 
+
     @NotNull
-    @NotBlank
     @Column(name = "locations_location_id")
-    private Long locationId;
+    private Long location;
 
     @NotNull
-    @NotBlank
-    @Column(name = "categories_category_id")
-    private Long categoryId;
+    @Column(name="categories_category_id")
+    private Long category;
 
-    @NotNull
-    @NotBlank
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     @JsonIgnore
-    @OneToMany(mappedBy = "product")
-    private Set<Image> images;
+    private Set<Image> image;
 
 }
