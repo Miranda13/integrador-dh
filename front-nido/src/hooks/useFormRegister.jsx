@@ -24,7 +24,7 @@ export default function useFormRegister(objectValues, callback, validate) {
         if (Object.keys(errors).length === 0 && isSubmitting) {
             callback();
             setUser(values);
-            window.location.assign("/login");
+            window.location.assign("/");
         }
     })
     return { handleChange, values, handleSubmit, errors }
