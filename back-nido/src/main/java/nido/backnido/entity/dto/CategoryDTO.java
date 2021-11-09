@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CategoryDTO {
 
+    private Long categoryId;
     private String title;
     private String description;
     private String urlImage;
