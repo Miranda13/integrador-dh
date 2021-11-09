@@ -30,6 +30,10 @@ public class Product {
     private String name;
 
     @NotNull
+    @NotBlank
+    private String description;
+
+    @NotNull
     private Boolean availability;
 
     @NotNull
@@ -38,12 +42,12 @@ public class Product {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "locations_location_id")
+    @JoinColumn(name = "locations_location_id", referencedColumnName = "locationId")
     private Location location;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name="categories_category_id")
+    @JoinColumn(name="categories_category_id", referencedColumnName = "categoryId")
     private Category category;
 
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)

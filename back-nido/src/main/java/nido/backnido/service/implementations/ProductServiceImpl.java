@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ProductSeviceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ProductRepository productRepository;
