@@ -45,7 +45,7 @@ public class CategoryController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createCategory(@RequestBody @Valid Category category, BindingResult bindingResult){
+    public void create(@RequestBody @Valid Category category, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             throw new CustomBindingException("Errores encontrados, por favor compruebe e intente nuevamente", HttpStatus.BAD_REQUEST.value(),UtilsException.fieldBindingErrors(bindingResult));
         }

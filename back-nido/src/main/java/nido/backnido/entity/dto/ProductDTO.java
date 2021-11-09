@@ -18,6 +18,7 @@ import java.util.Set;
 public class ProductDTO {
 
     private String name;
+    private String description;
     private Boolean availability;
     private Integer score;
     private Location location;
