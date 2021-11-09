@@ -1,6 +1,8 @@
 import './Location.css';
 import { useState, useEffect } from 'react';
+import getData from '../../assets/js/getData';
 function Location({ zIndexCalendar }) {
+    const [locations, setLocations] = useState([]);
     const [showList, setShowList] = useState(false);
     const handleListLocation = (e) => {
         setShowList(!showList);
@@ -11,10 +13,11 @@ function Location({ zIndexCalendar }) {
         if (e.target.childNodes[1]?.textContent !== undefined && e.target.childNodes[3]?.textContent !== undefined) {
             title_location.innerHTML = "" + e.target.childNodes[1]?.textContent + ", " + e.target.childNodes[3]?.textContent;
             title_location.style.color = "var(--dark-color)"
-            
         }
     }
     useEffect(() => {
+        getData("http://localhost:8080/api/v1/location")
+            .then(data => setLocations(data))
         window.addEventListener("click", (e) => {
             const inputLocation = document.querySelector(".container-location");
             const titleLocation = document.querySelector(".container-location__title");
@@ -39,10 +42,18 @@ function Location({ zIndexCalendar }) {
         <div className="container-location" onClick={handleListLocation}>
             <h2 className="container-location__title">¿A dónde vamos?</h2>
             <ul className="container-location__list hideItem">
-                <li className="container-location__list__item" onClick={handleSelectLocation}><i className="fas fa-map-marker-alt"></i><strong>San Carlos de Bariloche</strong><br />Argentina</li>
-                <li className="container-location__list__item" onClick={handleSelectLocation}><i className="fas fa-map-marker-alt"></i><strong>Buenos Aires</strong><br />Argentina</li>
-                <li className="container-location__list__item" onClick={handleSelectLocation}><i className="fas fa-map-marker-alt"></i><strong>Mendoza</strong><br />Argentina</li>
-                <li className="container-location__list__item" onClick={handleSelectLocation}><i className="fas fa-map-marker-alt"></i><strong>Córdoba</strong><br />Argentina</li>
+                {
+                    locations.map((location, index) => {
+                        return (
+                            <li className="container-location__list__item" key={index} onClick={handleSelectLocation}>
+                                <i className="fas fa-map-marker-alt"></i>
+                                <span id="city" className="container-location__list-name"><strong>{location.city}</strong></span>
+                                <br />
+                                <span className="container-location__list-country">{location.country}</span>
+                            </li>
+                        )
+                    })
+                }
             </ul>
         </div >
     )

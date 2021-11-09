@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { SearchForm } from "../components/SearchForm";
 import Content from "../components/Content";
 import db from "../components/Recomendations/cards.json";
@@ -7,12 +7,12 @@ export default function Home({ toggle }) {
     // const [productsFilter, setProductsFilter] = useState([]);
     const handleSubmit = (e) => {
         e.preventDefault();
-        const location= document.querySelector(".container-location__title");
-       /* console.log(location.textContent.split(", "));*/
-       const locationFilter = db.filter((product)=>{
-           return product.location.includes(location.textContent)
-       })
-       setProducts(locationFilter);
+        const location = document.querySelector(".container-location__title");
+        /* console.log(location.textContent.split(", "));*/
+        const locationFilter = db.filter((product) => {
+            return product.location.includes(location.textContent)
+        })
+        setProducts(locationFilter);
     }
     const handleClickCategory = (e) => {
         const productsFilter = db.filter((product) => product.category.toLowerCase() === e.target.id.toLowerCase());
