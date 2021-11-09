@@ -18,8 +18,6 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class Image {
 
-    //    TODO Faltan las relaciones
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long imageId;
@@ -35,7 +33,7 @@ public class Image {
     @NotNull
     @JsonIgnore
     @ManyToOne
-   @JoinColumn(name="products_product_id", referencedColumnName="productId")
+    @JoinColumn(name="products_product_id", referencedColumnName="productId")
     private Product product;
 
 }
