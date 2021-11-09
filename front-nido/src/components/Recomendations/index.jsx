@@ -1,17 +1,19 @@
-import cards from './cards.json';
-import Card from "./Card";
-import './styles/Cards.css';
 
-function Recomendations(){
-    return(
-        <>
-        <div className="cards">
-        {
-            cards.map(card => {
-            return(<Card key={card.id} card={card}/>)
-        })}
+import Card from "./Card";
+import './styles/Card.css';
+
+function Recomendations({ products }) {
+    return (
+        <div className="recommendation">
+            <h2 className="title-recommendation">Recomendaciones</h2>
+            <div className="cards">
+                {
+                    products.map(card => {
+                        return (<Card key={card.id} card={card} />)
+                    })
+                }
+            </div>
         </div>
-        </>
     )
 }
 

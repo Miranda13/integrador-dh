@@ -1,29 +1,39 @@
-
-
-import React from "react";
-
-import {Header} from "../components/Header";
-import {Footer} from "../components/Footer";
-import {SearchBar} from "../components/SearchBar";
-import {Content} from "../components/Content";
-import {MenuMobile} from "../components/MenuMobile";
-
-class Home extends React.Component {
-
-
-    render(){    
+import { useState, useEffect, useRef } from "react";
+import { SearchForm } from "../components/SearchForm";
+import Content from "../components/Content";
+import db from "../components/Recomendations/cards.json";
+export default function Home({ toggle }) {
+    const [products, setProducts] = useState([]);
+    // const [productsFilter, setProductsFilter] = useState([]);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const location= document.querySelector(".container-location__title");
+       /* console.log(location.textContent.split(", "));*/
+       const locationFilter = db.filter((product)=>{
+           return product.location.includes(location.textContent)
+       })
+       setProducts(locationFilter);
+    }
+    const handleClickCategory = (e) => {
+        const productsFilter = db.filter((product) => product.category.toLowerCase() === e.target.id.toLowerCase());
+        setProducts(productsFilter);
+    }
+    useEffect(() => {
+        // fetch("API")
+        //     .then(response => response.json())
+        //     .then(data => setProducts(data.results));
+        setProducts(db);
+        // setProductsFilter(db)
+    }, [])
+    useEffect(() => {
+        // setProductsFilter([]);
+        setProducts(db);
+    }, [toggle])
     return (
-       <React.StrictMode>
-            <div className="wrapper">
-                <SearchBar/>
-                <Content/>
-                <Header status={"inicial"}/>                            
-                <Footer/>
-                <MenuMobile/> 
 
-            </div>
-        </React.StrictMode>
-    );}
+        <div className="wrapper">
+            <SearchForm handleSubmit={handleSubmit} />
+            <Content handleClickCategory={handleClickCategory} products={products} />
+        </div>
+    );
 }
-
-export  {Home};

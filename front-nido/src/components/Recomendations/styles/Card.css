@@ -1,24 +1,43 @@
+/*CARDS MAP*/
+.recommendation{
+    background-color: var(--dark-color);
+    width: 100%;
+}
 
+.title-recommendation{
+    color: var(--light-color);
+    padding-top: 5%;
+    padding-left: 10%;
+}
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-bottom: 100px;
+}
+
+/*SINGLE CARD*/
 .card-list{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-content: center;
-    height: 280px;
-    width: 635px;
+    height: 100%;
+    width: 80%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    border-top: 1px solid #E5E5E5;
-    margin: 10px;
+    margin: 5%;
     font-family: var(--main-font-family);
+    background-color: var(--light-color);
 }
 
 
-/*LATERAL IMAGE*/
+/*CARD IMAGE*/
 
 .card-list__image{
     position: relative;
-    height: 100%;
+    height: 50%;
     width: 100%;
 }
 
@@ -26,7 +45,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius: 8px;
+    border-radius:  10px ;
     border: transparent;
     object-fit: cover;
     object-position: left center;
@@ -35,20 +54,20 @@
 .card-list__image__icon{
     color: var(--light-color);
     position: absolute;
-    top:15px;
-    right: 15px;
+    top: 10%;
+    right: 5%;
  
 }
 
-/*LATERAL INFO*/
+/*CARD INFO*/
 
 .card-list__info{
     position: relative;
-    padding: 15px;
-    margin-left: 0px;
+    padding: 2%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 50%;
 }
 .card-list__header{
     display: flex;
@@ -58,12 +77,13 @@
   
 }
 .class-list__header__score{
-
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
 /*CATEGORY*/
+
 .card-list__info__category{
     display: flex;
     flex-direction: row;
@@ -193,80 +213,92 @@
 
 
 /*IPAD*/
-@media (min-width: 730px) and (max-width: 1024px){
+@media (min-width: 760px) and (max-width: 1360px){
+    .recommendation{
+        background-color: var(--light-medium-color);
+    }
+    
+    .title-recommendation{
+        color: var(--dark-color);
+        padding-top: 2%;
+        padding-left: 10%;
+    }
+    
+    .cards{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-bottom: 100px;
+    }
+
     .card-list{
+        flex-direction: row;
+        margin: 2%;
+        height: 280px;
+    }
+
+ /*CARD IMAGE*/
    
-    }
+.card-list__image{
+   height: 100%;
+    width: 50%;
+}
 
- /*LATERAL IMAGE*/
-    .card-list__image__jpg{
- 
-    }
-    .card-list__image__icon{
-     
-    }
-    
-    
-/*LATERAL INFO*/
-
-    .card-list__info{
-     
-    }
-    
-/*SCORE*/
-
-    .card-list__info__score{
-      
-    }
-    .cards {
-       
-    }
+.card-list__info{
+    height: 100%;
+    width: 50%;
+}
 }
 
 
+/*DESKTOP*/
 
-
-
-/*MOBILE*/
-
-@media (max-width: 550px) {
-   
-/*CARD*/
-    .card-list{    
-        flex-direction: column;
-        flex-wrap: wrap;
-        width: 100%;
-        height: 500px;
-        justify-content: space-between;
+@media (min-width: 1361px) {
+    .recommendation{
+        background-color: var(--light-medium-color);
+    }
+    
+    .title-recommendation{
+        color: var(--dark-color);
+        padding-top: 2%;
+        padding-left: 2%;
     }
 
+    .cards{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-bottom: 100px;
+        gap: 20px;
+        justify-content: center;
+    }
+    
+   
+/*CARD*/
+
+    .card-list{
+        flex-direction: column;
+        height: 280px;
+        width: 48vw;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+}
+
+
+   
 /*LATERAL IMAGE*/
 
     .card-list__image{
-        width: 100%;
-        height: 210px;
-        
-    }
-        
-    .card-list__image__jpg{
-        width: 100%;
-    
-    }
-        
-    .card-list__image__icon{
-       
+        height: 100%;  
+        width: 50%;
     }
 
 /*LATERAL INFO*/
 
     .card-list__info{
-       
+       height: 100%;
+       width: 50%;
+       padding: 2%;
     }
-
-/*SCORE*/
-
-    .card-list__info__score{
-    
-    }
-    
 }
