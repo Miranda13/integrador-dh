@@ -12,7 +12,7 @@ class CategoryCard extends React.Component {
                     </div>
                     <div className="category-card__content" >
                         <h4 id={this.props.category.title} onClick={this.props.handleClickCategory}>{this.props.category.title}</h4>
-                        <p id={this.props.category.title} onClick={this.props.handleClickCategory} className="category-card_content-hoteles">{this.props.cantidad} hoteles</p>
+                        <p id={this.props.category.title} onClick={this.props.handleClickCategory} className="category-card_content-hoteles">{this.props.cantidad} {this.props.subtitle}</p>
                     </div>
                 </div>
             </>

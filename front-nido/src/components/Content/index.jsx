@@ -17,8 +17,9 @@ export default function Content({ handleClickCategory, products, categorys }) {
                                 <CategoryCard
                                     key={category.categoryId}
                                     category={category}
-                                    cantidad={"896502"}/*Estaria bueno que devuelva la cantidad desde BACKEND */
+                                    cantidad={"896502"}/*Estaria bueno que devuelva la cantidad desde BACKEND y paginacion*/
                                     handleClickCategory={handleClickCategory}
+                                    subtitle={category.title === "Hotel" || category.title === "Hostal" ? category.title + "es" : category.title + "s"}
                                 />
                             );
                         })

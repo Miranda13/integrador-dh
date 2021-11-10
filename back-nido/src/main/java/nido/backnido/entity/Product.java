@@ -53,7 +53,7 @@ public class Product {
 
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Image> image;
+    private Set<Image> images;
 
     @JoinTable(
             name = "products_has_features",

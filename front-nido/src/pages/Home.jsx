@@ -9,7 +9,6 @@ export default function Home({ toggle }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const location = document.querySelector(".container-location__title");
-        /* console.log(location.textContent.split(", "));*/
         getData(`http://localhost:8080/api/v1/location/${location.getAttribute("id")}`)
             .then((location) => {
                 setProducts(location.products);

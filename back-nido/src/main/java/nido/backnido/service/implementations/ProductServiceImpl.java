@@ -70,8 +70,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDTO> findProductByCategory(String title) {
         List<ProductDTO> productResponse = new ArrayList<>();
-        System.out.println(productRepository.findByCategory_TitleContaining(title));
-        
         for (Product product : productRepository.findByCategory_TitleContaining(title)) {
             productResponse.add(modelMapper.map(product, ProductDTO.class));
         }
