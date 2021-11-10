@@ -18,10 +18,12 @@
     max-width: 100%;
 }
 
-h2 {
+.content_category-title{
     color: var(--medium-color);
     font-size: var(--font-size-1);
     font-weight: var(--font-weight-bold);
+    text-align: center;
+    margin-left: 5%;
 }
 
 .content {
