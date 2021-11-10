@@ -38,10 +38,6 @@ public class Product {
     private Boolean availability;
 
     @NotNull
-    private Integer score;
-
-
-    @NotNull
     @ManyToOne
     @JoinColumn(name = "locations_location_id", referencedColumnName = "locationId")
     private Location location;
@@ -54,6 +50,10 @@ public class Product {
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Image> image;
+
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Score> scores;
 
     @JoinTable(
             name = "products_has_features",
