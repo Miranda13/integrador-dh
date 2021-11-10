@@ -70,8 +70,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDTO> findProductByCategory(String title) {
         List<ProductDTO> productResponse = new ArrayList<>();
-
-        for (Product product : productRepository.findProductByCategory(title)) {
+        System.out.println(productRepository.findByCategory_TitleContaining(title));
+        
+        for (Product product : productRepository.findByCategory_TitleContaining(title)) {
             productResponse.add(modelMapper.map(product, ProductDTO.class));
         }
 
@@ -81,7 +82,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDTO> findProductByCity(String city) {
         List<ProductDTO> productResponse = new ArrayList<>();
-
+        
         for (Product product : productRepository.findProductByCity(city)) {
             productResponse.add(modelMapper.map(product, ProductDTO.class));
         }
