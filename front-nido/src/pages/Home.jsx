@@ -1,39 +1,49 @@
 import { useState, useEffect } from "react";
 import { SearchForm } from "../components/SearchForm";
 import Content from "../components/Content";
-import db from "../components/Recomendations/cards.json";
+import getData from "../assets/js/getData";
 export default function Home({ toggle }) {
     const [products, setProducts] = useState([]);
+    const [categorys, setCategorys] = useState([]);
     // const [productsFilter, setProductsFilter] = useState([]);
     const handleSubmit = (e) => {
         e.preventDefault();
         const location = document.querySelector(".container-location__title");
         /* console.log(location.textContent.split(", "));*/
-        const locationFilter = db.filter((product) => {
-            return product.location.includes(location.textContent)
-        })
-        setProducts(locationFilter);
+        getData(`http://localhost:8080/api/v1/location/${location.getAttribute("id")}`)
+            .then((location) => {
+                setProducts(location.products);
+            })
     }
     const handleClickCategory = (e) => {
-        const productsFilter = db.filter((product) => product.category.toLowerCase() === e.target.id.toLowerCase());
-        setProducts(productsFilter);
+        getData(`http://localhost:8080/api/v1/product/category?name=${e.target.id}`)
+            .then((data) => {
+                setProducts(data);
+            })
     }
     useEffect(() => {
-        // fetch("API")
-        //     .then(response => response.json())
-        //     .then(data => setProducts(data.results));
-        setProducts(db);
+        getData("http://localhost:8080/api/v1/product")
+            .then((data) => {
+                setProducts(data);
+            })
+        getData("http://localhost:8080/api/v1/category")
+            .then((data) => {
+                setCategorys(data);
+            })
         // setProductsFilter(db)
     }, [])
     useEffect(() => {
         // setProductsFilter([]);
-        setProducts(db);
+        getData("http://localhost:8080/api/v1/product")
+            .then((data) => {
+                setProducts(data);
+            })
     }, [toggle])
     return (
 
         <div className="wrapper">
             <SearchForm handleSubmit={handleSubmit} />
-            <Content handleClickCategory={handleClickCategory} products={products} />
+            <Content handleClickCategory={handleClickCategory} products={products} categorys={categorys} />
         </div>
     );
 }

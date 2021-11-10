@@ -9,7 +9,7 @@ function Recomendations({ products }) {
             <div className="cards">
                 {
                     products.map(card => {
-                        return (<Card key={card.id} card={card} />)
+                        return (<Card key={card.productId} card={card} />)
                     })
                 }
             </div>

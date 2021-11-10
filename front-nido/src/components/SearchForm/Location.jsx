@@ -8,11 +8,12 @@ function Location({ zIndexCalendar }) {
         setShowList(!showList);
         zIndexCalendar();
     }
-    const handleSelectLocation = (e) => {
+    const handleSelectLocation = (e, id) => {
         const title_location = document.querySelector(".container-location__title");
         if (e.target.childNodes[1]?.textContent !== undefined && e.target.childNodes[3]?.textContent !== undefined) {
             title_location.innerHTML = "" + e.target.childNodes[1]?.textContent + ", " + e.target.childNodes[3]?.textContent;
             title_location.style.color = "var(--dark-color)"
+            title_location.setAttribute("id", id);
         }
     }
     useEffect(() => {
@@ -45,7 +46,7 @@ function Location({ zIndexCalendar }) {
                 {
                     locations.map((location, index) => {
                         return (
-                            <li className="container-location__list__item" key={index} onClick={handleSelectLocation}>
+                            <li className="container-location__list__item" key={index} onClick={(e) => { handleSelectLocation(e, location.locationId) }}>
                                 <i className="fas fa-map-marker-alt"></i>
                                 <span id="city" className="container-location__list-name"><strong>{location.city}</strong></span>
                                 <br />
