@@ -19,6 +19,7 @@ margin-right: -22px;
     color: white;
     z-index: 2;
     font-size: 20px;
+    height: 60px;
 }
 .icono-share i{
     padding:10px;
@@ -83,7 +84,7 @@ figure img {
         top:26vh; */
         bottom:0;
         right: 0;   
-        left: 94vw;
+        /* left: 94vw; */
         top:0;
     }
     ._2c50p{
@@ -108,8 +109,9 @@ figure img {
         bottom: 0px;
         
     }
+    /*ver mas*/
     ._1oKnM{
-        left: 94vw;
+        /* left: 94vw; */
         top:90%;
 
     }
@@ -127,6 +129,22 @@ figure img {
     .gallery{
         height: 500px !important;
         width: 100vw;
+    }
+    .gallery {
+        height: 500px !important;
+        width: 100vw;
+        display: flex;
+        flex-direction: row-reverse;}
+    
+    ._2c50p {
+        display: block;
+        height: 100%;  
+    }
+    ._-LJ2W{
+        height:100%;
+    width: 100vw;
+    display: flex;
+flex-direction: column;
     }
 }
 
