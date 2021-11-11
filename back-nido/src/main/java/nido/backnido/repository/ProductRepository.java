@@ -1,6 +1,8 @@
 package nido.backnido.repository;
 
 import nido.backnido.entity.Product;
+import nido.backnido.entity.dto.ProductDTO;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
