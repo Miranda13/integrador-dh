@@ -51,6 +51,10 @@ public class Product {
     @JsonIgnore
     private Set<Image> images;
 
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Score> scores;
+
     @JoinTable(
             name = "products_has_features",
             joinColumns = { @JoinColumn(name = "products_product_id")},
