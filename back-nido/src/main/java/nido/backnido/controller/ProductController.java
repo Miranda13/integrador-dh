@@ -67,5 +67,9 @@ public class ProductController {
     public List<ProductDTO> findProductByCity(@RequestParam String city){
         return productService.findProductByCity(city);
     }
-
+    @GetMapping("/category")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ProductDTO> findProductByCategory(@RequestParam("name") String category){
+    	return productService.findProductByCategory(category);
+    }
 }

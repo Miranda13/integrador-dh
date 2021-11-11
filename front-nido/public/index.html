@@ -3,12 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
-      crossorigin="anonymous"
-    />
+
+	
+
+<script src="http://code.jquery.com/jquery-3.2.1.slim.min.js"
+ integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous">
+</script>
+ 
+<!-- Creamos nuestra función -->
+<script type="text/javascript">
+	$( document ).ready(function() {
+		$('#menu_on').click(function(){ 
+		   $('body').toggleClass('visible_menu'); // Añadimos o eliminamos la clase 'visible_menu' al body
+       $('#menu_on').toggleClass('visible_menu__x');
+     
+      })
+	});
+</script>
+
   </head>
   <body>
     <div id="root"></div>

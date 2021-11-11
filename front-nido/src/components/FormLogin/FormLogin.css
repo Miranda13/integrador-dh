@@ -1,0 +1,67 @@
+h2{
+    color: var(--main-color);
+    position: relative;
+}
+
+.form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    gap: 20px;
+    padding-top: 50px;
+}
+
+
+.form__input{
+    border: 1px solid #fff;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); 
+    width: 65vw;
+    margin: 10px 0px 10px 0px;
+    height: 40px;
+}
+
+.form__text{
+font-size: var(--font-size-5);
+}
+
+.form__text a{
+    text-decoration: none;
+    color:blue    
+}
+
+.form_error{
+    color: red;
+    font-size: var(--font-size-5);
+    margin-bottom: 10px;
+    display: block; 
+    text-align: end;
+}
+
+.sign-in-button{
+    width: 65vw;
+    height: 40px;
+    margin-top: 20px;
+}
+
+.validation-errors {
+    background-color: #FFE1E1;
+    border: 1px solid #FF0000;
+}
+
+/*IPAD*/
+@media (min-width: 761px) and (max-width: 1360px) {
+
+    .sign-in-button{
+        width: 47vw;
+    }
+}
+
+/*DESKTOP*/
+@media (min-width:1361px){
+    .sign-in-button{
+        width: 13vw;
+    }
+}
