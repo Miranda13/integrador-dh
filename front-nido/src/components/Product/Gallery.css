@@ -121,7 +121,12 @@ figure img {
     }
     /* minuaturas */
     ._2c50p{
-        display: none;
+        /* display: none; */
+        
+    }
+    .gallery{
+        height: 500px !important;
+        width: 100vw;
     }
 }
 

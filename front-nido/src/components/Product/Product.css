@@ -10,7 +10,7 @@
     width: 100%;
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 80px;
+    /* margin-bottom: 80px; */
 }
 .product__header{
     background-color: var(--medium-color);
@@ -53,6 +53,10 @@
     justify-content: flex-start;
     width: 50%;
 }
+.product__ubication-map  p{
+    font-weight: var(--font-weight-bold);
+}
+
 .product__ubication i{
   margin-right: 5px;
 }
@@ -97,7 +101,9 @@
     padding:10px;
     margin-top: 20px
 }
-
+.product__description h2{
+    margin-bottom:10px;
+}
 .product__description p{
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
