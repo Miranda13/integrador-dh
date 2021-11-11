@@ -53,7 +53,7 @@ function validateName(field, errors) {
 function validateRepeatEmail(field, field2, errors) {
     if(!field){
         errors.repeatEmail="Este campo es obligatorio";
-    }else if(field !== field2){
+    }else if(field !== field2) {
         errors.repeatEmail="El correo electrónico no coincide con el original"
     }
     return errors;
@@ -62,7 +62,7 @@ function validateRepeatEmail(field, field2, errors) {
 function validateRepeatPassword(field, field2, errors) {
     if(!field){
         errors.repeatPassword="Este campo es obligatorio";
-    }else if(field !== field2){
+    }else if(field !== field2) {
         errors.repeatPassword = "La contraseña no coincide con la original"
     }
     return errors;
@@ -97,9 +97,9 @@ export default function validateRegister(values) {
 
     Object.entries(values).forEach(([key, value]) => {
         if (key === 'repeatEmail') {
-            errors = execFn(key, context, values.repeatEmail, value, errors)
+            errors = execFn(key, context, value, values.email, errors)
         } else if (key === 'repeatPassword') {
-            errors = execFn(key, context, values.repeatPassword, value, errors)
+            errors = execFn(key, context, value, values.password, errors)
         } else {
             errors = execFn(key, context, value, errors)
         }

@@ -1,7 +1,11 @@
 import React from "react";
 import Map from "./Map";
+// import CalendarReserve from "../components/CalendarReserve";
 import credentials from "./credentials";
+import CalendarReserve from "../CalendarReserve";
 
+// import ReactGallery from 'reactive-blueimp-gallery'; 
+import Slider from 'react-lightbox-slider';
 import "./Product.css";
 import wifi from "../../assets/images/icons/wifi.svg";
 import paw from "../../assets/images/icons/paw.svg";
@@ -11,12 +15,25 @@ import kitchen  from "../../assets/images/icons/kitchen.svg";
 import swim from "../../assets/images/icons/tv.svg";
 import tv from "../../assets/images/icons/tv.svg";
 import product from "./product.json";
+import  Gallery  from "./Gallery";
 
 class Product  extends React.Component {
-    
-    render() {
+   
+
+    render() { 
+
+          const image_array = [
+            "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
+            "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/canyon.jpg",
+            "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/city.jpg",
+            "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/desert.jpg",
+            "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/mountains.jpg",
+            "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/redsky.jpg",
+            "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/sandy-shores.jpg",
+            "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/tree-of-life.jpg"
+            ]
         return (
-            <React.StrictMode>
+            <React.StrictMode>              
                 <div className="product-content">
                     <div className="product__header">
                         <div  className="product__header-title-category">
@@ -24,7 +41,7 @@ class Product  extends React.Component {
                             <h2>{product.name}</h2>
                         </div>
                         <div className="product__ubication-back">
-                        <i class="fas fa-chevron-left"></i>
+                            <i class="fas fa-chevron-left"></i>
                         </div>
                     </div>
                     <div className="product__ubication-ratings">
@@ -48,7 +65,14 @@ class Product  extends React.Component {
                         </div>
                     </div>
                     <div className="product__gallery">
-                        gallery
+                        <div className="icono-share">
+                            <i className="fas fa-share-alt " ></i>   
+                            <i className="fas fa-heart icono-heart" ></i>
+                        </div>
+                     
+                            <Gallery 
+                            images={image_array}                            
+                            />
                     </div>
                     <div className="product__description">
                         <h2>{product.title}</h2><hr/>
@@ -56,33 +80,22 @@ class Product  extends React.Component {
                     </div>
                     <div className="product__features">
                         <h2>¿Qué ofrece este lugar?</h2><hr/>
-                    <div className="product__features-amenities"> 
-                            <div>
-                                <img src={kitchen}/>Cocina
-                            </div>
-                            <div>
-                                <img src={parking}/>Estacionamiento gratuito
-                            </div>
-                            <div>
-                                <img src={tv}/>Televisor
-                            </div>
-                            <div>
-                                <img src={swim}/> Pileta
-                            </div>
-                                <img src={air}/>Aire acondicionado
-                            </div>
-                            <div>
-                                <img src={wifi}/>WiFi
-                            </div>
-                            <div>
-                            <img src={paw}/>Apto mascotas
-                            </div>
-                   
+                       
+                        <div className="product__features-amenities">                    
+                            {
+                            product.amenities.map((amenity, index) => (                         
+                                <div className="product__features-amenities-item">
+                                    <img  src={amenity.icon}/> 
+                                    {amenity.name}                                   
+                                </div>
+                            ))}  
+                      </div>
                     </div>
+                 
                     <div className="product__availability">
                         <h2>Fechas disponibles</h2><hr/>
-                        availability
-
+                        
+                        <CalendarReserve/>
                     </div>
                     <div className="product__ubication-map">
                         <h2>¿Dónde vas a estar?</h2>
@@ -101,15 +114,26 @@ class Product  extends React.Component {
                     </div>
                    
                     <div className="product__toknow">
-                        <h2>Qué tenes que saber</h2><hr/>
-                        <h3>Normas de la casa</h3>
-                        <p>das</p>
-                        <h3>Salud y seguridad</h3>
-                        <p>das</p>
-                        <h3>Política de cancelación</h3>
-                        <p>das</p>
+                        
+                        <h2>Qué tenes que saber</h2>
+                        <hr/>
+                        <div className="product__toknow-content">
+                            <div className="product__toknow-column">
+                                <h3>Normas de la casa</h3>
+                                <p>{product.normas}</p>
+                            </div>
+                            <div className="product__toknow-column">
+                                <h3>Salud y seguridad</h3>
+                                <p>{product.salud}</p>
+                            </div>
+                            <div className="product__toknow-column">
+                                <h3>Política de cancelación</h3>
+                                <p>{product.cancelacion}</p>
+                            </div>
+                        </div>
                     </div>
-                </div>               
+                </div>   
+                          
             </React.StrictMode>
         )
     }

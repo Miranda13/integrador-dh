@@ -56,7 +56,7 @@ export default function FormRegister({ submitForm }) {
                         </div>
                     <br />
                 </div>
-                <button type="submit" className="button-1" id="form__button">Crear cuenta</button>
+                <button type="submit" className="button-1 register-button" id="form__button">Crear cuenta</button>
                 <p className="form__text">¿Ya tienes una cuenta? &nbsp; <a href="/login">Iniciar sesión</a></p>
             </form>
         </>

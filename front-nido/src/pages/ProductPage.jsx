@@ -12,7 +12,7 @@ class ProductPage extends React.Component {
 
             <React.StrictMode>
                 <div className="wrapper">
-                    <div className="container">
+                    <div className="container-producto">
                        <Product />       
                     </div>
                 </div>
