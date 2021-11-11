@@ -1,41 +1,49 @@
 package nido.backnido.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
-@Table(name = "categories_hotels")
+@Table(name = "categories")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryHotel {
-//    Cuando esté el script dump final hay que verificar que la entidad esta mappeado correctamente
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long categoryHotelId;
+    private Long categoryId;
+
     @NotNull
     @NotBlank
     private String title;
+
     @NotNull
     @NotBlank
     private String description;
 
-//    @Column(name = "images_image_id")
-//    @OneToOne(mappedBy = "imageId")
-    private Long imagesImageId;
+    @NotNull
+    @NotBlank
+    private String urlImage;
 
-    public CategoryHotel(String title, String description, Long imagesImageId) {
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Product> products;
+
+    public Category(String title, String description, String urlImage) {
         this.title = title;
         this.description = description;
-        this.imagesImageId = imagesImageId;
+        this.urlImage = urlImage;
     }
 }
