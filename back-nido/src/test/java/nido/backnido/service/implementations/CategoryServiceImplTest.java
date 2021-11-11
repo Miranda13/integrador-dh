@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@ActiveProfiles("test")
 class CategoryServiceImplTest {
 
     @Autowired
