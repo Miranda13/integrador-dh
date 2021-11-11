@@ -14,6 +14,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "products")
 public class Location {
 
     //    TODO Faltan las relaciones
