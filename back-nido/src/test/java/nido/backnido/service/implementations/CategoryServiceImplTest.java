@@ -9,7 +9,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,26 +19,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@ActiveProfiles("test")
 class CategoryServiceImplTest {
 
     @Autowired
     CategoryService categoryService;
-
-    @BeforeAll
-    public void setup() {
-
-        categoryService.create(new Category("Default Title 1", "Default Description 1", "imgur.com/sample"));
-        categoryService.create(new Category("Default Title 2", "Default Description 2", "imgur.com/sample"));
-
-    }
-
-    @AfterAll
-    public void teardown(){
-
-        categoryService.deleteByCategoryTitle("Updated");
-        categoryService.deleteByCategoryTitle("Default");
-
-    }
 
     @Test
     public void findCategoryByTitleTest() {
@@ -50,6 +37,6 @@ class CategoryServiceImplTest {
     public void listAllTest() {
         List<CategoryDTO> categoryRes = categoryService.getAll();
 
-        assertEquals(2, categoryRes.size());
+        assertEquals(ArrayList.class, categoryRes.getClass());
     }
 }

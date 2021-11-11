@@ -49,7 +49,7 @@ public class Product {
 
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Image> image;
+    private Set<Image> images;
 
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
@@ -62,5 +62,10 @@ public class Product {
     )
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Feature> features;
+
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Score> scores;
+
 
 }
