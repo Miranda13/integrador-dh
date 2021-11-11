@@ -1,9 +1,12 @@
 package nido.backnido.service.implementations;
 
 import nido.backnido.entity.Location;
+import nido.backnido.entity.Product;
 import nido.backnido.entity.dto.LocationDTO;
+import nido.backnido.entity.dto.ProductDTO;
 import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.LocationRepository;
+import nido.backnido.service.ImageService;
 import nido.backnido.service.LocationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +22,9 @@ public class LocationServiceImpl implements LocationService {
     @Autowired
     LocationRepository locationRepository;
 
+    @Autowired
+    ImageService imageService;
+
     ModelMapper modelMapper = new ModelMapper();
 
 
@@ -27,7 +33,21 @@ public class LocationServiceImpl implements LocationService {
         List<LocationDTO> locationResponse = new ArrayList<>();
 
         for (Location location : locationRepository.findAll()) {
-            locationResponse.add(modelMapper.map(location, LocationDTO.class));
+
+            LocationDTO locationDto = modelMapper.map(location, LocationDTO.class);
+
+            for(Product product : location.getProducts()) {
+
+                ProductDTO noImgProduct = modelMapper.map(product, ProductDTO.class);
+
+                noImgProduct.setImages(imageService.findByProductId(product));
+
+                locationDto.getProducts().add(noImgProduct);
+
+            }
+//location.getProducts().add(product);
+
+            locationResponse.add(locationDto);
         }
 
         return locationResponse;

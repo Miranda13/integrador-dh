@@ -103,7 +103,6 @@ public class ProductControllerTest {
         newProduct.setAvailability(true);
         newProduct.setLocation(new Location());
         newProduct.setCategory(new Category());
-        newProduct.setImages(null);
 
         return newProduct;
     }

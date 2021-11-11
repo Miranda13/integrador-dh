@@ -3,7 +3,7 @@ import Map from "./Map";
 // import CalendarReserve from "../components/CalendarReserve";
 import credentials from "./credentials";
 import CalendarReserve from "../CalendarReserve";
-
+import { Link } from "react-router-dom";
 // import ReactGallery from 'reactive-blueimp-gallery'; 
 import Slider from 'react-lightbox-slider';
 import "./Product.css";
