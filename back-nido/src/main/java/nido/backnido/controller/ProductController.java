@@ -41,7 +41,7 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody @Valid Product product, BindingResult bindingResult){
+    public void create(@RequestBody @Valid ProductDTO product, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             throw new CustomBindingException("Errores encontrados, por favor compruebe e intente nuevamente", HttpStatus.BAD_REQUEST.value(), UtilsException.fieldBindingErrors(bindingResult));
         }

@@ -1,10 +1,7 @@
 package nido.backnido.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -18,6 +15,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Product {
 
     //    TODO Faltan las relaciones
@@ -50,15 +48,17 @@ public class Product {
     @ManyToOne
     @JoinColumn(name="categories_category_id", referencedColumnName = "categoryId")
     private Category category;
-
+/*
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     @JsonIgnore
+    @JoinColumn(name = "products_product_id")
     private Set<Image> images;
-
+*/
+    // Add getters and setters
     @JoinTable(
             name = "products_has_features",
             joinColumns = { @JoinColumn(name = "products_product_id")},
-            inverseJoinColumns = {@JoinColumn(name = "features_feature_id")            }
+            inverseJoinColumns = {@JoinColumn(name = "features_feature_id")}
     )
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Feature> features;

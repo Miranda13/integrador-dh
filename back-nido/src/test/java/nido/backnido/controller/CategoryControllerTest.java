@@ -8,8 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -37,27 +40,27 @@ class CategoryControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
-    @Test // BACKEND-CONTROLLER-NID013
+    @Test // BACK-CONTROLLER NID-005
     public void createCategoryValidationReturnsStatus201Test() throws Exception {
 
-        mockMvc.perform(post("http://localhost:8080/api/v1/categoryhotel")
+        mockMvc.perform(post("http://localhost:8080/api/v1/category")
                 .content(objectMapper.writeValueAsString(buildValidCategory()))
                 .contentType("application/json"))
                 .andExpect(status().isCreated());
 
     }
 
-    @Test // BACKEND-CONTROLLER-NID014
+    @Test // BACK-CONTROLLER NID-006
     public void createCategoryValidationReturnsStatus400Test() throws Exception {
 
-        mockMvc.perform(post("http://localhost:8080/api/v1/categoryhotel")
+        mockMvc.perform(post("http://localhost:8080/api/v1/category")
                 .content(objectMapper.writeValueAsString(buildInvalidCategory()))
                 .contentType("application/json"))
                 .andExpect(status().isBadRequest());
 
     }
 
-    @Test // BACKEND-CONTROLLER-NID015
+    @Test // BACK-CONTROLLER NID-007
     public void listAllReturnsStatus200Test() throws Exception {
 
         List<Category> expectedResponse = new ArrayList<>();
@@ -65,93 +68,47 @@ class CategoryControllerTest {
 
         BDDMockito.given(categoryRepository.findAll()).willReturn(expectedResponse);
 
-        mockMvc.perform(get("http://localhost:8080/api/v1/categoryhotel"))
+        mockMvc.perform(get("http://localhost:8080/api/v1/category"))
                 .andExpect(status().isOk());
     }
 
-    @Test // BACKEND-CONTROLLER-NID016
-    public void listAllEmptyReturnsSize0Test() throws Exception {
+    @Test // BACK-CONTROLLER NID-008
+    public void validContentUpdateReturnsStatus200Test() throws Exception {
 
-        List<Category> expectedResponse = new ArrayList<>();
+        Category expectedResponse = buildValidCategory();
+        expectedResponse.setCategoryId(1L);
 
-        BDDMockito.given(categoryRepository.findAll()).willReturn(expectedResponse);
+        mockMvc.perform(put("http://localhost:8080/api/v1/category")
+                .content(objectMapper.writeValueAsString(expectedResponse))
+                .contentType("application/json"))
+                .andExpect(status().isOk());
 
-        assertEquals(0, categoryService.getAll().size());
     }
 
-//    @Test // BACKEND-CONTROLLER-NID017
-//    public void validUpdateReturnsStatus200Test() throws Exception {
-//
-//        Category expectedResponse = new Category(1L, "Updated", "Updated", 2L);
-//        expectedResponse.setCategoryHotelId(1L);
-//
-//        BDDMockito.given(categoryRepository.findById(anyLong())).willReturn(Optional.of(expectedResponse));
-//
-//        mockMvc.perform(post("http://localhost:8080/api/v1/categoryhotel")
-//                .content(objectMapper.writeValueAsString(buildValidCategory()))
-//                .contentType("application/json"));
-//
-//        mockMvc.perform(put("http://localhost:8080/api/v1/categoryhotel")
-//                .content(objectMapper.writeValueAsString(expectedResponse))
-//                .contentType("application/json"))
-//                .andExpect(status().isOk());
-//
-//        assertEquals("Updated", categoryService.getById(1L).getTitle());
-//        assertEquals("Updated", categoryService.getById(1L).getDescription());
-//
-//    }
-
-    @Test // BACKEND-CONTROLLER-NID018
+    @Test // BACK-CONTROLLER NID-009
     public void invalidContentUpdateReturnsStatus400Test() throws Exception {
 
         Category expectedResponse = buildInvalidCategory();
         expectedResponse.setCategoryId(1L);
 
-        BDDMockito.given(categoryRepository.findById(1L)).willReturn(Optional.of(buildValidCategory()));
-
-        mockMvc.perform(put("http://localhost:8080/api/v1/categoryhotel")
+        mockMvc.perform(put("http://localhost:8080/api/v1/category")
                 .content(objectMapper.writeValueAsString(expectedResponse))
                 .contentType("application/json"))
                 .andExpect(status().isBadRequest());
 
     }
 
-//    @Test // BACKEND-CONTROLLER-NID019
-////    TODO Caso de prueba BACKEND-CONTROLLER-NID019. No logré hacer que el mock arroje una excepción que dispare un Status 400. Esto sí funciona con la App desplegada.
-//    public void invalidIdUpdateReturnsStatus400Test() throws Exception {
-//
-//        List<String> s = new ArrayList<>();
-//        s.add("Id");
-//
-//        when(categoryRepository.save(any(Category.class))).thenThrow(new CustomBindingException("ASD", 404, s));
-//
-//        CustomBindingException customBindingException = assertThrows(CustomBindingException.class, () ->
-//                mockMvc.perform(put("http://localhost:8080/api/v1/categoryhotel")
-//                        .content(objectMapper.writeValueAsString(buildValidCategory()))
-//                        .contentType("application/json")));
-//
-//        assertEquals(HttpStatus.NOT_FOUND, customBindingException.getCodeError());
-//
-//    }
+    @Test // BACK-CONTROLLER NID-010
+    public void deleteCategoryByIdReturnsStatus204Test() throws Exception {
 
-    @Test // BACKEND-CONTROLLER-NID020
-    public void validDeleteByTitleTest() throws Exception {
+        mockMvc.perform(delete("http://localhost:8080/api/v1/category/1")
+                .contentType("application/json"))
+                .andExpect(status().isNoContent());
 
     }
-
-    @Test // BACKEND-CONTROLLER-NID021
-    public void invalidDeleteByTitleTest() {
-
-    }
-
-
-
-
-
 
     private Category buildValidCategory() {
         Category newCategory = new Category();
-        newCategory.setCategoryId(1L);
         newCategory.setTitle("Familiar");
         newCategory.setDescription("Hotel familiar");
         newCategory.setUrlImage("imgur.com/sample");
