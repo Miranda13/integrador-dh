@@ -24,6 +24,6 @@ public class ProductDTO {
     private Integer score;
     private Location location;
     private Category category;
-    private Set<Image> image;
+    private Set<Image> images;
 
 }
