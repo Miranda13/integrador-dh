@@ -3,7 +3,7 @@ import Map from "./Map";
 // import CalendarReserve from "../components/CalendarReserve";
 import credentials from "./credentials";
 import CalendarReserve from "../CalendarReserve";
-
+import {Link} from "react-router-dom";
 // import ReactGallery from 'reactive-blueimp-gallery'; 
 import Slider from 'react-lightbox-slider';
 import "./Product.css";
@@ -41,7 +41,7 @@ class Product  extends React.Component {
                             <h2>{product.name}</h2>
                         </div>
                         <div className="product__ubication-back">
-                            <i class="fas fa-chevron-left"></i>
+                           <Link to="/"> <i class="fas fa-chevron-left back"></i></Link>
                         </div>
                     </div>
                     <div className="product__ubication-ratings">

@@ -68,7 +68,12 @@ figure img {
         height: 30vh !important;
         width: 100vw;
     }
-    
+    ._29p_Y{
+        bottom:0;
+        right: 0;   
+        left: 90vw;
+        top:25vh;
+    }
 }
 @media (min-width: 1360px) {
 
