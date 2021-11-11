@@ -7,11 +7,9 @@ import nido.backnido.repository.ProductRepository;
 import nido.backnido.service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,16 +42,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void create(Product newProduct) {
-        try{
-            if (newProduct != null) {
-                productRepository.save(newProduct);
-            }
-        }catch(DataIntegrityViolationException exception) {
-            throw new CustomBaseException("Error al crear producto, verifique si la información de las tablas relacionadas existe", HttpStatus.BAD_REQUEST.value());
-        }catch (Exception e){
-            throw new CustomBaseException("Error al crear producto, verifique la información", HttpStatus.BAD_REQUEST.value());
+        if (newProduct != null) {
+            productRepository.save(newProduct);
         }
-
     }
 
     @Override

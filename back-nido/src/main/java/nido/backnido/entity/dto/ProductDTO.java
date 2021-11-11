@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import nido.backnido.entity.*;
+import nido.backnido.entity.Category;
+import nido.backnido.entity.Image;
+import nido.backnido.entity.Location;
 
 import java.time.LocalTime;
 import java.util.Set;
@@ -18,10 +20,9 @@ public class ProductDTO {
     private String name;
     private String description;
     private Boolean availability;
+    private Integer score;
     private Location location;
     private Category category;
     private Set<Image> image;
-    private Set<Score> scores;
-    private Set<Feature> features;
 
 }
