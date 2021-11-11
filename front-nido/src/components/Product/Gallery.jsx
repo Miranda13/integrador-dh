@@ -22,6 +22,7 @@ const Gallery = () => {
       rightIcon={<i className="fas fa-chevron-right gallery-arrows"></i>}
       minIcon={<div className="ver-mas">volver</div>}
       maxIcon={<div className="ver-mas">ver más</div>}
+    
       // shouldSwipeOnMouse={true}
        />
   

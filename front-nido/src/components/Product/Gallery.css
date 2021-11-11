@@ -19,6 +19,7 @@ margin-right: -22px;
     color: white;
     z-index: 2;
     font-size: 20px;
+    height: 60px;
 }
 .icono-share i{
     padding:10px;
@@ -68,10 +69,24 @@ figure img {
         height: 30vh !important;
         width: 100vw;
     }
-    
+    ._29p_Y{
+        bottom:0;
+        right: 0;   
+        left: 90vw;
+        top:25vh;
+    }
 }
 @media (min-width: 1360px) {
-
+    ._29p_Y{
+        /* bottom:0;
+        right: 0;   
+        left: 94vw;
+        top:26vh; */
+        bottom:0;
+        right: 0;   
+        /* left: 94vw; */
+        top:0;
+    }
     ._2c50p{
         display: block;
         height: 200px;
@@ -81,6 +96,55 @@ figure img {
     }
     ._-LJ2W{
         justify-content: center;
+        background-color: var(--light-medium-color);
+        /* height: 200px */
+    }
+    .ver-mas{
+        background: #fff;
+        font-weight: bold;
+        padding: 5px;
+        opacity: 0.75;
+        height: min-content;
+        visibility: visible;
+        bottom: 0px;
+        
+    }
+    /*ver mas*/
+    ._1oKnM{
+        /* left: 94vw; */
+        top:90%;
+
+    }
+    .gallery-arrows {
+        font-size: 20px;
+        padding: 0 10px;
+        color: #fff;
+        visibility: visible;
+    }
+    /* minuaturas */
+    ._2c50p{
+        /* display: none; */
+        
+    }
+    .gallery{
+        height: 500px !important;
+        width: 100vw;
+    }
+    .gallery {
+        height: 500px !important;
+        width: 100vw;
+        display: flex;
+        flex-direction: row-reverse;}
+    
+    ._2c50p {
+        display: block;
+        height: 100%;  
+    }
+    ._-LJ2W{
+        height:100%;
+    width: 100vw;
+    display: flex;
+flex-direction: column;
     }
 }
 
