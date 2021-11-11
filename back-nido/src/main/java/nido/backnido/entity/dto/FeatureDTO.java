@@ -19,8 +19,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FeatureDTO {
-
-    private Long featureId;
     private String name;
     private String icon;
 }

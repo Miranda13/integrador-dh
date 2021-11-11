@@ -14,7 +14,6 @@ import java.util.Set;
 @NoArgsConstructor
 public class LocationDTO {
 
-    private Long locationId;
     private String city;
     private String country;
     private Double latitude;
