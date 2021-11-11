@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `nidodb`.`products` (
   `name` VARCHAR(80) NOT NULL,
   `description` VARCHAR(180) NULL,
   `availability` TINYINT NULL,
+  `score` INT NULL,
   `locations_location_id` BIGINT NOT NULL,
   `categories_category_id` BIGINT NOT NULL,
   PRIMARY KEY (`product_id`),
@@ -150,53 +151,6 @@ CREATE TABLE IF NOT EXISTS `nidodb`.`products_has_features` (
   CONSTRAINT `fk_products_has_features_features1`
     FOREIGN KEY (`features_feature_id`)
     REFERENCES `nidodb`.`features` (`feature_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `nidodb`.`scores`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nidodb`.`scores` (
-  `score_id` BIGINT NOT NULL AUTO_INCREMENT,
-  `score` INT NOT NULL,
-  `products_product_id` BIGINT NOT NULL,
-  `users_user_id` BIGINT NOT NULL,
-  PRIMARY KEY (`score_id`),
-  INDEX `fk_scores_products1_idx` (`products_product_id` ASC) VISIBLE,
-  INDEX `fk_scores_users1_idx` (`users_user_id` ASC) VISIBLE,
-  CONSTRAINT `fk_scores_products1`
-    FOREIGN KEY (`products_product_id`)
-    REFERENCES `nidodb`.`products` (`product_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_scores_users1`
-    FOREIGN KEY (`users_user_id`)
-    REFERENCES `nidodb`.`users` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `nidodb`.`favorites`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `nidodb`.`favorites` (
-  `favorite_id` BIGINT NOT NULL AUTO_INCREMENT,
-  `products_product_id` BIGINT NOT NULL,
-  `users_user_id` BIGINT NOT NULL,
-  PRIMARY KEY (`favorite_id`),
-  INDEX `fk_favorites_products1_idx` (`products_product_id` ASC) VISIBLE,
-  INDEX `fk_favorites_users1_idx` (`users_user_id` ASC) VISIBLE,
-  CONSTRAINT `fk_favorites_products1`
-    FOREIGN KEY (`products_product_id`)
-    REFERENCES `nidodb`.`products` (`product_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_favorites_users1`
-    FOREIGN KEY (`users_user_id`)
-    REFERENCES `nidodb`.`users` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
