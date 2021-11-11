@@ -12,7 +12,7 @@
     display: inline-block;
     width: 25px;
     height: 15px;
-    position: relative;
+    position: fixed;
     z-index: 55;
     transition: all 1s ease;
     /* translate: -30vw;  */

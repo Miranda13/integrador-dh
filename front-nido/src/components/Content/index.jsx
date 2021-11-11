@@ -9,7 +9,7 @@ export default function Content({ handleClickCategory, products, categorys, isLo
         <>
             <div className="content-superior">
                 <div className="content_category-cards-titulo">
-                    <h2 >Buscar por tipo de alojamiento</h2>
+                    <h2 className="content_category-title">Buscar por tipo de alojamiento</h2>
                 </div>
                 <div className="content_category-cards">
                     {

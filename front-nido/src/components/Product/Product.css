@@ -1,3 +1,7 @@
+.container-producto{
+    margin-top:20px
+}
+
 .product-content{
     margin-top:60px;
     background-color: var(--light-medium-color);
@@ -66,7 +70,7 @@
 }
 
 .product__ratings-clasification{
-    /* background-color: aqua; */
+
 }
 .product__ratings-score{
     display: flex;
@@ -82,18 +86,47 @@
     color: var(--light-color);
 
 }
+.product__gallery{
+    display:flex;
+    justify-content: center;
+    /* height: 500px; */
+  
+}
+
 .product__description{
     padding:10px;
+    margin-top: 20px
 }
 .product__features{
-    padding:10px
+    padding:10px;
+    
+}
+.product__features-content{
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;  
+    flex-wrap: wrap; 
+}
+
+.product__features-amenities-item {
+     width:40vw;   
 }
 
 .product__availability{
-    background-color: var(--light-medium-color);
-    height: 200px;
-   
+    padding:10px;
+    background-color: #ececef;
+}
+
+
+.calendarReserve{
+
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .product__ubication-map{
@@ -113,4 +146,28 @@
 
 #mapa{
     border-radius: 20px;
+}
+.product__toknow-content{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.product__toknow-column{
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    width: 45vw;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+@media (min-width: 1360px)  {
+    .product__toknow-content{
+        display: flex;
+        justify-content: flex-start;
+    }
+    .product__toknow-column{
+        width: 25vw;
+       
+    }
 }
