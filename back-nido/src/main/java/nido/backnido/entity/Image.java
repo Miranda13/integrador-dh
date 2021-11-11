@@ -27,11 +27,15 @@ public class Image {
     @NotNull
     @NotBlank
     private String url;
-
-    @NotNull
-    @JsonIgnore
+    
     @ManyToOne
-    @JoinColumn(name="products_product_id", referencedColumnName="productId")
+    @JsonIgnore
+    @JoinColumn(name="products_product_id",referencedColumnName="productId")
     private Product product;
+    //@NotNull
+    //@JsonIgnore
+    //@ManyToOne
+    //@JoinColumn(name="products_product_id", referencedColumnName="productId")
+    //private Product product;
 
 }

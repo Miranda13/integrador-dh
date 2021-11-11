@@ -33,7 +33,9 @@ public class ProductServiceImpl implements ProductService {
         List<ProductDTO> productResponse = new ArrayList<>();
 
         for (Product product : productRepository.findAll()) {
-            productResponse.add(modelMapper.map(product, ProductDTO.class));
+        	ProductDTO productdto = modelMapper.map(product, ProductDTO.class);
+        	productdto.setImages(imageService.findByProductId(product));
+            productResponse.add(productdto);
         }
 
         return productResponse;
@@ -44,25 +46,23 @@ public class ProductServiceImpl implements ProductService {
         Product response = productRepository.findById(id).orElseThrow(() ->
                 new CustomBaseException("Producto no encontrado, por favor compruebe", HttpStatus.BAD_REQUEST.value())
         );
-        return modelMapper.map(response, ProductDTO.class);
+        ProductDTO productdto = modelMapper.map(response, ProductDTO.class);
+    	productdto.setImages(imageService.findByProductId(response));
+        return productdto;
     }
 
     @Override
-    public void create(Product newProduct) {
+    public void create(ProductDTO newProduct) {
         try{
             if (newProduct != null) {
-
-                System.out.println(productRepository.save(newProduct).getProductId());
-
-//                if(newProduct.getImages().size() != 0){
-//
-//                    for (Image image : newProduct.getImages()) {
-//                        image.setProduct(productToSave);
-//                        imageService.create(image);
-//
-//                    }
-//                }
-
+            	Product miProduct = modelMapper.map(newProduct,Product.class);
+            	Product productCreate = productRepository.save(miProduct);
+            	if(newProduct.getImages().size() != 0){
+            		for (Image image : newProduct.getImages()) {
+            			image.setProduct(productCreate);
+            			imageService.create(image);
+            		}
+            	}
             }
         }catch(DataIntegrityViolationException exception) {
             throw new CustomBaseException("Error al crear producto, verifique si la información de las tablas relacionadas existe", HttpStatus.BAD_REQUEST.value());

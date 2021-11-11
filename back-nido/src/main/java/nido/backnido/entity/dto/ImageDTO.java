@@ -16,10 +16,8 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ImageDTO {
-
     private Long imageId;
     private String title;
     private String url;
     private Product product;
-
 }

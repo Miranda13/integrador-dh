@@ -16,5 +16,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query(value= "Select p.* FROM Product p INNER JOIN Location l WHERE l.city LIKE CONCAT('%',:city,'%');", nativeQuery = true)
     List<Product> findProductByCity(@Param("city")String city);
-
+    
 }

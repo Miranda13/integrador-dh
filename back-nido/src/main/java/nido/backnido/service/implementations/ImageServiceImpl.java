@@ -1,6 +1,7 @@
 package nido.backnido.service.implementations;
 
 import nido.backnido.entity.Image;
+import nido.backnido.entity.Product;
 import nido.backnido.entity.dto.ImageDTO;
 import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.ImageRepository;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ImageServiceImpl implements ImageService {
@@ -68,4 +70,9 @@ public class ImageServiceImpl implements ImageService {
                 new CustomBaseException("Imagen con el id: " + id + " no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value()));
         imageRepository.deleteById(id);
     }
+
+	@Override
+	public Set<Image> findByProductId(Product product) {
+		return imageRepository.findByProduct(product);
+	}
 }
