@@ -10,7 +10,7 @@ public interface ProductService {
 
     List<ProductDTO> getAll();
     ProductDTO getById(Long id);
-    void create(Product newProduct);
+    void create(ProductDTO newProduct);
     void update(Product updatedProduct);
     void delete(Long id);
     List<ProductDTO> findProductByCategory(@Param("title")String title);
