@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import nido.backnido.entity.Category;
 import nido.backnido.entity.Location;
 import nido.backnido.entity.Product;
-import nido.backnido.entity.Score;
 import nido.backnido.repository.ProductRepository;
 import nido.backnido.service.ProductService;
 import org.junit.jupiter.api.Test;
@@ -13,9 +12,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
-
-import java.util.HashSet;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -105,7 +101,6 @@ public class ProductControllerTest {
         newProduct.setName("Test Product");
         newProduct.setDescription("Test Description");
         newProduct.setAvailability(true);
-        newProduct.setScores(new HashSet<Score>());
         newProduct.setLocation(new Location());
         newProduct.setCategory(new Category());
         newProduct.setImages(null);

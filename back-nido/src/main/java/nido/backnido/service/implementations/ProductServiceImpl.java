@@ -1,15 +1,19 @@
 package nido.backnido.service.implementations;
 
+import nido.backnido.entity.Image;
 import nido.backnido.entity.Product;
 import nido.backnido.entity.dto.ProductDTO;
 import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.ProductRepository;
+import nido.backnido.service.ImageService;
 import nido.backnido.service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +22,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    ImageService imageService;
 
     ModelMapper modelMapper = new ModelMapper();
 
@@ -42,9 +49,27 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void create(Product newProduct) {
-        if (newProduct != null) {
-            productRepository.save(newProduct);
+        try{
+            if (newProduct != null) {
+
+                System.out.println(productRepository.save(newProduct).getProductId());
+
+//                if(newProduct.getImages().size() != 0){
+//
+//                    for (Image image : newProduct.getImages()) {
+//                        image.setProduct(productToSave);
+//                        imageService.create(image);
+//
+//                    }
+//                }
+
+            }
+        }catch(DataIntegrityViolationException exception) {
+            throw new CustomBaseException("Error al crear producto, verifique si la información de las tablas relacionadas existe", HttpStatus.BAD_REQUEST.value());
+        }catch (Exception e){
+            throw new CustomBaseException("Error al crear producto, verifique la información", HttpStatus.BAD_REQUEST.value());
         }
+
     }
 
     @Override

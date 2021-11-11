@@ -57,7 +57,6 @@ class ProductServiceImplTest {
         assertEquals(expectedResponse.getLocation(), expectedResponse.getLocation());
         assertEquals(expectedResponse.getCategory(), expectedResponse.getCategory());
         assertEquals(expectedResponse.getImages(), expectedResponse.getImages());
-        assertEquals(expectedResponse.getScores(), expectedResponse.getScores());
         assertEquals(expectedResponse.getFeatures(), expectedResponse.getFeatures());
 
     }
@@ -109,7 +108,6 @@ class ProductServiceImplTest {
         newProduct.setLocation(new Location());
         newProduct.setCategory(new Category());
         newProduct.setImages(null);
-        newProduct.setScores(new HashSet<Score>());
         newProduct.setFeatures(new HashSet<Feature>());
 
         return newProduct;
