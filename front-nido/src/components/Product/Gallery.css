@@ -76,7 +76,16 @@ figure img {
     }
 }
 @media (min-width: 1360px) {
-
+    ._29p_Y{
+        /* bottom:0;
+        right: 0;   
+        left: 94vw;
+        top:26vh; */
+        bottom:0;
+        right: 0;   
+        left: 94vw;
+        top:0;
+    }
     ._2c50p{
         display: block;
         height: 200px;
@@ -87,7 +96,7 @@ figure img {
     ._-LJ2W{
         justify-content: center;
         background-color: var(--light-medium-color);
-        height: 200px
+        /* height: 200px */
     }
     .ver-mas{
         background: #fff;
@@ -96,7 +105,23 @@ figure img {
         opacity: 0.75;
         height: min-content;
         visibility: visible;
+        bottom: 0px;
         
+    }
+    ._1oKnM{
+        left: 94vw;
+        top:90%;
+
+    }
+    .gallery-arrows {
+        font-size: 20px;
+        padding: 0 10px;
+        color: #fff;
+        visibility: visible;
+    }
+    /* minuaturas */
+    ._2c50p{
+        display: none;
     }
 }
 
