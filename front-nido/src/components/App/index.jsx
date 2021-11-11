@@ -15,6 +15,10 @@ function App() {
     const [toggle, setToggle] = useState();
     const handleChangePageHome = () => {
         setToggle(!toggle);
+        const links = document.querySelectorAll(".header__buttons a")
+        links.forEach(link => {
+            link.classList.remove("hidden")
+        })
     }
     function submitForm() {
         setIsSubmitted(true);
@@ -46,8 +50,8 @@ function App() {
                     }
                 </Route>
                 <Route exact path="/product">
-                    <ProductPage/>
-                </Route>    
+                    <ProductPage />
+                </Route>
             </Switch>
             <Footer />
             <MenuMobile />

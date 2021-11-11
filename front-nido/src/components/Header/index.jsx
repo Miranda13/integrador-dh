@@ -6,8 +6,14 @@ import { Button } from "../Button";
 import "./Header.css";
 import { UserLogged } from "../UserLogged";
 import useLocalStorage from "../../hooks/useLocalStorage";
-function Header({ onClick, handleChangePageHome }) {
+function Header({ handleChangePageHome }) {
     const [user, setUser] = useLocalStorage("user", null);
+    const handleClickButton = (e) => {
+        const links = document.querySelectorAll(".header__buttons a")
+        links.forEach(link => {
+            link.getAttribute("id") === e.target.getAttribute("id") ? link.classList.add("hidden") : link.classList.remove("hidden")
+        })
+    }
     return (
         <div className="header">
             <div className="identity">
@@ -22,19 +28,19 @@ function Header({ onClick, handleChangePageHome }) {
                 {
                     user !== null && user !== undefined ?
                         <>
-                            <UserLogged />
+                            {window.innerWidth >= 760 && <UserLogged />}
                         </>
                         :
                         <>
                             <Button
                                 name={"Iniciar Sesión"}
                                 id={'login'}
-                                onClick={onClick}
+                                event={handleClickButton}
                             />
                             <Button
                                 name={"Crear cuenta"}
                                 id={'signin'}
-                                onClick={onClick}
+                                event={handleClickButton}
                             />
 
                         </>

@@ -5,6 +5,7 @@ import getData from "../assets/js/getData";
 export default function Home({ toggle }) {
     const [products, setProducts] = useState([]);
     const [categorys, setCategorys] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     // const [productsFilter, setProductsFilter] = useState([]);
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -28,6 +29,7 @@ export default function Home({ toggle }) {
         getData("http://localhost:8080/api/v1/category")
             .then((data) => {
                 setCategorys(data);
+                setIsLoading(false);
             })
         // setProductsFilter(db)
     }, [])
@@ -42,7 +44,7 @@ export default function Home({ toggle }) {
 
         <div className="wrapper">
             <SearchForm handleSubmit={handleSubmit} />
-            <Content handleClickCategory={handleClickCategory} products={products} categorys={categorys} />
+            <Content handleClickCategory={handleClickCategory} products={products} categorys={categorys} isLoading={isLoading} />
         </div>
     );
 }

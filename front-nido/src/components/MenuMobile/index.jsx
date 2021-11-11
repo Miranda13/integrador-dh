@@ -15,7 +15,7 @@ class MenuMobile extends React.Component {
             <ul>
               <li><a href="/signin">Crear Cuenta</a></li>
               <hr />
-              <li><a href="#">Iniciar Sesión</a></li>
+              <li><a href="/login">Iniciar Sesión</a></li>
             </ul>
 
             <div className="menu_sidebar__icon">

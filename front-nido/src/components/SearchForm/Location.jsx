@@ -6,7 +6,6 @@ function Location({ zIndexCalendar }) {
     const [showList, setShowList] = useState(false);
     const handleListLocation = (e) => {
         setShowList(!showList);
-        zIndexCalendar();
     }
     const handleSelectLocation = (e, id) => {
         const title_location = document.querySelector(".container-location__title");
@@ -26,6 +25,7 @@ function Location({ zIndexCalendar }) {
 
             if (e.target !== inputLocation && e.target !== list && e.target !== titleLocation) {
                 setShowList(false);
+                zIndexCalendar(1);
             }
         })
     }, [])
@@ -38,6 +38,7 @@ function Location({ zIndexCalendar }) {
         } else {
             list.classList.add("hideItem");
         }
+        zIndexCalendar(showList ? -1 : 1);
     }, [showList])
     return (
         <div className="container-location" onClick={handleListLocation}>
