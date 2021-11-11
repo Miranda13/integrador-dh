@@ -103,17 +103,27 @@
 }
 .product__features-content{
     display: flex;
-    /* flex-direction: row; */
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     width: 100%;  
     flex-wrap: wrap; 
 }
-
-.product__features-amenities-item {
-     width:40vw;   
+.product__features-amenities{
+    display: flex;
+    flex-direction: columm;
+    justify-content: flex-start;
+    align-items: top;
+    width: 100%;
+    flex-wrap: wrap;
 }
-
+.product__features-amenities-item {
+     width:45vw;
+     padding-bottom:5px;   
+}
+.product__features-amenities-item  img{
+    margin-right: 5px;
+}
 .product__availability{
     padding:10px;
     background-color: #ececef;
