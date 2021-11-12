@@ -1,24 +1,26 @@
-import React from "react";
-
+import { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 import Product from "../components/Product";
-
-
-class ProductPage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-
-            <React.StrictMode>
-                <div className="wrapper">
-                    <div className="container-producto">
-                       <Product />       
-                    </div>
+import getData from "../assets/js/getData";
+export default function ProductPage() {
+    const { id } = useParams();
+    const [list, setList] = useState({});
+    useEffect(() => {
+        fetch(`http://localhost:8080/api/v1/product/${id}`)
+            .then(res => res.json())
+            .then(data => setList(data))
+    }, [])
+    useEffect(() => {
+        console.log(list)
+    }, [list])
+    return (
+        <>
+            <div className="wrapper">
+                <div className="container-producto">
+                    <Product list={list} />
                 </div>
-            </React.StrictMode>
-        );
-    }
+            </div>
+        </>
+    );
 }
 
-export {ProductPage};

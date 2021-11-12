@@ -8,13 +8,17 @@ import { Header } from '../Header';
 import { Footer } from '../Footer';
 import MenuMobile from "../MenuMobile";
 import { useEffect } from "react/cjs/react.development";
-import { ProductPage } from "../../pages/ProductPage";
+import ProductPage from "../../pages/ProductPage";
 
 function App() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [toggle, setToggle] = useState();
     const handleChangePageHome = () => {
         setToggle(!toggle);
+        const links = document.querySelectorAll(".header__buttons a")
+        links.forEach(link => {
+            link.classList.remove("hidden")
+        })
     }
     function submitForm() {
         setIsSubmitted(true);
@@ -45,9 +49,9 @@ function App() {
                         </>
                     }
                 </Route>
-                <Route exact path="/product">
-                    <ProductPage/>
-                </Route>    
+                <Route exact path="/product/:id">
+                    <ProductPage />
+                </Route>
             </Switch>
             <Footer />
             <MenuMobile />
