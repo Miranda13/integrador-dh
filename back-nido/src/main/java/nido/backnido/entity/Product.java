@@ -48,13 +48,11 @@ public class Product {
     @ManyToOne
     @JoinColumn(name="categories_category_id", referencedColumnName = "categoryId")
     private Category category;
-/*
-    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    
+    /*@OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     @JsonIgnore
-    @JoinColumn(name = "products_product_id")
     private Set<Image> images;
 */
-    // Add getters and setters
     @JoinTable(
             name = "products_has_features",
             joinColumns = { @JoinColumn(name = "products_product_id")},

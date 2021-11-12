@@ -2,14 +2,14 @@ import { useHistory } from "react-router-dom";
 
 function Card(props) {
     const { card } = props;
-    /*const history = useHistory();
-    const handleClickProduct = () =>{
-        history.push(`/product/${card.id}`);
-    }*/
+    const history = useHistory();
+    const handleClickProduct = () => {
+        history.push(`/product/${card.productId}`);
+    }
     return (
         <div className="card-list">
             <div className="card-list__image">
-                <img src="https://alvearpalace.com/resources/img/slide1.jpg" alt="image card" className="card-list__image__jpg" />
+                <img src={card.images[0].url} alt={card.images[0].title} className="card-list__image__jpg" />
                 <i className="card-list__image__icon fas fa-heart"></i>
             </div>
             <div className="card-list__info">
@@ -40,7 +40,7 @@ function Card(props) {
                     <i className="card-list__info__amenities__icon fas fa-swimmer"></i>
                 </div>
                 <p className="card-list__info__description">{card.description} <span className="card-list__info__description__more">más..</span> </p>
-                <button className="card-list__info__button"/*onClick={handleClickProduct}*/>Ver más</button>
+                <button className="card-list__info__button" onClick={handleClickProduct}>Ver más</button>
             </div>
         </div>
     )

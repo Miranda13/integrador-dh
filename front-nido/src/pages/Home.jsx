@@ -6,6 +6,7 @@ export default function Home({ toggle }) {
     const [products, setProducts] = useState([]);
     const [categorys, setCategorys] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isLoadingProducts, setIsLoadingProducts] = useState(true);
     // const [productsFilter, setProductsFilter] = useState([]);
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,6 +26,7 @@ export default function Home({ toggle }) {
         getData("http://localhost:8080/api/v1/product")
             .then((data) => {
                 setProducts(data);
+                setIsLoadingProducts(false);
             })
         getData("http://localhost:8080/api/v1/category")
             .then((data) => {
@@ -44,7 +46,7 @@ export default function Home({ toggle }) {
 
         <div className="wrapper">
             <SearchForm handleSubmit={handleSubmit} />
-            <Content handleClickCategory={handleClickCategory} products={products} categorys={categorys} isLoading={isLoading} />
+            <Content handleClickCategory={handleClickCategory} products={products} categorys={categorys} isLoading={isLoading} isLoadingProducts={isLoadingProducts} />
         </div>
     );
 }

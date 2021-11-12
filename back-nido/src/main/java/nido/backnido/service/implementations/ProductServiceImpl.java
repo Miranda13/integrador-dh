@@ -95,8 +95,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDTO> findProductByCategory(String title) {
         List<ProductDTO> productResponse = new ArrayList<>();
+        ProductDTO productdto;
         for (Product product : productRepository.findByCategory_TitleContaining(title)) {
-            productResponse.add(modelMapper.map(product, ProductDTO.class));
+        	productdto = modelMapper.map(product, ProductDTO.class);
+        	productdto.setImages(imageService.findByProductId(product));
+            productResponse.add(productdto);
         }
 
         return productResponse;
