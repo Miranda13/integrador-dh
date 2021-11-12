@@ -1,0 +1,119 @@
+ .container-location {
+     padding: 0px;
+     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+     border: transparent;
+     border-radius: 6px;
+     background-color: var(--light-medium-color);
+     width: 100%;
+     height: 40px;
+     position: relative;
+     cursor: pointer;
+     z-index: 10;
+ }
+
+ .container-location__title::before {
+     content: "\f3c5";
+     font-size: var(--font-size-icon);
+     font-family: 'Font Awesome 5 free';
+     color: grey;
+     position: absolute;
+     margin-left: -30px;
+     margin-top: -4px;
+    
+    
+ }
+
+ .container-location__title {
+     color: grey;
+     font-size: var(--font-size-3);
+     font-family: var(--main-font-family);
+     margin-top: .7rem;
+     margin-inline-start: 2.4rem;
+ }
+
+ .container-location__list__item {
+     color: var(--medium-color);
+     font-family: var(--main-font-family);
+     font-size: var(--font-size-3);
+     margin: 10px;
+     margin-top: 10px;
+     margin-bottom: 10px;
+ 
+ }
+
+ .container-location__list__item__a {
+     text-decoration: none;
+     color: var(--dark-color);
+     font-family: var(--main-font-family);
+     font-size: var(--font-size-3);
+ }
+
+ .container-location .hideItem {
+     display: none;
+ }
+
+ .container-location>.container-location__list {
+     list-style: none;
+     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+    }
+
+ .container-location__list {
+     display: block;
+     background: var(--light-color);
+     border-top: 1px solid var(--main-color);
+     border-radius: unset;
+     border-bottom-left-radius: 0.3rem;
+     border-bottom-right-radius: 0.3rem;
+     border: 1px solid #aeaeae;
+     margin-top: 15px;
+ }
+
+ .container-location__list>.container-location__list__item {
+     padding: 5px;
+     border-bottom: 1px solid var(--main-color);
+     position: relative;
+     padding-inline-start: 2.4rem;
+ }
+
+ .container-location__list>.container-location__list__item:nth-last-child(1) {
+     border-bottom: unset;
+ }
+
+ .container-location__list>.container-location__list__item:hover {
+     background: var(--light-medium-color);
+ }
+
+ .container-location__list>.container-location__list__item>i {
+     font-size: 1.6rem;
+     color: grey;
+     position: absolute;
+     top: 10px;
+     left: 2px;
+ }
+
+ 
+ 
+ /*IPAD*/
+@media (min-width: 760px) and (max-width: 1360px) {
+    
+ .container-location {
+    width: 34vw;
+    height: 45px;
+}
+.container-location__title::before {
+    top: .2rem;    
+}
+.container-location__list {
+    margin-top: 20px;
+}
+
+}
+
+/*DESKTOP*/
+
+@media (min-width: 1361px) {
+    .container-location{
+        width: 33vw;
+    }
+        
+}

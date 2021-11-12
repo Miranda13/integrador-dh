@@ -1,0 +1,100 @@
+    .container{
+        display: flex; 
+        align-content: center; 
+        height: auto;
+        width: 100vw;
+        margin-top: 80px;
+        margin-bottom: 58px;
+        padding: 2vh;
+        background-color: var(--light-medium-color);
+    }
+    .section-title{
+        color: var(--main-color);
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    .form{
+        width: 100vw;
+        display: flex;
+        justify-items: center;
+        align-content: center;
+        font-size: var(--font-size-4);
+    }
+
+    .form__label, .form__input{
+        display: block;
+        padding-top: 20px;
+    }
+
+    .form_error{
+        margin: 0px;
+        color: red;
+        font-size: var(--font-size-5);
+        display: block; 
+        text-align: end;
+    }
+   
+    .form__input{
+        height: 40px;
+        margin-top: 5px;
+        max-width: 65vw /*40vh*/
+    } 
+
+    /*
+    #form__button{
+        margin: 5px;
+    }*/
+
+    .validation-errors {
+        background-color: #FFE1E1;
+        border: 1px solid #FF0000;
+    }
+
+    .register-button{
+        width: 65vw;
+        height: 40px;
+        margin-top: 20px;
+    }
+
+@media (min-width: 761px) and (max-width: 1360px) {
+    
+    .form__input{
+        height: 40px;
+        max-width: 47vw;
+    }
+    .register-button{
+        width: 47vw;
+    }
+}
+@media (min-width:1361px) {
+    .form{
+        padding-top: 10px;
+    }
+    .section-title{
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+    .form__body{
+        width: 448px;
+    }
+    .form__label, .form__input{
+        padding-top: 0px;
+        margin: 10px 0px 10px 0px;
+    }
+
+    .form__input{
+        height: 40px;
+        max-width: 448px;
+    } 
+  .form__body--two{
+      display: flex;
+      justify-content: space-between;
+  }
+    #name, #surname{
+        display: inline;      
+        width: 218px;  
+    }
+    .register-button{
+        width: 13vw;
+    }
+}
