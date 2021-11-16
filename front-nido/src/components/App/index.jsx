@@ -27,9 +27,7 @@ function App() {
         <BrowserRouter>
             <Header handleChangePageHome={handleChangePageHome} />
             <Routes>
-                <Route exact path="/" element = {<Home toggle={toggle} />}>
-                    
-                </Route>
+                <Route exact path="/" element = {<Home toggle={toggle} />} />
                 <Route exact path="/login" element =
 
                     {!isSubmitted ?
@@ -38,8 +36,7 @@ function App() {
                         <>
                             <Navigate to="/" />
                         </>
-                    } >
-                </Route>
+                    } />
                 <Route exact path="/signin" element =
                     {!isSubmitted ?
                         <SigninPage submitForm={submitForm} />
@@ -47,11 +44,8 @@ function App() {
                         <>
                             <Navigate to="/" />
                         </>
-                    } >
-                </Route>
-                <Route exact path="/product/:id" element = {<ProductPage />}>
-                    
-                </Route>
+                    } />
+                <Route exact path="/product/:id" element = {<ProductPage />} />
             </Routes>
             <Footer />
             <MenuMobile />
