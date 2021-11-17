@@ -52,6 +52,9 @@ function App() {
                 <Route exact path="/product/:id">
                     <ProductPage />
                 </Route>
+                <Route exact path="/product/:id/booking">
+                    <BookingPage/>
+                </Route>
             </Switch>
             <Footer />
             <MenuMobile />

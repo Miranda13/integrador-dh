@@ -12,26 +12,7 @@
     justify-content: flex-start;
     /* margin-bottom: 80px; */
 }
-.product__header{
-    background-color: var(--medium-color);
-    color: var(--light-color);
-    height: 60px;   
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding:5px 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,2,0.5);
-}
-.product__header p{
-    text-transform: uppercase;
-    font-size: var(--font-size-5);
-}
 
-.product__header h2{
-    color: var(--light-color);
-    font-size: var(--font-size-1);
-    font-weight: var(--font-weight-bold);
-}
 .product__ubication-ratings{
     padding:5px 10px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,2,0.5);
@@ -40,26 +21,11 @@
     justify-content: space-between;
     align-items: center;
 }
-.product__ubication{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: left;
-    width: 50%;
-}
-.product__ubication{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 50%;
-}
+
 .product__ubication-map  p{
     font-weight: var(--font-weight-bold);
 }
 
-.product__ubication i{
-  margin-right: 5px;
-}
 .product__ratings{
     display: flex;
     flex-direction: row;
@@ -68,9 +34,6 @@
     width: 50%;
     align-items: center;
  
-}
-.product__ubication-back{
-    margin-right: 5px;
 }
 
 .product__ratings-clasification{
@@ -162,53 +125,15 @@
     /* margin: 10px; */
 }
 
-.product__toknow{
- padding:10px;
- background-color: var(--light-color);
-}
-
 #mapa{
     border-radius: 20px;
 }
-.product__toknow-content{
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-}
-.product__toknow-column{
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -o-pre-wrap;
-    width: 80vw;
-    margin: 10px 0;
-    line-height: 1.5;
-}
+
 .back{
     color: #fff;
 }
-.product__toknow-column p{
-    max-width: 350px;
-}
-@media (min-width: 760px) and (max-width: 1359px){
-    .product__toknow-content{
-        display: flex;
-        justify-content: flex-start;
-    }
-    .product__toknow-column{
-        width: 45vw;
-    
-    }
-}
+
 @media (min-width: 1360px)  {
-    .product__toknow-content{
-        display: flex;
-        justify-content: space-between;
-    }
-    .product__toknow-column{
-        width: 20vw;
-      
-       
-    }
     /* .product__features-amenities{
         display: flex;
         flex-direction: columm;
@@ -221,7 +146,4 @@
          width:20vw;
          padding-bottom:5px;   
     }
-
-
-
 }
