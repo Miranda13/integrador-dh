@@ -10,7 +10,7 @@
     width: 250px;
 }
 
-.user-logged__close a{ 
+.user-logged__close > a{ 
     color: var(--dark-color);
     font-size: var(--font-size-icon);
     font-weight: var(--font-weight-bold);
@@ -45,7 +45,7 @@
     margin: 0 10px;
     
 }
-.user-logged__container__name span {
+.user-logged__container__name > span {
     color: var(--medium-color);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-3);

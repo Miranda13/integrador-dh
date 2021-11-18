@@ -16,7 +16,7 @@ import Gallery from "./Gallery";
 import { useState, useEffect } from 'react';
 import db from "./product.json";
 import HeaderProduct from "../HeaderProduct";
-import Policies from "../Policy";
+import Policy from "../Policy";
 
 
 export default function Product({ list }) {
@@ -87,14 +87,14 @@ export default function Product({ list }) {
                     <hr />
                     <p>{list.location?.city}, {list.location?.country}</p>
                     <div id={"mapa"}>
-                        {/* <Map
+                      {/*  <Map
                             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${credentials.mapsKey}`}
                             containerElement={<div style={{ height: '394px' }} />}
                             mapElement={<div style={{ height: `100%` }} />}
                             loadingElement={<div style={{ height: `100%` }} />}
                             lat={parseFloat(list.location?.latitude)}
                             lng={parseFloat(list.location?.longitude)}
-                        /> */}
+                        />*/}
                     </div>
                 </div>
                 <Policy />

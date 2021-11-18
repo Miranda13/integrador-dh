@@ -1,6 +1,9 @@
 h2{
-    color: var(--main-color);
     position: relative;
+}
+
+.form-login{
+    color: var(--main-color);
 }
 
 .form{

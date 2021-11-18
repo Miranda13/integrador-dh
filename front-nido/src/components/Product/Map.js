@@ -1,12 +1,12 @@
-// import React    from 'react';
-// import{
-//     GoogleMap,
-//     withScriptjs,
-//     withGoogleMap,
-//     Marker, InfoWindow
-// } from 'react-google-maps';
-// import tv from "../../assets/images/icons/tv.svg";
-// // const lat = this.props.lat;
+/*import React    from 'react';
+import{
+    GoogleMap,
+    withScriptjs,
+    withGoogleMap,
+    Marker, InfoWindow
+} from 'react-google-maps';
+import tv from "../../assets/images/icons/tv.svg";
+// const lat = this.props.lat;
 
 // const Map = (props) => {
 // const pos = {
@@ -31,6 +31,7 @@
 // };
 // // loadingElement={<div style={{ height: `100%` }} />}
 
-// export default withScriptjs(
-//     withGoogleMap(Map)
-//     );
+export default withScriptjs(
+    withGoogleMap(Map)
+    );
+    */

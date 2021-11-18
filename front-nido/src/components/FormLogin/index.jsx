@@ -8,7 +8,7 @@ export default function FormLogin({ submitForm }) {
     }
     const { handleChange, values, handleSubmit, errors } = useForm(objectValues, submitForm, validate);
     return (
-        <> <h2>Iniciar sesión</h2>
+        <> <h2 className="form-login">Iniciar sesión</h2>
             <form onSubmit={handleSubmit} className="form">
 
                 {errors.auth && <span className="form_error">{errors.auth}</span>}

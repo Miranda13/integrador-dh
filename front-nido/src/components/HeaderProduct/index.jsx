@@ -1,5 +1,4 @@
-
-import "../HeaderProduct.css";
+import "./HeaderProduct.css";
 
 function HeaderProduct ({ list }) {
   return(
