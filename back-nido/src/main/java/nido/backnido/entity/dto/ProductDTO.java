@@ -27,8 +27,6 @@ public class ProductDTO {
     private String address;
     private Double latitude;
     private Double longitude;
-    private Boolean availability;
-    private Integer score;
     private Location location;
     private Category category;
     private Set<Image> images;
