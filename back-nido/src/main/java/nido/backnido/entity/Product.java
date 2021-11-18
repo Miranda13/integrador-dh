@@ -18,8 +18,6 @@ import java.util.Set;
 @ToString
 public class Product {
 
-    //    TODO Faltan las relaciones
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
@@ -68,5 +66,8 @@ public class Product {
     )
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Feature> features;
+
+//    @OneToMany(mappedBy = "products",cascade = CascadeType.ALL)
+//    private Set<Reserve> reserves;
 
 }
