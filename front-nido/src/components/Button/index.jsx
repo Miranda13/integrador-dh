@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import "./Button.css";
 
 class Button extends React.Component {
-    handleClick = e => {
-        // console.log("location='."+e.target.id+"'");
-    }
 
     render() {
         return (

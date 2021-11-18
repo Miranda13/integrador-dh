@@ -1,9 +1,12 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { SearchForm } from "../components/SearchForm";
 import Content from "../components/Content";
-import db from "../components/Recomendations/cards.json";
+import getData from "../assets/js/getData";
 export default function Home({ toggle }) {
     const [products, setProducts] = useState([]);
+    const [categorys, setCategorys] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isLoadingProducts, setIsLoadingProducts] = useState(true);
     // const [productsFilter, setProductsFilter] = useState([]);
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,10 +25,16 @@ export default function Home({ toggle }) {
             })
     }
     useEffect(() => {
-        // fetch("API")
-        //     .then(response => response.json())
-        //     .then(data => setProducts(data.results));
-        setProducts(db);
+        getData("http://localhost:8080/api/v1/product")
+            .then((data) => {
+                setProducts(data);
+                setIsLoadingProducts(false);
+            })
+        getData("http://localhost:8080/api/v1/category")
+            .then((data) => {
+                setCategorys(data);
+                setIsLoading(false);
+            })
         // setProductsFilter(db)
     }, [])
     // useEffect(() => {
@@ -34,13 +43,16 @@ export default function Home({ toggle }) {
     // }, [products])
     useEffect(() => {
         // setProductsFilter([]);
-        setProducts(db);
+        getData("http://localhost:8080/api/v1/product")
+            .then((data) => {
+                setProducts(data);
+            })
     }, [toggle])
     return (
 
         <div className="wrapper">
             <SearchForm handleSubmit={handleSubmit} />
-            <Content handleClickCategory={handleClickCategory} products={products} />
+            <Content handleClickCategory={handleClickCategory} products={products} categorys={categorys} isLoading={isLoading} isLoadingProducts={isLoadingProducts} />
         </div>
     );
 }
