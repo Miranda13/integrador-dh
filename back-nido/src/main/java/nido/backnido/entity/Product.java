@@ -31,13 +31,21 @@ public class Product {
     @NotNull
     @NotBlank
     private String description;
+    @NotNull
+    @NotBlank
+    private String address;
+    @NotNull
+    private Double latitude;
 
+    @NotNull
+    private Double longitude;
+    /*
     @NotNull
     private Boolean availability;
 
     @NotNull
     private Integer score;
-
+*/
 
     @NotNull
     @ManyToOne

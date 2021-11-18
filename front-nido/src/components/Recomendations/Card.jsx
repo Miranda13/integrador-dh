@@ -1,10 +1,10 @@
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Card(props) {
     const { card } = props;
-    const history = useHistory();
+    const history = useNavigate();
     const handleClickProduct = () => {
-        history.push(`/product/${card.productId}`);
+        history(`/product/${card.productId}`);
     }
     return (
         <div className="card-list">
