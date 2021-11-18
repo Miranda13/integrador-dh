@@ -31,12 +31,12 @@ public class Location {
     @NotBlank
     private String country;
 
-    @NotNull
+    /*@NotNull
     private Double latitude;
 
     @NotNull
     private Double longitude;
-
+*/
     @OneToMany(mappedBy = "location",cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Product> products;

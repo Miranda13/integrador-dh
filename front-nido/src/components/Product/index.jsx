@@ -1,11 +1,8 @@
 import React from "react";
-import Map from "./Map";
 // import CalendarReserve from "../components/CalendarReserve";
 import credentials from "./credentials";
 import CalendarReserve from "../CalendarReserve";
 import { Link } from "react-router-dom";
-// import ReactGallery from 'reactive-blueimp-gallery'; 
-import Slider from 'react-lightbox-slider';
 import "./Product.css";
 import wifi from "../../assets/images/icons/wifi.svg";
 import paw from "../../assets/images/icons/paw.svg";
@@ -23,10 +20,14 @@ import Policies from "../Policy";
 
 
 export default function Product({ list }) {
+    // const history = useNavigate();
     const [listProduct, setListProduct] = useState(list.images);
     useEffect(() => {
         setListProduct(list.images);
     }, [list])
+    // const handleBack = () => {
+    //     history.goBack();
+    // }
     return (
         <React.StrictMode>
             <div className="product-content">
@@ -86,20 +87,21 @@ export default function Product({ list }) {
                     <hr />
                     <p>{list.location?.city}, {list.location?.country}</p>
                     <div id={"mapa"}>
-                        <Map
+                        {/* <Map
                             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${credentials.mapsKey}`}
                             containerElement={<div style={{ height: '394px' }} />}
                             mapElement={<div style={{ height: `100%` }} />}
                             loadingElement={<div style={{ height: `100%` }} />}
                             lat={parseFloat(list.location?.latitude)}
                             lng={parseFloat(list.location?.longitude)}
-                        />
+                        /> */}
                     </div>
                 </div>
                 <Policy />
             </div>
 
         </React.StrictMode>
+
     )
 }
 
