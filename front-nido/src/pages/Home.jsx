@@ -7,16 +7,19 @@ export default function Home({ toggle }) {
     // const [productsFilter, setProductsFilter] = useState([]);
     const handleSubmit = (e) => {
         e.preventDefault();
-        const location= document.querySelector(".container-location__title");
-       /* console.log(location.textContent.split(", "));*/
-       const locationFilter = db.filter((product)=>{
-           return product.location.includes(location.textContent)
-       })
-       setProducts(locationFilter);
+        const location = document.querySelector(".container-location__title");
+        getData(`http://localhost:8080/api/v1/location/${location.getAttribute("id")}`)
+            .then((location) => {
+                setProducts(location.products);
+                setIsLoadingProducts(false);
+            })
     }
     const handleClickCategory = (e) => {
-        const productsFilter = db.filter((product) => product.category.toLowerCase() === e.target.id.toLowerCase());
-        setProducts(productsFilter);
+        getData(`http://localhost:8080/api/v1/product/category?name=${e.target.id}`)
+            .then((data) => {
+                setProducts(data);
+                setIsLoadingProducts(false);
+            })
     }
     useEffect(() => {
         // fetch("API")
@@ -25,6 +28,10 @@ export default function Home({ toggle }) {
         setProducts(db);
         // setProductsFilter(db)
     }, [])
+    // useEffect(() => {
+    //     setI
+    //     setIsLoadingProducts(true);
+    // }, [products])
     useEffect(() => {
         // setProductsFilter([]);
         setProducts(db);
