@@ -1,20 +1,23 @@
 import './Location.css';
 import { useState, useEffect } from 'react';
-function Location({ zIndexCalendar, handleLocation }) {
+import getData from '../../assets/js/getData';
+function Location({ zIndexCalendar }) {
+    const [locations, setLocations] = useState([]);
     const [showList, setShowList] = useState(false);
     const handleListLocation = (e) => {
         setShowList(!showList);
-        zIndexCalendar();
     }
-    const handleSelectLocation = (e) => {
+    const handleSelectLocation = (e, id) => {
         const title_location = document.querySelector(".container-location__title");
         if (e.target.childNodes[1]?.textContent !== undefined && e.target.childNodes[3]?.textContent !== undefined) {
             title_location.innerHTML = "" + e.target.childNodes[1]?.textContent + ", " + e.target.childNodes[3]?.textContent;
             title_location.style.color = "var(--dark-color)"
-            handleLocation(e);
+            title_location.setAttribute("id", id);
         }
     }
     useEffect(() => {
+        getData("http://localhost:8080/api/v1/location")
+            .then(data => setLocations(data))
         window.addEventListener("click", (e) => {
             const inputLocation = document.querySelector(".container-location");
             const titleLocation = document.querySelector(".container-location__title");
@@ -22,6 +25,7 @@ function Location({ zIndexCalendar, handleLocation }) {
 
             if (e.target !== inputLocation && e.target !== list && e.target !== titleLocation) {
                 setShowList(false);
+                zIndexCalendar(1);
             }
         })
     }, [])
@@ -34,15 +38,24 @@ function Location({ zIndexCalendar, handleLocation }) {
         } else {
             list.classList.add("hideItem");
         }
+        zIndexCalendar(showList ? -1 : 1);
     }, [showList])
     return (
         <div className="container-location" onClick={handleListLocation}>
-            <h2 className="container-location__title" >¿A dónde vamos?</h2>
+            <h2 className="container-location__title">¿A dónde vamos?</h2>
             <ul className="container-location__list hideItem">
-                <li className="container-location__list__item" onClick={handleSelectLocation}><i className="fas fa-map-marker-alt"></i><strong>San Carlos de Bariloche</strong><br />Argentina</li>
-                <li className="container-location__list__item" onClick={handleSelectLocation}><i className="fas fa-map-marker-alt"></i><strong>Buenos Aires</strong><br />Argentina</li>
-                <li className="container-location__list__item" onClick={handleSelectLocation}><i className="fas fa-map-marker-alt"></i><strong>Mendoza</strong><br />Argentina</li>
-                <li className="container-location__list__item" onClick={handleSelectLocation}><i className="fas fa-map-marker-alt"></i><strong>Córdoba</strong><br />Argentina</li>
+                {
+                    locations.map((location, index) => {
+                        return (
+                            <li className="container-location__list__item" key={index} onClick={(e) => { handleSelectLocation(e, location.locationId) }}>
+                                <i className="fas fa-map-marker-alt"></i>
+                                <span id="city" className="container-location__list-name"><strong>{location.city}</strong></span>
+                                <br />
+                                <span className="container-location__list-country">{location.country}</span>
+                            </li>
+                        )
+                    })
+                }
             </ul>
         </div >
     )
