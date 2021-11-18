@@ -48,3 +48,6 @@
 [2021-11-11 09:50:45] [ ERROR] [ExceptionGlobalHandler:16] Error al crear producto, verifique la información
 [2021-11-11 09:51:46] [ ERROR] [ExceptionGlobalHandler:16] Error al crear producto, verifique la información
 [2021-11-11 11:29:07] [ ERROR] [ExceptionGlobalHandler:16] Producto no encontrado, por favor compruebe
+[2021-11-18 09:19:20] [ ERROR] [ExceptionGlobalHandler:16] Error al buscar producto, verifique si el producto existe
+[2021-11-18 09:22:56] [ ERROR] [ExceptionGlobalHandler:22] Errores encontrados, por favor compruebe e intente nuevamente
+[2021-11-18 09:24:46] [ ERROR] [ExceptionGlobalHandler:22] Errores encontrados, por favor compruebe e intente nuevamente
