@@ -85,9 +85,13 @@ export default function Product({ list }) {
                 </div>
 
                 <div className="product__availability">
-                    <h2>Fechas disponibles</h2><hr />
+                    <h2>Fechas disponibles</h2>
 
                     <CalendarReserve status="disabled" />
+                    <div className="product__availability-reserve">
+                        <h3>Agregá tus fechas de viaje para obtener precios exactos</h3>
+                        <button className="product__availability-reserve-button button-search">Iniciar reserva</button>
+                    </div>
                 </div>
                 <div className="product__ubication-map">
                     <h2>¿Dónde vas a estar?</h2>
