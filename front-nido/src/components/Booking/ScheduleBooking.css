@@ -1,0 +1,162 @@
+.booking-schedule{
+    width: 93vw;
+    background-color: var(--light-color);
+    border: 1px solid #DFE4EA;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    border-radius: 8px;
+    padding: 4vw;
+}
+
+.booking-schedule-join{
+    display: flex;
+}
+
+.booking-schedule-join > p{
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-3);
+    padding-left: 10px;
+    color: var(--medium-color);
+}
+
+.booking-schedule > p{
+    padding-top: 20px;
+    font-size: var(--font-size-4);
+    color: var(--medium-color);
+}
+
+.booking-schedule-icon{
+    font-size: 20px;
+}
+
+.booking-schedule-time{
+    position: relative;
+    width: 85vw;
+}
+
+.booking-schedule-time-input{
+    border: 1px solid #fff;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); 
+    height: 40px;
+    margin-top: 10px;
+    background-color: var(--light-color);
+}
+
+.booking-schedule-time-icon{
+    display: absolute;
+    margin-left: -40px;
+    color: var(--main-color);
+}
+
+.container-booking-time-item{
+    display: none;/*eliminar esto una vez que jhoni te de una mano :D*/
+    background-color: var(--light-color);
+    border: 1px solid #fff;
+    border-radius: 6px;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); 
+    width: 26vw;
+    height: 26vw;
+    margin-top: 10px;
+    padding: 10px;
+    color: var(--medium-color);
+    overflow: auto;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none; /*Firefox*/
+    
+}
+.container-booking-time-item::-webkit-scrollbar {
+    display: none; /*Safari and chrome*/
+}
+
+.container-booking-time-item>ul{
+    padding: 5px 0px;  
+}
+
+
+/*IPAD*/
+@media (min-width: 760px) and (max-width: 1359px){
+    .booking-schedule{
+        width: 95vw;
+        padding: 3vw;
+    }
+    .booking-schedule-time{
+        width: 45vw;
+    }
+}
+
+/*DESKTOP*/
+@media (min-width: 1360px){
+    .booking-schedule{
+        width: 55vw;
+        height: 9vw;
+        background-color: var(--light-color);
+        border: 1px solid #DFE4EA;
+        box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+        border-radius: 8px;
+        padding: 1.2vw;
+    }
+    
+    .booking-schedule-join{
+        display: flex;
+    }
+    
+    .booking-schedule-join > p{
+        font-weight: var(--font-weight-bold);
+        font-size: var(--font-size-3);
+        padding-left: 10px;
+        color: var(--medium-color);
+    }
+    
+    .booking-schedule > p{
+        padding-top: 20px;
+        font-size: var(--font-size-4);
+        color: var(--medium-color);
+    }
+    
+    .booking-schedule-icon{
+        font-size: 20px;
+    }
+    
+    .booking-schedule-time{
+        position: relative;
+    }
+    
+    .booking-schedule-time-input{
+        border: 1px solid #fff;
+        box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); 
+        height: 40px;
+        width: 26vw;
+        margin-top: 10px;
+        background-color: var(--light-color);
+    }
+    
+    .booking-schedule-time-icon{
+        display: absolute;
+        margin-left: -30px;
+        color: var(--main-color);
+    }
+    
+    .container-booking-time-item{
+        display: none;/*eliminar esto una vez que jhoni te de una mano :D*/
+        background-color: var(--light-color);
+        border: 1px solid #fff;
+        border-radius: 6px;
+        box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2); 
+        width: 26vw;
+        height: 26vw;
+        margin-top: 10px;
+        padding: 10px;
+        color: var(--medium-color);
+        overflow: auto;
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none; /*Firefox*/
+        
+    }
+    .container-booking-time-item::-webkit-scrollbar {
+        display: none; /*Safari and chrome*/
+    }
+    
+    .container-booking-time-item>ul{
+        padding: 5px 0px;  
+    }
+    
+}

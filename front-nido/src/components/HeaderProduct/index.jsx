@@ -8,7 +8,7 @@ function HeaderProduct ({ list }) {
             <h2>{list.name}</h2>
         </div>
         <div className="product__ubication-back">
-            <i class="fas fa-chevron-left"></i>
+            <i class="product__ubication-back-icon fas fa-chevron-left"></i>
         </div>
     </div>
 )  
