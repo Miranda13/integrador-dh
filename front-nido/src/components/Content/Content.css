@@ -37,7 +37,7 @@
     flex-wrap: wrap;
 }
 
-h2 {
+.content_category-title {
     color: var(--medium-color);
     font-size: var(--font-size-1);
     font-weight: var(--font-weight-bold);

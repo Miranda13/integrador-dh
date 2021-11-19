@@ -45,7 +45,7 @@
     margin: 0 10px;
     
 }
-.user-logged__container__name span {
+.user-logged__container__name  span {
     color: var(--medium-color);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-3);
