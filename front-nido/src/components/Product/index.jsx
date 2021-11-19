@@ -15,12 +15,13 @@ import product from "./product.json";
 import Gallery from "./Gallery";
 import { useState, useEffect } from 'react';
 import db from "./product.json";
+import MapView from "./Map";
+import "./Map.css"
 // import { useNavigate } from "react-router-dom";
 export default function Product({ list }) {
-    // const history = useNavigate();
     const [listProduct, setListProduct] = useState(list.images);
     useEffect(() => {
-        setListProduct(list.images);
+        setListProduct(list.images);     
     }, [list])
     // const handleBack = () => {
     //     history.goBack();
@@ -97,16 +98,11 @@ export default function Product({ list }) {
                     <h2>¿Dónde vas a estar?</h2>
                     <hr />
                     <p>{list.location?.city}, {list.location?.country}</p>
-                    <div id={"mapa"}>
-                        {/* <Map
-                            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${credentials.mapsKey}`}
-                            containerElement={<div style={{ height: '394px' }} />}
-                            mapElement={<div style={{ height: `100%` }} />}
-                            loadingElement={<div style={{ height: `100%` }} />}
-                            lat={parseFloat(list.location?.latitude)}
-                            lng={parseFloat(list.location?.longitude)}
-                        /> */}
-                    </div>
+                   
+                    {list.longitude!==undefined && list.latitude!==undefined &&
+                     <div id={"mapa"}>
+                        <MapView   lat={parseFloat(list.longitude)} lng={parseFloat(list.latitude)} category={list.category?.title} productName={list.name}/>                  
+                    </div>}
                 </div>
 
                 <div className="product__toknow">
