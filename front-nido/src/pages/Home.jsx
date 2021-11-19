@@ -14,12 +14,14 @@ export default function Home({ toggle }) {
         getData(`http://localhost:8080/api/v1/location/${location.getAttribute("id")}`)
             .then((location) => {
                 setProducts(location.products);
+                setIsLoadingProducts(false);
             })
     }
     const handleClickCategory = (e) => {
         getData(`http://localhost:8080/api/v1/product/category?name=${e.target.id}`)
             .then((data) => {
                 setProducts(data);
+                setIsLoadingProducts(false);
             })
     }
     useEffect(() => {
@@ -35,6 +37,10 @@ export default function Home({ toggle }) {
             })
         // setProductsFilter(db)
     }, [])
+    // useEffect(() => {
+    //     setI
+    //     setIsLoadingProducts(true);
+    // }, [products])
     useEffect(() => {
         // setProductsFilter([]);
         getData("http://localhost:8080/api/v1/product")
