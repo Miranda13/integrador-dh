@@ -1,5 +1,6 @@
 package nido.backnido.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Cascade;
@@ -33,10 +34,9 @@ public class User {
 
     @NotNull
     @NotBlank
+    @JsonIgnore
     private String password;
 
-    @NotNull
-    @NotBlank
     private boolean validated;
 
     @NotNull
