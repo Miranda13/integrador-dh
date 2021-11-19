@@ -140,7 +140,7 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 15px;
 }
 
 .product__availability-reserve {
