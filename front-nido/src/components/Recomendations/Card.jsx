@@ -6,6 +6,7 @@ function Card(props) {
     const handleClickProduct = () => {
         history(`/product/${card.productId}`);
     }
+    console.log(card);
     return (
         <div className="card-list">
             <div className="card-list__image">

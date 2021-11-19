@@ -4,11 +4,17 @@ import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import "./CalendarReserve.css";
 import es from 'date-fns/locale/es';
-export default function CalendarReserve() {
+export default function CalendarReserve({ status, handleSelectRangeDate }) {
     registerLocale('es', es)
     const arrayDates = ["2021-11-11", "2021-12-05", "2021-11-13", "2021-11-14", "2021-11-20", "2021-12-15", "2021-12-17", "2021-12-20"];
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState();
+    // const [startDate, setStartDate] = useState(null);
+    const [dateRange, setDateRange] = useState([null, null]);
+    const [startDate, endDate] = dateRange;
+    const onChange = (dates) => {
+        if (status !== "disabled") {
+            setDateRange(dates);
+        }
+    }
     function editNamesDaysWeek() {
         const namesDaysWeek = document.querySelectorAll(".react-datepicker__day-name");
         namesDaysWeek.forEach(name => {
@@ -27,6 +33,12 @@ export default function CalendarReserve() {
     }, [])
     useEffect(() => {
         editNamesDaysWeek();
+        let dateStart = new Date(startDate);
+        let dateEnd = new Date(endDate);
+        if (endDate !== null && startDate !== null) {
+            handleSelectRangeDate(dateStart.toLocaleDateString(), dateEnd.toLocaleDateString());
+            console.log(dateStart.toLocaleDateString(), dateEnd.toLocaleDateString());
+        }
     }, [startDate, endDate])
     return (
         <div className="calendarReserve">
@@ -35,6 +47,8 @@ export default function CalendarReserve() {
                 locale="es"
                 minDate={new Date()}
                 excludeDates={convertFormatArrayDatesForExcludeCalendar()}
+                calendarClassName={status}
+                dateFormat="dd MMM."
                 renderCustomHeader={({
                     monthDate,
                     customHeaderCount,
@@ -81,8 +95,11 @@ export default function CalendarReserve() {
                         </button>
                     </div>
                 )}
+                startDate={startDate}
+                endDate={endDate}
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                selectsRange={true}
+                onChange={onChange}
                 monthsShown={2}
             />
         </div>
