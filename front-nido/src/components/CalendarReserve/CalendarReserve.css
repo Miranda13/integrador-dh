@@ -32,6 +32,13 @@
     margin: 0;
 }
 
+.booking .calendarReserve .react-datepicker {
+    width: 93vw;
+    height: 353px;
+    margin: 0;
+}
+
+
 .calendarReserve .react-datepicker__navigation--previous {
     left: 3%;
     top: 8rem;
@@ -53,10 +60,10 @@
 }
 
 .calendarReserve .react-datepicker {
-    border: unset;
+    border: 1px solid #DFE4EA;
     border-radius: unset;
     border-radius: 0.4rem;
-    box-shadow: 3px 5px 4px rgb(0 0 0 / 12%);
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
 }
 
 .calendarReserve .react-datepicker__navigation-icon--next::before {
@@ -88,6 +95,11 @@
 
     .calendarReserve .react-datepicker {
         width: 85vw;
+        height: 320px;
+    }
+
+    .booking .calendarReserve .react-datepicker {
+        width: 95vw;
         height: 320px;
     }
 
@@ -138,9 +150,14 @@
     }
 
     .calendarReserve .react-datepicker {
-        width: 63vw;
+        width: 65vw;
         height: 353px;
         margin: 0;
+    }
+
+    .booking .calendarReserve .react-datepicker{
+        width: 65vw;
+        height: 353px;
     }
 
     .calendarReserve .react-datepicker__navigation--next {
