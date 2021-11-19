@@ -130,7 +130,6 @@
     right: 31px;
     top: 30px;
     visibility: visible !important;
-
 }
 
 .react-datepicker__current-month {
@@ -221,10 +220,7 @@
         top: 20px;
     }
 
-    .react-datepicker__navigation--next {
-        right: 31px;
-        top: 20px;
-    }
+
 
     .calendar__date-btn {
         width: 60vw;

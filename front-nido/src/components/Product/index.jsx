@@ -80,7 +80,8 @@ export default function Product({ list }) {
 
                 <div className="product__availability">
                     <h2>Fechas disponibles</h2><hr />
-                    <CalendarReserve />
+
+                    <CalendarReserve status="disabled" />
                 </div>
                 <div className="product__ubication-map">
                     <h2>¿Dónde vas a estar?</h2>
