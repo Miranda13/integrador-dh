@@ -64,11 +64,11 @@ export default function Product({ list }) {
                     />
                 </div>
                 <div className="product__description">
-                    <h2>{list.name}</h2><hr />
+                    <h2>{list.name}</h2>
                     <p>{list.description}</p>
                 </div>
                 <div className="product__features">
-                    <h2>¿Qué ofrece este lugar?</h2>
+                    <h2>¿Qué ofrece este lugar?</h2><hr />
                     <div className="product__features-amenities">
                         {
                             db.amenities.map((amenity, index) => (
@@ -95,7 +95,7 @@ export default function Product({ list }) {
                     <p>{list.location?.city}, {list.location?.country}</p>
 
                     {list.longitude !== undefined && list.latitude !== undefined &&
-                        <div id={"mapa"}>
+                        <div id={"mapa"} className="product__ubication-map__map">
                             <MapView lat={parseFloat(list.longitude)} lng={parseFloat(list.latitude)} category={list.category?.title} productName={list.name} />
                         </div>}
                 </div>
