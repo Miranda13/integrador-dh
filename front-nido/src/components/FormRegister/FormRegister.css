@@ -23,7 +23,6 @@
 
     .form__label, .form__input{
         display: block;
-        padding-top: 20px;
     }
 
     .form_error{
