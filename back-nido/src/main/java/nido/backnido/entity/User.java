@@ -35,6 +35,7 @@ public class User {
 
     @NotNull
     @NotBlank
+    @ToString.Exclude
     private String password;
 
     private boolean validated;
