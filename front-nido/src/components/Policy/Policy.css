@@ -15,7 +15,6 @@
 .product__toknow-content{
     display: flex;
     flex-direction: column;
-    gap: 20px;
     flex-wrap: wrap;
     padding: 30px 30px 0px 20px;
 }
@@ -23,9 +22,9 @@
 .product__toknow-column{
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
-    white-space: -o-pre-wrap;
-    
+    white-space: -o-pre-wrap;   
     line-height: 1.5;
+    width: 30%;
 }
 
 .product__toknow-column li{
@@ -40,7 +39,9 @@
 
 .product__toknow-column ul{
     font-size: var(--font-size-4);
-
+}
+.product__toknow-column ul li {
+    margin: 5px 0;
 }
 
 /*IPAD*/

@@ -72,7 +72,7 @@ const Calendar = () => {
                 onClickOutside={closeCalendar}
                 dateFormatCalendar={"MMMM"}
             >
-                <button className="calendar__date-btn button-1" onClick={closeCalendar}>Aplicar</button>
+                <button className="calendar__date-btn button-1 animation-button-filled" onClick={closeCalendar}>Aplicar</button>
             </DatePicker>
         </>
     );

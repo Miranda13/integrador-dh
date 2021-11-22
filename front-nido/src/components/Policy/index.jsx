@@ -8,25 +8,25 @@ function Policy() {
             <div className="product__toknow-content">
                 <div className="product__toknow-column">
                     <h3>Normas de la casa</h3>
-                    <li>
-                        <ul>Check-out:10:00</ul>
-                        <ul>No se permiten fiestas</ul>
-                        <ul>No fumar</ul>
-                    </li>
+                    <ul>
+                        <li>Check-out:10:00</li>
+                        <li>No se permiten fiestas</li>
+                        <li>No fumar</li>
+                    </ul>
                 </div>
                 <div className="product__toknow-column">
                     <h3>Salud y seguridad</h3>
-                    <li>
-                        <ul>Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus.</ul>
-                        <ul>Detector de humo</ul>
-                        <ul>Depósito de seguridad</ul>
-                    </li>
+                    <ul>
+                        <li>Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus.</li>
+                        <li>Detector de humo</li>
+                        <li>Depósito de seguridad</li>
+                    </ul>
                 </div>
                 <div className="product__toknow-column">
                     <h3>Política de cancelación</h3>
-                    <li>
-                        <ul>Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía.</ul>
-                    </li>
+                    <ul>
+                        <li>Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía.</li>
+                    </ul>
                     
                 </div>
             </div>

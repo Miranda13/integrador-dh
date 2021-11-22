@@ -8,7 +8,7 @@ function Card(props) {
     }
     console.log(card);
     return (
-        <div className="card-list">
+        <div className="card-list bg-animation-card">
             <div className="card-list__image">
                 <img src={card.images[0].url} alt={card.images[0].title} className="card-list__image__jpg" />
                 <i className="card-list__image__icon fas fa-heart"></i>
@@ -41,7 +41,7 @@ function Card(props) {
                     <i className="card-list__info__amenities__icon fas fa-swimmer"></i>
                 </div>
                 <p className="card-list__info__description">{card.description} <span className="card-list__info__description__more">más..</span> </p>
-                <button className="card-list__info__button" onClick={handleClickProduct}>Ver más</button>
+                <button className="card-list__info__button animation-button-filled" onClick={handleClickProduct}>Ver más</button>
             </div>
         </div>
     )
