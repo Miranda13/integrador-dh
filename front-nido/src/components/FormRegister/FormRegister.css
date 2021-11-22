@@ -39,12 +39,13 @@
     }
    
     .form__input{
+        margin: 5px 0px 5px 0px !important;
         height: 40px;
         margin-top: 5px;
         max-width: 65vw /*40vh*/
     } 
 
-    #form__button{
+    .register-button{
         margin: 5px;
     }
 
@@ -82,7 +83,7 @@
     }
 
     .section-title{
-        margin-top: 50px;
+        margin-top: 4%;
     }
 
     .form__body{
@@ -93,7 +94,7 @@
         max-width: 448px;
     }
     .form{
-        margin-top: 10px;
+        margin-top: 1%;
     }
     
     .form__label {
@@ -108,5 +109,9 @@
     }
     .register-button{
         width: 13vw;
+    }
+
+    .register-button{
+        margin-top: 20px;
     }
 }
