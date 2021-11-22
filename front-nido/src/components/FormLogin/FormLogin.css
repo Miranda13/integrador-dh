@@ -13,8 +13,11 @@ h2{
     justify-content: center;
     align-items: center;
     justify-items: center;
-    gap: 20px;
-    padding-top: 50px;
+    margin-top: 2rem;
+}
+
+.form__body label {
+    margin-top: 1rem;
 }
 
 
@@ -24,10 +27,12 @@ h2{
     width: 65vw;
     margin: 10px 0px 10px 0px;
     height: 40px;
+    padding: 1rem;
 }
 
 .form__text{
-font-size: var(--font-size-5);
+    font-size: var(--font-size-5);
+    margin-top: 1rem;
 }
 
 .form__text a{

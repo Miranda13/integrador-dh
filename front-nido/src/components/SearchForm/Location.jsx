@@ -4,6 +4,7 @@ import getData from '../../assets/js/getData';
 function Location({ zIndexCalendar }) {
     const [locations, setLocations] = useState([]);
     const [showList, setShowList] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const handleListLocation = (e) => {
         setShowList(!showList);
     }
@@ -17,7 +18,10 @@ function Location({ zIndexCalendar }) {
     }
     useEffect(() => {
         getData("http://localhost:8080/api/v1/location")
-            .then(data => setLocations(data))
+            .then(data => {
+                setLocations(data);
+                setIsLoading(false);
+            })
         window.addEventListener("click", (e) => {
             const inputLocation = document.querySelector(".container-location");
             const titleLocation = document.querySelector(".container-location__title");
@@ -45,6 +49,9 @@ function Location({ zIndexCalendar }) {
             <h2 className="container-location__title">¿A dónde vamos?</h2>
             <ul className="container-location__list hideItem">
                 {
+                    isLoading || locations.length === 0 ? 
+                        <li> Cargando ... </li>
+                    :
                     locations.map((location, index) => {
                         return (
                             <li className="container-location__list__item" key={index} onClick={(e) => { handleSelectLocation(e, location.locationId) }}>
