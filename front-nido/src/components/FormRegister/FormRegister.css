@@ -1,28 +1,33 @@
     .container{
-        display: flex; 
-        align-content: center; 
+        display: block;
         height: auto;
-        width: 100vw;
+        width: 100%;
         margin-top: 80px;
         margin-bottom: 58px;
-        padding: 2vh;
         background-color: var(--light-medium-color);
     }
     .section-title{
+        margin: 8vw 0px 0px 0px;
+        display: flex;
+        justify-content: center;
         color: var(--main-color);
-        margin-bottom: 20px;
-        margin-top: 20px;
+        font-weight: var(--font-weight-bold);
     }
     .form{
-        width: 100vw;
         display: flex;
         justify-items: center;
         align-content: center;
         font-size: var(--font-size-4);
+        padding-bottom: 7vw;
+        margin-top: 5px;
     }
 
     .form__label, .form__input{
         display: block;
+    }
+
+    .form__label {
+        margin-top: 2vw !important;
     }
 
     .form_error{
@@ -39,10 +44,9 @@
         max-width: 65vw /*40vh*/
     } 
 
-    /*
     #form__button{
         margin: 5px;
-    }*/
+    }
 
     .validation-errors {
         background-color: #FFE1E1;
@@ -52,46 +56,55 @@
     .register-button{
         width: 65vw;
         height: 40px;
-        margin-top: 20px;
     }
 
 @media (min-width: 761px) and (max-width: 1360px) {
-    
+    .section-title{
+        margin-top: 97px;
+    }
+
+    .form {
+        margin-top: 60px;
+    }
+
     .form__input{
-        height: 40px;
         max-width: 47vw;
     }
     .register-button{
         width: 47vw;
+        margin-top: 40px;
     }
 }
 @media (min-width:1361px) {
-    .form{
-        padding-top: 10px;
+    
+    .form__body--two-label{
+        margin-left: 5px;
     }
+
     .section-title{
-        margin-top: 30px;
-        margin-bottom: 10px;
+        margin-top: 50px;
     }
+
     .form__body{
         width: 448px;
     }
-    .form__label, .form__input{
-        padding-top: 0px;
-        margin: 10px 0px 10px 0px;
-    }
-
+    
     .form__input{
-        height: 40px;
         max-width: 448px;
-    } 
-  .form__body--two{
-      display: flex;
-      justify-content: space-between;
-  }
-    #name, #surname{
-        display: inline;      
-        width: 218px;  
+    }
+    .form{
+        margin-top: 10px;
+    }
+    
+    .form__label {
+       margin-top: 0.5vw !important; 
+    }
+    .form__body--two{
+        display: flex;
+        justify-content: space-between;
+    }
+    #name, #surname{    
+        width: 218px;
     }
     .register-button{
         width: 13vw;

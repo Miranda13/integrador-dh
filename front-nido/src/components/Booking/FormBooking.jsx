@@ -5,19 +5,19 @@ export default function FormBooking() {
         <form action="" className="booking-form">
             <div className="booking-form-div">
                 <label htmlFor="name" className="booking-form__label">Nombre</label>
-                <input id="name" name="name" type="text" className="booking-form__input" />
+                <input id="name" name="name" type="text" className="booking-form__input" disabled />
             </div>
             <div className="booking-form-div">
                 <label htmlFor="surname" className="booking-form__label">Apellido</label>
-                <input id="surname" name="surname" type="text" className="booking-form__input" />
+                <input id="surname" name="surname" type="text" className="booking-form__input" disabled />
             </div>
             <div className="booking-form-div">
                 <label htmlFor="email" className="booking-form__label">Correo electrónico</label>
-                <input id="email" name="email" type="email" className="booking-form__input" />
+                <input id="email" name="email" type="email" className="booking-form__input" disabled/>
             </div>
             <div className="booking-form-div">
                 <label htmlFor="city" className="booking-form__label">Ciudad</label>
-                <input id="city" name="city" type="text" className="booking-form__input" />
+                <input id="city" name="city" type="text" className="booking-form__input" disabled/>
             </div>
             <div className="booking-form-div covid">
                 <div className="booking-form-covid">

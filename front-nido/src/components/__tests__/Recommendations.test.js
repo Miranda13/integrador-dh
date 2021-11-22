@@ -2,11 +2,12 @@ import React from "react";
 import '@testing-library/jest-dom/extend-expect';
 import Recomendations from '../Recomendations';
 import {render, screen} from '@testing-library/react';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import products from './products.json';
 import Card from "../Recomendations/Card";
 import ContentLoader from "react-content-loader";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -33,6 +34,24 @@ describe('recommendations with data', () => {
     it ('Title of recommendations', () => {
         expect(recommendations.contains('Recomendaciones')).toBeTruthy();
     });
+
+    it ("Verification cards", () => {
+        
+        const recommendation = mount(
+        <BrowserRouter>
+            <Routes>
+                <Route path= "/" element = {<Recomendations products={products}/>}> </Route>
+            </Routes>
+        </BrowserRouter>);
+        expect(recommendation.find('div.card-listo__info__amenities')).toBeTruthy();
+        expect(recommendation.find('div.card-list__info__description')).toBeTruthy();
+        expect(recommendation.find('div.card-list__info__button')).toBeTruthy();
+        expect(recommendation.find('div.card-list__info__title')).toBeTruthy();
+        expect(recommendation.find('div.card-list__info__score')).toBeTruthy();
+        expect(recommendation.find('div.card-list__info__category')).toBeTruthy();
+        expect(recommendation.find('div.card-list__image__jpg')).toBeTruthy();
+        expect(recommendation.find('button').first().text()).toEqual('Ver más');
+    })
 
 });
 
@@ -81,5 +100,8 @@ describe('recommendations without data', () => {
         recommendations = render(<Recomendations products={productsEmpty} isLoadingProducts={false}/>);
         const h2 = screen.getAllByText('Por el momento no contamos con establecimientos con esa caracteristica');
         expect(h2).toBeTruthy();
+    });
+    it ('Title', () => {
+        expect(recommendations.contains('Recomendaciones')).toBeTruthy();
     });
 });
