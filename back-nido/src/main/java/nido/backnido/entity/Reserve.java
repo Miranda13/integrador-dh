@@ -36,7 +36,7 @@ public class Reserve {
     private LocalTime hourIn;
 
     @ManyToOne
-    @JoinColumn(name="user_user_id", referencedColumnName = "userId")
+    @JoinColumn(name="users_user_id", referencedColumnName = "userId")
     private User user;
 
     @ManyToOne

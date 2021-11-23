@@ -17,8 +17,6 @@ import java.util.Set;
 @ToString(exclude = "products")
 public class Location {
 
-    //    TODO Faltan las relaciones
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long locationId;
@@ -31,12 +29,6 @@ public class Location {
     @NotBlank
     private String country;
 
-    /*@NotNull
-    private Double latitude;
-
-    @NotNull
-    private Double longitude;
-*/
     @OneToMany(mappedBy = "location",cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Product> products;
