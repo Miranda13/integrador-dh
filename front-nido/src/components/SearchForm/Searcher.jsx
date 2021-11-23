@@ -21,7 +21,7 @@ function Searcher({ handleSubmit }) {
             <form className="container-searcher__form" onSubmit={handleSubmit}>
                 <Location className="container-searcher__form__location" zIndexCalendar={handleZindexCalendar} />
                 <Calendar className="container-searcher__form__calendar" />
-                <button type="submit" className="container-searcher__form__button button-search">Buscar</button>
+                <button type="submit" className="container-searcher__form__button button-search animation-button-filled">Buscar</button>
             </form>
         </div>
     )

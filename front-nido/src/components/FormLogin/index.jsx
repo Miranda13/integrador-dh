@@ -25,7 +25,7 @@ export default function FormLogin({ submitForm }) {
                         {errors.password && <span className="form_error">{errors.password}</span>}
                     </div>
                 </div>
-                <button id="button-login" type="submit" className="button-1 sign-in-button">Ingresar</button>
+                <button id="button-login" type="submit" className="button-1 sign-in-button animation-button-filled">Ingresar</button>
                 <p className="form__text">¿Aún no tenes cuenta?<a href="/signin"> Registrate</a></p>
             </form>
         </>

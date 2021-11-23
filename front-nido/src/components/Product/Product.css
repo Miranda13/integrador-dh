@@ -4,13 +4,11 @@
 
 .product-content {
     margin-top: 60px;
-    background-color: var(--light-medium-color);
     display: flex;
     height: 100%;
     width: 100%;
     flex-direction: column;
     justify-content: flex-start;
-    /* margin-bottom: 80px; */
 }
 
 .product-content h2{
