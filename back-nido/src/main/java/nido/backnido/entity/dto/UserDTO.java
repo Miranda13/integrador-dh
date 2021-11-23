@@ -15,7 +15,7 @@ public class UserDTO {
 
     private Long userId;
     private String name;
-    private String lastname;
+    private String surname;
     private String email;
     @ToString.Exclude
     private String password;
