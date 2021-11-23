@@ -1,9 +1,6 @@
 import React from "react";
-
 import FormRegister from "../components/FormRegister";
-
-
-class SigninPage extends React.Component {
+export default class SigninPage extends React.Component {
     constructor(props) {
         super(props);
     }

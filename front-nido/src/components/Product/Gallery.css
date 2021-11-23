@@ -21,7 +21,7 @@ margin-right: -22px;
     font-size: 20px;
     height: 60px;
 }
-.icono-share i{
+.icono-share > i{
     padding:10px;
 }
 
