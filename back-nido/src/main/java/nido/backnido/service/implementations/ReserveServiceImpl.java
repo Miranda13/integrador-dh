@@ -43,28 +43,28 @@ public class ReserveServiceImpl implements ReserveService {
         return modelMapper.map(response, ReserveDTO.class);
     }
 
-    @Override
-    public List<ReserveDTO> findReservationsByProductId(Long productId) {
-        List<ReserveDTO> reserveResponse = new ArrayList<>();
-
-        for (Reserve reserve : reserveRepository.findReservationsByProductId(productId)) {
-            reserveResponse.add(modelMapper.map(reserve, ReserveDTO.class));
-        }
-
-        return reserveResponse;
-    }
-
-    @Override
-    public void create(Reserve newReserve) {
-
-        Optional<Reserve> queryResponse = reserveRepository.checkAvailability(newReserve.getDateIn(), newReserve.getDateOut());
-
-        if (queryResponse.isEmpty()) {
-            reserveRepository.save(newReserve);
-        }
-
-        throw new CustomBaseException("Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible", HttpStatus.BAD_REQUEST.value());
-    }
+//    @Override
+//    public List<ReserveDTO> findReservationsByProductId(Long productId) {
+//        List<ReserveDTO> reserveResponse = new ArrayList<>();
+//
+//        for (Reserve reserve : reserveRepository.findReservationsByProductId(productId)) {
+//            reserveResponse.add(modelMapper.map(reserve, ReserveDTO.class));
+//        }
+//
+//        return reserveResponse;
+//    }
+//
+//    @Override
+//    public void create(Reserve newReserve) {
+//
+//        Optional<Reserve> queryResponse = reserveRepository.checkAvailability(newReserve.getDateIn(), newReserve.getDateOut());
+//
+//        if (queryResponse.isEmpty()) {
+//            reserveRepository.save(newReserve);
+//        }
+//
+//        throw new CustomBaseException("Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible", HttpStatus.BAD_REQUEST.value());
+//    }
 
     @Override
     public void update(Reserve updatedReserve) {

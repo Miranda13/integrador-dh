@@ -10,8 +10,8 @@ public interface ReserveService {
 
     List<ReserveDTO> getAll();
     ReserveDTO getById(Long id);
-    List<ReserveDTO> findReservationsByProductId(Long productId);
-    void create(Reserve newReserve);
+//    List<ReserveDTO> findReservationsByProductId(Long productId);
+//    void create(Reserve newReserve);
     void update(Reserve updatedReserve);
     void delete(Long id);
 
