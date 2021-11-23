@@ -13,7 +13,7 @@ export default function FormRegister({ submitForm }) {
     }
     const { handleChange, values, handleSubmit, errors } = useForm(objectValues, submitForm, validate);
     return (
-        <> <h2 className="section-title">Crear cuenta</h2>
+        <> <h2 id="section-title" className="section-title">Crear cuenta</h2>
             <form onSubmit={handleSubmit} className="form">
                 <div className="form__body">
                     <div className="form__body--two">
@@ -56,7 +56,7 @@ export default function FormRegister({ submitForm }) {
                         </div>
                     <br />
                 </div>
-                <button type="submit" className="button-1 register-button animation-button-filled" id="form__button">Crear cuenta</button>
+                <button type="submit" className="button-1 register-button animation-button-filled" id="button-register">Crear cuenta</button>
                 <p className="form__text">¿Ya tienes una cuenta? &nbsp; <a href="/login">Iniciar sesión</a></p>
             </form>
         </>

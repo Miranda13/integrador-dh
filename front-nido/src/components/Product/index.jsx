@@ -1,5 +1,4 @@
 import React from "react";
-// import CalendarReserve from "../components/CalendarReserve";
 import credentials from "./credentials";
 import CalendarReserve from "../CalendarReserve";
 import { Link } from "react-router-dom";
