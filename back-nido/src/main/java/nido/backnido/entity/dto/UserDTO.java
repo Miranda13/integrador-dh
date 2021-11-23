@@ -1,9 +1,6 @@
 package nido.backnido.entity.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import nido.backnido.entity.Role;
 
 import javax.persistence.*;
@@ -18,9 +15,11 @@ public class UserDTO {
 
     private Long userId;
     private String name;
-    private String lastname;
+    private String surname;
     private String email;
+    @ToString.Exclude
     private String password;
     private Role role;
 
 }
+

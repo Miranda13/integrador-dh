@@ -9,6 +9,7 @@ import { Footer } from '../Footer';
 import MenuMobile from "../MenuMobile";
 import { useEffect } from "react/cjs/react.development";
 import ProductPage from "../../pages/ProductPage";
+import BookingPage from "../../pages/BookingPage";
 
 function App() {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -45,7 +46,8 @@ function App() {
                             <Navigate to="/" />
                         </>
                     } />
-                <Route exact path="/product/:id" element = {<ProductPage />} />
+                 <Route exact path="/product/:id" element = {<ProductPage />} />
+                <Route exact path="/product/:id/booking" element = {<BookingPage/>}/>
             </Routes>
             <Footer />
             <MenuMobile />
