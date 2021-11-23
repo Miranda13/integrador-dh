@@ -3,6 +3,7 @@ package nido.backnido.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -34,13 +35,12 @@ public class User {
 
     @NotNull
     @NotBlank
-    @JsonIgnore
+    @ToString.Exclude
     private String password;
 
     private boolean validated;
 
     @NotNull
-    @NotBlank
     @ManyToOne()
     @JoinColumn(name = "roles_role_id", referencedColumnName = "roleId")
     private Role role;
