@@ -1,6 +1,6 @@
 import "./FormBooking.css";
 
-export default function FormBooking() {
+export default function FormBooking({ }) {
     return (
         <form action="" className="booking-form">
             <div className="booking-form-div">
@@ -13,11 +13,11 @@ export default function FormBooking() {
             </div>
             <div className="booking-form-div">
                 <label htmlFor="email" className="booking-form__label">Correo electrónico</label>
-                <input id="email" name="email" type="email" className="booking-form__input" disabled/>
+                <input id="email" name="email" type="email" className="booking-form__input" disabled />
             </div>
             <div className="booking-form-div">
                 <label htmlFor="city" className="booking-form__label">Ciudad</label>
-                <input id="city" name="city" type="text" className="booking-form__input" disabled/>
+                <input id="city" name="city" type="text" className="booking-form__input" />
             </div>
             <div className="booking-form-div covid">
                 <div className="booking-form-covid">
