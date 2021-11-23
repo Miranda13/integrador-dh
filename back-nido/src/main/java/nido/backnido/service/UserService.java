@@ -1,6 +1,7 @@
 package nido.backnido.service;
 
 import nido.backnido.entity.User;
+import nido.backnido.entity.dto.AuthTokenDTO;
 import nido.backnido.entity.dto.UserDTO;
 
 import java.util.List;
