@@ -1,7 +1,9 @@
 package nido.backnido.service.implementations;
 
+import nido.backnido.configuration.TokenProvider;
 import nido.backnido.entity.Role;
 import nido.backnido.entity.User;
+import nido.backnido.entity.dto.AuthTokenDTO;
 import nido.backnido.entity.dto.UserDTO;
 import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.UserRepository;
@@ -10,7 +12,12 @@ import nido.backnido.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -35,6 +42,7 @@ public class UserServiceImpl implements UserDetailsService, UserService{
     private BCryptPasswordEncoder bcryptEncoder;
 
     ModelMapper modelMapper = new ModelMapper();
+
 
     @Override
     public List<UserDTO> getAll() {
@@ -61,10 +69,8 @@ public class UserServiceImpl implements UserDetailsService, UserService{
     @Override
     public void create(User newUser) {
         if (newUser != null) {
-
             newUser.setPassword(bcryptEncoder.encode(newUser.getPassword()));
-
-            Role role;
+           Role role;
 
             if(newUser.getEmail().split("@")[1].equals("admin.nido")){
                 role = roleService.findRoleByName("ADMIN");
