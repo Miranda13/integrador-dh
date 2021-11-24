@@ -8,15 +8,15 @@ export default function FormBooking() {
         <form action="" className="booking-form">
             <div className="booking-form-div">
                 <label htmlFor="name" className="booking-form__label">Nombre</label>
-                <input id="name" name="name" type="text" className="booking-form__input" value={user.name} disabled />
+                <input id="name" name="name" type="text" className="booking-form__input" value={user?.name} disabled />
             </div>
             <div className="booking-form-div">
                 <label htmlFor="surname" className="booking-form__label">Apellido</label>
-                <input id="surname" name="surname" type="text" className="booking-form__input" value={user.surname} disabled />
+                <input id="surname" name="surname" type="text" className="booking-form__input" value={user?.surname} disabled />
             </div>
             <div className="booking-form-div">
                 <label htmlFor="email" className="booking-form__label">Correo electrónico</label>
-                <input id="email" name="email" type="email" className="booking-form__input" value={user.email} disabled />
+                <input id="email" name="email" type="email" className="booking-form__input" value={user?.email} disabled />
             </div>
             <div className="booking-form-div">
                 <label htmlFor="city" className="booking-form__label">Ciudad</label>

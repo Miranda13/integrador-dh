@@ -49,19 +49,19 @@ function Location({ zIndexCalendar }) {
             <h2 className="container-location__title">¿A dónde vamos?</h2>
             <ul className="container-location__list hideItem">
                 {
-                    isLoading || locations.length === 0 ? 
+                    isLoading || locations.length === 0 ?
                         <li> Cargando ... </li>
-                    :
-                    locations.map((location, index) => {
-                        return (
-                            <li className="container-location__list__item" key={index} onClick={(e) => { handleSelectLocation(e, location.locationId) }}>
-                                <i className="fas fa-map-marker-alt"></i>
-                                <span id="city" className="container-location__list-name"><strong>{location.city}</strong></span>
-                                <br />
-                                <span className="container-location__list-country">{location.country}</span>
-                            </li>
-                        )
-                    })
+                        :
+                        locations.map((location, index) => {
+                            return (
+                                <li className="container-location__list__item" key={index} onClick={(e) => { handleSelectLocation(e, location.locationId) }}>
+                                    <i className="fas fa-map-marker-alt"></i>
+                                    <span id="city" className="container-location__list-name"><strong>{location.city}</strong></span>
+                                    <br />
+                                    <span className="container-location__list-country">{location.country}</span>
+                                </li>
+                            )
+                        })
                 }
             </ul>
         </div >
