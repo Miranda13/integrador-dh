@@ -5,9 +5,6 @@
 }
 
 
-.user-logged{
-    /* width: 250px; */
-}
 
 .user-logged__close a{ 
     color: var(--dark-color);
