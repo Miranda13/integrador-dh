@@ -50,13 +50,13 @@ public class UserController {
     }
 
     @PostMapping("register")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void saveUser(@RequestBody @Valid User user, BindingResult bindingResult){
-        System.out.println(user);
+    public ResponseEntity<?>  saveUser(@RequestBody @Valid User user, BindingResult bindingResult) throws AuthenticationException {
+        String password = user.getPassword();
         if (bindingResult.hasErrors()){
             throw new CustomBindingException("Errores encontrados, por favor compruebe e intente nuevamente", HttpStatus.BAD_REQUEST.value(), UtilsException.fieldBindingErrors(bindingResult));
         }
-        userService.create(user);
+         userService.create(user);
+       return ResponseEntity.status(HttpStatus.CREATED).body(generateToken(user.getUserId(), user.getEmail(),password));
     }
 
     @DeleteMapping("{id}")
@@ -65,19 +65,22 @@ public class UserController {
         userService.delete(id);
     }
 
-
     @PostMapping("login")
-    public ResponseEntity<?> generateToken(@RequestBody LoginUserDTO loginUser) throws AuthenticationException {
+    public ResponseEntity<?> login(@RequestBody LoginUserDTO loginUser) throws AuthenticationException {
+        User user = userService.findByEmail(loginUser.getEmail());
+        return ResponseEntity.ok(generateToken(user.getUserId(), loginUser.getEmail(),loginUser.getPassword()));
+    }
 
+    private AuthTokenDTO generateToken(Long id, String email, String password){
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        loginUser.getEmail(),
-                        loginUser.getPassword()
+                        email,
+                        password
                 )
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        final String token = jwtTokenUtil.generateToken(authentication);
-        return ResponseEntity.ok(new AuthTokenDTO(token));
+        final String token = jwtTokenUtil.generateToken(authentication,id);
+        return new AuthTokenDTO(token);
     }
 
 }
