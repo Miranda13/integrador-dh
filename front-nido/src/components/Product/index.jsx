@@ -35,7 +35,7 @@ export default function Product({ list }) {
     }
     return (
         <React.StrictMode>
-            <div className="product-content">
+            <div className="product-content" id={"start"}>
                 <HeaderProduct product={list} />
                 <div className="product__ubication-ratings">
                     <div className="product__ubication">
@@ -99,7 +99,8 @@ export default function Product({ list }) {
 
                     {list.longitude !== undefined && list.latitude !== undefined &&
                         <div id={"mapa"} className="product__ubication-map__map">
-                            <MapView lat={parseFloat(list.longitude)} lng={parseFloat(list.latitude)} category={list.category?.title} productName={list.name} />
+                            <MapView  id={"location-map"} lat={parseFloat(list.longitude)} lng={parseFloat(list.latitude)} category={list.category?.title} productName={list.name} />
+                        
                         </div>}
                 </div>
                 <Policy />
