@@ -56,7 +56,7 @@ public class UserController {
             throw new CustomBindingException("Errores encontrados, por favor compruebe e intente nuevamente", HttpStatus.BAD_REQUEST.value(), UtilsException.fieldBindingErrors(bindingResult));
         }
          userService.create(user);
-       return ResponseEntity.status(HttpStatus.CREATED).body(generateToken(user.getEmail(),password));
+       return ResponseEntity.status(HttpStatus.CREATED).body(generateToken(user.getUserId(), user.getEmail(),password));
     }
 
     @DeleteMapping("{id}")
@@ -67,10 +67,11 @@ public class UserController {
 
     @PostMapping("login")
     public ResponseEntity<?> login(@RequestBody LoginUserDTO loginUser) throws AuthenticationException {
-        return ResponseEntity.ok(generateToken(loginUser.getEmail(),loginUser.getPassword()));
+        User user = userService.findByEmail(loginUser.getEmail());
+        return ResponseEntity.ok(generateToken(user.getUserId(), loginUser.getEmail(),loginUser.getPassword()));
     }
 
-    private AuthTokenDTO generateToken(String email, String password){
+    private AuthTokenDTO generateToken(Long id, String email, String password){
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         email,
@@ -78,7 +79,7 @@ public class UserController {
                 )
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        final String token = jwtTokenUtil.generateToken(authentication);
+        final String token = jwtTokenUtil.generateToken(authentication,id);
         return new AuthTokenDTO(token);
     }
 
