@@ -6,6 +6,7 @@ import nido.backnido.exception.CustomBindingException;
 import nido.backnido.service.ProductService;
 import nido.backnido.utils.UtilsException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -63,14 +65,21 @@ public class ProductController {
     public void deleteById(@PathVariable Long id){
         productService.delete(id);
     }
-    @GetMapping("/search")
+
+    @GetMapping("/search/{city}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> findProductByCity(@RequestParam String city){
+    public List<ProductDTO> findProductByCity(@PathVariable String city){
         return productService.findProductByCity(city);
     }
     @GetMapping("/category")
     @ResponseStatus(HttpStatus.OK)
     public List<ProductDTO> findProductByCategory(@RequestParam("name") String category){
     	return productService.findProductByCategory(category);
+    }
+
+    @GetMapping("/search/{city}/{dateIn}/{dateOut}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ProductDTO> filterProductsByLocationAndDate(@PathVariable String city, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateIn, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOut){
+     return productService.filterProductsByLocationAndDate(city, dateIn, dateOut);
     }
 }

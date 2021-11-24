@@ -4,6 +4,7 @@ import nido.backnido.entity.Product;
 import nido.backnido.entity.dto.ProductDTO;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ProductService {
@@ -14,6 +15,6 @@ public interface ProductService {
     void update(Product updatedProduct);
     void delete(Long id);
     List<ProductDTO> findProductByCategory(@Param("title")String title);
-    List<ProductDTO> findProductByCity(@Param("city")String city);
-
+    List<ProductDTO> findProductByCity(String city);
+    List<ProductDTO> filterProductsByLocationAndDate(String city, LocalDate dateIn, LocalDate dateOut);
 }
