@@ -24,7 +24,7 @@ public interface ReserveRepository extends JpaRepository<Reserve, Long> {
          -> FROM Category c WHERE c.fecha between :fecha1 AND :fecha2
 
      */
-    @Query(value = "SELECT R.reservationId FROM Reserve R WHERE :first BETWEEN R.dateIn AND R.dateOut OR :second BETWEEN R.dateIn AND R.dateOut", nativeQuery = true)
+    @Query(value = "SELECT r.reservationId FROM Reserve r WHERE :first BETWEEN r.dateIn AND r.dateOut OR :second BETWEEN r.dateIn AND r.dateOut")
     Optional<Reserve> checkAvailability(@Param("first")LocalDate first,
                                         @Param("second")LocalDate second);
 
@@ -34,7 +34,7 @@ public interface ReserveRepository extends JpaRepository<Reserve, Long> {
      */
 
 
-    @Query(value = "SELECT R.reservationId, R.dateIn, R.dateOut FROM Reserve R WHERE R.products_product_id = :productId", nativeQuery = true)
+    @Query(value = "SELECT r.reservationId, r.dateIn, r.dateOut FROM Reserve r WHERE r.product = :productId")
     List<Reserve> findReservationsByProductId(@Param("productId") Long productId);
 
 

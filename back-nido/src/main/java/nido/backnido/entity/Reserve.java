@@ -24,15 +24,12 @@ public class Reserve {
     private Long reservationId;
 
     @NotNull
-    @NotBlank
     private LocalDate dateIn;
 
     @NotNull
-    @NotBlank
     private LocalDate dateOut;
 
     @NotNull
-    @NotBlank
     private LocalTime hourIn;
 
     @ManyToOne

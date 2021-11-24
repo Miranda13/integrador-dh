@@ -61,9 +61,10 @@ public class ReserveServiceImpl implements ReserveService {
 
         if (queryResponse.isEmpty()) {
             reserveRepository.save(newReserve);
+        } else {
+            throw new CustomBaseException("Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible", HttpStatus.BAD_REQUEST.value());
         }
 
-        throw new CustomBaseException("Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible", HttpStatus.BAD_REQUEST.value());
     }
 
     @Override

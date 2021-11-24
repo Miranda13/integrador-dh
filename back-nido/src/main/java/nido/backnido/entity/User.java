@@ -46,6 +46,7 @@ public class User {
     @JoinColumn(name = "roles_role_id", referencedColumnName = "roleId")
     private Role role;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "reservationId", cascade = CascadeType.ALL)
     private Set<Reserve> reservations;
 
