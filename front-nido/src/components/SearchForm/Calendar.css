@@ -116,9 +116,11 @@
     background-color: var(--main-color);
     color: var(--light-color);
 }
-
+.react-datepicker__navigation{
+z-index: 0;
+}
 .react-datepicker__navigation-icon--previous::before {
-    border-color: black;
+    border-color: var(--light-color);
 }
 
 .react-datepicker__navigation--previous {
@@ -137,7 +139,7 @@
 }
 
 .react-datepicker__navigation-icon--next::before {
-    border-color: black;
+    border-color: var(--light-color);
 }
 
 .react-datepicker__day-names {

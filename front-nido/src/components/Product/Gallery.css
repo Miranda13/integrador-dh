@@ -89,7 +89,7 @@ figure img {
     }
     ._2c50p{
         display: block;
-        height: 200px;
+        height: 400px;
     }
     ._1oKnM{
         display: block;
@@ -127,7 +127,7 @@ figure img {
         
     }
     .gallery{
-        height: 500px !important;
+        height: 550px !important;
         width: 100vw;
     }
     .gallery {
@@ -139,12 +139,16 @@ figure img {
     ._2c50p {
         display: block;
         height: 100%;  
+        margin-top: 0;
     }
     ._-LJ2W{
         height:100%;
     width: 100vw;
     display: flex;
-flex-direction: column;
+    flex-direction: column;
     }
+    ._1_Dg2 ._-LJ2W{
+        background-color: rgba(56, 59, 88, 0.7); 
+        flex-direction: row;}
 }
 
