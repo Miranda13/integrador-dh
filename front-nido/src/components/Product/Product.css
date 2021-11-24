@@ -16,7 +16,9 @@
     font-size: var(--font-size-1);
     font-weight: var(--font-weight-bold);
 }
-
+.product__availability h2{
+    margin-left:15px;
+}
 
 
 .product__ubication-ratings{
@@ -87,8 +89,6 @@
 .product__gallery {
     display: flex;
     justify-content: center;
-    /* height: 500px; */
-
 }
 
 .product__description {
@@ -154,7 +154,7 @@
 }
 
 .product__availability {
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 15px;

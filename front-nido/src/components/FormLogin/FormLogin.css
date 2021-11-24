@@ -1,6 +1,17 @@
-h2{
-    position: relative;
+.container{
+    height: auto;
+    background-color: var(--light-medium-color);
 }
+.form-login-container{
+    padding-top:80px;
+    padding-bottom:80px;
+}
+.section-title-login{
+    display: flex;
+    justify-content: center;
+    color: var(--main-color);
+    font-weight: var(--font-weight-bold);
+    }
 
 .form-login{
     color: var(--main-color);
@@ -19,7 +30,6 @@ h2{
 .form__body label {
     margin-top: 1rem;
 }
-
 
 .form__input{
     border: 1px solid #fff;
@@ -49,7 +59,7 @@ h2{
 }
 
 .sign-in-button{
-    width: 65vw;
+    width: 200px;
     height: 40px;
     margin-top: 20px;
 }
@@ -59,17 +69,26 @@ h2{
     border: 1px solid #FF0000;
 }
 
+
+@media  (min-height:445px) {
+    .form-login-container{
+        top: 10px;    
+        padding: 0px;
+        
+    }
+}
+@media (orientation:landscape) {
+    .form-login-container{  
+        padding: 80px 0;
+        
+    }
+}
 /*IPAD*/
 @media (min-width: 761px) and (max-width: 1360px) {
 
-    .sign-in-button{
-        width: 47vw;
-    }
-}
 
+}
 /*DESKTOP*/
 @media (min-width:1361px){
-    .sign-in-button{
-        width: 13vw;
-    }
+   
 }
