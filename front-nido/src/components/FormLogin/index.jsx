@@ -6,8 +6,6 @@ export default function FormLogin({ submitForm, message, idProduct }) {
         email: "",
         password: ""
     }
-    console.log(message)
-    console.log(idProduct)
     const { handleChange, values, handleSubmit, errors } = useForm(objectValues, submitForm, validate, idProduct, message);
     return (
         <>

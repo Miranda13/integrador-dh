@@ -53,7 +53,7 @@ function App() {
                     <Route exact path="/success" element={<SuccessfulBookingPage />} />
                 </Routes>
                 <Footer />
-                <MenuMobile />
+                <MenuMobile setIsSubmitted={setIsSubmitted} />
             </SessionContextProvider>
         </BrowserRouter>
     )
