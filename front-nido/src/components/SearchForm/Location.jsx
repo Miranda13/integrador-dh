@@ -46,7 +46,8 @@ function Location({ zIndexCalendar }) {
     }, [showList])
     return (
         <div className="container-location" onClick={handleListLocation}>
-            <h2 className="container-location__title">¿A dónde vamos?</h2>
+            <h2 className="container-location__title"><i class="fas fa-map-marker-alt"></i>¿A dónde vamos?</h2>
+           
             <ul className="container-location__list hideItem">
                 {
                     isLoading || locations.length === 0 ? 
