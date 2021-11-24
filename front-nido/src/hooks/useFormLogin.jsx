@@ -1,16 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useLocalStorage from "./useLocalStorage";
+import SessionContextProvider from '../context/sessionContext.js';
 export default function useFormLogin(objectValues, callback, validate) {
-    const [user, setUser] = useLocalStorage('user', null);
+    const history = useNavigate();
+    const { user, setToken } = useContext(SessionContextProvider);
     const [values, setValues] = useState({ ...objectValues })
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
-
-    const userDemo = {
-        email: "digital@booking.com",
-        password: "digital123"
-    }
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setValues({
@@ -27,15 +24,28 @@ export default function useFormLogin(objectValues, callback, validate) {
 
     useEffect(() => {
         if (Object.keys(errors).length === 0 && isSubmitting) {
-            if(values.email !== userDemo.email || values.password !== userDemo.password){
-                setErrors({auth: "El correo electrónico o la contraseña es incorrecta"});
-            } else {
-                callback();
-                setUser(values);
-                window.location.assign("/");
-            }        
+            fetch('http://localhost:8080/api/v1/user/login', {
+                method: 'POST',
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify(values)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setToken(data.token);
+                    window.localStorage.setItem('token', JSON.stringify(data.token))/*NO DEBERIA SER USADO */
+                    history('/')
+                })
+                .catch(error => setErrors({ auth: error.message }))
+
+            // if (values.email !== userDemo.email || values.password !== userDemo.password) {
+            //     setErrors({ auth: "El correo electrónico o la contraseña es incorrecta" });
+            // } else {
+            //     callback();
+            //     setUser(values);
+            //     window.location.assign("/");
+            // }
         }
     })
-    
+
     return { handleChange, values, handleSubmit, errors }
 }

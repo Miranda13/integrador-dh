@@ -5,7 +5,7 @@ export default function DetailBooking({ product }) {
         <div className="booking-details">
             <div className="booking-details-img">
                 <h2 className="booking-title">Detalle de la reserva</h2>
-                <img src={product.images[0].url} className="booking-details-image" alt="" />
+                <img src={product.images[0]?.url} className="booking-details-image" alt="" />
             </div>
             <div className="booking-details-info">
                 <div className="booking-details__product">

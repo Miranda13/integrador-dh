@@ -36,7 +36,7 @@ export default function Product({ list }) {
     return (
         <React.StrictMode>
             <div className="product-content">
-                <HeaderProduct list={list} />
+                <HeaderProduct product={list} />
                 <div className="product__ubication-ratings">
                     <div className="product__ubication">
                         <i class="fas fa-map-marker-alt"></i> Avenida Siempre Viva, 742

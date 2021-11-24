@@ -9,9 +9,6 @@ export default function ProductPage() {
         getData(`http://localhost:8080/api/v1/product/${id}`)
             .then(data => setList(data))
     }, [])
-    useEffect(() => {
-        console.log(list)
-    }, [list])
     return (
         <>
             <div className="wrapper">

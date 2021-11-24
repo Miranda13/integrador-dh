@@ -8,22 +8,28 @@ import "./BookingPage.css";
 export default function BookingPage() {
     const { id } = useParams();
     const [product, setProduct] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         getData(`http://localhost:8080/api/v1/product/${id}`)
-            .then(data => setProduct(data))
+            .then(data => {
+                setProduct(data)
+                setIsLoading(false)
+            })
     }, [])
-    useEffect(() => {
-        console.log(product)
-    }, [product])
     return (
         <>
-            <div className="wrapper">
-                <div className="container-booking">
-                    <HeaderProduct product={product} />
-                    <Booking product={product} />
-                    <Policy />
-                </div>
-            </div>
+            {
+                isLoading ? "cargando"
+                    :
+                    <div className="wrapper">
+                        <div className="container-booking">
+                            <HeaderProduct product={product} />
+                            <Booking product={product} />
+                            <Policy />
+                        </div>
+                    </div>
+            }
+
         </>
     );
 }

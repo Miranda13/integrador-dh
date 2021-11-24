@@ -6,6 +6,7 @@ import CalendarReserve from "../CalendarReserve";
 
 
 function Booking({ product }) {
+
     return (
         <div className="booking">
             <div>
