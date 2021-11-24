@@ -30,14 +30,11 @@ export default function CalendarReserve({ status, handleSelectRangeDate }) {
         return arrayDatesFormat;
     }
     useEffect(() => {
-    }, [])
-    useEffect(() => {
         editNamesDaysWeek();
         let dateStart = new Date(startDate);
         let dateEnd = new Date(endDate);
         if (endDate !== null && startDate !== null) {
             handleSelectRangeDate(dateStart.toLocaleDateString(), dateEnd.toLocaleDateString());
-            console.log(dateStart.toLocaleDateString(), dateEnd.toLocaleDateString());
         }
     }, [startDate, endDate])
     return (

@@ -3,6 +3,7 @@ import validate from '../../assets/js/validation';
 import "./FormRegister.css";
 
 export default function FormRegister({ submitForm }) {
+
     const objectValues = {
         name: "",
         surname: "",
@@ -13,9 +14,9 @@ export default function FormRegister({ submitForm }) {
     }
     const { handleChange, values, handleSubmit, errors } = useForm(objectValues, submitForm, validate);
     return (
-        <> 
-        <div className="form-register-container">
-            <h2 id="section-title" className="section-title-register">Crear cuenta</h2>
+        <>
+            <div className="form-register-container">
+                <h2 id="section-title" className="section-title-register">Crear cuenta</h2>
                 <form onSubmit={handleSubmit} className="form">
                     <div className="form__body">
                         <div className="form__body--two">
@@ -44,7 +45,7 @@ export default function FormRegister({ submitForm }) {
                             </div>
 
                             <label htmlFor="password" className="form__label">Contraseña</label>
-                            
+
                             <div><input id="password" name="password" type="password" onChange={handleChange} value={values.password} className="form__input" />
                                 {errors.password && <span className="form_error">{errors.password}</span>}
                             </div>
@@ -55,7 +56,7 @@ export default function FormRegister({ submitForm }) {
                                 <input id="repeatPassword" name="repeatPassword" type="password" onChange={handleChange} value={values.repeatPassword} className="form__input" />
                                 {errors.repeatPassword && <span className="form_error">{errors.repeatPassword}</span>}
                             </div>
-                            </div>
+                        </div>
                         <br />
                     </div>
                     <button type="submit" className="button-1 register-button animation-button-filled" id="button-register">Crear cuenta</button>

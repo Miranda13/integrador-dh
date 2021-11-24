@@ -19,9 +19,10 @@ import "./Map.css"
 // import { useNavigate } from "react-router-dom";
 import HeaderProduct from "../HeaderProduct";
 import Policy from "../Policy";
-
+import { useNavigate } from "react-router-dom";
 
 export default function Product({ list }) {
+    const history = useNavigate();
     const [listProduct, setListProduct] = useState(list.images);
     useEffect(() => {
         setListProduct(list.images);
@@ -29,10 +30,13 @@ export default function Product({ list }) {
     // const handleBack = () => {
     //     history.goBack();
     // }
+    const handleClickReserve = () => {
+        history(`/product/${list.productId}/booking`)
+    }
     return (
         <React.StrictMode>
             <div className="product-content">
-                <HeaderProduct list={list} />
+                <HeaderProduct product={list} />
                 <div className="product__ubication-ratings">
                     <div className="product__ubication">
                         <i class="fas fa-map-marker-alt"></i> Avenida Siempre Viva, 742
@@ -85,7 +89,7 @@ export default function Product({ list }) {
                     <CalendarReserve status="disabled" />
                     <div className="product__availability-reserve">
                         <h3>Agregá tus fechas de viaje para obtener precios exactos</h3>
-                        <button className="product__availability-reserve-button button-search animation-button-filled">Iniciar reserva</button>
+                        <button className="product__availability-reserve-button button-search" onClick={handleClickReserve}>Iniciar reserva</button>
                     </div>
                 </div>
                 <div className="product__ubication-map">

@@ -9,7 +9,7 @@ export default function ScheduleBooking() {
             </div>
             <p>Indicá tu horario estimado de llegada</p>
             <div className="booking-schedule-time">
-                <input placeholder="10:00 AM" name="time" id="time" type="text" className="booking-schedule-time-input"/>
+                <input placeholder="10:00 AM" name="time" id="time" type="text" className="booking-schedule-time-input" required />
                 <i className="booking-schedule-time-icon fas fa-chevron-down"></i>
                 <ol className="container-booking-time-item" key="" >
                     <li value="01">01:00 AM</li>

@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../../assets/images/logo.svg";
 import { Button } from "../Button";
 import "./Header.css";
-import { UserLogged } from "../UserLogged";
+import UserLogged from "../UserLogged";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import SessionContext from "../../context/sessionContext.js";
 function Header({ handleChangePageHome }) {
-    const [user, setUser] = useLocalStorage("user", null);
+    const { user, setToken } = useContext(SessionContext)
     const handleClickButton = (e) => {
         const links = document.querySelectorAll(".header__buttons a")
         links.forEach(link => {
@@ -28,7 +29,7 @@ function Header({ handleChangePageHome }) {
                 {
                     user !== null && user !== undefined ?
                         <>
-                            {window.innerWidth >= 760 && <UserLogged />}
+                            {window.innerWidth >= 760 && <UserLogged user={user} />}
                         </>
                         :
                         <>

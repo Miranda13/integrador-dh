@@ -5,18 +5,19 @@ import DetailsBooking from "./DetailBooking";
 import CalendarReserve from "../CalendarReserve";
 
 
-function Booking({ list }) {
+function Booking({ product }) {
+
     return (
         <div className="booking">
             <div>
                 <h2 className="booking-title">Completá tus datos</h2>
                 <FormBooking />
                 <h2 className="booking-title">Seleccioná tu fecha de reserva</h2>
-                <CalendarReserve/>
+                <CalendarReserve />
                 <h2 className="booking-title">Tu horario de llegada</h2>
                 <Schedule />
             </div>
-            <DetailsBooking />
+            <DetailsBooking product={product} />
         </div>
     )
 }
