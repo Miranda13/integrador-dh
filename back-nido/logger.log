@@ -57,5 +57,18 @@
 [2021-11-18 17:57:21] [ ERROR] [ExceptionGlobalHandler:16] Error al crear producto, verifique la informaciï¿½n
 [2021-11-22 09:26:08] [ ERROR] [ExceptionGlobalHandler:22] Errores encontrados, por favor compruebe e intente nuevamente
 [2021-11-22 09:34:07] [ ERROR] [ExceptionGlobalHandler:22] Errores encontrados, por favor compruebe e intente nuevamente
-[2021-11-23 10:22:16] [ ERROR] [ExceptionGlobalHandler:22] Errores encontrados, por favor compruebe e intente nuevamente
-[2021-11-23 10:32:28] [ ERROR] [ExceptionGlobalHandler:22] Errores encontrados, por favor compruebe e intente nuevamente
+[2021-11-23 09:55:04] [ ERROR] [ExceptionGlobalHandler:16] Producto no encontrado, por favor compruebe
+[2021-11-23 23:34:25] [ ERROR] [ExceptionGlobalHandler:16] Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible
+[2021-11-23 23:40:41] [ ERROR] [ExceptionGlobalHandler:16] Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible
+[2021-11-23 23:40:55] [ ERROR] [ExceptionGlobalHandler:16] Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible
+[2021-11-23 23:41:09] [ ERROR] [ExceptionGlobalHandler:16] Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible
+[2021-11-23 23:41:30] [ ERROR] [ExceptionGlobalHandler:16] Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible
+[2021-11-23 23:42:21] [ ERROR] [ExceptionGlobalHandler:16] Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible
+[2021-11-23 23:42:34] [ ERROR] [ExceptionGlobalHandler:16] Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible
+[2021-11-23 23:43:02] [ ERROR] [ExceptionGlobalHandler:16] Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible
+[2021-11-23 23:43:07] [ ERROR] [ExceptionGlobalHandler:16] Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible
+[2021-11-23 23:44:31] [ ERROR] [ExceptionGlobalHandler:16] Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible
+[2021-11-23 23:44:48] [ ERROR] [ExceptionGlobalHandler:16] Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible
+[2021-11-23 23:45:05] [ ERROR] [ExceptionGlobalHandler:16] Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible
+[2021-11-23 23:46:46] [ ERROR] [ExceptionGlobalHandler:16] Ya existe una reserva en esas fechas, por favor ingrese una fecha disponible
+[2021-11-24 00:36:23] [ ERROR] [ExceptionGlobalHandler:16] Email no encontrado, por favor compruebe la información e intente nuevamente

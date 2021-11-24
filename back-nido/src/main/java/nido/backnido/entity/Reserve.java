@@ -24,19 +24,16 @@ public class Reserve {
     private Long reservationId;
 
     @NotNull
-    @NotBlank
     private LocalDate dateIn;
 
     @NotNull
-    @NotBlank
     private LocalDate dateOut;
 
     @NotNull
-    @NotBlank
     private LocalTime hourIn;
 
     @ManyToOne
-    @JoinColumn(name="user_user_id", referencedColumnName = "userId")
+    @JoinColumn(name="users_user_id", referencedColumnName = "userId")
     private User user;
 
     @ManyToOne

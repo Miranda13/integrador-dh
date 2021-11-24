@@ -45,7 +45,6 @@ public class LocationServiceImpl implements LocationService {
                 locationDto.getProducts().add(noImgProduct);
 
             }
-//location.getProducts().add(product);
 
             locationResponse.add(locationDto);
         }
