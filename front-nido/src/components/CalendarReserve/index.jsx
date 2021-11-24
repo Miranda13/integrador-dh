@@ -34,6 +34,7 @@ export default function CalendarReserve({ status, handleSelectRangeDate }) {
         let dateStart = new Date(startDate);
         let dateEnd = new Date(endDate);
         if (endDate !== null && startDate !== null) {
+            console.log(dateStart.toLocaleDateString(), dateEnd.toLocaleDateString());
             handleSelectRangeDate(dateStart.toLocaleDateString(), dateEnd.toLocaleDateString());
         }
     }, [startDate, endDate])

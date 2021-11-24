@@ -8,17 +8,15 @@ export function SessionContextProvider({children}) {
     useEffect(()=>{
         if(token !== null && token !== undefined){
             var decoded = jwtDecode(token);
-            console.log(decoded)
-            console.log(token);
-            // fetch(`http://localhost:8080/api/v1/user/${decoded.jti}`, {
-            //     headers: {
-            //         "Authorization": `Bearer ${token}`
-            //     }
-            // })
-            // .then(res => res.json())
-            // .then(data => {
-            //     setUser(data)
-            // })
+            fetch(`http://localhost:8080/api/v1/user/${decoded.jti}`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                setUser(data)
+            })
         }else{
             setUser(null)
         }

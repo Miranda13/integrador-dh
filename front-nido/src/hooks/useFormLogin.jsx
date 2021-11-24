@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useLocalStorage from "./useLocalStorage";
 import SessionContextProvider from '../context/sessionContext.js';
-export default function useFormLogin(objectValues, callback, validate) {
+export default function useFormLogin(objectValues, callback, validate, idProduct, message) {
     const history = useNavigate();
     const { user, setToken } = useContext(SessionContextProvider);
     const [values, setValues] = useState({ ...objectValues })
@@ -31,9 +31,13 @@ export default function useFormLogin(objectValues, callback, validate) {
             })
                 .then(res => res.json())
                 .then(data => {
+                    callback();
                     setToken(data.token);
-                    window.localStorage.setItem('token', JSON.stringify(data.token))/*NO DEBERIA SER USADO */
-                    history('/')
+                    if (message) {
+                        history(`/product/${idProduct}/booking`)
+                    } else {
+                        history("/")
+                    }
                 })
                 .catch(error => setErrors({ auth: error.message }))
 

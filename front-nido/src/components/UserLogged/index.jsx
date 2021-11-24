@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SessionContextProvider from "../../context/sessionContext";
-export default function UserLogged({ user }) {
+export default function UserLogged({ user, setIsSubmitted }) {
     const { setToken } = useContext(SessionContextProvider)
     const history = useNavigate();
     const handleLogout = () => {
-        localStorage.removeItem("token");
         setToken(null);
+        setIsSubmitted(false);
         history("/");
     }
     const handleAvatar = () => {
