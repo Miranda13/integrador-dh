@@ -41,14 +41,11 @@ export default function useFormRegister(objectValues, callback, validate) {
             })
                 .then(res => res.json())
                 .then(data => {
-                    // window.localStorage.setItem('token', JSON.stringify(data.token)) /*NO DEBERIA SER NECESARIO */
+                    callback();
                     setToken(data.token)
-                    // history("/")
-                    console.log(data);
-                    // var decoded = jwtDecode(JSON.stringify(data.token));
-                    // console.log(decoded)
+                    history("/");
                 }).catch(error => setErrors({ auth: error.message }))
         }
-    }, [handleSubmit])
+    })
     return { handleChange, values, handleSubmit, errors }
 }

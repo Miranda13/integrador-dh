@@ -1,16 +1,19 @@
 import useForm from '../../hooks/useFormLogin';
 import validate from '../../assets/js/validation';
 import './FormLogin.css';
-export default function FormLogin({ submitForm }) {
+export default function FormLogin({ submitForm, message, idProduct }) {
     const objectValues = {
         email: "",
         password: ""
     }
-    const { handleChange, values, handleSubmit, errors } = useForm(objectValues, submitForm, validate);
+    console.log(message)
+    console.log(idProduct)
+    const { handleChange, values, handleSubmit, errors } = useForm(objectValues, submitForm, validate, idProduct, message);
     return (
-        <> 
-         <div className="form-login-container">
-            <h2 className="form-login section-title-login">Iniciar sesión</h2>
+        <>
+            <div className="form-login-container">
+                <h2 className="form-login section-title-login">Iniciar sesión</h2>
+                {message && <p className="">{message}</p>}
                 <form onSubmit={handleSubmit} className="form">
 
                     {errors.auth && <span className="form_error">{errors.auth}</span>}
