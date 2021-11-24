@@ -154,7 +154,45 @@ h2 {
     margin: 0 10px;    
 }
   
+/*--- ANIMACIONES ---*/
+.animation-button-filled{
+    /* transition: background-color .6s;      */
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.0);
+    transition: box-shadow 500ms; 
+    cursor:pointer;
+}
+.animation-button-filled:hover {
+    background-color: #1bb6ac;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+    cursor:hand;
+  }
+.animation-button-filled:active{
+    background-color: #1aa59c;
+}
 
+.animation-button-light{
+    transition: background-color .6s; 
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.0);
+}
+.animation-button-light:hover{    
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+}
+
+
+.bg-animation-card{
+box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+transition: box-shadow 500ms;    
+}
+.bg-animation-card:hover{
+box-shadow: 0 0px 15px 3px rgba(0, 0, 0, 0.2);
+}
+.category-card{
+    cursor:pointer;
+}
+.category-card:hover{
+    cursor:hand;
+}
+/* -------------------------- */
 
   @media (min-width: 761px) and (max-width: 1360px)  {
     

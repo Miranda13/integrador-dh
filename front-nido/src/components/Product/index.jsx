@@ -85,7 +85,7 @@ export default function Product({ list }) {
                     <CalendarReserve status="disabled" />
                     <div className="product__availability-reserve">
                         <h3>Agregá tus fechas de viaje para obtener precios exactos</h3>
-                        <button className="product__availability-reserve-button button-search">Iniciar reserva</button>
+                        <button className="product__availability-reserve-button button-search animation-button-filled">Iniciar reserva</button>
                     </div>
                 </div>
                 <div className="product__ubication-map">
