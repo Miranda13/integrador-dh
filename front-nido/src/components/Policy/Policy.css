@@ -24,7 +24,8 @@
     white-space: -moz-pre-wrap;
     white-space: -o-pre-wrap;   
     line-height: 1.5;
-    width: 30%;
+    /* width: 30%; */
+    margin-bottom: 20px;
 }
 
 .product__toknow-column li{
@@ -48,13 +49,13 @@
 @media (min-width: 760px) and (max-width: 1359px){
     .product__toknow-content{
         flex-direction: row;
-        gap: 15vw;
+        /* gap: 15vw; */
         justify-content: flex-start;
         flex-wrap: wrap;
     }
        
     .product__toknow-column{
-        /*width: 45vw;*/
+        width: 45vw;
     }
 }
 

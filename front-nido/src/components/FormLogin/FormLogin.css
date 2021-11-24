@@ -1,6 +1,6 @@
 .container{
     height: auto;
-    background-color: var(--light-medium-color);
+    background-color: var(--light-gray-color);
 }
 .form-login-container{
     padding-top:80px;

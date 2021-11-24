@@ -1,6 +1,6 @@
     .container{
         height: auto;     
-        background-color: var(--light-medium-color);
+        background-color: var(--light-gray-color);
     }
     .form-register-container{
         padding:80px 0;
