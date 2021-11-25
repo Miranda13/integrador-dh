@@ -16,7 +16,7 @@ export default function BookingPage() {
         if (token === null || token === undefined) {
             history("/login", { state: { idProduct: id, auth: "Necesitas estar logueado para reservar un hotel" } });
         }
-        getData(`http://localhost:8080/api/v1/product/${id}`)
+        getData(`/api/v1/product/${id}`)
             .then(data => {
                 setProduct(data)
                 setIsLoading(false)
@@ -29,7 +29,7 @@ export default function BookingPage() {
                     :
                     <div className="wrapper">
                         <div className="container-booking">
-                            <HeaderProduct product={product} />
+                            <HeaderProduct product={product} pathGoBack={`/product/${id}`} />
                             <Booking product={product} />
                             <Policy />
                         </div>

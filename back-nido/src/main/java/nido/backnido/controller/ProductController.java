@@ -77,9 +77,9 @@ public class ProductController {
     	return productService.findProductByCategory(category);
     }
 
-    @GetMapping("/search/{city}/{dateIn}/{dateOut}")
+    @GetMapping("/search")
     @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> filterProductsByLocationAndDate(@PathVariable String city, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateIn, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOut){
+    public List<ProductDTO> filterProductsByLocationAndDate(@RequestParam("city") String city, @RequestParam("dateIn") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateIn, @RequestParam("dateOut") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOut){
      return productService.filterProductsByLocationAndDate(city, dateIn, dateOut);
     }
 }

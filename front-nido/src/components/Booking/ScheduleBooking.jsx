@@ -1,6 +1,6 @@
 import "./ScheduleBooking.css"
 import { useState, useEffect } from "react";
-export default function ScheduleBooking() {
+export default function ScheduleBooking({ handleTime, error }) {
     const [showList, setShowList] = useState(false);
     const input = document.querySelector(".booking-schedule-time-input");
     const resetItemTime = () => {
@@ -15,6 +15,8 @@ export default function ScheduleBooking() {
     }
     const handleSelectionTime = (e) => {
         input.value = e.target.innerHTML;
+        const timeSelect = e.target.innerHTML.split(" ")[0];
+        handleTime(timeSelect);
     }
     const handleChangeTime = (e) => {
         const listTime = document.querySelectorAll("li");
@@ -55,6 +57,7 @@ export default function ScheduleBooking() {
             </div>
             <p>Indicá tu horario estimado de llegada</p>
             <div className="booking-schedule-time">
+                {error && <p className="error">{error}</p>}
                 <input placeholder="10:00 AM" name="time" id="time" type="text" className="booking-schedule-time-input" onChange={handleChangeTime} required onClick={handleListTime} />
                 <i className="booking-schedule-time-icon fas fa-chevron-down" onClick={handleListTime}></i>
                 <ol className="container-booking-time-item hideItem" key="" >

@@ -1,6 +1,6 @@
 import "./DetailBooking.css";
 
-export default function DetailBooking({ product }) {
+export default function DetailBooking({ product, startDate, endDate, handleSubmitReserve, error }) {
     return (
         <div className="booking-details">
             <div className="booking-details-img">
@@ -18,6 +18,7 @@ export default function DetailBooking({ product }) {
                         <i className="booking-details__product__icon fas fa-star"></i>
                         <i className="booking-details__product__icon fas fa-star"></i>
                     </div>
+                    {error && <p className="error">{error}</p>}
                     <div className="booking-details__product__location">
                         <i className="booking-details__product__location__icon fas fa-map-marker-alt"></i>
                         <div className="booking-details__product__location__title">{product.location.city}, {product.location.country}</div>
@@ -26,15 +27,15 @@ export default function DetailBooking({ product }) {
                 <hr className="booking-details-hr" />
                 <div className="booking-details-check">
                     <h3>Check in</h3>
-                    <p>23/11/2021</p>
+                    <p>{startDate}</p>
                 </div>
                 <hr className="booking-details-hr" />
                 <div className="booking-details-check">
                     <h3>Check out</h3>
-                    <p>27/11/2021</p>
+                    <p>{endDate}</p>
                 </div>
                 <hr className="booking-details-hr" />
-                <button type="submit" className="booking-details-button button-1" id="booking__button">Confirmar reserva</button>
+                <button type="submit" className="booking-details-button button-1" id="booking__button" onClick={handleSubmitReserve}>Confirmar reserva</button>
             </div>
         </div>
     )

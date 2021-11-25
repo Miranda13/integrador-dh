@@ -13,7 +13,6 @@ export default function FormLogin({ submitForm, message, idProduct }) {
                 <h2 className="form-login section-title-login">Iniciar sesión</h2>
                 {message && <p className="">{message}</p>}
                 <form onSubmit={handleSubmit} className="form">
-
                     {errors.auth && <span className="form_error">{errors.auth}</span>}
                     <br />
                     <div className="form__body">

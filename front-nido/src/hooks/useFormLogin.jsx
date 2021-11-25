@@ -29,8 +29,20 @@ export default function useFormLogin(objectValues, callback, validate, idProduct
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify(values)
             })
-                .then(res => res.json())
+                .then(res => {
+                    if (res.status >= 400 && res.status < 500) {
+                        return Promise.reject(new Error("Usuario o contraseña incorrectos, intente de nuevo porfavor."))
+                    }
+                    if (res.status >= 500) {
+                        return Promise.reject(new Error("Lamentablemente no ha podido iniciar sesion. Porfavor intentelo mas tarde"))
+                    }
+                    return res.json();
+                })
                 .then(data => {
+                    // if (data.message) {
+                    //     setErrors({ auth: data.message });
+                    //     setIsSubmitting(false);
+                    // } else {
                     callback();
                     setToken(data.token);
                     if (message) {
@@ -38,6 +50,8 @@ export default function useFormLogin(objectValues, callback, validate, idProduct
                     } else {
                         history("/")
                     }
+                    // }
+
                 })
                 .catch(error => setErrors({ auth: error.message }))
 

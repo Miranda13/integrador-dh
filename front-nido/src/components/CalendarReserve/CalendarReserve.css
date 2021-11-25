@@ -36,7 +36,7 @@
 .calendarReserve .disabled div.react-datepicker__day:not(.react-datepicker__day--disabled, .react-datepicker__day--excluded) {
     border-radius: 50px;
     background-color: var(--light-color);
-     color: var(--dark-color);
+    color: var(--dark-color);
     /*border: 1px solid var(--main-color); */
 }
 
@@ -216,7 +216,7 @@
     .calendarReserve .react-datepicker__day,
     .calendarReserve .react-datepicker__time-name {
         display: inline-block;
-        width: 3vw;
+        width: 2.5vw;
         line-height: 2.3rem;
         text-align: center;
         margin: 0.166rem;

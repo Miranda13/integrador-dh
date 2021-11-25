@@ -39,11 +39,24 @@ export default function useFormRegister(objectValues, callback, validate) {
                     }
                 })
             })
-                .then(res => res.json())
+                .then(res => {
+                    if (res.status >= 400 && res.status < 500) {
+                        return Promise.reject(new Error("Este email ya pertenece a otro usuario"))
+                    }
+                    if (res.status >= 500) {
+                        return Promise.reject(new Error("Lamentablemente no ha podido registrarse. Porfavor intentelo mas tarde"))
+                    }
+                    return res.json()
+                })
                 .then(data => {
+                    // if (data.message) {
+                    //     setErrors({ auth: data.message });
+                    //     setIsSubmitting(false);
+                    // } else {
                     callback();
                     setToken(data.token)
                     history("/");
+                    // }
                 }).catch(error => setErrors({ auth: error.message }))
         }
     })

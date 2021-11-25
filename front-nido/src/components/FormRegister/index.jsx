@@ -18,6 +18,7 @@ export default function FormRegister({ submitForm }) {
             <div className="form-register-container">
                 <h2 id="section-title" className="section-title-register">Crear cuenta</h2>
                 <form onSubmit={handleSubmit} className="form">
+                    {errors.auth && <span className="form_error">{errors.auth}</span>}
                     <div className="form__body">
                         <div className="form__body--two">
                             <div className="form__body--two-label">

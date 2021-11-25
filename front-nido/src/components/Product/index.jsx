@@ -36,7 +36,7 @@ export default function Product({ list }) {
     return (
         <React.StrictMode>
             <div className="product-content" id={"start"}>
-                <HeaderProduct product={list} />
+                <HeaderProduct product={list} pathGoBack="/" />
                 <div className="product__ubication-ratings">
                     <div className="product__ubication">
                         <i class="fas fa-map-marker-alt"></i>{list.address} - {list.location?.city}, {list.location?.country}
@@ -86,7 +86,7 @@ export default function Product({ list }) {
                 <div className="product__availability">
                     <h2>Fechas disponibles</h2>
 
-                    <CalendarReserve status="disabled" />
+                    <CalendarReserve status="disabled" idProduct={list.productId} />
                     <div className="product__availability-reserve">
                         <h3>Agregá tus fechas de viaje para obtener precios exactos</h3>
                         <button className="product__availability-reserve-button button-search" onClick={handleClickReserve}>Iniciar reserva</button>
@@ -99,8 +99,8 @@ export default function Product({ list }) {
 
                     {list.longitude !== undefined && list.latitude !== undefined &&
                         <div id={"mapa"} className="product__ubication-map__map">
-                            <MapView  id={"location-map"} lat={parseFloat(list.longitude)} lng={parseFloat(list.latitude)} category={list.category?.title} productName={list.name} />
-                        
+                            <MapView id={"location-map"} lat={parseFloat(list.longitude)} lng={parseFloat(list.latitude)} category={list.category?.title} productName={list.name} />
+
                         </div>}
                 </div>
                 <Policy />

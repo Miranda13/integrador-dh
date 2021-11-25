@@ -56,9 +56,7 @@ public class ReserveServiceImpl implements ReserveService {
 
     @Override
     public void create(Reserve newReserve) {
-
-        Optional<Reserve> queryResponse = reserveRepository.checkAvailability(newReserve.getDateIn(), newReserve.getDateOut());
-
+        Optional<Reserve> queryResponse = reserveRepository.checkAvailability(newReserve.getDateIn(), newReserve.getDateOut(),newReserve.getProduct().getProductId());
         if (queryResponse.isEmpty()) {
             reserveRepository.save(newReserve);
         } else {

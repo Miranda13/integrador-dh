@@ -11,17 +11,22 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
     const { user, setToken } = useContext(SessionContext)
 
     useEffect(() => {
-        if (location.pathname === "/login") {
-            const loginButton = document.querySelector("#login")
-            const signinButton = document.querySelector("#signin")
-            loginButton.classList.add("hidden")
-            signinButton.classList.remove("hidden")
-        } else if (location.pathname === "/signin") {
-            const loginButton = document.querySelector("#login")
-            const signinButton = document.querySelector("#signin")
-            signinButton.classList.add("hidden")
-            loginButton.classList.remove("hidden")
+        const loginButton = document.querySelector("#login")
+        const signinButton = document.querySelector("#signin")
+        if (loginButton !== null && signinButton !== null) {
+            if (location.pathname === "/login") {
+                loginButton.classList.add("hidden")
+                signinButton.classList.remove("hidden")
+            } else if (location.pathname === "/signin") {
+                signinButton.classList.add("hidden")
+                loginButton.classList.remove("hidden")
+            } else {
+                loginButton.classList.remove("hidden")
+                signinButton.classList.remove("hidden")
+            }
         }
+
+
     }, [location])
     return (
         <div className="header">

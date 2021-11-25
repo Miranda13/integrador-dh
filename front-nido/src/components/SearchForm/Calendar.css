@@ -116,11 +116,13 @@
     background-color: var(--main-color);
     color: var(--light-color);
 }
-.react-datepicker__navigation{
-z-index: 0;
+
+.react-datepicker__navigation {
+    z-index: 1;
 }
+
 .react-datepicker__navigation-icon--previous::before {
-    border-color: var(--light-color);
+    border-color: #000;
 }
 
 .react-datepicker__navigation--previous {
@@ -139,7 +141,7 @@ z-index: 0;
 }
 
 .react-datepicker__navigation-icon--next::before {
-    border-color: var(--light-color);
+    border-color: #000;
 }
 
 .react-datepicker__day-names {
@@ -179,7 +181,13 @@ z-index: 0;
     cursor: pointer;
 }
 
-
+.react-datepicker__day--disabled:hover,
+.react-datepicker__month-text--disabled:hover,
+.react-datepicker__quarter-text--disabled:hover,
+.react-datepicker__year-text--disabled:hover {
+    background-color: transparent !important;
+    color: grey !important;
+}
 
 /*IPAD*/
 @media (min-width: 760px) and (max-width: 1360px) {

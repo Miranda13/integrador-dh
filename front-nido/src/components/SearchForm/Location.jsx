@@ -12,12 +12,13 @@ function Location({ zIndexCalendar }) {
         const title_location = document.querySelector(".container-location__title");
         if (e.target.childNodes[1]?.textContent !== undefined && e.target.childNodes[3]?.textContent !== undefined) {
             title_location.innerHTML = "" + e.target.childNodes[1]?.textContent + ", " + e.target.childNodes[3]?.textContent;
-            title_location.style.color = "var(--dark-color)"
+            title_location.style.color = "var(--dark-color)";
+
             title_location.setAttribute("id", id);
         }
     }
     useEffect(() => {
-        getData("http://localhost:8080/api/v1/location")
+        getData("/api/v1/location")
             .then(data => {
                 setLocations(data);
                 setIsLoading(false);
@@ -47,7 +48,7 @@ function Location({ zIndexCalendar }) {
     return (
         <div className="container-location" onClick={handleListLocation}>
             <h2 className="container-location__title"><i class="fas fa-map-marker-alt"></i>¿A dónde vamos?</h2>
-           
+
             <ul className="container-location__list hideItem">
                 {
                     isLoading || locations.length === 0 ?
