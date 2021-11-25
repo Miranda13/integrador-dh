@@ -30,7 +30,7 @@ export default function Home({ toggle }) {
                 setProducts(data);
                 setIsLoadingProducts(false);
             })
-        getData("http://ec2-54-84-101-145.compute-1.amazonaws.com:8080/api/v1/category")
+        getData("http://localhost:8080/api/v1/location/category")
             .then((data) => {
                 setCategorys(data);
                 setIsLoading(false);
