@@ -5,21 +5,25 @@ import getData from "../assets/js/getData";
 export default function ProductPage() {
     const { id } = useParams();
     const [list, setList] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetch(`http://localhost:8080/api/v1/product/${id}`)
-            .then(res => res.json())
-            .then(data => setList(data))
+        getData(`/api/v1/product/${id}`)
+            .then(data => {
+                setIsLoading(false);
+                setList(data)
+            })
     }, [])
-    useEffect(() => {
-        console.log(list)
-    }, [list])
     return (
         <>
-            <div className="wrapper">
-                <div className="container-producto">
-                    <Product list={list} />
-                </div>
-            </div>
+            {
+                isLoading ? <h1>Cargando...</h1> :
+                    <div className="wrapper">
+                        <div className="container-producto">
+                            <Product list={list} />
+                        </div>
+                    </div>
+            }
+
         </>
     );
 }

@@ -14,8 +14,8 @@ public class LocationDTO {
 	private Long locationId;
     private String city;
     private String country;
-    private Double latitude;
-    private Double longitude;
+    /*private Double latitude;
+    private Double longitude;*/
     private Set<ProductDTO> products;
 
 }
