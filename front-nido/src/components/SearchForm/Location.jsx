@@ -20,8 +20,10 @@ function Location({ zIndexCalendar }) {
     useEffect(() => {
         getData("/api/v1/location")
             .then(data => {
+                if (data) {
+                    setIsLoading(false);
+                }
                 setLocations(data);
-                setIsLoading(false);
             })
         window.addEventListener("click", (e) => {
             const inputLocation = document.querySelector(".container-location");

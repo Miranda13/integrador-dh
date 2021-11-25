@@ -21,8 +21,10 @@ export default function Home({ toggle }) {
         if (startDate === "" && endDate === "" && location.innerHTML !== "¿A dónde vamos?") {
             getData(`/api/v1/location/${location.getAttribute("id")}`)
                 .then((location) => {
+                    if (location) {
+                        setIsLoadingProducts(false);
+                    }
                     setProducts(location.products);
-                    setIsLoadingProducts(false);
                 })
         }
         if (startDate !== "" && endDate !== "" && location.innerHTML !== "¿A dónde vamos?") {
@@ -32,8 +34,11 @@ export default function Home({ toggle }) {
             auxOut = auxOut.toLocaleDateString().split("/")[2] + "-" + (auxOut.toLocaleDateString().split("/")[1] < 10 ? "0" + auxOut.toLocaleDateString().split("/")[1] : auxOut.toLocaleDateString().split("/")[1]) + "-" + (auxOut.toLocaleDateString().split("/")[0] < 10 ? "0" + auxOut.toLocaleDateString().split("/")[0] : auxOut.toLocaleDateString().split("/")[0]);
             getData(`/api/v1/product/search?city=${location.innerHTML.split(",")[0]}&dateIn=${auxIn}&dateOut=${auxOut}`)
                 .then((data) => {
+                    if (data) {
+                        setIsLoadingProducts(false);
+
+                    }
                     setProducts(data);
-                    setIsLoadingProducts(false);
                 })
         }
 
@@ -41,20 +46,29 @@ export default function Home({ toggle }) {
     const handleClickCategory = (e) => {
         getData(`/api/v1/product/category?name=${e.target.id}`)
             .then((data) => {
+                if (data) {
+                    setIsLoadingProducts(false);
+
+                }
                 setProducts(data);
-                setIsLoadingProducts(false);
             })
     }
     useEffect(() => {
         getData("/api/v1/product")
             .then((data) => {
+                if (data) {
+                    setIsLoadingProducts(false);
+
+                }
                 setProducts(data);
-                setIsLoadingProducts(false);
             })
         getData("/api/v1/category")
             .then((data) => {
+                if (data) {
+                    setIsLoading(false);
+
+                }
                 setCategorys(data);
-                setIsLoading(false);
             })
         // setProductsFilter(db)
     }, [])
