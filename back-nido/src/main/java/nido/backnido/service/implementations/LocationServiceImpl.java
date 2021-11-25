@@ -14,7 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class LocationServiceImpl implements LocationService {
@@ -31,22 +33,16 @@ public class LocationServiceImpl implements LocationService {
     @Override
     public List<LocationDTO> getAll() {
         List<LocationDTO> locationResponse = new ArrayList<>();
-
+        Set<ProductDTO> productdto = new HashSet<>();
         for (Location location : locationRepository.findAll()) {
 
             LocationDTO locationDto = modelMapper.map(location, LocationDTO.class);
-
             for(Product product : location.getProducts()) {
-
                 ProductDTO noImgProduct = modelMapper.map(product, ProductDTO.class);
-
                 noImgProduct.setImages(imageService.findByProductId(product));
-
-                locationDto.getProducts().add(noImgProduct);
-
+                productdto.add(noImgProduct);
             }
-//location.getProducts().add(product);
-
+            locationDto.setProducts(productdto);
             locationResponse.add(locationDto);
         }
 
@@ -58,7 +54,15 @@ public class LocationServiceImpl implements LocationService {
         Location response = locationRepository.findById(id).orElseThrow(() ->
                 new CustomBaseException("Locación no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value())
         );
-        return modelMapper.map(response, LocationDTO.class);
+        LocationDTO locationdto = modelMapper.map(response, LocationDTO.class);
+        Set<ProductDTO> listProductdto = new HashSet<>();
+        for(Product product : response.getProducts()) {
+            ProductDTO noImgProduct = modelMapper.map(product, ProductDTO.class);
+            noImgProduct.setImages(imageService.findByProductId(product));
+            listProductdto.add(noImgProduct);
+        }
+        locationdto.setProducts(listProductdto);
+        return locationdto;
     }
 
     @Override

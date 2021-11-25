@@ -32,10 +32,5 @@ public class Image {
     @JsonIgnore
     @JoinColumn(name="products_product_id",referencedColumnName="productId")
     private Product product;
-    //@NotNull
-    //@JsonIgnore
-    //@ManyToOne
-    //@JoinColumn(name="products_product_id", referencedColumnName="productId")
-    //private Product product;
 
 }

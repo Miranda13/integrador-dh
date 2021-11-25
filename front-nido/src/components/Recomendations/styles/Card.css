@@ -1,11 +1,11 @@
 /*CARDS MAP*/
 .recommendation{
-    background-color: var(--dark-color);
+    background-color: var(--light-medium-color);
     width: 100%;
 }
 
 .title-recommendation{
-    color: var(--light-color);
+    color: var(--dark-color);
     padding-top: 5%;
     padding-left: 10%;
 }

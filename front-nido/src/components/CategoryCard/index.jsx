@@ -6,7 +6,7 @@ class CategoryCard extends React.Component {
     render() {
         return (
             <>
-                <div className="category-card" >
+                <div className="category-card bg-animation-card">
                     <div className="category-card__img">
                         <img src={this.props.category.urlImage} onClick={this.props.handleClickCategory} id={this.props.category.title} width='100%' />
                     </div>

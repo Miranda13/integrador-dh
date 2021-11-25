@@ -1,6 +1,5 @@
 import React from 'react';
 import Carousel from 'react-gallery-carousel';
-import Lightbox from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 import './Gallery.css';
 import { useState } from 'react';
@@ -17,7 +16,6 @@ const Gallery = ({ images }) => {
         src: image.url,
       }
     }))
-
   }, [images])
   return (
     <Carousel
@@ -29,8 +27,8 @@ const Gallery = ({ images }) => {
       autoPlayInterval={3000}
       leftIcon={<i className="fas fa-chevron-left gallery-arrows"></i>}
       rightIcon={<i className="fas fa-chevron-right gallery-arrows"></i>}
-      minIcon={<div className="ver-mas">volver</div>}
-      maxIcon={<div className="ver-mas">ver más</div>}
+      minIcon={<div className="ver-mas">Volver</div>}
+      maxIcon={<div className="ver-mas">Ver más</div>}
     // shouldSwipeOnMouse={true}
     />
 

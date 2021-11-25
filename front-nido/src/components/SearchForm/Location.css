@@ -12,13 +12,13 @@
  }
 
  .container-location__title::before {
-     content: "\f3c5";
-     font-size: var(--font-size-icon);
+     /* content: "\f3c5"; */
+     /* font-size: var(--font-size-icon);
      font-family: 'Font Awesome 5 free';
      color: grey;
      position: absolute;
      margin-left: -30px;
-     margin-top: -4px;
+     margin-top: -4px; */
     
     
  }
@@ -27,10 +27,12 @@
      color: grey;
      font-size: var(--font-size-3);
      font-family: var(--main-font-family);
-     margin-top: .7rem;
-     margin-inline-start: 2.4rem;
+     margin-top: .5rem;
+     margin-inline-start: 1.4rem;
  }
-
+ .container-location__title i{
+     font-size: var(--font-size-icon);
+ }
  .container-location__list__item {
      color: var(--medium-color);
      font-family: var(--main-font-family);
