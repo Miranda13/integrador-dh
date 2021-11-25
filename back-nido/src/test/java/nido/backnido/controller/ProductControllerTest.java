@@ -100,7 +100,6 @@ public class ProductControllerTest {
 
         newProduct.setName("Test Product");
         newProduct.setDescription("Test Description");
-        newProduct.setAvailability(true);
         newProduct.setLocation(new Location());
         newProduct.setCategory(new Category());
 

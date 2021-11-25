@@ -5,7 +5,7 @@ import "./Calendar.css";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import es from 'date-fns/locale/es';
 
-const Calendar = () => {
+const Calendar = ({ handleRangeDates }) => {
     registerLocale('es', es)
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
@@ -53,12 +53,16 @@ const Calendar = () => {
         if (showCalendar) {
             editNamesDaysWeek();
         }
+        if (endDate !== null) {
+            handleRangeDates(startDate, endDate);
+        }
     }, [showCalendar, startDate, endDate])
     return (
         <>
             <DatePicker
                 placeholderText="Check in - Check out"
                 className="calendar__date"
+                minDate={new Date()}
                 selectsRange={true}
                 onChange={onChange}
                 startDate={startDate}
@@ -72,7 +76,7 @@ const Calendar = () => {
                 onClickOutside={closeCalendar}
                 dateFormatCalendar={"MMMM"}
             >
-                <button className="calendar__date-btn button-1" onClick={closeCalendar}>Aplicar</button>
+                <button className="calendar__date-btn button-1 animation-button-filled" onClick={closeCalendar}>Aplicar</button>
             </DatePicker>
         </>
     );

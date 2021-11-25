@@ -1,40 +1,67 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import "./CalendarReserve.css";
 import es from 'date-fns/locale/es';
-export default function CalendarReserve() {
+import SessionContextProvider from "../../context/sessionContext";
+export default function CalendarReserve({ status, handleSelectRangeDate, idProduct, error }) {
+    const { token } = useContext(SessionContextProvider);
     registerLocale('es', es)
-    const arrayDates = ["2021-11-11", "2021-12-05", "2021-11-13", "2021-11-14", "2021-11-20", "2021-12-15", "2021-12-17", "2021-12-20"];
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState();
+    // const [startDate, setStartDate] = useState(null);
+    const [arrayDaysReserve, setArrayDaysReserve] = useState([]);
+    const [dateRange, setDateRange] = useState([null, null]);
+    const [startDate, endDate] = dateRange;
+    const onChange = (dates) => {
+        if (status !== "disabled") {
+            setDateRange(dates);
+        }
+    }
     function editNamesDaysWeek() {
         const namesDaysWeek = document.querySelectorAll(".react-datepicker__day-name");
         namesDaysWeek.forEach(name => {
             name.innerHTML = name.textContent.substring(0, 1).toUpperCase();
         })
     }
-    function convertFormatArrayDatesForExcludeCalendar() {
-        const arrayDatesFormat = [];
-        arrayDates.forEach(date => {
-            const dateFormat = new Date(date.split("-")[0], date.split("-")[1] - 1, date.split("-")[2]);
-            arrayDatesFormat.push(dateFormat);
+
+    function createArrayDaysReserve(arrayReserves) {
+        let aux = [];
+        arrayReserves.forEach(reserve => {
+            let start = new Date(reserve.dateIn.split("-")[0], reserve.dateIn.split("-")[1] - 1, reserve.dateIn.split("-")[2]);
+            let end = new Date(reserve.dateOut.split("-")[0], reserve.dateOut.split("-")[1] - 1, reserve.dateOut.split("-")[2]);
+            for (let i = start; i <= end; i.setDate(i.getDate() + 1)) {
+                aux.push(new Date(i));
+            }
         })
-        return arrayDatesFormat;
+        setArrayDaysReserve(aux);
     }
     useEffect(() => {
-    }, [])
+        if (idProduct !== undefined) {
+            fetch(`http://localhost:8080/api/v1/reserve/product/${idProduct}`)
+                .then(res => res.json())
+                .then(data => {
+                    createArrayDaysReserve(data);
+                }).catch(error => console.log(error))
+        }
+    }, [idProduct])
     useEffect(() => {
         editNamesDaysWeek();
+        let dateStart = new Date(startDate);
+        let dateEnd = new Date(endDate);
+        if (endDate !== null && startDate !== null) {
+            handleSelectRangeDate(dateStart.toLocaleDateString(), dateEnd.toLocaleDateString());
+        }
     }, [startDate, endDate])
     return (
         <div className="calendarReserve">
+            {error && <p className="error">{error}</p>}
             <DatePicker
                 inline
                 locale="es"
                 minDate={new Date()}
-                excludeDates={convertFormatArrayDatesForExcludeCalendar()}
+                excludeDates={arrayDaysReserve}
+                calendarClassName={status}
+                dateFormat="dd MMM."
                 renderCustomHeader={({
                     monthDate,
                     customHeaderCount,
@@ -81,10 +108,14 @@ export default function CalendarReserve() {
                         </button>
                     </div>
                 )}
+                startDate={startDate}
+                endDate={endDate}
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                selectsRange={true}
+                onChange={onChange}
                 monthsShown={2}
             />
+
         </div>
     )
 }

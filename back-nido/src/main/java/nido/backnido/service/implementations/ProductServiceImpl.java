@@ -14,8 +14,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -108,11 +110,28 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDTO> findProductByCity(String city) {
         List<ProductDTO> productResponse = new ArrayList<>();
-        
+        ProductDTO productdto;
         for (Product product : productRepository.findProductByCity(city)) {
-            productResponse.add(modelMapper.map(product, ProductDTO.class));
+            productdto = modelMapper.map(product, ProductDTO.class);
+            productdto.setImages(imageService.findByProductId(product));
+            productResponse.add(productdto);
         }
+        return productResponse;
+    }
 
+    @Override
+    public List<ProductDTO> filterProductsByLocationAndDate(String city, LocalDate dateIn, LocalDate dateOut) {
+//        return productRepository.filterProductsByLocationAndDate(city, dateIn, dateOut).stream()
+//                .map(product -> new Product(product.getProductId(), product.getName(), product.getDescription(), product.getAddress(), product.getLatitude(),
+//                        product.getLongitude(), product.getLocation(), product.getCategory(), product.getScores(), product.getFeatures()))
+//                .collect(Collectors.toList());
+        List<ProductDTO> productResponse = new ArrayList<>();
+        ProductDTO productdto;
+        for (Product product : productRepository.filterProductsByLocationAndDate(city, dateIn, dateOut)) {
+            productdto = modelMapper.map(product, ProductDTO.class);
+            productdto.setImages(imageService.findByProductId(product));
+            productResponse.add(productdto);
+        }
         return productResponse;
     }
 }
