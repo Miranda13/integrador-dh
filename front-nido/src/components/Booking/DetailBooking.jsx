@@ -1,16 +1,16 @@
 import "./DetailBooking.css";
 
-export default function DetailBooking() {
+export default function DetailBooking({ product, startDate, endDate, handleSubmitReserve, error }) {
     return (
         <div className="booking-details">
             <div className="booking-details-img">
                 <h2 className="booking-title">Detalle de la reserva</h2>
-                <img src="https://bucketnido.s3.amazonaws.com/Products/hostal-selina.jpeg" className="booking-details-image" alt="" />
+                <img src={product.images[0]?.url} className="booking-details-image" alt="" />
             </div>
             <div className="booking-details-info">
                 <div className="booking-details__product">
-                    <h3 className="booking-details__product__category">{/*{list.category.title}*/}HOSTAL</h3>
-                    <h2 className="booking-details-title">{/*{list.name}*/}Selina</h2>
+                    <h3 className="booking-details__product__category">{product.category.title}</h3>
+                    <h2 className="booking-details-title">{product.name}</h2>
                     <div className="booking-details__product__score">
                         <i className="booking-details__product__icon fas fa-star"></i>
                         <i className="booking-details__product__icon fas fa-star"></i>
@@ -18,23 +18,24 @@ export default function DetailBooking() {
                         <i className="booking-details__product__icon fas fa-star"></i>
                         <i className="booking-details__product__icon fas fa-star"></i>
                     </div>
+                    {error && <p className="error">{error}</p>}
                     <div className="booking-details__product__location">
                         <i className="booking-details__product__location__icon fas fa-map-marker-alt"></i>
-                        <div className="booking-details__product__location__title">{/*{list.location.city}, {list.location.country}*/}Av. Pioneros 3345, San Carlos de Bariloche, Argentina</div>
+                        <div className="booking-details__product__location__title">{product.location.city}, {product.location.country}</div>
                     </div>
                 </div>
-                <hr className="booking-details-hr"/>
+                <hr className="booking-details-hr" />
                 <div className="booking-details-check">
                     <h3>Check in</h3>
-                    <p>23/11/2021</p>
+                    <p>{startDate}</p>
                 </div>
-                <hr className="booking-details-hr"/>
+                <hr className="booking-details-hr" />
                 <div className="booking-details-check">
                     <h3>Check out</h3>
-                    <p>27/11/2021</p>
+                    <p>{endDate}</p>
                 </div>
-                <hr className="booking-details-hr"/>
-                <button type="submit" className="booking-details-button button-1" id="booking__button">Confirmar reserva</button>
+                <hr className="booking-details-hr" />
+                <button type="submit" className="booking-details-button button-1" id="booking__button" onClick={handleSubmitReserve}>Confirmar reserva</button>
             </div>
         </div>
     )

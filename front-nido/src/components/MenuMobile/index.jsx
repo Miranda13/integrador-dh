@@ -1,44 +1,66 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import UserLogged from "../UserLogged";
 import "./MenuMobile.css";
-
-class MenuMobile extends React.Component {
-  render() {
-    return (
-
-      <React.StrictMode>
-        <div id="menu_mini">
-          <nav id="menu_sidebar">
-            <div className="menu_sidebar__header">
-              MENU
-            </div>
-            <ul>
-              <li><a href="/signin">Crear Cuenta</a></li>
-              <hr />
-              <li><a href="/login">Iniciar Sesión</a></li>
-            </ul>
-
-            <div className="menu_sidebar__icon">
-              <i className="fab fa-facebook"></i>
-              <i className="fab fa-linkedin-in"></i>
-              <i className="fab fa-twitter"></i>
-              <i className="fab fa-instagram"></i>
-            </div>
-          </nav>
-          <div id="menu-mobile">
-            <a href="#" id="menu_on" className="">
-              <span></span>
-              <span></span>
-              <span></span>
-            </a>
-          </div>
-        </div>
-      </React.StrictMode>
-
-    );
+import SessionContextProvider from "../../context/sessionContext.js";
+export default function MenuMobile({ setIsSubmitted }) {
+  const history = useNavigate();
+  const { user, setToken } = useContext(SessionContextProvider);
+  const handleLogout = () => {
+    setToken(null);
+    setIsSubmitted(false);
+    history("/");
   }
+  return (
+    <React.StrictMode>
+      <div id="menu_mini">
+        <nav id="menu_sidebar">
+          <div className="menu_sidebar__header">
+            {
+              user !== null && user !== undefined ?
+                <UserLogged user={user} setIsSubmitted={setIsSubmitted} />
+                :
+                "MENU"
+            }
+
+          </div>
+
+
+          {
+            user !== null && user !== undefined ?
+              <>
+
+                <p>¿Desea <span className="logout" onClick={handleLogout}>cerrar sesión</span>?</p>
+                <hr />
+              </>
+              :
+              <ul>
+                <li><Link to="/signin">Crear Cuenta</Link></li>
+                <hr />
+                <li><Link to="/login">Iniciar Sesión</Link></li>
+              </ul>
+          }
+
+          <div className="menu_sidebar__icon">
+            <i className="fab fa-facebook"></i>
+            <i className="fab fa-linkedin-in"></i>
+            <i className="fab fa-twitter"></i>
+            <i className="fab fa-instagram"></i>
+          </div>
+        </nav>
+        <div id="menu-mobile">
+          <Link to="#" id="menu_on" className="">
+            <span></span>
+            <span></span>
+            <span></span>
+          </Link>
+        </div>
+      </div>
+    </React.StrictMode>
+
+  );
 }
 
-export default MenuMobile;
+
 
 

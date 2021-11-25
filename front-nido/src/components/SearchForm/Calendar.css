@@ -117,8 +117,12 @@
     color: var(--light-color);
 }
 
+.react-datepicker__navigation {
+    z-index: 1;
+}
+
 .react-datepicker__navigation-icon--previous::before {
-    border-color: black;
+    border-color: #000;
 }
 
 .react-datepicker__navigation--previous {
@@ -137,7 +141,7 @@
 }
 
 .react-datepicker__navigation-icon--next::before {
-    border-color: black;
+    border-color: #000;
 }
 
 .react-datepicker__day-names {
@@ -177,7 +181,13 @@
     cursor: pointer;
 }
 
-
+.react-datepicker__day--disabled:hover,
+.react-datepicker__month-text--disabled:hover,
+.react-datepicker__quarter-text--disabled:hover,
+.react-datepicker__year-text--disabled:hover {
+    background-color: transparent !important;
+    color: grey !important;
+}
 
 /*IPAD*/
 @media (min-width: 760px) and (max-width: 1360px) {

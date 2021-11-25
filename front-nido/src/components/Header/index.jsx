@@ -1,19 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
 import logo from "../../assets/images/logo.svg";
 import { Button } from "../Button";
 import "./Header.css";
-import { UserLogged } from "../UserLogged";
-import useLocalStorage from "../../hooks/useLocalStorage";
-function Header({ handleChangePageHome }) {
-    const [user, setUser] = useLocalStorage("user", null);
-    const handleClickButton = (e) => {
-        const links = document.querySelectorAll(".header__buttons a")
-        links.forEach(link => {
-            link.getAttribute("id") === e.target.getAttribute("id") ? link.classList.add("hidden") : link.classList.remove("hidden")
-        })
-    }
+import UserLogged from "../UserLogged";
+import { useLocation } from "react-router-dom";
+import SessionContext from "../../context/sessionContext.js";
+function Header({ handleChangePageHome, setIsSubmitted }) {
+    const location = useLocation();
+    const { user, setToken } = useContext(SessionContext)
+
+    useEffect(() => {
+        const loginButton = document.querySelector("#login")
+        const signinButton = document.querySelector("#signin")
+        if (loginButton !== null && signinButton !== null) {
+            if (location.pathname === "/login") {
+                loginButton.classList.add("hidden")
+                signinButton.classList.remove("hidden")
+            } else if (location.pathname === "/signin") {
+                signinButton.classList.add("hidden")
+                loginButton.classList.remove("hidden")
+            } else {
+                loginButton.classList.remove("hidden")
+                signinButton.classList.remove("hidden")
+            }
+        }
+
+
+    }, [location])
     return (
         <div className="header">
             <div className="identity">
@@ -28,19 +42,17 @@ function Header({ handleChangePageHome }) {
                 {
                     user !== null && user !== undefined ?
                         <>
-                            {window.innerWidth >= 760 && <UserLogged />}
+                            {window.innerWidth >= 760 && <UserLogged setIsSubmitted={setIsSubmitted} user={user} />}
                         </>
                         :
                         <>
                             <Button
                                 name={"Iniciar Sesión"}
                                 id={'login'}
-                                event={handleClickButton}
                             />
                             <Button
                                 name={"Crear cuenta"}
                                 id={'signin'}
-                                event={handleClickButton}
                             />
 
                         </>

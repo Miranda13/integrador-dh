@@ -1,31 +1,41 @@
-import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useState, useEffect, useContext } from "react";
+import { useParams, useNavigate } from 'react-router-dom';
 import Booking from "../components/Booking";
 import HeaderProduct from "../components/HeaderProduct";
 import Policy from "../components/Policy";
 import getData from "../assets/js/getData";
 import "./BookingPage.css";
-
+import SessionContextProvider from '../context/sessionContext.js';
 export default function BookingPage() {
+    const history = useNavigate();
+    const { token } = useContext(SessionContextProvider);
     const { id } = useParams();
-    const [list, setList] = useState({});
+    const [product, setProduct] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetch(`http://localhost:8080/api/v1/product/3`)
-            .then(res => res.json())
-            .then(data => setList(data))
+        if (token === null || token === undefined) {
+            history("/login", { state: { idProduct: id, auth: "Necesitas estar logueado para reservar un hotel" } });
+        }
+        getData(`/api/v1/product/${id}`)
+            .then(data => {
+                setProduct(data)
+                setIsLoading(false)
+            })
     }, [])
-    useEffect(() => {
-        console.log(list)
-    }, [list])
     return (
         <>
-            <div className="wrapper">
-                <div className="container-booking">
-                    <HeaderProduct list={list}/>
-                    <Booking list={list} />
-                    <Policy/>
-                </div>
-            </div>
+            {
+                isLoading ? "cargando"
+                    :
+                    <div className="wrapper">
+                        <div className="container-booking">
+                            <HeaderProduct product={product} pathGoBack={`/product/${id}`} />
+                            <Booking product={product} />
+                            <Policy />
+                        </div>
+                    </div>
+            }
+
         </>
     );
 }

@@ -1,13 +1,11 @@
     .container{
-        display: block;
-        height: auto;
-        width: 100%;
-        margin-top: 80px;
-        margin-bottom: 58px;
-        background-color: var(--light-medium-color);
+        height: auto;     
+        background-color: var(--light-gray-color);
     }
-    .section-title{
-        margin: 8vw 0px 0px 0px;
+    .form-register-container{
+        padding:80px 0;
+    }
+    .section-title-register{
         display: flex;
         justify-content: center;
         color: var(--main-color);
@@ -18,18 +16,17 @@
         justify-items: center;
         align-content: center;
         font-size: var(--font-size-4);
-        padding-bottom: 7vw;
         margin-top: 5px;
     }
-
     .form__label, .form__input{
         display: block;
     }
-
-    .form__label {
-        margin-top: 2vw !important;
+    .form__body label{
+        margin-top: 0.1rem;
     }
-
+    .form__label {
+        margin-top: 2vw;
+    }
     .form_error{
         margin: 0px;
         color: red;
@@ -37,11 +34,11 @@
         display: block; 
         text-align: end;
     }
-   
     .form__input{
         height: 40px;
         margin-top: 5px;
-        max-width: 65vw /*40vh*/
+        max-width: 450px;
+        min-width: 220px;
     } 
 
     #form__button{
@@ -54,50 +51,30 @@
     }
 
     .register-button{
-        width: 65vw;
+        width: 200px;
         height: 40px;
     }
 
-@media (min-width: 761px) and (max-width: 1360px) {
-    .section-title{
-        margin-top: 97px;
+@media  (min-height:725px) {
+        .form-register-container{
+            top: 10px;
+            padding: 0px;
+        }
     }
 
-    .form {
-        margin-top: 60px;
-    }
-
-    .form__input{
-        max-width: 47vw;
-    }
-    .register-button{
-        width: 47vw;
-        margin-top: 40px;
-    }
+    @media (min-width: 730px)  and (max-width: 1360px) {
+ 
 }
+
 @media (min-width:1361px) {
-    
-    .form__body--two-label{
-        margin-left: 5px;
-    }
-
-    .section-title{
-        margin-top: 50px;
-    }
-
     .form__body{
         width: 448px;
     }
-    
     .form__input{
         max-width: 448px;
     }
     .form{
         margin-top: 10px;
-    }
-    
-    .form__label {
-       margin-top: 0.5vw !important; 
     }
     .form__body--two{
         display: flex;
@@ -105,8 +82,5 @@
     }
     #name, #surname{    
         width: 218px;
-    }
-    .register-button{
-        width: 13vw;
     }
 }

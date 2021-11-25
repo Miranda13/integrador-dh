@@ -1,7 +1,7 @@
 .booking{
     width: 100%;
     padding: 10vw 20px;
-    background-color: var(--light-medium-color);
+    background-color: var(--light-gray-color);
     display: flex;
     flex-direction: column;
 }
