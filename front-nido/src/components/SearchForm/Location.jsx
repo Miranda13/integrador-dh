@@ -11,7 +11,7 @@ function Location({ zIndexCalendar }) {
     const handleSelectLocation = (e, id) => {
         const title_location = document.querySelector(".container-location__title");
         if (e.target.childNodes[1]?.textContent !== undefined && e.target.childNodes[3]?.textContent !== undefined) {
-            title_location.innerHTML = "" + e.target.childNodes[1]?.textContent + ", " + e.target.childNodes[3]?.textContent;
+            title_location.innerHTML = e.target.childNodes[1]?.textContent + ", " + e.target.childNodes[3]?.textContent;
             title_location.style.color = "var(--dark-color)";
 
             title_location.setAttribute("id", id);
@@ -20,8 +20,10 @@ function Location({ zIndexCalendar }) {
     useEffect(() => {
         getData("/api/v1/location")
             .then(data => {
+                if (data) {
+                    setIsLoading(false);
+                }
                 setLocations(data);
-                setIsLoading(false);
             })
         window.addEventListener("click", (e) => {
             const inputLocation = document.querySelector(".container-location");

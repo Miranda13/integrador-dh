@@ -43,7 +43,7 @@ function Booking({ product }) {
             setErrorTime("");
         }
         if (!errorCalendar && !errorTime) {
-            fetch("http://localhost:8080/api/v1/reserve", {
+            fetch("http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/reserve", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
