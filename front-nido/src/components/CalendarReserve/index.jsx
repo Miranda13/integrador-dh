@@ -37,9 +37,10 @@ export default function CalendarReserve({ status, handleSelectRangeDate, idProdu
     }
     useEffect(() => {
         if (idProduct !== undefined) {
-            fetch(`http://ec2-54-84-101-145.compute-1.amazonaws.com:8080/api/v1/reserve/product/${idProduct}`)
+            fetch(`http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/reserve/product/${idProduct}`)
                 .then(res => res.json())
                 .then(data => {
+                    console.log(data);
                     createArrayDaysReserve(data);
                 }).catch(error => console.log(error))
         }

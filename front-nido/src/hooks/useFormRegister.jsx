@@ -25,7 +25,7 @@ export default function useFormRegister(objectValues, callback, validate) {
 
     useEffect(() => {
         if (Object.keys(errors).length === 0 && isSubmitting) {
-            fetch('http://ec2-54-84-101-145.compute-1.amazonaws.com:8080/api/v1/user/register', {
+            fetch('http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/user/register', {
                 method: 'POST',
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({
