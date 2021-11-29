@@ -24,7 +24,7 @@ export default function useFormLogin(objectValues, callback, validate, idProduct
 
     useEffect(() => {
         if (Object.keys(errors).length === 0 && isSubmitting) {
-            fetch('http://localhost:8080/api/v1/user/login', {
+            fetch('http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/user/login', {
                 method: 'POST',
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify(values)

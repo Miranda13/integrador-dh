@@ -8,7 +8,7 @@ export function SessionContextProvider({children}) {
     useEffect(()=>{
         if(token !== null && token !== undefined){
             var decoded = jwtDecode(token);
-            fetch(`http://localhost:8080/api/v1/user/${decoded.jti}`, {
+            fetch(`http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/user/${decoded.jti}`, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
