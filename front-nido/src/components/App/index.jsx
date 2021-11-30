@@ -12,6 +12,7 @@ import ProductPage from "../../pages/ProductPage";
 import BookingPage from "../../pages/BookingPage";
 import SuccessfulBookingPage from "../../pages/SuccessfulBookingPage";
 import { SessionContextProvider } from '../../context/sessionContext.js';
+
 function App() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [toggle, setToggle] = useState();

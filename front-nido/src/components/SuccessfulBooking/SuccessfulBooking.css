@@ -3,8 +3,7 @@
     height: 100vh;
     background-color: var(--light-medium-color);
     display: flex;
-justify-content: center;
-
+    justify-content: center;
 }
 
 .successful-booking{
@@ -55,11 +54,11 @@ justify-content: center;
 
 /*DESKTOP*/
 @media (min-width: 1360px){
-    .successful-booking{
-        /* max-width: 600px;
-       max-height: 300px; */
-        /* margin: 50vh; */
-        /* padding: 2.5vw 0vw; */
-        
+    .successful-booking-icon{
+        padding-bottom: 1vw;
+    }
+
+    .successful-booking > p{
+        padding-bottom: 2.5vw;
     }
 }

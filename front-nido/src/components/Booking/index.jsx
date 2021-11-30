@@ -33,7 +33,7 @@ function Booking({ product }) {
     }
     const handleSubmitReserve = (e) => {
         if (!startDate || !endDate) {
-            setErrorCalendar("Check-in y check-out obligatorios")
+            setErrorCalendar(<span className="error">Check-in y check-out obligatorios</span>)
         } else {
             setErrorCalendar("");
         }
