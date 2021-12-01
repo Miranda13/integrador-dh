@@ -9,7 +9,6 @@ import SessionContext from "../../context/sessionContext.js";
 function Header({ handleChangePageHome, setIsSubmitted }) {
     const location = useLocation();
     const { user, setToken } = useContext(SessionContext)
-
     useEffect(() => {
         const loginButton = document.querySelector("#login")
         const signinButton = document.querySelector("#signin")
@@ -42,6 +41,8 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
                 {
                     user !== null && user !== undefined ?
                         <>
+                            <Link to="/favorite" className="button-favorite animation-button-light" >
+                            </Link>
                             {window.innerWidth >= 760 && <UserLogged setIsSubmitted={setIsSubmitted} user={user} />}
                         </>
                         :
