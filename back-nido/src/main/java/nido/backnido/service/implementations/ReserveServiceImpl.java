@@ -4,6 +4,7 @@ import nido.backnido.entity.Reserve;
 import nido.backnido.entity.dto.ReserveDTO;
 import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.ReserveRepository;
+import nido.backnido.service.ImageService;
 import nido.backnido.service.ReserveService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class ReserveServiceImpl implements ReserveService {
     @Autowired
     private ReserveRepository reserveRepository;
 
+    @Autowired
+    ImageService imageService;
+
     ModelMapper modelMapper = new ModelMapper();
 
 
@@ -28,7 +32,9 @@ public class ReserveServiceImpl implements ReserveService {
         List<ReserveDTO> reserveResponse = new ArrayList<>();
 
         for (Reserve reserve : reserveRepository.findAll()) {
-            reserveResponse.add(modelMapper.map(reserve, ReserveDTO.class));
+            ReserveDTO reservedto = modelMapper.map(reserve, ReserveDTO.class);
+            reservedto.getProduct().setImages(imageService.findByProductId(reserve.getProduct()));
+            reserveResponse.add(reservedto);
         }
 
         return reserveResponse;
@@ -48,6 +54,17 @@ public class ReserveServiceImpl implements ReserveService {
         List<ReserveDTO> reserveResponse = new ArrayList<>();
 
         for (Reserve reserve : reserveRepository.findReservationsByProductId(productId)) {
+            reserveResponse.add(modelMapper.map(reserve, ReserveDTO.class));
+        }
+
+        return reserveResponse;
+    }
+
+    @Override
+    public List<ReserveDTO> findReservationsByUserId(Long userId) {
+        List<ReserveDTO> reserveResponse = new ArrayList<>();
+
+        for (Reserve reserve : reserveRepository.findReservationsByUserId(userId)) {
             reserveResponse.add(modelMapper.map(reserve, ReserveDTO.class));
         }
 

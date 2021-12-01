@@ -38,5 +38,6 @@ public interface ReserveRepository extends JpaRepository<Reserve, Long> {
     @Query(value = "SELECT r FROM Reserve r WHERE r.product.productId = :productId")
     List<Reserve> findReservationsByProductId(@Param("productId") Long productId);
 
-
+    @Query(value = "SELECT r FROM Reserve r WHERE r.user.userId = :userId")
+    List<Reserve> findReservationsByUserId(@Param("userId") Long userId);
 }

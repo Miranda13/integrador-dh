@@ -19,5 +19,5 @@ public class ImageDTO {
     private Long imageId;
     private String title;
     private String url;
-    private Product product;
+    private ProductDTO product;
 }
