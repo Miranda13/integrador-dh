@@ -1,5 +1,6 @@
 package nido.backnido.entity.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.apache.commons.lang3.builder.ToStringExclude;
 
@@ -9,13 +10,11 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "products")
 public class LocationDTO {
 	private Long locationId;
     private String city;
     private String country;
-    /*private Double latitude;
-    private Double longitude;*/
+    @JsonIgnore
     private Set<ProductDTO> products;
 
 }
