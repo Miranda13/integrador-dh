@@ -39,7 +39,7 @@ function Booking({ product }) {
             setErrorCalendar("");
         }
         if (!time) {
-            setErrorTime("Hora de llegada obligatoria")
+            setErrorTime(<span className="error">Hora de llegada obligatoria</span>)
         } else {
             setErrorTime("");
         }
