@@ -16,11 +16,19 @@ export default function FavoritePage() {
                 "Authorization": `Bearer ${token}`
             }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status >= 400 && res.status < 500) {
+                    return Promise.reject(new Error("El usuario con esa identificacion no existe"))
+                }
+                if (res.status >= 500) {
+                    return Promise.reject(new Error("Lamentablemente no ha podido registrarse. Porfavor intentelo mas tarde"))
+                }
+                return res.json()
+            })
             .then(data => {
                 setProducts(data)
                 setIsLoading(false);
-            })
+            }).catch(error => console.log(error))
 
     }
     useEffect(() => {
@@ -29,11 +37,19 @@ export default function FavoritePage() {
                 "Authorization": `Bearer ${token}`
             }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status >= 400 && res.status < 500) {
+                    return Promise.reject(new Error("El usuario con esa identificacion no existe"))
+                }
+                if (res.status >= 500) {
+                    return Promise.reject(new Error("Lamentablemente no ha podido registrarse. Porfavor intentelo mas tarde"))
+                }
+                return res.json()
+            })
             .then(data => {
                 setProducts(data)
                 setIsLoading(false);
-            })
+            }).catch(error => console.log(error))
     }, [])
     return (
         <div className="favorites">

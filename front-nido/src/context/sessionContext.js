@@ -34,7 +34,15 @@ export function SessionContextProvider({children}) {
                     "Authorization": `Bearer ${token}`
                 }
             })
-                .then(res => res.json())
+                .then(res => {
+                    if (res.status >= 400 && res.status < 500) {
+                        return Promise.reject(new Error("No existe un usuario con esa identificacion"))
+                    }
+                    if (res.status >= 500) {
+                        return Promise.reject(new Error("Lamentablemente no ha podido guardar el estado. Porfavor intentelo mas tarde"))
+                    }
+                    return res.json()
+                })
                 .then(data => {
                         let aux = data.length > 0 ? data.map(d => d.product.productId) : [];
                         favorites.forEach((f,j)=>{
@@ -50,17 +58,25 @@ export function SessionContextProvider({children}) {
                                                 user: { userId: decoded.jti }
                                             })
                                         })
-                                        .then(res => res.text())
+                                        .then(res => {
+                                            if (res.status >= 400 && res.status < 500) {
+                                                return Promise.reject(new Error("El favorito que quiere registrar ya existe en la base de datos"))
+                                            }
+                                            if (res.status >= 500) {
+                                                return Promise.reject(new Error("Lamentablemente no ha podido cambiar su estado. Porfavor intentelo mas tarde"))
+                                            }
+                                            return res.text()
+                                        })
                                         .then(data => {
                                             aux = [...aux,f]
                                             setFavorites(aux);
                                             setProductsFavoritesLS(aux);
-                                        }) 
+                                        }).catch(error => console.log(error))
                             }
                         })
                         setFavorites(aux);
                         setProductsFavoritesLS(aux);
-                })
+                }).catch(error => console.log(error))
         }else{
             setUser(null)
         }
