@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+import com.amazonaws.services.s3.model.CannedAccessControlList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,9 @@ public class AWSS3ServiceImpl implements AWSS3Service {
         final PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, uniqueFileName, file);
         LOGGER.info("Es: " + putObjectRequest.getKey());
         amazonS3.putObject(putObjectRequest);
+        amazonS3.setObjectAcl(putObjectRequest.getBucketName(),
+                putObjectRequest.getKey(),
+                CannedAccessControlList.PublicRead);
         return putObjectRequest.getKey();
     }
 }

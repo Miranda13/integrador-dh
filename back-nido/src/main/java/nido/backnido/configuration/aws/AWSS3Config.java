@@ -1,5 +1,6 @@
 package nido.backnido.configuration.aws;
 
+import com.amazonaws.services.s3.model.AccessControlList;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +25,7 @@ public class AWSS3Config {
     public AmazonS3 getAmazonS3Cient() {
         final BasicAWSCredentials basicAWSCredentials = new BasicAWSCredentials(accessKeyId, secretAccessKey);
         // Get AmazonS3 client and return the s3Client object.
+
         return AmazonS3ClientBuilder
                 .standard()
                 .withRegion(Regions.fromName(region))
