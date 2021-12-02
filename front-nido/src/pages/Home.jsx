@@ -17,7 +17,6 @@ export default function Home({ toggle }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const location = document.querySelector(".container-location__title");
-        console.log();
         if (startDate === "" && endDate === "" && location.innerHTML !== "¿A dónde vamos?") {
             getData(`/api/v1/location/${location.getAttribute("id")}`)
                 .then((location) => {
