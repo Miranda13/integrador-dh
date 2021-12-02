@@ -7,6 +7,9 @@ import lombok.Setter;
 import lombok.ToString;
 import nido.backnido.entity.*;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalTime;
 import java.util.Set;
 
@@ -19,6 +22,10 @@ public class ProductDTO {
 	private Long productId;
     private String name;
     private String description;
+    private String subtitle;
+    private String policy;
+    private String rule;
+    private String safety;
     private String address;
     private Double latitude;
     private Double longitude;

@@ -35,10 +35,8 @@ public class Reserve {
     @NotNull
     private LocalTime hourIn;
 
-    @NotNull
-    private boolean covid;
+    private Boolean covid;
 
-    @NotNull
     @Max(value = 180, message = "Este campo sólo acepta un máximo de 180 caracteres, por favor revisa")
     private String info;
 
