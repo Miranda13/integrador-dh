@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -33,6 +34,13 @@ public class Reserve {
 
     @NotNull
     private LocalTime hourIn;
+
+    @NotNull
+    private boolean covid;
+
+    @NotNull
+    @Max(value = 180, message = "Este campo sólo acepta un máximo de 180 caracteres, por favor revisa")
+    private String info;
 
     @ManyToOne
     @JoinColumn(name="users_user_id", referencedColumnName = "userId")

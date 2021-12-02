@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
@@ -29,6 +30,24 @@ public class Product {
     @NotNull
     @NotBlank
     private String description;
+
+    private String subtitle;
+
+    @NotNull
+    @NotBlank
+    @Max(value = 250 , message = "Este campo sólo acepta un máximo de 250 caracteres, por favor revisa")
+    private String policy;
+
+    @NotNull
+    @NotBlank
+    @Max(value = 250, message = "Este campo sólo acepta un máximo de 250 caracteres, por favor revisa")
+    private String rule;
+
+    @NotNull
+    @NotBlank
+    @Max(value = 250 , message = "Este campo sólo acepta un máximo de 250 caracteres, por favor revisa")
+    private String safety;
+
     @NotNull
     @NotBlank
     private String address;
