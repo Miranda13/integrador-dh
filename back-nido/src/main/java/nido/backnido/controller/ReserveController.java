@@ -49,6 +49,12 @@ import java.util.List;
         return reserveService.findReservationsByProductId(id);
     }
 
+    @GetMapping("user/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    List<ReserveDTO> findReservationsByUserId(@PathVariable Long id) {
+        return reserveService.findReservationsByUserId(id);
+    }
+
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id){

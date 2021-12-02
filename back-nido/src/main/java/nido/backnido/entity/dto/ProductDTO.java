@@ -19,14 +19,11 @@ public class ProductDTO {
 	private Long productId;
     private String name;
     private String description;
-    /*
-    private Boolean availability;
-    private Integer score;*/
     private String address;
     private Double latitude;
     private Double longitude;
-    private Location location;
-    private Category category;
+    private LocationDTO location;
+    private CategoryDTO category;
     private Set<Image> images;
     private Score score;
     private Set<Feature> features;

@@ -1,11 +1,11 @@
 package nido.backnido.entity.dto;
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import nido.backnido.entity.Role;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -17,8 +17,7 @@ public class UserDTO {
     private String name;
     private String surname;
     private String email;
-    @ToString.Exclude
-    private String password;
+    @JsonIgnore
     private Role role;
 
 }
