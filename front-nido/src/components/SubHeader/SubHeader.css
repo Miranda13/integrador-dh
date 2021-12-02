@@ -43,3 +43,9 @@
     width: 50%;
 }
 
+h2.my-booking{
+    color: var(--light-color);
+    font-size: var(--font-size-1);
+    font-weight: var(--font-weight-bold);
+    padding-top: 20px;
+}

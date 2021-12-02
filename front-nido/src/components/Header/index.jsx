@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { Button } from "../Button";
 import "./Header.css";
@@ -28,6 +28,11 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
 
 
     }, [location])
+
+    const history = useNavigate();
+    const handleMyBookings = () => {
+        history("/1/mybooking");
+    }
     return (
         <div className="header">
             <div className="identity">
@@ -43,6 +48,7 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
                     user !== null && user !== undefined ?
                         <>
                             {window.innerWidth >= 760 && <UserLogged setIsSubmitted={setIsSubmitted} user={user} />}
+                             {<i onClick={handleMyBookings} className="my-booking-icon far fa-building"></i>}  
                         </>
                         :
                         <>

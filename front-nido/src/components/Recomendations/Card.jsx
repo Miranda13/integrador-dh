@@ -17,7 +17,7 @@ function Card(props) {
                 <div className="card-list__header">
                     <div className="class-list__header__score">
                         <div className="card-list__info__category">
-                            <h3 className="card-list__info__category__title">{card.category.title}</h3>
+                            <h3 className="card-list__info__category__title">{card.category.title.toUpperCase()}</h3>
                             <i className="card-list__info__category__icon fas fa-star"></i>
                             <i className="card-list__info__category__icon fas fa-star"></i>
                             <i className="card-list__info__category__icon fas fa-star"></i>

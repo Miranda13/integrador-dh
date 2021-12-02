@@ -34,7 +34,9 @@
     display: none;
 }
 
-
+.my-booking-icon{
+    display: none;
+}
 
 @media (min-width: 761px) {
     .header__buttons {
@@ -57,6 +59,21 @@
     #signin.hidden {
         display: none;
     }
+
+    .my-booking-icon{
+        display: block;
+        width: 45px;
+        height: 45px;
+        color: var(--light-color);
+        background-color: var(--dark-color);
+        font-size: var(--font-size-2);
+        border-radius: 50%;
+        position: absolute;
+        margin: 0px 300px;
+        margin-top: 10px;
+        padding-top: 12px;
+        padding-left: 14px;
+    }
 }
 
 @media (min-width:1361px) {
@@ -71,5 +88,20 @@
     #login.hidden,
     #signin.hidden {
         display: none;
+    }
+
+    .my-booking-icon{
+        display: block;
+        width: 45px;
+        height: 45px;
+        color: var(--light-color);
+        background-color: var(--dark-color);
+        font-size: var(--font-size-2);
+        border-radius: 50%;
+        position: absolute;
+        margin: 0px 300px;
+        margin-top: 10px;
+        padding-top: 12px;
+        padding-left: 14px;
     }
 }
