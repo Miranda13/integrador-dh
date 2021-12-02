@@ -1,9 +1,11 @@
 package nido.backnido.service.implementations;
 
+import nido.backnido.configuration.aws.AWSS3ServiceImpl;
 import nido.backnido.entity.Image;
 import nido.backnido.entity.Product;
 import nido.backnido.entity.dto.ProductDTO;
 import nido.backnido.exception.CustomBaseException;
+import nido.backnido.exception.ExceptionGlobalHandler;
 import nido.backnido.repository.ProductRepository;
 import nido.backnido.service.ImageService;
 import nido.backnido.service.ProductService;
@@ -12,11 +14,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,15 +34,21 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     ImageService imageService;
 
+    @Autowired
+    AWSS3ServiceImpl awss3Service;
+
     ModelMapper modelMapper = new ModelMapper();
+
+    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProductServiceImpl.class);
+    private final String URL_S3 = "https://bucketnido.s3.amazonaws.com/";
 
     @Override
     public List<ProductDTO> getAll() {
         List<ProductDTO> productResponse = new ArrayList<>();
 
         for (Product product : productRepository.findAll()) {
-        	ProductDTO productdto = modelMapper.map(product, ProductDTO.class);
-        	productdto.setImages(imageService.findByProductId(product));
+            ProductDTO productdto = modelMapper.map(product, ProductDTO.class);
+            productdto.setImages(imageService.findByProductId(product));
             productResponse.add(productdto);
         }
 
@@ -49,28 +61,41 @@ public class ProductServiceImpl implements ProductService {
                 new CustomBaseException("Producto no encontrado, por favor compruebe", HttpStatus.BAD_REQUEST.value())
         );
         ProductDTO productdto = modelMapper.map(response, ProductDTO.class);
-    	productdto.setImages(imageService.findByProductId(response));
+        productdto.setImages(imageService.findByProductId(response));
         return productdto;
     }
 
     @Override
-    public void create(ProductDTO newProduct) {
-        try{
+    @Transactional()
+    public void create(ProductDTO newProduct, List<MultipartFile> files) {
+        List<String> filesList = new ArrayList<>();
+        try {
+
             if (newProduct != null) {
-            	Product miProduct = modelMapper.map(newProduct,Product.class);
-            	Product productCreate = productRepository.save(miProduct);
-            	if(newProduct.getImages().size() != 0){
-            		for (Image image : newProduct.getImages()) {
-            			image.setProduct(productCreate);
-            			imageService.create(image);
-            		}
-            	}
+                Product miProduct = modelMapper.map(newProduct, Product.class);
+                logger.info(miProduct);
+                Product productCreate = productRepository.save(miProduct);
+                files.forEach(file -> {
+                    String fileUpload = awss3Service.uploadFile(file);
+                    filesList.add(fileUpload);
+                });
+
+                filesList.forEach(file -> {
+                    Image image = new Image();
+                    image.setProduct(productCreate);
+                    image.setTitle(file);
+                    image.setUrl(URL_S3.concat(file));
+                    imageService.create(image);
+                });
+
             }
-        }catch(DataIntegrityViolationException exception) {
+        } catch (DataIntegrityViolationException exception) {
             throw new CustomBaseException("Error al crear producto, verifique si la información de las tablas relacionadas existe", HttpStatus.BAD_REQUEST.value());
-        }catch (Exception e){
+        } catch (Exception e) {
+            logger.error(e);
             throw new CustomBaseException("Error al crear producto, verifique la información", HttpStatus.BAD_REQUEST.value());
         }
+
 
     }
 
@@ -99,8 +124,8 @@ public class ProductServiceImpl implements ProductService {
         List<ProductDTO> productResponse = new ArrayList<>();
         ProductDTO productdto;
         for (Product product : productRepository.findByCategory_TitleContaining(title)) {
-        	productdto = modelMapper.map(product, ProductDTO.class);
-        	productdto.setImages(imageService.findByProductId(product));
+            productdto = modelMapper.map(product, ProductDTO.class);
+            productdto.setImages(imageService.findByProductId(product));
             productResponse.add(productdto);
         }
 

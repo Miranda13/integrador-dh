@@ -62,6 +62,6 @@ public class AWSS3ServiceImpl implements AWSS3Service {
         final PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, uniqueFileName, file);
         LOGGER.info("Es: " + putObjectRequest.getKey());
         amazonS3.putObject(putObjectRequest);
-        return "https://bucketnido.s3.amazonaws.com/Products/" + putObjectRequest.getKey();
+        return putObjectRequest.getKey();
     }
 }
