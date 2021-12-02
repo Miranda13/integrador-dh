@@ -17,7 +17,9 @@ export default function Home({ toggle }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const location = document.querySelector(".container-location__title");
-        if (startDate === "" && endDate === "" && location.innerHTML !== "¿A dónde vamos?") {
+        console.log(location.placeholder)
+        console.log(location.value);
+        if (startDate === "" && endDate === "" && location.value !== "") {
             getData(`/api/v1/location/${location.getAttribute("id")}`)
                 .then((location) => {
                     if (location) {
@@ -26,12 +28,12 @@ export default function Home({ toggle }) {
                     setProducts(location.products);
                 })
         }
-        if (startDate !== "" && endDate !== "" && location.innerHTML !== "¿A dónde vamos?") {
+        if (startDate !== "" && endDate !== "" && location.value !== "") {
             let auxIn = new Date(startDate);
             let auxOut = new Date(endDate);
             auxIn = auxIn.toLocaleDateString().split("/")[2] + "-" + (auxIn.toLocaleDateString().split("/")[1] < 10 ? "0" + auxIn.toLocaleDateString().split("/")[1] : auxIn.toLocaleDateString().split("/")[1]) + "-" + (auxIn.toLocaleDateString().split("/")[0] < 10 ? "0" + auxIn.toLocaleDateString().split("/")[0] : auxIn.toLocaleDateString().split("/")[0]);
             auxOut = auxOut.toLocaleDateString().split("/")[2] + "-" + (auxOut.toLocaleDateString().split("/")[1] < 10 ? "0" + auxOut.toLocaleDateString().split("/")[1] : auxOut.toLocaleDateString().split("/")[1]) + "-" + (auxOut.toLocaleDateString().split("/")[0] < 10 ? "0" + auxOut.toLocaleDateString().split("/")[0] : auxOut.toLocaleDateString().split("/")[0]);
-            getData(`/api/v1/product/search?city=${location.innerHTML.split(",")[0]}&dateIn=${auxIn}&dateOut=${auxOut}`)
+            getData(`/api/v1/product/search?city=${location.value.split(",")[0]}&dateIn=${auxIn}&dateOut=${auxOut}`)
                 .then((data) => {
                     if (data) {
                         setIsLoadingProducts(false);
