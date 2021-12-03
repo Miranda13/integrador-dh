@@ -36,6 +36,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             ") AND l.city = :city", nativeQuery = true)
     List<Product> filterProductsByLocationAndDate(@Param("city")String city,@Param("dateIn") LocalDate dateIn,@Param("dateOut") LocalDate dateOut);
 
+    @Transactional
+    @Modifying
+    @Query("UPDATE Product p SET p.active = false WHERE p.productId = :productId")
+    void softDelete(@Param("productId") Long productId);
+
     Page<Product> findAll(Pageable page);
     Page<Product> findProductsByCategory_Title(String title, Pageable page);
 }

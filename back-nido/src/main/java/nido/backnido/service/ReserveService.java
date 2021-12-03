@@ -15,5 +15,7 @@ public interface ReserveService {
     void create(Reserve newReserve);
     void update(Reserve updatedReserve);
     void delete(Long id);
+    void deleteAllByProductId(Long productId);
+    void deleteAllByUserId(Long userId);
 
 }

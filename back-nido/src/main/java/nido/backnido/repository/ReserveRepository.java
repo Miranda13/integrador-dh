@@ -2,9 +2,11 @@ package nido.backnido.repository;
 
 import nido.backnido.entity.Reserve;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -40,4 +42,20 @@ public interface ReserveRepository extends JpaRepository<Reserve, Long> {
 
     @Query(value = "SELECT r FROM Reserve r WHERE r.user.userId = :userId")
     List<Reserve> findReservationsByUserId(@Param("userId") Long userId);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Reserve r SET r.active = false WHERE r.reservationId = :reservationId")
+    void softDelete(@Param("reservationId") Long reservationId);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Reserve r SET r.active = false WHERE r.product.productId = :productId")
+    void softDeleteAllByProductId(@Param("productId") Long productId);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Reserve r SET r.active = false WHERE r.user.userId = :userId")
+    void softDeleteAllByUserId(@Param("userId") Long userId);
+
 }

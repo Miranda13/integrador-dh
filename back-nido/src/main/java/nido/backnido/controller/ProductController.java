@@ -8,12 +8,9 @@ import nido.backnido.exception.CustomBindingException;
 import nido.backnido.service.ProductService;
 import nido.backnido.utils.UtilsException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,6 +27,7 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+    private final ReserveService reserveService;
 
     @Autowired
     ObjectMapper objectMapper;
@@ -37,6 +35,7 @@ public class ProductController {
     @Autowired
     public ProductController(ProductService productService) {
         this.productService = productService;
+        this.reserveService = reserveService;
     }
 
     @GetMapping
@@ -70,10 +69,10 @@ public class ProductController {
         productService.update(product);
     }
 
-    @DeleteMapping("{id}")
+    @PutMapping("delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @Secured("ROLE_ADMIN")
-    public void deleteById(@PathVariable Long id){
+    public void delete(@PathVariable Long id){
+        reserveService.deleteAllByProductId(id);
         productService.delete(id);
     }
 

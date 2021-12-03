@@ -1,10 +1,9 @@
 package nido.backnido.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -13,8 +12,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
+@Where(clause = "active = true")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class User {
 
     @Id
@@ -49,5 +49,8 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Reserve> reservations;
+
+    @Column(name = "active", columnDefinition = "boolean DEFAULT 'true'")
+    private Boolean active;
 
 }

@@ -3,7 +3,9 @@ package nido.backnido.service.implementations;
 import nido.backnido.entity.Reserve;
 import nido.backnido.entity.dto.ReserveDTO;
 import nido.backnido.exception.CustomBaseException;
+import nido.backnido.repository.ProductRepository;
 import nido.backnido.repository.ReserveRepository;
+import nido.backnido.repository.UserRepository;
 import nido.backnido.service.ImageService;
 import nido.backnido.service.ReserveService;
 import org.modelmapper.ModelMapper;
@@ -20,6 +22,12 @@ public class ReserveServiceImpl implements ReserveService {
 
     @Autowired
     private ReserveRepository reserveRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Autowired
     ImageService imageService;
@@ -91,6 +99,24 @@ public class ReserveServiceImpl implements ReserveService {
         reserveRepository.findById(id).orElseThrow(() ->
                 new CustomBaseException("Reserva con el id: " + id + " no encontrada por favor compruebe el id e intente nuevamente ", HttpStatus.NOT_FOUND.value())
         );
-        reserveRepository.deleteById(id);
+        reserveRepository.softDelete(id);
     }
+
+    @Override
+    public void deleteAllByProductId(Long productId) {
+        productRepository.findById(productId).orElseThrow(() ->
+                new CustomBaseException("Producto con el id: " + productId + " no encontrado por favor compruebe el id e intente nuevamente", HttpStatus.NOT_FOUND.value())
+        );
+        reserveRepository.softDeleteAllByProductId(productId);
+    }
+
+    @Override
+    public void deleteAllByUserId(Long userId) {
+        userRepository.findById(userId).orElseThrow(() ->
+                new CustomBaseException("Usuario con el id: " + userId + " no encontrado por favor compruebe el id e intente nuevamente", HttpStatus.NOT_FOUND.value())
+        );
+        reserveRepository.softDeleteAllByUserId(userId);
+    }
+
+
 }
