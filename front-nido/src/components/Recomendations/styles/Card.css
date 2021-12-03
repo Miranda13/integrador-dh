@@ -136,7 +136,7 @@
 .card-list__info__score__title {
     color: var(--dark-color);
     font-size: var(--font-size-4);
-
+    align-self: end
 }
 
 /*LOCATION*/

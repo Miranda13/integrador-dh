@@ -23,6 +23,8 @@ import { useNavigate } from "react-router-dom";
 import FavoriteContext from "../../context/favoriteContext";
 import SessionContext from "../../context/sessionContext";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import Score from "../../components/Score";
+
 export default function Product({ list }) {
     const { favorites, setFavorites } = useContext(FavoriteContext);
     const { user, token } = useContext(SessionContext);
@@ -31,7 +33,10 @@ export default function Product({ list }) {
     const [listProduct, setListProduct] = useState(list.images);
     const [productsFavoritesLS, setProductsFavoritesLS] = useLocalStorage("productsFavorites", []);
     useEffect(() => {
-        setListProduct(list.images);
+        if (list !== {}) {
+            setListProduct(list.images);
+
+        }
     }, [list])
     // const handleBack = () => {
     //     history.goBack();
@@ -85,17 +90,9 @@ export default function Product({ list }) {
                     </div>
                     <div className="product__ratings">
                         <div className="product__ratings-E">
-                            <div>{list.score}</div>
-                            <div>
-                                <i className="card-list__info__category__icon fas fa-star"></i>
-                                <i className="card-list__info__category__icon fas fa-star"></i>
-                                <i className="card-list__info__category__icon fas fa-star"></i>
-                                <i className="card-list__info__category__icon fas fa-star"></i>
-                                <i className="card-list__info__category__icon fas fa-star"></i>
-                            </div>
-                        </div>
-                        <div className="product__ratings-score">
-                            <div>9</div>
+                            <div></div>
+                            <Score avgScore={list.avgScore} scores={list.score} />
+
                         </div>
                     </div>
                 </div>
