@@ -34,7 +34,38 @@
     display: none;
 }
 
+.header__buttons .button-favorite {
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    color: var(--light-color);
+    background-color: var(--dark-color);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-2);
+    font-family: Quicksand, sans-serif;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 7px 0px 0px 0px;
+}
 
+.header__buttons .button-favorite::before {
+    content: "\f004";
+    font-family: 'Font Awesome 5 free';
+    font-size: 1.7rem;
+    -webkit-text-stroke: 2px var(--light-color);
+    color: var(--dark-color);
+    transition: color 0.2s;
+}
+
+.header__buttons .button-favorite:hover::before {
+    content: "\f004";
+    font-family: 'Font Awesome 5 free';
+    font-size: 1.7rem;
+    -webkit-text-stroke: 2px var(--light-color);
+    color: var(--light-color);
+}
 
 @media (min-width: 761px) {
     .header__buttons {

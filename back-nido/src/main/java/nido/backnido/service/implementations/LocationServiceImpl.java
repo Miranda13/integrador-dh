@@ -33,8 +33,8 @@ public class LocationServiceImpl implements LocationService {
     @Override
     public List<LocationDTO> getAll() {
         List<LocationDTO> locationResponse = new ArrayList<>();
-        Set<ProductDTO> productdto = new HashSet<>();
         for (Location location : locationRepository.findAll()) {
+        	Set<ProductDTO> productdto = new HashSet<>();
 
             LocationDTO locationDto = modelMapper.map(location, LocationDTO.class);
             for(Product product : location.getProducts()) {

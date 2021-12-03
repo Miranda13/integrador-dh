@@ -51,9 +51,10 @@ public class ScoreController {
         scoreService.delete(id);
     }
 
-    @GetMapping("product/{id}")
-    public double getAverageProductScore(@PathVariable Long id){
-        return scoreService.getAverageProductScore(id);
+    @GetMapping("product/{productId}")
+    @ResponseStatus(HttpStatus.OK)
+    public double getAverageProductScore(@PathVariable Long productId){
+        return scoreService.getAverageProductScore(productId);
     }
 
 }

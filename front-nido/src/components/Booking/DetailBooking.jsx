@@ -1,6 +1,7 @@
 import "./DetailBooking.css";
 
-export default function DetailBooking({ product, startDate, endDate, handleSubmitReserve, error }) {
+export default function DetailBooking({ product, startDate, endDate, handleSubmitReserve, error, buttonText }) {
+    console.log(product);
     return (
         <div className="booking-details">
             <div className="booking-details-img">
@@ -35,7 +36,7 @@ export default function DetailBooking({ product, startDate, endDate, handleSubmi
                     <p>{endDate}</p>
                 </div>
                 <hr className="booking-details-hr" />
-                <button type="submit" className="booking-details-button button-1" id="booking__button" onClick={handleSubmitReserve}>Confirmar reserva</button>
+                <button type="submit" className="booking-details-button button-1" id="booking__button" onClick={handleSubmitReserve}>{buttonText}</button>
             </div>
         </div>
     )

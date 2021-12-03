@@ -1,5 +1,7 @@
 package nido.backnido.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import nido.backnido.entity.Product;
 import nido.backnido.entity.dto.ProductDTO;
 import nido.backnido.exception.CustomBindingException;
@@ -9,8 +11,10 @@ import nido.backnido.utils.UtilsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 
@@ -27,7 +31,10 @@ public class ProductController {
     private final ReserveService reserveService;
 
     @Autowired
-    public ProductController(ProductService productService, ReserveService reserveService) {
+    ObjectMapper objectMapper;
+
+    @Autowired
+    public ProductController(ProductService productService) {
         this.productService = productService;
         this.reserveService = reserveService;
     }
@@ -45,13 +52,11 @@ public class ProductController {
         return productService.getById(id);
     }
 
-    @PostMapping
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody @Valid ProductDTO product, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-            throw new CustomBindingException("Errores encontrados, por favor compruebe e intente nuevamente", HttpStatus.BAD_REQUEST.value(), UtilsException.fieldBindingErrors(bindingResult));
-        }
-        productService.create(product);
+    public void create(@RequestParam("body") String product, @RequestPart(value= "file") final List<MultipartFile> files) throws JsonProcessingException {
+        ProductDTO productDTO = objectMapper.readValue(product, ProductDTO.class);
+        productService.create(productDTO, files);
     }
 
     @PutMapping

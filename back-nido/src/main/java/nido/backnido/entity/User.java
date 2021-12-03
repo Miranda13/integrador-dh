@@ -47,7 +47,7 @@ public class User {
     private Role role;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "reservationId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Reserve> reservations;
 
     @Column(name = "active", columnDefinition = "boolean DEFAULT 'true'")

@@ -6,6 +6,7 @@ import CalendarReserve from "../CalendarReserve";
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import SessionContextProvider from "../../context/sessionContext";
+
 function Booking({ product }) {
     const history = useNavigate();
     const { token, user } = useContext(SessionContextProvider);
@@ -33,12 +34,12 @@ function Booking({ product }) {
     }
     const handleSubmitReserve = (e) => {
         if (!startDate || !endDate) {
-            setErrorCalendar("Check-in y check-out obligatorios")
+            setErrorCalendar(<span className="error">Check-in y check-out obligatorios</span>)
         } else {
             setErrorCalendar("");
         }
         if (!time) {
-            setErrorTime("Hora de llegada obligatoria")
+            setErrorTime(<span className="error">Hora de llegada obligatoria</span>)
         } else {
             setErrorTime("");
         }
@@ -71,7 +72,7 @@ function Booking({ product }) {
                 }
                 return res.text()
             }).then(data => {
-                history("/success");
+                history("/success-booking");
             }).catch(error => { setError(error.message) })
         }
     }
@@ -85,7 +86,7 @@ function Booking({ product }) {
                 <h2 className="booking-title">Tu horario de llegada</h2>
                 <Schedule handleTime={handleTime} error={errorTime} />
             </div>
-            <DetailsBooking product={product} startDate={startDate} endDate={endDate} handleSubmitReserve={handleSubmitReserve} error={error} />
+            <DetailsBooking product={product} startDate={startDate} endDate={endDate} handleSubmitReserve={handleSubmitReserve} error={error} buttonText="Confirmar Reserva" />
         </div>
     )
 }
