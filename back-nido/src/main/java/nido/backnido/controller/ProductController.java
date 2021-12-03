@@ -6,11 +6,15 @@ import nido.backnido.entity.Product;
 import nido.backnido.entity.dto.ProductDTO;
 import nido.backnido.exception.CustomBindingException;
 import nido.backnido.service.ProductService;
+import nido.backnido.service.ReserveService;
 import nido.backnido.utils.UtilsException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,7 +37,7 @@ public class ProductController {
     ObjectMapper objectMapper;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, ReserveService reserveService) {
         this.productService = productService;
         this.reserveService = reserveService;
     }
