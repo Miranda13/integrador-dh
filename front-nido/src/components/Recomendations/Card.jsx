@@ -27,7 +27,7 @@ function Card({ card, handleToggleAction, setIsLoading }) {
         if (isFavorite >= 0) {
             myArray.splice(isFavorite, 1)
             if (user !== null) {
-                fetch(`http://localhost:8080/api/v1/favorite/${user.userId}/${card.productId}`, {
+                fetch(`http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/favorite/${user.userId}/${card.productId}`, {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",
@@ -48,7 +48,7 @@ function Card({ card, handleToggleAction, setIsLoading }) {
         } else {
             myArray.push(card.productId)
             if (user !== null) {
-                fetch("http://localhost:8080/api/v1/favorite", {
+                fetch("http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/favorite", {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`

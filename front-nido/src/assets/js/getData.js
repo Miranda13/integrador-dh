@@ -1,6 +1,6 @@
 export default async function getData (path){
-    // const URL = "http://ec2-54-144-29-135.compute-1.amazonaws.com:8080"
-    const URL = "http://localhost:8080"
+    const URL = "http://ec2-54-144-29-135.compute-1.amazonaws.com:8080"
+    //const URL = "http://localhost:8080"
     try{
         let response = await fetch(URL + path);
         if(response.status >= 400 && response.status < 500){
