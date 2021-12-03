@@ -12,6 +12,8 @@ import ProductPage from "../../pages/ProductPage";
 import BookingPage from "../../pages/BookingPage";
 import SuccessfulBookingPage from "../../pages/SuccessfulBookingPage";
 import { SessionContextProvider } from '../../context/sessionContext.js';
+import { FavoriteContextProvider } from '../../context/favoriteContext.js';
+import FavoritePage from "../../pages/FavoritePage";
 function App() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [toggle, setToggle] = useState();
@@ -23,38 +25,41 @@ function App() {
     }
     return (
         <BrowserRouter>
-            <SessionContextProvider>
-                <Header handleChangePageHome={handleChangePageHome} setIsSubmitted={setIsSubmitted} />
-                <Routes>
-                    <Route exact path="/" element={<Home toggle={toggle} />} />
-                    <Route exact path="/login" element=
+            <FavoriteContextProvider>
+                <SessionContextProvider>
+                    <Header handleChangePageHome={handleChangePageHome} setIsSubmitted={setIsSubmitted} />
+                    <Routes>
+                        <Route exact path="/" element={<Home toggle={toggle} />} />
+                        <Route exact path="/login" element=
 
-                        {!isSubmitted ?
-                            <>
-                                <LoginPage submitForm={submitForm} />
-                            </>
-                            :
-                            <>
-                                <Navigate to="/" />
-                            </>
+                            {!isSubmitted ?
+                                <>
+                                    <LoginPage submitForm={submitForm} />
+                                </>
+                                :
+                                <>
+                                    <Navigate to="/" />
+                                </>
+                            } />
+                        <Route exact path="/signin" element=
+                            {!isSubmitted ?
+                                <SigninPage submitForm={submitForm} />
+                                :
+                                <>
+                                    <Navigate to="/" />
+                                </>
+                            } />
+                        <Route exact path="/product/:id" element={<ProductPage />} />
+                        <Route exact path="/product/:id/booking" element={
+                            <BookingPage />
                         } />
-                    <Route exact path="/signin" element=
-                        {!isSubmitted ?
-                            <SigninPage submitForm={submitForm} />
-                            :
-                            <>
-                                <Navigate to="/" />
-                            </>
-                        } />
-                    <Route exact path="/product/:id" element={<ProductPage />} />
-                    <Route exact path="/product/:id/booking" element={
-                        <BookingPage />
-                    } />
-                    <Route exact path="/success" element={<SuccessfulBookingPage />} />
-                </Routes>
-                <Footer />
-                <MenuMobile setIsSubmitted={setIsSubmitted} />
-            </SessionContextProvider>
+                        <Route exact path="/success" element={<SuccessfulBookingPage />} />
+                        <Route exact path="/favorite" element={<FavoritePage />} />
+                    </Routes>
+                    <Footer />
+                    <MenuMobile setIsSubmitted={setIsSubmitted} />
+                </SessionContextProvider>
+            </FavoriteContextProvider>
         </BrowserRouter>
     )
 }
