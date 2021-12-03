@@ -6,11 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface ScoreRepository extends JpaRepository<Score, Long> {
-    @Query(value = "select avg(s.score) as promedio from Score s where s.product.productId = :id", nativeQuery = true)
-    double getAverageProductScore(@Param("id")Long id);
+    @Query(value = "select avg(s.score) as promedio from scores s where s.products_product_id = :productId", nativeQuery = true)
+    double getAverageProductScore(@Param("productId")Long productId );
+    
+    List<Score> findByProduct_ProductId(Long productId);
 }
