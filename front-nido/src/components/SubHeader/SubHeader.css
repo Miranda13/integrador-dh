@@ -43,7 +43,7 @@
     width: 50%;
 }
 
-h2.my-booking{
+h2.sub-header-title{
     color: var(--light-color);
     font-size: var(--font-size-1);
     font-weight: var(--font-weight-bold);

@@ -4,6 +4,7 @@
     width: 100%;
 }
 
+
 .my-booking-card{
     display: flex;
     flex-direction: row;
@@ -13,4 +14,10 @@
     /* margin-left: 20px; */
     gap: 20px;
     justify-content: center;
+}
+
+@media (min-width: 1361px){
+    .wrapper {
+    justify-content: center;
+}
 }

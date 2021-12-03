@@ -6,7 +6,6 @@ export default function SubHeader({ product, pathGoBack }) {
     const handleIconGoBack = () => {
         history(pathGoBack);
     }
-    console.log(typeof product)
     return (
         <div className="product__header">
             <div className="product__header-title-category">
@@ -15,7 +14,7 @@ export default function SubHeader({ product, pathGoBack }) {
                 <p>{product.category?.title}</p>
                 <h2>{product.name}</h2>
                 </> :
-                <h2 className="my-booking">{product}</h2>
+                <h2 className="sub-header-title">{product}</h2>
                 }   
             </div>
             <div className="product__ubication-back">

@@ -54,7 +54,6 @@ const booking= [ {
             <div className="container-my-booking">
                 <SubHeader product={"Mis Reservas"} pathGoBack="/" />
                 <MyBooking booking= {booking} dateIn={booking[0].dateIn}  dateOut={booking[0].dateOut}/>
-                <MyBooking booking= {booking} dateIn={booking[0].dateIn}  dateOut={booking[0].dateOut}/>
             </div>       
         </div>
     )

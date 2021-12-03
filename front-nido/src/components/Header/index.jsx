@@ -28,10 +28,6 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
 
     }, [location])
 
-    const history = useNavigate();
-    const handleMyBookings = () => {
-        history("/1/mybooking");
-    }
     return (
         <div className="header">
             <div className="identity">
@@ -46,10 +42,11 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
                 {
                     user !== null && user !== undefined ?
                         <>
+                            <Link to="/1/mybooking" className="button-booking animation-button-light">
+                            </Link> 
                             <Link to="/favorite" className="button-favorite animation-button-light" >
-                            </Link>
+                            </Link> 
                             {window.innerWidth >= 760 && <UserLogged setIsSubmitted={setIsSubmitted} user={user} />}
-                             {<i onClick={handleMyBookings} className="my-booking-icon far fa-building"></i>}  
                         </>
                         :
                         <>
