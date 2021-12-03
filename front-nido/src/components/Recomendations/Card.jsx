@@ -32,8 +32,16 @@ function Card({ card, handleToggleAction, setIsLoading }) {
                         "Authorization": `Bearer ${token}`
                     }
                 })
-                    .then(response => response.text())
-                    .then(data => { handleToggleAction() })
+                    .then(res => {
+                        if (res.status >= 400 && res.status < 500) {
+                            return Promise.reject(new Error("El usuario y/o producto no existen en la base de datos"))
+                        }
+                        if (res.status >= 500) {
+                            return Promise.reject(new Error("Lamentablemente no ha podido eliminar su favorito. Porfavor intentelo mas tarde"))
+                        }
+                        return res.text()
+                    })
+                    .then(data => { handleToggleAction() }).catch(error => console.log(error))
             }
         } else {
             myArray.push(card.productId)
@@ -48,8 +56,16 @@ function Card({ card, handleToggleAction, setIsLoading }) {
                         product: { productId: card.productId },
                         user: { userId: user.userId }
                     })
-                }).then(res => res.text())
-                    .then(data => { })
+                }).then(res => {
+                    if (res.status >= 400 && res.status < 500) {
+                        return Promise.reject(new Error("No tiene autorizacion para ver esta pagina"))
+                    }
+                    if (res.status >= 500) {
+                        return Promise.reject(new Error("Lamentablemente no ha podido obtener datos. Porfavor intentelo mas tarde"))
+                    }
+                    return res.text()
+                })
+                    .then(data => { }).catch(error => console.log(error))
             }
         }
         setFavorites(myArray);

@@ -1,2 +1,0 @@
-USER=admindbnido
-PASS=DigitalBooking123
