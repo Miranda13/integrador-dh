@@ -11,7 +11,7 @@ export default function FavoritePage() {
     const [isLoading, setIsLoading] = useState(true)
     const [products, setProducts] = useState([])
     const handleToggleAction = () => {
-        fetch(`http://localhost:8080/api/v1/favorite/user/${user.userId}`, {
+        fetch(`http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/favorite/user/${user.userId}`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
@@ -32,7 +32,7 @@ export default function FavoritePage() {
 
     }
     useEffect(() => {
-        fetch(`http://localhost:8080/api/v1/favorite/user/${user.userId}`, {
+        fetch(`http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/favorite/user/${user.userId}`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

@@ -29,7 +29,7 @@ export function SessionContextProvider({children}) {
                     myToken:token
                 })
             })
-            fetch(`http://localhost:8080/api/v1/favorite/user/${decoded.jti}`, {
+            fetch(`http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/favorite/user/${decoded.jti}`, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -47,7 +47,7 @@ export function SessionContextProvider({children}) {
                         let aux = data.length > 0 ? data.map(d => d.product.productId) : [];
                         favorites.forEach((f,j)=>{
                             if(!aux.includes(f)){
-                                fetch("http://localhost:8080/api/v1/favorite", {
+                                fetch("http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/favorite", {
                                         method: "POST",
                                             headers: {
                                                 "Content-Type": "application/json",
