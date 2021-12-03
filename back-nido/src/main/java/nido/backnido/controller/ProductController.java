@@ -95,7 +95,12 @@ public class ProductController {
     }
 
     @GetMapping("/page/{page}")
-    public Page<Product> index(@PathVariable("page") Integer page) {
+    public Page<Product> productAllPage(@PathVariable("page") Integer page) {
         return productService.findAll(PageRequest.of(page, 10));
+    }
+
+    @GetMapping("/category/page")
+    public Page<Product> productByCategoryPage(@RequestParam("name") String category, @RequestParam("page") Integer page) {
+        return productService.findProductsByCategory_Title(category, PageRequest.of(page, 10));
     }
 }

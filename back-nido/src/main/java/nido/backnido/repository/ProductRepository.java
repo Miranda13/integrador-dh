@@ -37,4 +37,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> filterProductsByLocationAndDate(@Param("city")String city,@Param("dateIn") LocalDate dateIn,@Param("dateOut") LocalDate dateOut);
 
     Page<Product> findAll(Pageable page);
+    Page<Product> findProductsByCategory_Title(String title, Pageable page);
 }
