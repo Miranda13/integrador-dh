@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,17 +36,17 @@ public class Product {
 
     @NotNull
     @NotBlank
-    @Max(value = 250 , message = "Este campo sólo acepta un máximo de 250 caracteres, por favor revisa")
+    @Size(max = 250 , message = "Este campo sólo acepta un máximo de 250 caracteres, por favor revisa")
     private String policy;
 
     @NotNull
     @NotBlank
-    @Max(value = 250, message = "Este campo sólo acepta un máximo de 250 caracteres, por favor revisa")
+    @Size(max = 250, message = "Este campo sólo acepta un máximo de 250 caracteres, por favor revisa")
     private String rule;
 
     @NotNull
     @NotBlank
-    @Max(value = 250 , message = "Este campo sólo acepta un máximo de 250 caracteres, por favor revisa")
+    @Size(max = 250 , message = "Este campo sólo acepta un máximo de 250 caracteres, por favor revisa")
     private String safety;
 
     @NotNull
