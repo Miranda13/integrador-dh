@@ -91,7 +91,7 @@ public class ProductServiceImpl implements ProductService {
         productRepository.findById(id).orElseThrow(() ->
                 new CustomBaseException("Producto con el id: " + id + " no encontrado por favor compruebe el id e intente nuevamente ", HttpStatus.BAD_REQUEST.value())
         );
-        productRepository.deleteById(id);
+        productRepository.softDelete(id);
     }
 
     @Override

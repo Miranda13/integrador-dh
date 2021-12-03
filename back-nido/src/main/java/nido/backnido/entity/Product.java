@@ -2,6 +2,7 @@ package nido.backnido.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -11,11 +12,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "products")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@Where(clause = "active = true")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor @ToString
 public class Product {
 
     @Id
@@ -70,6 +69,10 @@ public class Product {
     )
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Feature> features;
+
+    @Column(name = "active", columnDefinition = "boolean DEFAULT 'true'")
+    private Boolean active;
+
 
 //    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
 //    private Set<Reserve> reserves;

@@ -6,6 +6,7 @@ import nido.backnido.entity.dto.AuthTokenDTO;
 import nido.backnido.entity.dto.LoginUserDTO;
 import nido.backnido.entity.dto.UserDTO;
 import nido.backnido.exception.CustomBindingException;
+import nido.backnido.service.ReserveService;
 import nido.backnido.service.UserService;
 import nido.backnido.utils.UtilsException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    ReserveService reserveService;
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
@@ -59,9 +62,10 @@ public class UserController {
        return ResponseEntity.status(HttpStatus.CREATED).body(generateToken(user.getUserId(), user.getEmail(),password));
     }
 
-    @DeleteMapping("{id}")
+    @PutMapping("delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id){
+        reserveService.deleteAllByUserId(id);
         userService.delete(id);
     }
 

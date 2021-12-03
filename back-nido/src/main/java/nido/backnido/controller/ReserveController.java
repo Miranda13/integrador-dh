@@ -55,7 +55,7 @@ import java.util.List;
         return reserveService.findReservationsByUserId(id);
     }
 
-    @DeleteMapping("{id}")
+    @PutMapping("delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id){
         reserveService.delete(id);

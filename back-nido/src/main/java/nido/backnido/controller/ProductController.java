@@ -4,6 +4,7 @@ import nido.backnido.entity.Product;
 import nido.backnido.entity.dto.ProductDTO;
 import nido.backnido.exception.CustomBindingException;
 import nido.backnido.service.ProductService;
+import nido.backnido.service.ReserveService;
 import nido.backnido.utils.UtilsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,10 +24,12 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+    private final ReserveService reserveService;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, ReserveService reserveService) {
         this.productService = productService;
+        this.reserveService = reserveService;
     }
 
     @GetMapping
@@ -60,9 +63,10 @@ public class ProductController {
         productService.update(product);
     }
 
-    @DeleteMapping("{id}")
+    @PutMapping("delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteById(@PathVariable Long id){
+    public void delete(@PathVariable Long id){
+        reserveService.deleteAllByProductId(id);
         productService.delete(id);
     }
 
