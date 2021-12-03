@@ -10,8 +10,10 @@ export default function ProductPage() {
     useEffect(() => {
         getData(`/api/v1/product/${id}`)
             .then(data => {
-                setIsLoading(false);
-                setList(data)
+                if (data) {
+                    setIsLoading(false);
+                    setList(data, console.log(data))
+                }
             })
     }, [])
     return (

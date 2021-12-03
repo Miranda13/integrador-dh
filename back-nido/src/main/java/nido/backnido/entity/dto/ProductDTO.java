@@ -10,6 +10,9 @@ import nido.backnido.entity.*;
 import java.time.LocalTime;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -27,8 +30,9 @@ public class ProductDTO {
     private Double longitude;
     private Location location;
     private Category category;
+    private Double avgScore = 0.0;
     private Set<Image> images;
-    private Score score;
+    private Set<Score> score;
     private Set<Feature> features;
 
 }

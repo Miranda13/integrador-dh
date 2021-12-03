@@ -1,16 +1,16 @@
 /*CARDS MAP*/
-.recommendation{
+.recommendation {
     background-color: var(--light-medium-color);
     width: 100%;
 }
 
-.title-recommendation{
+.title-recommendation {
     color: var(--dark-color);
     padding-top: 5%;
     padding-left: 10%;
 }
 
-.cards{
+.cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -18,7 +18,7 @@
 }
 
 /*SINGLE CARD*/
-.card-list{
+.card-list {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -35,33 +35,33 @@
 
 /*CARD IMAGE*/
 
-.card-list__image{
+.card-list__image {
     position: relative;
     height: 50%;
     width: 100%;
 }
 
-.card-list__image__jpg{
+.card-list__image__jpg {
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius:  10px ;
+    border-radius: 10px;
     border: transparent;
     object-fit: cover;
     object-position: left center;
 }
 
-.card-list__image__icon{
+.card-list__image__icon {
     color: var(--light-color);
     position: absolute;
     top: 10%;
     right: 5%;
- 
+
 }
 
 /*CARD INFO*/
 
-.card-list__info{
+.card-list__info {
     position: relative;
     padding: 2%;
     display: flex;
@@ -69,14 +69,16 @@
     justify-content: space-between;
     height: 50%;
 }
-.card-list__header{
+
+.card-list__header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex-wrap: wrap;
-  
+
 }
-.class-list__header__score{
+
+.class-list__header__score {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -84,41 +86,42 @@
 
 /*CATEGORY*/
 
-.card-list__info__category{
+.card-list__info__category {
     display: flex;
     flex-direction: row;
     gap: 2px;
 }
 
-.card-list__info__category__title{
+.card-list__info__category__title {
     font-size: var(--font-size-5);
     color: grey;
     font-weight: var(--font-weight-bold);
 }
 
-.card-list__info__category__icon{
+.card-list__info__category__icon {
     color: var(--main-color);
     font-size: var(--font-size-5);
 }
 
 /*HOTEL NAME*/
-.card-list__info__title{
+.card-list__info__title {
     font-size: var(--font-size-2);
     font-weight: var(--font-weight-bold);
-    padding-left: 0px; 
+    padding-left: 0px;
     color: var(--dark-color);
 }
 
 /*SCORE*/
 
-.card-list__info__score{
+.card-list__info__score {
     display: flex;
     align-items: baseline;
     flex-direction: column;
     justify-content: center;
 }
-.card-list__info__score__number{
- 
+
+.card-list__info__score__number {
+
     background-color: var(--dark-color);
     width: 34px;
     height: 27px;
@@ -127,36 +130,36 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 25px; 
+    margin-left: 25px;
 }
 
-.card-list__info__score__title{
+.card-list__info__score__title {
     color: var(--dark-color);
     font-size: var(--font-size-4);
-
+    align-self: end
 }
 
 /*LOCATION*/
 
-.card-list__info__location{
+.card-list__info__location {
     display: flex;
     flex-direction: row;
     gap: 4px;
     align-content: center;
 }
 
-.card-list__info__location__icon{
+.card-list__info__location__icon {
     color: var(--medium-color);
     font-size: var(--font-size-2);
 }
 
-.card-list__info__location__title{
+.card-list__info__location__title {
     color: var(--dark-color);
     font-size: var(--font-size-4);
     font-weight: var(--font-weight-bold);
 }
 
-.card-list__info__location__a{
+.card-list__info__location__a {
     text-decoration: none;
     color: var(--main-color);
     font-size: var(--font-size-5);
@@ -166,7 +169,7 @@
 
 /*AMENITIES*/
 
-.card-listo__info__amenities{
+.card-listo__info__amenities {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -179,12 +182,13 @@
 
 /*DECRIPTION*/
 
-.card-list__info__description{
+.card-list__info__description {
     color: var(--dark-color);
     font-size: var(--font-size-4);
     font-weight: var(--font-weight-bold);
     margin: 10px 0; 
-    overflow: hidden; 
+    overflow: hidden;
+    white-space: nowrap; 
     text-overflow:ellipsis;
     display:-webkit-box; 
     -webkit-box-orient:vertical;
@@ -194,17 +198,17 @@
 
 /*BUTTON*/
 
-.card-list__info__button{
+.card-list__info__button {
     width: 100%;
     height: 40px;
     color: var(--light-color);
     background-color: var(--main-color);
     border: none;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     border: 2px solid var(--main-color);
     padding: 10px;
-    font-size: var(--font-size-4 );
+    font-size: var(--font-size-4);
     font-weight: var(--font-weight-bold);
 }
 
@@ -215,58 +219,58 @@
 
 
 /*IPAD*/
-@media (min-width: 760px) and (max-width: 1360px){
-    .recommendation{
+@media (min-width: 760px) and (max-width: 1360px) {
+    .recommendation {
         background-color: var(--light-medium-color);
     }
-    
-    .title-recommendation{
+
+    .title-recommendation {
         color: var(--dark-color);
         padding-top: 2%;
         padding-left: 10%;
     }
-    
-    .cards{
+
+    .cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
         padding-bottom: 100px;
     }
 
-    .card-list{
+    .card-list {
         flex-direction: row;
         margin: 2%;
         height: 280px;
     }
 
- /*CARD IMAGE*/
-   
-.card-list__image{
-   height: 100%;
-    width: 50%;
-}
+    /*CARD IMAGE*/
 
-.card-list__info{
-    height: 100%;
-    width: 50%;
-}
+    .card-list__image {
+        height: 100%;
+        width: 50%;
+    }
+
+    .card-list__info {
+        height: 100%;
+        width: 50%;
+    }
 }
 
 
 /*DESKTOP*/
 
 @media (min-width: 1361px) {
-    .recommendation{
+    .recommendation {
         background-color: var(--light-medium-color);
     }
-    
-    .title-recommendation{
+
+    .title-recommendation {
         color: var(--dark-color);
         padding-top: 2%;
         padding-left: 2%;
     }
 
-    .cards{
+    .cards {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -274,11 +278,11 @@
         gap: 20px;
         justify-content: center;
     }
-    
-   
-/*CARD*/
 
-    .card-list{
+
+    /*CARD*/
+
+    .card-list {
         flex-direction: column;
         height: 280px;
         width: 48vw;
@@ -289,16 +293,16 @@
    
 /*LATERAL IMAGE*/
 
-    .card-list__image{
-        height: 100%;  
+    .card-list__image {
+        height: 100%;
         width: 50%;
     }
 
-/*LATERAL INFO*/
+    /*LATERAL INFO*/
 
-    .card-list__info{
-       height: 100%;
-       width: 50%;
-       padding: 2%;
+    .card-list__info {
+        height: 100%;
+        width: 50%;
+        padding: 2%;
     }
 }
