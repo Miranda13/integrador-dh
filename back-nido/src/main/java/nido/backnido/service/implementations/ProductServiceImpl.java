@@ -12,6 +12,8 @@ import nido.backnido.service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -158,5 +160,10 @@ public class ProductServiceImpl implements ProductService {
             productResponse.add(productdto);
         }
         return productResponse;
+    }
+
+    @Override
+    public Page<Product> findAll(Pageable page) {
+        return productRepository.findAll(page);
     }
 }

@@ -4,6 +4,8 @@ import nido.backnido.entity.Product;
 import nido.backnido.entity.Reserve;
 import nido.backnido.entity.dto.ProductDTO;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -33,4 +35,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "OR  (:dateOut BETWEEN r.date_in AND r.date_out)  \n" +
             ") AND l.city = :city", nativeQuery = true)
     List<Product> filterProductsByLocationAndDate(@Param("city")String city,@Param("dateIn") LocalDate dateIn,@Param("dateOut") LocalDate dateOut);
+
+    Page<Product> findAll(Pageable page);
 }
