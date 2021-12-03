@@ -88,7 +88,7 @@ public class Product {
             joinColumns = { @JoinColumn(name = "products_product_id")},
             inverseJoinColumns = {@JoinColumn(name = "features_feature_id")}
     )
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<Feature> features;
 
 //    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
