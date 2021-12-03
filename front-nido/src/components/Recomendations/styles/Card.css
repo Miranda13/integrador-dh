@@ -136,7 +136,7 @@
 .card-list__info__score__title {
     color: var(--dark-color);
     font-size: var(--font-size-4);
-
+    align-self: end
 }
 
 /*LOCATION*/
@@ -187,10 +187,12 @@
     font-size: var(--font-size-4);
     font-weight: var(--font-weight-bold);
     margin: 10px 0;
+    overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    overflow: hidden;
-
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .card-list__info__description__more {
@@ -291,8 +293,6 @@
         display: flex;
         flex-wrap: wrap;
     }
-
-
 
     /*LATERAL IMAGE*/
 

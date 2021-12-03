@@ -212,6 +212,10 @@
     .product__availability {
         padding: 25px;
     }
+    .product__availability h2{
+        margin-left:0px;
+    }
+    
 
     .product__availability-reserve {
         padding: 0px;
@@ -230,6 +234,7 @@
 @media (min-width: 1360px) {
     .product__availability h2 {
         width: 100%;
+        margin-left:0px;  
     }
 
     .product__availability-reserve {

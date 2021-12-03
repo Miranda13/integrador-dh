@@ -9,6 +9,8 @@ import nido.backnido.exception.ExceptionGlobalHandler;
 import nido.backnido.repository.ProductRepository;
 import nido.backnido.service.ImageService;
 import nido.backnido.service.ProductService;
+import nido.backnido.service.ScoreService;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -37,6 +39,9 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     AWSS3ServiceImpl awss3Service;
 
+    @Autowired
+    ScoreService scoreService;
+    
     ModelMapper modelMapper = new ModelMapper();
 
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProductServiceImpl.class);
@@ -47,8 +52,12 @@ public class ProductServiceImpl implements ProductService {
         List<ProductDTO> productResponse = new ArrayList<>();
 
         for (Product product : productRepository.findAll()) {
-            ProductDTO productdto = modelMapper.map(product, ProductDTO.class);
-            productdto.setImages(imageService.findByProductId(product));
+        	ProductDTO productdto = modelMapper.map(product, ProductDTO.class);
+        	productdto.setScore(product.getScores());
+        	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
+        	}
+        	productdto.setImages(imageService.findByProductId(product));
             productResponse.add(productdto);
         }
 
@@ -61,7 +70,11 @@ public class ProductServiceImpl implements ProductService {
                 new CustomBaseException("Producto no encontrado, por favor compruebe", HttpStatus.BAD_REQUEST.value())
         );
         ProductDTO productdto = modelMapper.map(response, ProductDTO.class);
-        productdto.setImages(imageService.findByProductId(response));
+        productdto.setScore(response.getScores());
+    	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+    		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
+    	}
+    	productdto.setImages(imageService.findByProductId(response));
         return productdto;
     }
 
@@ -124,8 +137,12 @@ public class ProductServiceImpl implements ProductService {
         List<ProductDTO> productResponse = new ArrayList<>();
         ProductDTO productdto;
         for (Product product : productRepository.findByCategory_TitleContaining(title)) {
-            productdto = modelMapper.map(product, ProductDTO.class);
-            productdto.setImages(imageService.findByProductId(product));
+        	productdto = modelMapper.map(product, ProductDTO.class);
+        	productdto.setScore(product.getScores());
+        	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
+        	}
+        	productdto.setImages(imageService.findByProductId(product));
             productResponse.add(productdto);
         }
 
@@ -138,6 +155,10 @@ public class ProductServiceImpl implements ProductService {
         ProductDTO productdto;
         for (Product product : productRepository.findProductByCity(city)) {
             productdto = modelMapper.map(product, ProductDTO.class);
+            productdto.setScore(product.getScores());
+        	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
+        	}
             productdto.setImages(imageService.findByProductId(product));
             productResponse.add(productdto);
         }
@@ -154,6 +175,10 @@ public class ProductServiceImpl implements ProductService {
         ProductDTO productdto;
         for (Product product : productRepository.filterProductsByLocationAndDate(city, dateIn, dateOut)) {
             productdto = modelMapper.map(product, ProductDTO.class);
+            productdto.setScore(product.getScores());
+        	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
+        	}
             productdto.setImages(imageService.findByProductId(product));
             productResponse.add(productdto);
         }
