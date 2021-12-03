@@ -12,7 +12,7 @@ import swim from "../../assets/images/icons/tv.svg";
 import tv from "../../assets/images/icons/tv.svg";
 import product from "./product.json";
 import Gallery from "./Gallery";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import db from "./product.json";
 import MapView from "./Map";
 import "./Map.css"
@@ -20,10 +20,16 @@ import "./Map.css"
 import HeaderProduct from "../HeaderProduct";
 import Policy from "../Policy";
 import { useNavigate } from "react-router-dom";
-
+import FavoriteContext from "../../context/favoriteContext";
+import SessionContext from "../../context/sessionContext";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 export default function Product({ list }) {
+    const { favorites, setFavorites } = useContext(FavoriteContext);
+    const { user, token } = useContext(SessionContext);
+    const colorFavorite = favorites.includes(list.productId) ? "var(--main-color)" : "white";
     const history = useNavigate();
     const [listProduct, setListProduct] = useState(list.images);
+    const [productsFavoritesLS, setProductsFavoritesLS] = useLocalStorage("productsFavorites", []);
     useEffect(() => {
         setListProduct(list.images);
     }, [list])
@@ -32,6 +38,42 @@ export default function Product({ list }) {
     // }
     const handleClickReserve = () => {
         history(`/product/${list.productId}/booking`)
+    }
+    const handleClickFavorite = (e) => {
+        let myArray = [...favorites]
+        let isFavorite = myArray.indexOf(list.productId);
+        if (isFavorite >= 0) {
+            myArray.splice(isFavorite, 1)
+            if (user !== null) {
+                fetch(`http://localhost:8080/api/v1/favorite/${user.userId}/${list.productId}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
+                })
+                    .then(response => response.text())
+                    .then(data => { })
+            }
+        } else {
+            myArray.push(list.productId)
+            if (user !== null) {
+                fetch("http://localhost:8080/api/v1/favorite", {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    method: "POST",
+                    body: JSON.stringify({
+                        product: { productId: list.productId },
+                        user: { userId: user.userId }
+                    })
+                }).then(res => res.text())
+                    .then(data => { })
+            }
+        }
+        setFavorites(myArray);
+        setProductsFavoritesLS(myArray);
     }
     return (
         <React.StrictMode>
@@ -60,7 +102,7 @@ export default function Product({ list }) {
                 <div className="product__gallery">
                     <div className="icono-share">
                         <i className="fas fa-share-alt " ></i>
-                        <i className="fas fa-heart icono-heart" ></i>
+                        <i className="fas fa-heart icono-heart" style={{ "color": colorFavorite }} onClick={handleClickFavorite}></i>
                     </div>
                     <Gallery
                         images={listProduct !== undefined ? listProduct : []}
