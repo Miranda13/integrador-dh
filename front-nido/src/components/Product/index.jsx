@@ -20,10 +20,11 @@ import "./Map.css"
 import HeaderProduct from "../HeaderProduct";
 import Policy from "../Policy";
 import { useNavigate } from "react-router-dom";
-import Score from "../../components/Score";
 import FavoriteContext from "../../context/favoriteContext";
 import SessionContext from "../../context/sessionContext";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import Score from "../../components/Score";
+
 export default function Product({ list }) {
     const { favorites, setFavorites } = useContext(FavoriteContext);
     const { user, token } = useContext(SessionContext);
