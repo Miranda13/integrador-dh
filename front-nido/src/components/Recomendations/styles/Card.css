@@ -99,7 +99,6 @@
 }
 
 .card-list__info__category__icon {
-    color: var(--main-color);
     font-size: var(--font-size-5);
 }
 
@@ -186,13 +185,13 @@
     color: var(--dark-color);
     font-size: var(--font-size-4);
     font-weight: var(--font-weight-bold);
-    margin: 10px 0; 
+    margin: 10px 0;
     overflow: hidden;
-    white-space: nowrap; 
-    text-overflow:ellipsis;
-    display:-webkit-box; 
-    -webkit-box-orient:vertical;
-    -webkit-line-clamp:2;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 
