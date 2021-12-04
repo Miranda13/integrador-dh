@@ -7,6 +7,8 @@ import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.ProductRepository;
 import nido.backnido.service.ImageService;
 import nido.backnido.service.ProductService;
+import nido.backnido.service.ScoreService;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -14,8 +16,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -25,7 +29,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ImageService imageService;
-
+    @Autowired
+    ScoreService scoreService;
+    
     ModelMapper modelMapper = new ModelMapper();
 
     @Override
@@ -34,6 +40,10 @@ public class ProductServiceImpl implements ProductService {
 
         for (Product product : productRepository.findAll()) {
         	ProductDTO productdto = modelMapper.map(product, ProductDTO.class);
+        	productdto.setScore(product.getScores());
+        	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
+        	}
         	productdto.setImages(imageService.findByProductId(product));
             productResponse.add(productdto);
         }
@@ -47,6 +57,10 @@ public class ProductServiceImpl implements ProductService {
                 new CustomBaseException("Producto no encontrado, por favor compruebe", HttpStatus.BAD_REQUEST.value())
         );
         ProductDTO productdto = modelMapper.map(response, ProductDTO.class);
+        productdto.setScore(response.getScores());
+    	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+    		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
+    	}
     	productdto.setImages(imageService.findByProductId(response));
         return productdto;
     }
@@ -98,6 +112,10 @@ public class ProductServiceImpl implements ProductService {
         ProductDTO productdto;
         for (Product product : productRepository.findByCategory_TitleContaining(title)) {
         	productdto = modelMapper.map(product, ProductDTO.class);
+        	productdto.setScore(product.getScores());
+        	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
+        	}
         	productdto.setImages(imageService.findByProductId(product));
             productResponse.add(productdto);
         }
@@ -108,11 +126,36 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDTO> findProductByCity(String city) {
         List<ProductDTO> productResponse = new ArrayList<>();
-        
+        ProductDTO productdto;
         for (Product product : productRepository.findProductByCity(city)) {
-            productResponse.add(modelMapper.map(product, ProductDTO.class));
+            productdto = modelMapper.map(product, ProductDTO.class);
+            productdto.setScore(product.getScores());
+        	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
+        	}
+            productdto.setImages(imageService.findByProductId(product));
+            productResponse.add(productdto);
         }
+        return productResponse;
+    }
 
+    @Override
+    public List<ProductDTO> filterProductsByLocationAndDate(String city, LocalDate dateIn, LocalDate dateOut) {
+//        return productRepository.filterProductsByLocationAndDate(city, dateIn, dateOut).stream()
+//                .map(product -> new Product(product.getProductId(), product.getName(), product.getDescription(), product.getAddress(), product.getLatitude(),
+//                        product.getLongitude(), product.getLocation(), product.getCategory(), product.getScores(), product.getFeatures()))
+//                .collect(Collectors.toList());
+        List<ProductDTO> productResponse = new ArrayList<>();
+        ProductDTO productdto;
+        for (Product product : productRepository.filterProductsByLocationAndDate(city, dateIn, dateOut)) {
+            productdto = modelMapper.map(product, ProductDTO.class);
+            productdto.setScore(product.getScores());
+        	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
+        	}
+            productdto.setImages(imageService.findByProductId(product));
+            productResponse.add(productdto);
+        }
         return productResponse;
     }
 }

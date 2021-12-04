@@ -18,6 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
+application.properties
 
 ### NetBeans ###
 /nbproject/private/
@@ -70,3 +71,4 @@ target
 secrets.yml
 .gradletasknamecache
 .sts4-cache
+my-env.txt

@@ -4,12 +4,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./Calendar.css";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import es from 'date-fns/locale/es';
+import { useLayoutEffect } from "react";
 
-const Calendar = () => {
+const Calendar = ({ handleRangeDates }) => {
     registerLocale('es', es)
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
     const [showCalendar, setShowCalendar] = useState();
+    const [cantCalendar, setCantCalendar] = useState();
     const onChange = (dates) => {
         setDateRange(dates);
     }
@@ -46,12 +48,23 @@ const Calendar = () => {
     useEffect(() => {
         const datepicker = document.querySelector(".react-datepicker-wrapper");
         datepicker.addEventListener("click", () => {
+
             setShowCalendar(!showCalendar);
+
         })
     }, [])
     useEffect(() => {
         if (showCalendar) {
+            var width = window.innerWidth;
+            if (width <= 760) {
+                setCantCalendar(1);
+            } else {
+                setCantCalendar(2);
+            }
             editNamesDaysWeek();
+        }
+        if (endDate !== null) {
+            handleRangeDates(startDate, endDate);
         }
     }, [showCalendar, startDate, endDate])
     return (
@@ -59,11 +72,12 @@ const Calendar = () => {
             <DatePicker
                 placeholderText="Check in - Check out"
                 className="calendar__date"
+                minDate={new Date()}
                 selectsRange={true}
                 onChange={onChange}
                 startDate={startDate}
                 endDate={endDate}
-                monthsShown={2}
+                monthsShown={cantCalendar}
                 dateFormat="dd MMM."
                 locale="es"
                 // onMonthChange={handleOnChangeMonth}
@@ -72,7 +86,7 @@ const Calendar = () => {
                 onClickOutside={closeCalendar}
                 dateFormatCalendar={"MMMM"}
             >
-                <button className="calendar__date-btn button-1" onClick={closeCalendar}>Aplicar</button>
+                <button className="calendar__date-btn button-1 animation-button-filled" onClick={closeCalendar}>Aplicar</button>
             </DatePicker>
         </>
     );

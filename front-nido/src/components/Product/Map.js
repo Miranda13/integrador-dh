@@ -15,8 +15,6 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 const MapView = (props) => { 
     const position = [props.lng, props.lat];
-        console.log(position);
-
         return (
         <MapContainer center={position} zoom={12} scrollWheelZoom={false}>
         <TileLayer
