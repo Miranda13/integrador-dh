@@ -21,6 +21,7 @@ public class ReserveDTO {
     private LocalDate dateOut;
     private LocalTime hourIn;
     private Boolean covid;
+    private String city;
     private String info;
     private UserDTO user;
     private ProductDTO product;

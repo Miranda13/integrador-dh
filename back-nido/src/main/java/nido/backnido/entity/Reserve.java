@@ -33,6 +33,8 @@ public class Reserve {
 
     private Boolean covid;
 
+    private String city;
+
     @Size(max = 180, message = "Este campo sólo acepta un máximo de 180 caracteres, por favor revisa")
     private String info;
 
