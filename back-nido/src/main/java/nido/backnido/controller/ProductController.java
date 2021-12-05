@@ -34,7 +34,7 @@ public class ProductController {
     ObjectMapper objectMapper;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, ReserveService reserveService) {
         this.productService = productService;
         this.reserveService = reserveService;
     }
