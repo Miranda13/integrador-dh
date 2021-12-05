@@ -155,14 +155,22 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductDTO> findProductByCity(String city) {
         List<ProductDTO> productResponse = new ArrayList<>();
         ProductDTO productdto;
+
         for (Product product : productRepository.findProductByCity(city)) {
+
             productdto = modelMapper.map(product, ProductDTO.class);
             productdto.setScore(product.getScores());
+
         	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+
         		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
+
         	}
+
             productdto.setImages(imageService.findByProductId(product));
+
             productResponse.add(productdto);
+
         }
         return productResponse;
     }
@@ -175,14 +183,21 @@ public class ProductServiceImpl implements ProductService {
 //                .collect(Collectors.toList());
         List<ProductDTO> productResponse = new ArrayList<>();
         ProductDTO productdto;
+
         for (Product product : productRepository.filterProductsByLocationAndDate(city, dateIn, dateOut)) {
+
             productdto = modelMapper.map(product, ProductDTO.class);
             productdto.setScore(product.getScores());
+
         	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
-        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
+
+        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));
+
         	}
+
             productdto.setImages(imageService.findByProductId(product));
             productResponse.add(productdto);
+
         }
         return productResponse;
     }

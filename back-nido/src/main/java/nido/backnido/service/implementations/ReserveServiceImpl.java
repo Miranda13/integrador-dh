@@ -40,9 +40,11 @@ public class ReserveServiceImpl implements ReserveService {
         List<ReserveDTO> reserveResponse = new ArrayList<>();
 
         for (Reserve reserve : reserveRepository.findAll()) {
+
             ReserveDTO reservedto = modelMapper.map(reserve, ReserveDTO.class);
             reservedto.getProduct().setImages(imageService.findByProductId(reserve.getProduct()));
             reserveResponse.add(reservedto);
+
         }
 
         return reserveResponse;
@@ -73,7 +75,11 @@ public class ReserveServiceImpl implements ReserveService {
         List<ReserveDTO> reserveResponse = new ArrayList<>();
 
         for (Reserve reserve : reserveRepository.findReservationsByUserId(userId)) {
+
+//            reserve.getProduct();
+
             reserveResponse.add(modelMapper.map(reserve, ReserveDTO.class));
+
         }
 
         return reserveResponse;
