@@ -19,7 +19,7 @@ export default function ProductPage() {
     return (
         <>
             {
-                isLoading ? <h1>Cargando...</h1> :
+                isLoading ? <h2>Cargando...</h2> :
                     <div className="wrapper">
                         <div className="container-producto">
                             <Product list={list} />

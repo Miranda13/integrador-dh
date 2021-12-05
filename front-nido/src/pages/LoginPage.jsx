@@ -14,4 +14,4 @@ export default function LoginPage({ submitForm }) {
         </React.StrictMode>
     );
 }
-export { LoginPage };
+

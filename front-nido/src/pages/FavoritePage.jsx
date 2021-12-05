@@ -55,7 +55,7 @@ export default function FavoritePage() {
         <div className="favorites">
             <div className="wrapper">
                 <div className="content-superior">
-                    <h1>Tus favoritos</h1>
+                    <h2>Tus favoritos</h2>
                     <div className="cards">
                         {
                             isLoading ?

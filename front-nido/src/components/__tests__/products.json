@@ -2,7 +2,11 @@
     {
         "productId": 1,
         "name": "Hotel Faena",
-        "description": "En el corazón de Puerto Madero, disfruta de un hotel inspirado en las pasiones de Buenos Aires.",
+        "description": "Es un lujoso hotel de 5 estrellas de diseño situado en un edificio impresionante con spa y piscina. Además, hay WiFi. Las habitaciones del Faena Hotel presentan una decoración elegante y cuentan con cortinas automáticas de terciopelo y persianas venecianas. Todas tienen sistema de cine en casa y minibar. El Bistro Sur está decorado en tonos blanco y dorado y sirve cocina internacional.",
+        "subtitle": "En el corazón de Puerto Madero",
+        "policy": null,
+        "rule": null,
+        "safety": null,
         "address": "445 Martha Salotti",
         "latitude": -34.6083,
         "longitude": -58.3712,
@@ -14,41 +18,136 @@
         "category": {
             "categoryId": 1,
             "title": "Hotel",
-            "description": "Lugar acojedor para disfrutar con la familia",
+            "description": "Lugar acogedor para disfrutar con la familia",
             "urlImage": "https://bucketnido.s3.amazonaws.com/Categories/hotel.jpeg"
         },
+        "avgScore": 4.5,
         "images": [
             {
                 "imageId": 1,
-                "title": "Hotel faena img3",
-                "url": "https://th.bing.com/th/id/OIP.XCmI4AHxjd7lhh-E4sVrYAHaFj?pid=ImgDet&w=690&h=518&rs=1"
+                "title": "Hotel-Faena-1",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hotel-Faena-1.webp"
             },
             {
                 "imageId": 2,
-                "title": "Hotel faena img2",
-                "url": "https://admin.privateupgrades.com/_data/default-hotel_image/14/70524/faena-hotel-buenos-aires-17_1400x1400_auto.jpg"
+                "title": "Hotel-Faena-2",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hotel-Faena-2.jpg"
             },
             {
                 "imageId": 3,
-                "title": "Hotel faena img5",
-                "url": "https://y.cdrst.com/foto/hotel-sf/41b1/granderesp/faena-hotel-buenos-aires-servicios-95e37ff.jpg"
+                "title": "Hotel-Faena-3",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hotel-Faena-3.jpg"
             },
             {
                 "imageId": 4,
-                "title": "Hotel faena img1",
-                "url": "https://bucketnido.s3.amazonaws.com/Products/hotel-faena.webp"
+                "title": "Hotel-Faena-4",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hotel-Faena-4.jpg"
             },
             {
                 "imageId": 5,
-                "title": "Hotel faena img4",
-                "url": "https://cdn.audleytravel.com/-/-/79/134068146060221128172072130146136042076191134035.jpg"
+                "title": "Hotel-Faena-5",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hotel-Faena-5.jpg"
+            }
+        ],
+        "score": [
+            {
+                "scoreId": 1,
+                "score": 4
+            },
+            {
+                "scoreId": 2,
+                "score": 5
+            }
+        ],
+        "features": [
+            {
+                "featureId": 1,
+                "name": "Wifi",
+                "icon": "fas fa-wifi"
+            },
+            {
+                "featureId": 3,
+                "name": "Aire acondicionado",
+                "icon": "fas fa-snowflake"
+            },
+            {
+                "featureId": 7,
+                "name": "Cocina",
+                "icon": "fas fa-sink"
+            },
+            {
+                "featureId": 2,
+                "name": "Apto mascota",
+                "icon": "fas fa-paw"
             }
         ]
     },
     {
+        "productId": 2,
+        "name": "Alvear Palace Hotel",
+        "description": "El alojamiento cuenta con magníficas zonas comunes con un toque francés y elegantes habitaciones y suites decoradas en un estilo francés moderno. Las plantas superiores, recién reformadas, incluyen 15 suites amplias de diseño contemporáneo. Además, las habitaciones de las plantas 10 y 11, la suite Alvear y las suites de categorías superiores disponen de un exclusivo equipo de mayordomos.",
+        "subtitle": "En el corazón de Recoleta",
+        "policy": null,
+        "rule": null,
+        "safety": null,
+        "address": "Avda. Alvear 1891",
+        "latitude": -34.587627,
+        "longitude": -58.388901,
+        "location": {
+            "locationId": 1,
+            "city": "Buenos Aires",
+            "country": "Argentina"
+        },
+        "category": {
+            "categoryId": 1,
+            "title": "Hotel",
+            "description": "Lugar acogedor para disfrutar con la familia",
+            "urlImage": "https://bucketnido.s3.amazonaws.com/Categories/hotel.jpeg"
+        },
+        "avgScore": 3.0,
+        "images": [
+            {
+                "imageId": 6,
+                "title": "Hotel-Alvear-1",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hotel-Alvear-1.jpeg"
+            },
+            {
+                "imageId": 7,
+                "title": "Hotel-Alvear-2",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hotel-Alvear-2.jpg"
+            },
+            {
+                "imageId": 8,
+                "title": "Hotel-Alvear-3",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hotel-Alvear-3.jpg"
+            },
+            {
+                "imageId": 9,
+                "title": "Hotel-Alvear-4",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hotel-Alvear-4.jpg"
+            },
+            {
+                "imageId": 10,
+                "title": "Hotel-Alvear-5",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hotel-Alvear-5.jpg"
+            }
+        ],
+        "score": [
+            {
+                "scoreId": 3,
+                "score": 3
+            }
+        ],
+        "features": []
+    },
+    {
         "productId": 3,
         "name": "Selina",
-        "description": "En el corazón de Bariloche, disfruta de un hostel inspirado en los paisajes de Bariloche.",
+        "description": "El Selina Bariloche está ubicado en San Carlos de Bariloche, a 2,7 km del Centro Cívico, y tiene restaurante, estacionamiento privado gratuito, bar y salón común. El alojamiento cuenta con jardín y está cerca de diversos lugares de interés conocidos, a 1,6 km del centro cívico, a menos de 1 km del club Andino Bariloche y a 20 minutos a pie del casino Tresor. El alojamiento proporciona recepción 24 horas, cocina compartida, servicio de link con el aeropuerto y wifi gratis en todas sus instalaciones.",
+        "subtitle": "En el corazón de Bariloche",
+        "policy": null,
+        "rule": null,
+        "safety": null,
         "address": "Av de Los Pioneros 200",
         "latitude": -41.138519,
         "longitude": -71.318314,
@@ -63,84 +162,257 @@
             "description": "Establecimientos humildes para viajeros y huespedes",
             "urlImage": "https://bucketnido.s3.amazonaws.com/Categories/hostal.jpeg"
         },
+        "avgScore": 0.0,
         "images": [
             {
                 "imageId": 11,
-                "title": "Alvear palace img5",
-                "url": "https://www.argentinaenviaje.com/wp-content/uploads/2021/03/selina_hotel_bariloche_habitacion-768x490.jpg"
+                "title": "Hostal-Selina-1",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hostal-Selina-1.jpeg"
             },
             {
                 "imageId": 12,
-                "title": "Alvear palace img2",
-                "url": "https://th.bing.com/th/id/OIP.omueeM0EOc-pbrxFxtz6YwHaE7?pid=ImgDet&rs=1"
+                "title": "Hostal-Selina-2",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hostal-Selina-2.jpg"
             },
             {
                 "imageId": 13,
-                "title": "Alvear palace img4",
-                "url": "https://th.bing.com/th/id/OIP.EXo6fBylRw73l6AuGprouQHaE0?pid=ImgDet&rs=1"
+                "title": "Hostal-Selina-3",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hostal-Selina-3.jpg"
             },
             {
                 "imageId": 14,
-                "title": "Alvear palace img3",
-                "url": "https://th.bing.com/th/id/R.0f07fae29a2d0506776b0beb0011ef64?rik=eVJLYA9%2f27Ppnw&pid=ImgRaw&r=0"
+                "title": "Hostal-Selina-4",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hostal-Selina-4.jpg"
             },
             {
                 "imageId": 15,
-                "title": "Alvear palace img1",
-                "url": "https://bucketnido.s3.amazonaws.com/Products/hostal-selina.jpeg"
+                "title": "Hostal-Selina-5",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hostal-Selina-5.jpg"
             }
-        ]
+        ],
+        "score": [],
+        "features": []
     },
     {
-        "productId": 5,
-        "name": "Molvento",
-        "description": "En el corazón de Potrero Garay en Córdoba, disfruta de un complejo inspirado en los arboles que lo rodean.",
-        "address": "Ruta Prov. Nº5 Km 62",
-        "latitude": -31.5406,
-        "longitude": -64.364663,
+        "productId": 4,
+        "name": "Millhouse Hostel Avenue",
+        "description": "Ofrecemos alojamiento de calidad y barato para viajeros que recorren el mundo, con habitaciones privadas y compartidas limpias y cómodas, baño privado, wifi gratuito, aire acondicionado, lockers, caja de seguridad y una cafetería deliciosa y económica. Un espacio único, ideal para disfrutar al aire libre de un café por la mañana, una cerveza por la tarde o un buen asado por la noche! Con una vista privilegiada del centro de Buenos Aires, la terraza del hostel está pensada para relajarse y compartir momentos con otros viajeros.",
+        "subtitle": "En plena Avenida de Mayo ",
+        "policy": null,
+        "rule": null,
+        "safety": null,
+        "address": "Av de Mayo 1245",
+        "latitude": -34.60887,
+        "longitude": -58.38405,
         "location": {
-            "locationId": 3,
-            "city": "Córdoba",
+            "locationId": 1,
+            "city": "Buenos Aires",
             "country": "Argentina"
         },
         "category": {
-            "categoryId": 3,
+            "categoryId": 2,
             "title": "Hostal",
             "description": "Establecimientos humildes para viajeros y huespedes",
             "urlImage": "https://bucketnido.s3.amazonaws.com/Categories/hostal.jpeg"
         },
+        "avgScore": 0.0,
+        "images": [
+            {
+                "imageId": 16,
+                "title": "Hostal-Millhouse-1",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hostal-Millhouse-1.jpg"
+            },
+            {
+                "imageId": 17,
+                "title": "Hostal-Millhouse-2",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hostal-Millhouse-2.jpg"
+            },
+            {
+                "imageId": 18,
+                "title": "Hostal-Millhouse-3",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hostal-Millhouse-3.jpg"
+            },
+            {
+                "imageId": 19,
+                "title": "Hostal-Millhouse-4",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hostal-Millhouse-4.jpg"
+            },
+            {
+                "imageId": 20,
+                "title": "Hostal-Millhouse-5",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Hostal-Millhouse-5.jpg"
+            }
+        ],
+        "score": [],
+        "features": []
+    },
+    {
+        "productId": 5,
+        "name": "Molvento",
+        "description": "Molvento es un proyecto nacido, pensado y creado de una aspiración profundamente humana. No nace por la proximidad de un puerto, ni la apertura de una fábrica, nace de la inquietud de mucha gente de poder vivir de otra manera. Una forma de vivir más humana, más consciente, con una mirada hacia el interés colectivo. Es entender que vivir bien es mucho más que una casa grande con jardín y pileta. Es lo que somos, cómo nos relacionamos con los demás, cómo educamos a nuestros hijos. Es la manera de ver la naturaleza, con qué preparamos nuestros alimentos y sentir el aire que respiramos.",
+        "subtitle": "A orillas del lago Los Molinos",
+        "policy": null,
+        "rule": null,
+        "safety": null,
+        "address": "Ruta Prov. Nº5 Km 62",
+        "latitude": -31.84349,
+        "longitude": -64.5253,
+        "location": {
+            "locationId": 3,
+            "city": "Cordoba",
+            "country": "Argentina"
+        },
+        "category": {
+            "categoryId": 3,
+            "title": "Departamento",
+            "description": "Lugares comodos cerca de la ciudad",
+            "urlImage": "https://bucketnido.s3.amazonaws.com/Categories/departamento.jpeg"
+        },
+        "avgScore": 0.0,
         "images": [
             {
                 "imageId": 21,
-                "title": "Molvento-quincho",
-                "url": "https://www.molvento.com.ar/wp-content/uploads/2019/04/24032019-molvento-ph-g-viramonte-5576-editar.jpg"
+                "title": "Departamento-Molvento-1",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Departamento-Molvento-1.jpeg"
             },
             {
                 "imageId": 22,
-                "title": "Molvento-departamento",
-                "url": "https://bucketnido.s3.amazonaws.com/Products/molvento.jpeg"
+                "title": "Departamento-Molvento-2",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Departamento-Molvento-2.jpg"
             },
             {
                 "imageId": 23,
-                "title": "Molvento-quincho2",
-                "url": "https://www.estudiomontevideo.com/wp-content/uploads/2020/08/12062020-EM-PD-Molvento-ph-G-Viramonte-1545.jpg"
+                "title": "Departamento-Molvento-3",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Departamento-Molvento-3.jpg"
             },
             {
                 "imageId": 24,
-                "title": "Molvento-cava",
-                "url": "https://www.molvento.com.ar/wp-content/uploads/2017/07/06.jpg"
+                "title": "Departamento-Molvento-4",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Departamento-Molvento-4.jpg"
             },
             {
                 "imageId": 25,
-                "title": "Molvento-arboles",
-                "url": "https://www.molvento.com.ar/wp-content/uploads/2018/10/bosque-y-lago-1024x768.jpg"
+                "title": "Departamento-Molvento-5",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Departamento-Molvento-5.jpg"
             }
-        ]
+        ],
+        "score": [],
+        "features": []
+    },
+    {
+        "productId": 6,
+        "name": "Loi Suites",
+        "description": "Armoniosamente sumergido en la selva subtropical Iryapú, Loi Suites Iguazú invita a rodearse de la naturaleza para perderse en la profundidad de la selva y desconectarse de la rutina y el estrés. Este oasis paradisíaco se encuentra estratégicamente ubicado a sólo minutos de las Cataratas de Iguazú, el aeropuerto internacional y la ciudad de Puerto Iguazú. El hotel se une a la naturaleza circundante de manera cómplice, transformando el sueño de alojarse en el corazón de la selva, en una experiencia extrema, única y confortable ideal para una escapada en pareja o unas mini vacaciones en familia.",
+        "subtitle": "Rodeando las Cataratas de Iguazú",
+        "policy": null,
+        "rule": null,
+        "safety": null,
+        "address": "Selva Iryapú s/n",
+        "latitude": -25.59641,
+        "longitude": -54.5455,
+        "location": {
+            "locationId": 5,
+            "city": "Puerto Iguazú",
+            "country": "Argentina"
+        },
+        "category": {
+            "categoryId": 3,
+            "title": "Departamento",
+            "description": "Lugares comodos cerca de la ciudad",
+            "urlImage": "https://bucketnido.s3.amazonaws.com/Categories/departamento.jpeg"
+        },
+        "avgScore": 0.0,
+        "images": [
+            {
+                "imageId": 26,
+                "title": "Departamento-Loi Suites-1",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Departamento-LoiSuite-1.jpg"
+            },
+            {
+                "imageId": 27,
+                "title": "Departamento-Loi Suites-2",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Departamento-LoiSuite-2.jpg"
+            },
+            {
+                "imageId": 28,
+                "title": "Departamento-Loi Suites-3",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Departamento-LoiSuite-3.jpg"
+            },
+            {
+                "imageId": 29,
+                "title": "Departamento-Loi Suites-4",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Departamento-LoiSuite-4.jpg"
+            },
+            {
+                "imageId": 30,
+                "title": "Departamento-Loi Suites-5",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Departamento-LoiSuite-5.jpg"
+            }
+        ],
+        "score": [],
+        "features": []
+    },
+    {
+        "productId": 7,
+        "name": "Balcón del Golf",
+        "description": "Caminatas relajadas, bajadas al arroyo con reposeras mate y facturas, servicio de reposeras y circuito de kayak en balneario los angelitos, cata de vinos de bodega Saldungaray con somelier y maridaje, cata de Cervezas Artesanales, excursiones a Saldungaray, al abra de la ventana. Astroturismo, recreación para chicos, golfito de 9 hoyos, clases de golf para principiantes, shows de música en vivo, bingo familiar, yoga, aqua gim, sector de juegos exterior, S.U.M. con ping pong, pool, metegol,etc",
+        "subtitle": "Para descansar en las afueras de Buenos Aires",
+        "policy": null,
+        "rule": null,
+        "safety": null,
+        "address": "Los Churrinches s/n A De La Ventana",
+        "latitude": -38.13983,
+        "longitude": -61.78807,
+        "location": {
+            "locationId": 1,
+            "city": "Buenos Aires",
+            "country": "Argentina"
+        },
+        "category": {
+            "categoryId": 4,
+            "title": "Cabaña",
+            "description": "Casas pequeñas cerca de la naturaleza para descansar",
+            "urlImage": "https://bucketnido.s3.amazonaws.com/Categories/cabana.jpeg"
+        },
+        "avgScore": 0.0,
+        "images": [
+            {
+                "imageId": 31,
+                "title": "Cabana-Golf-1",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Cabana-Golf-1.jpg"
+            },
+            {
+                "imageId": 32,
+                "title": "Cabana-Golf-2",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Cabana-Golf-2.jpg"
+            },
+            {
+                "imageId": 33,
+                "title": "Cabana-Golf-3",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Cabana-Golf-3.jpg"
+            },
+            {
+                "imageId": 34,
+                "title": "Cabana-Golf-4",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Cabana-Golf-4.jpg"
+            },
+            {
+                "imageId": 35,
+                "title": "Cabana-Golf-5",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Cabana-Golf-5.jpg"
+            }
+        ],
+        "score": [],
+        "features": []
     },
     {
         "productId": 8,
         "name": "Cabaña Mirador",
-        "description": "En las afueras de Bariloche, disfruta de un albergue inspirado en la naturaleza del sur argentino.",
+        "description": "Ubicada en la periferia de Bariloche, la cabaña esta ubicada entre bosques milenarios, montañas cubiertas de nieve y lagos cristalinos, en la provincia de Río Negro, Argentina. Se trata de una postal de nuestra Patagonia. Podrás disfrutar de habitaciones amplias con gran luminosidad, calidez e increíbles vistas de las montañas. Se encuentra próximo a nuestra propiedad caminatas, excursiones y diversas actividades para chicos.",
+        "subtitle": "Para descansar en las afueras de Bariloche",
+        "policy": null,
+        "rule": null,
+        "safety": null,
         "address": "Av Ezequiel Bustillo km 7",
         "latitude": -41.127267,
         "longitude": -71.351731,
@@ -151,36 +423,39 @@
         },
         "category": {
             "categoryId": 4,
-            "title": "Departamento",
-            "description": "Lugares distintos para tu agasajo",
-            "urlImage": "https://bucketnido.s3.amazonaws.com/Categories/departamento.jpeg"
+            "title": "Cabaña",
+            "description": "Casas pequeñas cerca de la naturaleza para descansar",
+            "urlImage": "https://bucketnido.s3.amazonaws.com/Categories/cabana.jpeg"
         },
+        "avgScore": 0.0,
         "images": [
             {
                 "imageId": 36,
-                "title": "Cabaña M-3",
-                "url": "https://barilocheturismo.gob.ar/images/actividades/lagos/nahuel-huapi/lago-nahuel-huapi-01.jpg"
+                "title": "Cabana-Mirador-1",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Cabana-Mirador-1.jpg"
             },
             {
                 "imageId": 37,
-                "title": "Cabaña M-2",
-                "url": "https://maderayconstruccion.com.ar/myc/wp-content/uploads/2016/09/CASA-EstauUbicada-Arelauquen-Bariloche-cuadrados-2.jpg"
+                "title": "Cabana-Mirador-2",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Cabana-Mirador-2.jpg"
             },
             {
                 "imageId": 38,
-                "title": "Cabaña M-4",
-                "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/7f/49/b7/lago-gutierrez-lodge.jpg?w=900&h=-1&s=1"
+                "title": "Cabana-Mirador-3",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Cabana-Mirador-3.jpg"
             },
             {
                 "imageId": 39,
-                "title": "Cabaña M",
-                "url": "https://bucketnido.s3.amazonaws.com/Products/cabana-m.jpeg"
+                "title": "Cabana-Mirador-4",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Cabana-Mirador-4.jpg"
             },
             {
                 "imageId": 40,
-                "title": "Cabaña M-interior",
-                "url": "https://maderayconstruccion.com.ar/myc/wp-content/uploads/2016/09/CASA-EstauUbicada-Arelauquen-Bariloche-cuadrados-3.jpg"
+                "title": "Cabana-Mirador-5",
+                "url": "https://bucketnido.s3.amazonaws.com/Products/Cabana-Mirador-5.jpg"
             }
-        ]
+        ],
+        "score": [],
+        "features": []
     }
 ]
