@@ -7,7 +7,6 @@ export default function Score({ avgScore, scores }) {
                 {
 
                     [1, 2, 3, 4, 5].map(i => {
-                        console.log(avgScore, i)
                         let colorIcon = i <= Math.round(avgScore) ? "card-list__info__category__icon fas fa-star icon-color" : "card-list__info__category__icon fas fa-star";
                         return (<span key={i} ><i className={colorIcon} ></i></span>)
                     })

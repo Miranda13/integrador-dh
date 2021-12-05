@@ -12,7 +12,7 @@ export default function ProductPage() {
             .then(data => {
                 if (data) {
                     setIsLoading(false);
-                    setList(data, console.log(data))
+                    setList(data)
                 }
             })
     }, [])
