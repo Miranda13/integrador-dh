@@ -5,6 +5,7 @@ import nido.backnido.entity.dto.ReserveDTO;
 import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.ProductRepository;
 import nido.backnido.repository.ReserveRepository;
+import nido.backnido.repository.ScoreRepository;
 import nido.backnido.repository.UserRepository;
 import nido.backnido.service.ImageService;
 import nido.backnido.service.ReserveService;
@@ -27,6 +28,9 @@ public class ReserveServiceImpl implements ReserveService {
     private ProductRepository productRepository;
 
     @Autowired
+    ScoreRepository scoreRepository;
+
+    @Autowired
     UserRepository userRepository;
 
     @Autowired
@@ -37,17 +41,27 @@ public class ReserveServiceImpl implements ReserveService {
 
     @Override
     public List<ReserveDTO> getAll() {
-        List<ReserveDTO> reserveResponse = new ArrayList<>();
+        // Response de entidades
+        List<Reserve> entityResponse = reserveRepository.findAll();
+        // Acá voy guardando los dto para devolverlos al front
+        List<ReserveDTO> dtoResponse = new ArrayList<>();
 
-        for (Reserve reserve : reserveRepository.findAll()) {
 
+        for (Reserve reserve : entityResponse) {
+            // Variables que se re-definen y son necesarias para cada ciclo
             ReserveDTO reservedto = modelMapper.map(reserve, ReserveDTO.class);
+            Long productId = reservedto.getProduct().getProductId();
+
+            // Le paso al DTO los valores de la entidad
+            reservedto.getProduct().setScore(productRepository.getById(productId).getScores());
             reservedto.getProduct().setImages(imageService.findByProductId(reserve.getProduct()));
-            reserveResponse.add(reservedto);
+            reservedto.getProduct().setAvgScore(scoreRepository.getAverageProductScore(productId));
+
+            dtoResponse.add(reservedto);
 
         }
 
-        return reserveResponse;
+        return dtoResponse;
 
     }
 
@@ -56,7 +70,15 @@ public class ReserveServiceImpl implements ReserveService {
         Reserve response = reserveRepository.findById(id).orElseThrow(() ->
                 new CustomBaseException("Reserva no encontrada, por favor compruebe", HttpStatus.NOT_FOUND.value())
         );
-        return modelMapper.map(response, ReserveDTO.class);
+
+        ReserveDTO dtoRes = modelMapper.map(response, ReserveDTO.class);
+        Long productId = dtoRes.getProduct().getProductId();
+
+        dtoRes.getProduct().setScore(productRepository.getById(productId).getScores());
+        dtoRes.getProduct().setImages(imageService.findByProductId(response.getProduct()));
+        dtoRes.getProduct().setAvgScore(scoreRepository.getAverageProductScore(productId));
+
+        return dtoRes;
     }
 
     @Override
