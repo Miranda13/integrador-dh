@@ -1,15 +1,16 @@
 import DetailBooking from "../Booking/DetailBooking";
-import { useEffect, useState, useContext } from "react";
+import "./MyBooking.css";
+import "../Booking/DetailBooking.css";
+
 
 export default function MyBooking({booking, dateIn, dateOut}){
     const buttonText = "Editar reserva"
     return(
-        <div>
-            <h2 classname="my-bookings">Mis Reservas</h2>
+        <div className="my-booking-card">
             {booking.map(
                 b => { 
                     return(
-                    <DetailBooking product={b.product} startDate={dateIn} endDate={dateOut} buttonText={buttonText}/>
+                            <DetailBooking product={b.product} startDate={dateIn} endDate={dateOut} buttonText={buttonText} />
                 )}
             )}
         </div>

@@ -17,7 +17,7 @@ import db from "./product.json";
 import MapView from "./Map";
 import "./Map.css"
 // import { useNavigate } from "react-router-dom";
-import HeaderProduct from "../HeaderProduct";
+import SubHeader from "../SubHeader";
 import Policy from "../Policy";
 import { useNavigate } from "react-router-dom";
 import FavoriteContext from "../../context/favoriteContext";
@@ -83,7 +83,7 @@ export default function Product({ list }) {
     return (
         <React.StrictMode>
             <div className="product-content" id={"start"}>
-                <HeaderProduct product={list} pathGoBack="/" />
+                <SubHeader product={list} pathGoBack="/" />
                 <div className="product__ubication-ratings">
                     <div className="product__ubication">
                         <i class="fas fa-map-marker-alt"></i>{list.address} - {list.location?.city}, {list.location?.country}

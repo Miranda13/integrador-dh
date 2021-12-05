@@ -1,10 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import Booking from "../components/Booking";
-import HeaderProduct from "../components/HeaderProduct";
+import SubHeader from "../components/SubHeader";
 import Policy from "../components/Policy";
 import getData from "../assets/js/getData";
-import "./BookingPage.css";
 import SessionContextProvider from '../context/sessionContext.js';
 
 export default function BookingPage() {
@@ -30,7 +29,7 @@ export default function BookingPage() {
                     :
                     <div className="wrapper">
                         <div className="container-booking">
-                            <HeaderProduct product={product} pathGoBack={`/product/${id}`} />
+                            <SubHeader product={product} pathGoBack={`/product/${id}`} />
                             <Booking product={product} />
                             <Policy />
                         </div>

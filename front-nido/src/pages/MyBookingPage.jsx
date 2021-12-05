@@ -1,4 +1,5 @@
 import MyBooking from "../components/MyBooking";
+import SubHeader from "../components/SubHeader";
 
 
 
@@ -49,6 +50,11 @@ const booking= [ {
             }
          }];
     return(
-        <MyBooking booking= {booking} dateIn={booking[0].dateIn}  dateOut={booking[0].dateOut}/>
+        <div className="wrapper">
+            <div className="container-my-booking">
+                <SubHeader product={"Mis Reservas"} pathGoBack="/" />
+                <MyBooking booking= {booking} dateIn={booking[0].dateIn}  dateOut={booking[0].dateOut}/>
+            </div>       
+        </div>
     )
 }

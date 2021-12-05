@@ -5,6 +5,7 @@ import { registerLocale, setDefaultLocale } from "react-datepicker";
 import "./CalendarReserve.css";
 import es from 'date-fns/locale/es';
 import SessionContextProvider from "../../context/sessionContext";
+
 export default function CalendarReserve({ status, handleSelectRangeDate, idProduct, error }) {
     const { token } = useContext(SessionContextProvider);
     registerLocale('es', es)

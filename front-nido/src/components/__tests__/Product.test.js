@@ -4,7 +4,7 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 // TODO import correct components if product page render these
 /* import Policy from '../../components/Policy';
-import HeaderProduct from '../../components/HeaderProduct'; */
+import SubProduct from '../../components/SubProduct'; */
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -15,7 +15,7 @@ describe('product test', () => {
     // TODO use correct components
 
     /* it ('Has header detail product', () => {
-        expect(product.containsMatchingElement(<HeaderProduct />)).toEqual(true);
+        expect(product.containsMatchingElement(<SubHeader />)).toEqual(true);
     }); */
 
     /* it ('Has policies', () => {

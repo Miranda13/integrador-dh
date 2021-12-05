@@ -141,15 +141,49 @@
         flex-direction: column;
         justify-content: space-around;
     }
+/*MY BOOKING*/
+    .my-booking-card .booking-details{          
+        height: 280px;
+        width: 48vw;
+        margin: 0;
+        flex-wrap: wrap;
+    }
+
+    .my-booking-card .booking-details-img{
+        margin-bottom: 0px;
+        margin-left: .7vw;
+        width: 50%;
+        height: 100%;
+    }
+/**/
     
     .booking-details-image{
         height: 400px;
     }
-    
+   
+/*MY BOOKING*/
+    .my-booking-card .booking-details-image{
+        border-radius: 8px;
+        height: 80%;
+    }
+
+    .my-booking-card .booking-details-img > .booking-title{
+        margin-bottom: .5vw;
+        padding-top: 10px;
+        padding-left: 0vw;
+    }
+/**/ 
     .booking-details-info{
         padding-top: 3vw;
         padding-left: 2vw;
     }
+
+/*MY BOOKING*/
+    .my-booking-card .booking-details-info{
+        padding: 10px 1vw 0vw 1vw;
+        width: 50%;
+    }
+/**/
 
     .booking-details__product__location__icon{
         padding-bottom: 40px;
@@ -162,13 +196,47 @@
     
     .booking-details-check h3 {
         width: 20vw;
+    }  
+/*MY BOOKING*/  
+    .my-booking-card .booking-details-check h3 {
+        width: 15vw;
     }
-    
+/**/
     .booking-details-hr{
         width: 26vw;
+    } 
+/*MY BOOKING*/
+ 
+    .my-booking-card .booking-details__product__score{
+        padding-bottom: 5px;
     }
+    
+    .my-booking-card .booking-details__product__icon{
+        margin-bottom: 5px;
+    }
+    
+    .my-booking-card .booking-details__product__location__icon{
+        padding-bottom: 5px;
+    }
+    
+    .my-booking-card .booking-details-check{
+        margin-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .my-booking-card .booking-details-hr{
+        width: 20vw;
+    }
+/**/
     
     .booking-details-button{
         width: 26vw;
     }
+/*MY BOOKING*/
+    .my-booking-card .booking-details-button{
+        width: 20vw;
+        height: 40px;
+        margin-top: 5px;
+    }
+/**/
 }

@@ -34,6 +34,41 @@
     display: none;
 }
 
+.header__buttons .button-booking {
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    color: var(--light-color);
+    background-color: var(--dark-color);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-2);
+    font-family: Quicksand, sans-serif;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 7px 317px 0px 0px;    
+}
+
+.header__buttons .button-booking::before {
+    content: "\f1ad";
+    font-family: 'Font Awesome 5 free';
+    font-size: 1.6rem;
+    -webkit-text-stroke: .8px var(--light-color);
+    color: var(--dark-color);
+    transition: color 0.2s;
+    margin-top: -10px;
+    margin-right: 13px;
+}
+
+.header__buttons .button-booking:hover::before {
+    content: "\f1ad";
+    font-family: 'Font Awesome 5 free';
+    font-size: 1.6rem;
+    -webkit-text-stroke: .8px var(--dark-color);
+    color: var(--light-color);
+}
+
 .header__buttons .button-favorite {
     text-decoration: none;
     width: 45px;
@@ -88,6 +123,21 @@
     #signin.hidden {
         display: none;
     }
+
+    .button-booking{
+        display: block;
+        width: 45px;
+        height: 45px;
+        color: var(--light-color);
+        background-color: var(--dark-color);
+        font-size: var(--font-size-2);
+        border-radius: 50%;
+        position: absolute;
+        margin: 0px 300px;
+        margin-top: 10px;
+        padding-top: 12px;
+        padding-left: 14px;
+    }
 }
 
 @media (min-width:1361px) {
@@ -102,5 +152,20 @@
     #login.hidden,
     #signin.hidden {
         display: none;
+    }
+
+    .button-booking{
+        display: block;
+        width: 45px;
+        height: 45px;
+        color: var(--light-color);
+        background-color: var(--dark-color);
+        font-size: var(--font-size-2);
+        border-radius: 50%;
+        position: absolute;
+        margin: 0px 300px;
+        margin-top: 10px;
+        padding-top: 12px;
+        padding-left: 14px;
     }
 }

@@ -288,11 +288,9 @@
         margin: 0;
         display: flex;
         flex-wrap: wrap;
-    }
-
-
-
-    /*LATERAL IMAGE*/
+}
+   
+/*LATERAL IMAGE*/
 
     .card-list__image {
         height: 100%;

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { Button } from "../Button";
 import "./Header.css";
@@ -27,6 +27,7 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
 
 
     }, [location])
+
     return (
         <div className="header">
             <div className="identity">
@@ -41,8 +42,10 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
                 {
                     user !== null && user !== undefined ?
                         <>
+                            <Link to="/1/mybooking" className="button-booking animation-button-light">
+                            </Link> 
                             <Link to="/favorite" className="button-favorite animation-button-light" >
-                            </Link>
+                            </Link> 
                             {window.innerWidth >= 760 && <UserLogged setIsSubmitted={setIsSubmitted} user={user} />}
                         </>
                         :

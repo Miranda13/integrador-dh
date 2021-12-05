@@ -86,7 +86,6 @@ function Card({ card, handleToggleAction, setIsLoading }) {
                     <div className="card-list__info__category">
                         <h3 className="card-list__info__category__title">{card.category.title.toUpperCase()}</h3>
                     </div>
-
                     <Score avgScore={card.avgScore} scores={card.score} />
                     <h2 className="card-list__info__title">{card.name}</h2>
                 </div>
