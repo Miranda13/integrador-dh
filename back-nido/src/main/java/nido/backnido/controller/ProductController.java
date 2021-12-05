@@ -9,9 +9,12 @@ import nido.backnido.service.ProductService;
 import nido.backnido.service.ReserveService;
 import nido.backnido.utils.UtilsException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -54,6 +57,7 @@ public class ProductController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
+    @Secured("ROLE_ADMIN")
     public void create(@RequestParam("body") String product, @RequestPart(value= "file") final List<MultipartFile> files) throws JsonProcessingException {
         ProductDTO productDTO = objectMapper.readValue(product, ProductDTO.class);
         productService.create(productDTO, files);
@@ -61,6 +65,7 @@ public class ProductController {
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
+    @Secured("ROLE_ADMIN")
     public void update(@RequestBody @Valid Product product, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             throw new CustomBindingException ("Errores encontrados, por favor compruebe e intente nuevamente",HttpStatus.NOT_FOUND.value(),UtilsException.fieldBindingErrors(bindingResult));
@@ -90,5 +95,15 @@ public class ProductController {
     @ResponseStatus(HttpStatus.OK)
     public List<ProductDTO> filterProductsByLocationAndDate(@RequestParam("city") String city, @RequestParam("dateIn") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateIn, @RequestParam("dateOut") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateOut){
      return productService.filterProductsByLocationAndDate(city, dateIn, dateOut);
+    }
+
+    @GetMapping("/page/{page}")
+    public Page<Product> productAllPage(@PathVariable("page") Integer page) {
+        return productService.findAll(PageRequest.of(page, 10));
+    }
+
+    @GetMapping("/category/page")
+    public Page<Product> productByCategoryPage(@RequestParam("name") String category, @RequestParam("page") Integer page) {
+        return productService.findProductsByCategory_Title(category, PageRequest.of(page, 10));
     }
 }

@@ -2,6 +2,8 @@ package nido.backnido.service;
 
 import nido.backnido.entity.Product;
 import nido.backnido.entity.dto.ProductDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,4 +21,6 @@ public interface ProductService {
     List<ProductDTO> findProductByCategory(@Param("title")String title);
     List<ProductDTO> findProductByCity(String city);
     List<ProductDTO> filterProductsByLocationAndDate(String city, LocalDate dateIn, LocalDate dateOut);
+    Page<Product> findAll(Pageable page);
+    Page<Product> findProductsByCategory_Title(String title, Pageable page);
 }

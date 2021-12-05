@@ -4,6 +4,8 @@ import nido.backnido.entity.Product;
 import nido.backnido.entity.Reserve;
 import nido.backnido.entity.dto.ProductDTO;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -40,4 +42,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Modifying
     @Query("UPDATE Product p SET p.active = false WHERE p.productId = :productId")
     void softDelete(@Param("productId") Long productId);
+
+    Page<Product> findAll(Pageable page);
+    Page<Product> findProductsByCategory_Title(String title, Pageable page);
 }
