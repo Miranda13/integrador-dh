@@ -18,6 +18,9 @@ import MyBookingPage from "../../pages/MyBookingPage";
 import NotFoundPage from "../../pages/NotFoundPage";
 import PrivateRoute from "../../routes/PrivateRoute";
 import PublicRoute from "../../routes/PublicRoute";
+
+import AddProductPage from "../../pages/AddProductPage";
+
 export default function App() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [toggle, setToggle] = useState();
@@ -33,6 +36,7 @@ export default function App() {
                 <SessionContextProvider>
                     <Header handleChangePageHome={handleChangePageHome} setIsSubmitted={setIsSubmitted} />
                     <Routes>
+                    <Route exact path="/addProduct" element={<AddProductPage/>} />
                         <Route exact path="/" element={<Home toggle={toggle} />} />
                         <Route exact path="/login" element={<PublicRoute />} >
                             <Route exact path="/login" element=

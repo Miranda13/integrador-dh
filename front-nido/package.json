@@ -38,7 +38,6 @@
     "react-scripts": "^4.0.3",
     "react-share-social": "^0.1.48"
   },
-
   "devDependencies": {
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
