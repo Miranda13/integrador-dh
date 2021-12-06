@@ -71,9 +71,11 @@ public class ReserveServiceImpl implements ReserveService {
                 new CustomBaseException("Reserva no encontrada, por favor compruebe", HttpStatus.NOT_FOUND.value())
         );
 
+        // Acá voy guardando los dto para devolverlos al front
         ReserveDTO dtoRes = modelMapper.map(response, ReserveDTO.class);
         Long productId = dtoRes.getProduct().getProductId();
 
+        // Le paso al DTO los valores de la entidad
         dtoRes.getProduct().setScore(productRepository.getById(productId).getScores());
         dtoRes.getProduct().setImages(imageService.findByProductId(response.getProduct()));
         dtoRes.getProduct().setAvgScore(scoreRepository.getAverageProductScore(productId));
@@ -83,28 +85,49 @@ public class ReserveServiceImpl implements ReserveService {
 
     @Override
     public List<ReserveDTO> findReservationsByProductId(Long productId) {
-        List<ReserveDTO> reserveResponse = new ArrayList<>();
+        // Response de entidad
+        List<Reserve> entityResponse = reserveRepository.findReservationsByProductId(productId);
+        // Guardo los dto
+        List<ReserveDTO> dtoResponse = new ArrayList<>();
 
-        for (Reserve reserve : reserveRepository.findReservationsByProductId(productId)) {
-            reserveResponse.add(modelMapper.map(reserve, ReserveDTO.class));
+        for (Reserve reserve : entityResponse) {
+            // Variables que se re-definen y son necesarias para cada ciclo
+            ReserveDTO reservedto = modelMapper.map(reserve, ReserveDTO.class);
+
+            // Le paso al DTO los valores de la entidad
+            reservedto.getProduct().setScore(productRepository.getById(productId).getScores());
+            reservedto.getProduct().setImages(imageService.findByProductId(reserve.getProduct()));
+            reservedto.getProduct().setAvgScore(scoreRepository.getAverageProductScore(productId));
+
+            dtoResponse.add(reservedto);
         }
 
-        return reserveResponse;
+        return dtoResponse;
     }
 
     @Override
     public List<ReserveDTO> findReservationsByUserId(Long userId) {
-        List<ReserveDTO> reserveResponse = new ArrayList<>();
+        // Response de entidad
+        List<Reserve> entityResponse = reserveRepository.findReservationsByUserId(userId);
+        // Guardo los dto
+        List<ReserveDTO> dtoResponse = new ArrayList<>();
 
-        for (Reserve reserve : reserveRepository.findReservationsByUserId(userId)) {
+        for (Reserve reserve : entityResponse) {
 
-//            reserve.getProduct();
+            // Variables que se re-definen y son necesarias para cada ciclo
+            ReserveDTO reservedto = modelMapper.map(reserve, ReserveDTO.class);
+            Long productId = reservedto.getProduct().getProductId();
 
-            reserveResponse.add(modelMapper.map(reserve, ReserveDTO.class));
+            // Le paso al DTO los valores de la entidad
+            reservedto.getProduct().setScore(productRepository.getById(productId).getScores());
+            reservedto.getProduct().setImages(imageService.findByProductId(reserve.getProduct()));
+            reservedto.getProduct().setAvgScore(scoreRepository.getAverageProductScore(productId));
+
+            dtoResponse.add(reservedto);
 
         }
 
-        return reserveResponse;
+        return dtoResponse;
     }
 
     @Override
@@ -120,6 +143,38 @@ public class ReserveServiceImpl implements ReserveService {
 
     @Override
     public void update(Reserve updatedReserve) {
+    // Comprobación básica para saber que el id está presente y que la reserva existe
+        if (updatedReserve.getReservationId() != null) {
+            reserveRepository.findById(updatedReserve.getReservationId()).orElseThrow(() ->
+                    new CustomBaseException("Reserva no encontrada, por favor compruebe", HttpStatus.NOT_FOUND.value())
+            );
+        } else {
+            throw new CustomBaseException("El id de la reserva no puede estar vacío, por favor compruebe", HttpStatus.BAD_REQUEST.value());
+        }
+
+        // Corroborando que no se hayan cambiado: userId, productId. Si algún dato está modificado se arroja una excepción
+
+        Reserve originalReserve = reserveRepository.getById(updatedReserve.getReservationId());
+
+        if(originalReserve.getProduct().getProductId() == updatedReserve.getProduct().getProductId() && originalReserve.getUser().getUserId() == updatedReserve.getUser().getUserId()) {
+
+            // Verifica si la fecha está disponible y lo guardo. Caso contrario arroja excepción
+            if(reserveRepository.checkAvailability(updatedReserve.getDateIn(), updatedReserve.getDateOut(),updatedReserve.getProduct().getProductId()).isEmpty()) {
+
+                reserveRepository.save(updatedReserve);
+
+            } else throw new CustomBaseException("La fecha elegida no está disponible", HttpStatus.BAD_REQUEST.value());
+
+        }
+        else if(originalReserve.getProduct().getProductId() != updatedReserve.getProduct().getProductId() && originalReserve.getUser().getUserId() != updatedReserve.getUser().getUserId()){
+            throw new CustomBaseException("No se puede cambiar el producto ni el usuario en una reserva existente", HttpStatus.BAD_REQUEST.value());
+        }
+        else if (originalReserve.getProduct().getProductId() != updatedReserve.getProduct().getProductId()) {
+            throw new CustomBaseException("No se puede cambiar el producto en una reserva existente", HttpStatus.BAD_REQUEST.value());
+        }
+        else if (originalReserve.getUser().getUserId() != updatedReserve.getUser().getUserId()) {
+            throw new CustomBaseException("No se puede cambiar el usuario en una reserva existente", HttpStatus.BAD_REQUEST.value());
+        }
     }
 
     @Override
