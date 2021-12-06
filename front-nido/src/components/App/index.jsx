@@ -12,6 +12,7 @@ import ProductPage from "../../pages/ProductPage";
 import BookingPage from "../../pages/BookingPage";
 import SuccessfulBookingPage from "../../pages/SuccessfulBookingPage";
 import { SessionContextProvider } from '../../context/sessionContext.js';
+import AddProductPage from "../../pages/AddProductPage";
 
 function App() {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -27,6 +28,7 @@ function App() {
             <SessionContextProvider>
                 <Header handleChangePageHome={handleChangePageHome} setIsSubmitted={setIsSubmitted} />
                 <Routes>
+                <Route exact path="/addProduct" element={<AddProductPage/>} />
                     <Route exact path="/" element={<Home toggle={toggle} />} />
                     <Route exact path="/login" element=
 
@@ -52,6 +54,7 @@ function App() {
                         <BookingPage />
                     } />
                     <Route exact path="/success" element={<SuccessfulBookingPage />} />
+                 
                 </Routes>
                 <Footer />
                 <MenuMobile setIsSubmitted={setIsSubmitted} />

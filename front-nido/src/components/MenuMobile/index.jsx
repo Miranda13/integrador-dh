@@ -29,9 +29,10 @@ export default function MenuMobile({ setIsSubmitted }) {
           {
             user !== null && user !== undefined ?
               <>
-
-                <p>¿Desea <span className="logout" onClick={handleLogout}>cerrar sesión</span>?</p>
-                <hr />
+                <div className="cerrar-sesion-mobile">
+                  <p>¿Desea <span className="logout" onClick={handleLogout}>cerrar sesión</span>?</p>
+                  <hr />
+                </div>
               </>
               :
               <ul>
