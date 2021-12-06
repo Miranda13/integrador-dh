@@ -46,8 +46,8 @@ public class Reserve {
     @JoinColumn(name="products_product_id", referencedColumnName = "productId")
     private Product product;
 
-    @Column(name = "active", columnDefinition = "boolean DEFAULT 'true'")
-    private Boolean active;
+    @Column(name = "active")
+    private Boolean active = true;
 
 
 }

@@ -61,4 +61,29 @@ import java.util.List;
         reserveService.delete(id);
     }
 
+    /*
+
+        @PutMapping
+    @ResponseStatus(HttpStatus.OK)
+    @Secured("ROLE_ADMIN")
+    public void update(@RequestBody @Valid Product product, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            throw new CustomBindingException ("Errores encontrados, por favor compruebe e intente nuevamente",HttpStatus.NOT_FOUND.value(),UtilsException.fieldBindingErrors(bindingResult));
+        }
+        productService.update(product);
+    }
+
+     */
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.OK)
+    @Secured("ROLE_USER")
+    public void update(@RequestBody @Valid Reserve reserve, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            throw new CustomBindingException("Errores encontrados, por favor compruebe e intente nuevamente",HttpStatus.NOT_FOUND.value(),UtilsException.fieldBindingErrors(bindingResult));
+        }
+        reserveService.update(reserve);
+
+    }
 }
