@@ -157,12 +157,22 @@ public class ReserveServiceImpl implements ReserveService {
         Reserve originalReserve = reserveRepository.getById(updatedReserve.getReservationId());
 
         if(originalReserve.getProduct().getProductId() == updatedReserve.getProduct().getProductId() && originalReserve.getUser().getUserId() == updatedReserve.getUser().getUserId()) {
-            reserveRepository.save(updatedReserve);
-        } else if(originalReserve.getProduct().getProductId() != updatedReserve.getProduct().getProductId() && originalReserve.getUser().getUserId() != updatedReserve.getUser().getUserId()){
+
+            // Verifica si la fecha está disponible y lo guardo. Caso contrario arroja excepción
+            if(reserveRepository.checkAvailability(updatedReserve.getDateIn(), updatedReserve.getDateOut(),updatedReserve.getProduct().getProductId()).isEmpty()) {
+
+                reserveRepository.save(updatedReserve);
+
+            } else throw new CustomBaseException("La fecha elegida no está disponible", HttpStatus.BAD_REQUEST.value());
+
+        }
+        else if(originalReserve.getProduct().getProductId() != updatedReserve.getProduct().getProductId() && originalReserve.getUser().getUserId() != updatedReserve.getUser().getUserId()){
             throw new CustomBaseException("No se puede cambiar el producto ni el usuario en una reserva existente", HttpStatus.BAD_REQUEST.value());
-        } else if (originalReserve.getProduct().getProductId() != updatedReserve.getProduct().getProductId()) {
+        }
+        else if (originalReserve.getProduct().getProductId() != updatedReserve.getProduct().getProductId()) {
             throw new CustomBaseException("No se puede cambiar el producto en una reserva existente", HttpStatus.BAD_REQUEST.value());
-        } else if (originalReserve.getUser().getUserId() != updatedReserve.getUser().getUserId()) {
+        }
+        else if (originalReserve.getUser().getUserId() != updatedReserve.getUser().getUserId()) {
             throw new CustomBaseException("No se puede cambiar el usuario en una reserva existente", HttpStatus.BAD_REQUEST.value());
         }
     }

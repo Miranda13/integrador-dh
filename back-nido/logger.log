@@ -107,3 +107,4 @@
 [2021-12-06 15:53:09] [ ERROR] [ExceptionGlobalHandler:16] No se puede cambiar el producto en una reserva existente
 [2021-12-06 15:53:25] [ ERROR] [ExceptionGlobalHandler:16] No se puede cambiar el usuario en una reserva existente
 [2021-12-06 15:53:38] [ ERROR] [ExceptionGlobalHandler:16] No se puede cambiar el usuario en una reserva existente
+[2021-12-06 16:41:20] [ ERROR] [ExceptionGlobalHandler:16] La fecha elegida no está disponible
