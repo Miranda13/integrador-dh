@@ -1,41 +1,48 @@
 package nido.backnido.service.implementations;
 
 import nido.backnido.entity.Category;
-import nido.backnido.entity.dto.CategoryDTO;
-import nido.backnido.service.CategoryService;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import nido.backnido.entity.Product;
+import nido.backnido.repository.CategoryRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CategoryServiceImplTest {
 
-    @Autowired
-    CategoryService categoryService;
+    @InjectMocks
+    private CategoryServiceImpl categoryService;
+    @Mock
+    private CategoryRepository categoryRepository;
 
     @Test
-    public void findCategoryByTitleTest() {
+    public void saveCategoryTest_Ok(){
+        Set<Product> product = new HashSet<>();
+        Category category = new Category(null,"Title category test", "Description category test", "Image category test", product);
+        Category categoryResponse = new Category(1L,"Title category test", "Description category test", "Image category test", product);
 
-        List<CategoryDTO> findRes = categoryService.findByCategoryTitle("Default");
-        assertEquals(2, findRes.size());
-        assertEquals(CategoryDTO.class, findRes.get(0).getClass());
+        when(categoryRepository.save(category)).thenReturn(categoryResponse);
+
+        categoryService.create(category);
+
+        verify(categoryRepository).save(category);
+        assertEquals(category.getTitle(),categoryResponse.getTitle());
+        assertEquals(1L, categoryResponse.getCategoryId());
     }
 
     @Test
-    public void listAllTest() {
-        List<CategoryDTO> categoryRes = categoryService.getAll();
-
-        assertEquals(ArrayList.class, categoryRes.getClass());
+    public void saveCategoryTest_Null(){
+        when(categoryRepository.save(any())).thenReturn(null);
+        categoryService.create(null);
+        verify(categoryRepository, times(0)).save(any());
     }
 }

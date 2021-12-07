@@ -15,6 +15,7 @@ import java.util.Set;
 @Table(name = "categories")
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Category {

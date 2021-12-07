@@ -6,8 +6,10 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -31,11 +33,13 @@ public class User {
 
     @NotNull
     @NotBlank
+    @Email(message = "Error de formato de correo electrónico")
     @Column(unique = true)
     private String email;
 
     @NotNull
     @NotBlank
+    @Size(min = 6, message = "La contraseña debe tener más de 6 caracteres")
     @ToString.Exclude
     private String password;
 

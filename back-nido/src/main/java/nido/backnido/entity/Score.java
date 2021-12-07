@@ -32,12 +32,10 @@ public class Score {
     
     @NotNull
     @OneToOne
-    @JsonIgnore
     @JoinColumn(name="users_user_id",referencedColumnName = "userId")
     private User user;
     
     @NotNull
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "products_product_id", referencedColumnName = "productId")
     private Product product;
