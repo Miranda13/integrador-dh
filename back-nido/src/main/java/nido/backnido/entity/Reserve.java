@@ -4,8 +4,6 @@ import lombok.*;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -33,6 +31,8 @@ public class Reserve {
 
     private Boolean covid;
 
+    private String city;
+
     @Size(max = 180, message = "Este campo sólo acepta un máximo de 180 caracteres, por favor revisa")
     private String info;
 
@@ -44,8 +44,8 @@ public class Reserve {
     @JoinColumn(name="products_product_id", referencedColumnName = "productId")
     private Product product;
 
-    @Column(name = "active", columnDefinition = "boolean DEFAULT 'true'")
-    private Boolean active;
+    @Column(name = "active")
+    private Boolean active = true;
 
 
 }

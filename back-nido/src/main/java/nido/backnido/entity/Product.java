@@ -77,10 +77,10 @@ public class Product {
     @JoinColumn(name="categories_category_id", referencedColumnName = "categoryId")
     private Category category;
     
-    /*@OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Image> images;
-*/
+
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<Score> scores;

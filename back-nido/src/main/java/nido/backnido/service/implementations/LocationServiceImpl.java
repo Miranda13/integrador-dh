@@ -59,12 +59,18 @@ public class LocationServiceImpl implements LocationService {
                 new CustomBaseException("Locación no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value())
         );
         LocationDTO locationdto = modelMapper.map(response, LocationDTO.class);
+
         Set<ProductDTO> listProductdto = new HashSet<>();
+
         for(Product product : response.getProducts()) {
             ProductDTO noImgProduct = modelMapper.map(product, ProductDTO.class);
+
             noImgProduct.setImages(imageService.findByProductId(product));
+
             listProductdto.add(noImgProduct);
+
         }
+
         locationdto.setProducts(listProductdto);
         return locationdto;
     }

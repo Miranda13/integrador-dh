@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
     ModelMapper modelMapper = new ModelMapper();
 
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProductServiceImpl.class);
-    private final String URL_S3 = "https://bucketnido.s3.amazonaws.com/Products";
+    private final String URL_S3 = "https://bucketnido.s3.amazonaws.com/Products/";
 
     @Override
     public List<ProductDTO> getAll() {
@@ -156,14 +156,23 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductDTO> findProductByCity(String city) {
         List<ProductDTO> productResponse = new ArrayList<>();
         ProductDTO productdto;
+
         for (Product product : productRepository.findProductByCity(city)) {
+
             productdto = modelMapper.map(product, ProductDTO.class);
             productdto.setScore(product.getScores());
             if (scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
                 productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));
             }
+        	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+
+        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
+
+        	}
             productdto.setImages(imageService.findByProductId(product));
+
             productResponse.add(productdto);
+
         }
         return productResponse;
     }
@@ -176,14 +185,22 @@ public class ProductServiceImpl implements ProductService {
 //                .collect(Collectors.toList());
         List<ProductDTO> productResponse = new ArrayList<>();
         ProductDTO productdto;
+
         for (Product product : productRepository.filterProductsByLocationAndDate(city, dateIn, dateOut)) {
+
             productdto = modelMapper.map(product, ProductDTO.class);
             productdto.setScore(product.getScores());
             if (scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
                 productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));
             }
+        	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+
+        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));
+
+        	}
             productdto.setImages(imageService.findByProductId(product));
             productResponse.add(productdto);
+
         }
         return productResponse;
     }

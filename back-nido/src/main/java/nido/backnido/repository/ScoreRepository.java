@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface ScoreRepository extends JpaRepository<Score, Long> {
     @Query(value = "select avg(s.score) as promedio from scores s where s.products_product_id = :productId", nativeQuery = true)
-    double getAverageProductScore(@Param("productId")Long productId );
+    Double getAverageProductScore(@Param("productId")Long productId );
     
     List<Score> findByProduct_ProductId(Long productId);
 }
