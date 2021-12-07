@@ -29,7 +29,7 @@ public class ScoreController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody @Valid Score score, BindingResult bindingResult){
+    public void create(@RequestBody @Valid ScoreDTO score, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             throw new CustomBindingException("Errores encontrados, por favor compruebe e intente nuevamente", HttpStatus.BAD_REQUEST.value(), UtilsException.fieldBindingErrors(bindingResult));
         }
@@ -38,7 +38,7 @@ public class ScoreController {
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public void update(@RequestBody @Valid Score score, BindingResult bindingResult){
+    public void update(@RequestBody @Valid ScoreDTO score, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             throw new CustomBindingException ("Errores encontrados, por favor compruebe e intente nuevamente",HttpStatus.NOT_FOUND.value(),UtilsException.fieldBindingErrors(bindingResult));
         }

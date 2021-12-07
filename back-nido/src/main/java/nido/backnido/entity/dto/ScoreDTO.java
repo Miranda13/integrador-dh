@@ -15,4 +15,5 @@ public class ScoreDTO {
     private Long scoreId;
     private Integer score;
     private User user;
+    private Product product;
 }
