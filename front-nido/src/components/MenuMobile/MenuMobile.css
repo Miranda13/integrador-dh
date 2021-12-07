@@ -18,7 +18,7 @@
     /* translate: -30vw;  */
 }
 
-#menu_on span {
+#menu_on #span {
     width: 100%;
     height: 3px;
     border-radius: 4px;
@@ -30,11 +30,11 @@
     transform-origin: 0px 100%;
 }
 
-#menu_on span:nth-child(2) {
+#menu_on #span:nth-child(2) {
     top: calc(50% - 2px);
 }
 
-#menu_on span:nth-child(3) {
+#menu_on #span:nth-child(3) {
     bottom: 0;
 }
 
@@ -129,16 +129,16 @@ nav a:hover {
     position: fixed;
 }
 
-.visible_menu span:nth-child(1) {
+.visible_menu #span:nth-child(1) {
     transform: rotate(45deg) translate(-2px, 1px);
     background-color: var(--light-color) !important;
 }
 
-.visible_menu span:nth-child(2) {
+.visible_menu #span:nth-child(2) {
     opacity: 0;
 }
 
-.visible_menu span:nth-child(3) {
+.visible_menu #span:nth-child(3) {
     transform: rotate(-45deg) translate(-3px, 3px);
     background-color: var(--light-color) !important;
 }
