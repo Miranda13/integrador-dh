@@ -21,14 +21,18 @@ import java.util.Set;
 @Service
 public class LocationServiceImpl implements LocationService {
 
-    @Autowired
-    LocationRepository locationRepository;
 
-    @Autowired
-    ImageService imageService;
+   private final LocationRepository locationRepository;
+
+
+   private final ImageService imageService;
 
     ModelMapper modelMapper = new ModelMapper();
 
+    public LocationServiceImpl(LocationRepository locationRepository, ImageService imageService) {
+        this.locationRepository = locationRepository;
+        this.imageService = imageService;
+    }
 
     @Override
     public List<LocationDTO> getAll() {

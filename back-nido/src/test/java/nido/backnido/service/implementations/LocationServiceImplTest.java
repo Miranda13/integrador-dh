@@ -3,16 +3,18 @@ package nido.backnido.service.implementations;
 import nido.backnido.entity.Location;
 import nido.backnido.entity.Product;
 import nido.backnido.repository.LocationRepository;
+import nido.backnido.service.ImageService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.util.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest()
 public class LocationServiceImplTest {
 
     @InjectMocks
@@ -21,17 +23,19 @@ public class LocationServiceImplTest {
     private LocationRepository locationRepository;
 
     @Test
-    public void saveLocationTest_Ok(){
-       Set<Product> product = new HashSet<>();
-        Location location = new Location(null, "Test city","Test country",product);
-        Location locationResponse = new Location(1L,"Test city","Test country",product);
+    public void saveLocationTest_Ok() {
+        Location locationResponse = new Location(1L, "Test city", "Test country", null);
+
+        Location location = Location.builder()
+                .city("Test city")
+                .country("Test country")
+                .build();
 
         when(locationRepository.save(location)).thenReturn(locationResponse);
-
         locationService.create(location);
 
         verify(locationRepository).save(location);
-        assertEquals(location.getCity(),locationResponse.getCity());
+        assertEquals(location.getCity(), locationResponse.getCity());
         assertEquals(1L, locationResponse.getLocationId());
     }
 
@@ -54,7 +58,35 @@ public class LocationServiceImplTest {
 
         verify(locationRepository).findAll();
         assertEquals(1, locationList.size());
+    }
 
+    @Test
+    public void getLocationByIdTest_Ok(){
+        Set<Product> product = new HashSet<>();
+        Location location = new Location(1L, "Test city","Test country",product);
+        Location locationResponse = new Location(1L, "Test city", "Test country", product);
+
+        when(locationRepository.findById(anyLong())).thenReturn(Optional.of(locationResponse));
+        locationService.getById(1L);
+
+        verify(locationRepository).findById(location.getLocationId());
+        assertEquals(location.getCity(), locationResponse.getCity());
+        assertEquals(1L, locationResponse.getLocationId());
+
+    }
+
+    @Test
+    public void getAllLocationByCitiesTest_Ok(){
+        Set<Product> product = new HashSet<>();
+        Location location = new Location(null, "Test city","Test country",product);
+        List<Location> locationList = new ArrayList<>();
+        locationList.add(location);
+
+        when(locationRepository.findAll()).thenReturn(locationList);
+        locationService.getAllCities();
+
+        verify(locationRepository).findAll();
+        assertEquals(1, locationList.size());
     }
 
     @Test
@@ -69,7 +101,7 @@ public class LocationServiceImplTest {
 
         verify(locationRepository).save(locationNew);
         assertEquals(locationNew.getCity(), locationResponse.getCity());
-        assertTrue(locationDB.getProducts() != locationResponse.getProducts());
+        assertNotEquals(locationDB.getProducts(), locationResponse.getProducts());
 
     }
 

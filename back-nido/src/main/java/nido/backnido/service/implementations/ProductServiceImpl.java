@@ -15,6 +15,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -43,23 +44,23 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ScoreService scoreService;
-    
+
     ModelMapper modelMapper = new ModelMapper();
 
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProductServiceImpl.class);
-    private final String URL_S3 = "https://bucketnido.s3.amazonaws.com/";
+    private final String URL_S3 = "https://bucketnido.s3.amazonaws.com/Products/";
 
     @Override
     public List<ProductDTO> getAll() {
         List<ProductDTO> productResponse = new ArrayList<>();
 
         for (Product product : productRepository.findAll()) {
-        	ProductDTO productdto = modelMapper.map(product, ProductDTO.class);
-        	productdto.setScore(product.getScores());
-        	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
-        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
-        	}
-        	productdto.setImages(imageService.findByProductId(product));
+            ProductDTO productdto = modelMapper.map(product, ProductDTO.class);
+            productdto.setScore(product.getScores());
+            if (scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+                productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));
+            }
+            productdto.setImages(imageService.findByProductId(product));
             productResponse.add(productdto);
         }
 
@@ -73,10 +74,10 @@ public class ProductServiceImpl implements ProductService {
         );
         ProductDTO productdto = modelMapper.map(response, ProductDTO.class);
         productdto.setScore(response.getScores());
-    	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
-    		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
-    	}
-    	productdto.setImages(imageService.findByProductId(response));
+        if (scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+            productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));
+        }
+        productdto.setImages(imageService.findByProductId(response));
         return productdto;
     }
 
@@ -139,12 +140,12 @@ public class ProductServiceImpl implements ProductService {
         List<ProductDTO> productResponse = new ArrayList<>();
         ProductDTO productdto;
         for (Product product : productRepository.findByCategory_TitleContaining(title)) {
-        	productdto = modelMapper.map(product, ProductDTO.class);
-        	productdto.setScore(product.getScores());
-        	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
-        		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
-        	}
-        	productdto.setImages(imageService.findByProductId(product));
+            productdto = modelMapper.map(product, ProductDTO.class);
+            productdto.setScore(product.getScores());
+            if (scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+                productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));
+            }
+            productdto.setImages(imageService.findByProductId(product));
             productResponse.add(productdto);
         }
 
@@ -160,13 +161,14 @@ public class ProductServiceImpl implements ProductService {
 
             productdto = modelMapper.map(product, ProductDTO.class);
             productdto.setScore(product.getScores());
-
+            if (scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+                productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));
+            }
         	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
 
         		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));        		
 
         	}
-
             productdto.setImages(imageService.findByProductId(product));
 
             productResponse.add(productdto);
@@ -188,13 +190,14 @@ public class ProductServiceImpl implements ProductService {
 
             productdto = modelMapper.map(product, ProductDTO.class);
             productdto.setScore(product.getScores());
-
+            if (scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
+                productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));
+            }
         	if(scoreService.getScoreByProductId(productdto.getProductId()).size() != 0) {
 
         		productdto.setAvgScore(scoreService.getAverageProductScore(productdto.getProductId()));
 
         	}
-
             productdto.setImages(imageService.findByProductId(product));
             productResponse.add(productdto);
 
@@ -203,12 +206,28 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<Product> findAll(Pageable page) {
-        return productRepository.findAll(page);
+    public Page<ProductDTO> findAll(Pageable page) {
+        Page<Product> products = productRepository.findAll(page);
+
+        return new PageImpl<ProductDTO>(products.stream()
+                .map(product -> new ProductDTO(product.getProductId(),
+                        product.getName(), product.getDescription(), product.getSubtitle(), product.getPolicy(),
+                        product.getRule(), product.getSafety(), product.getAddress(), product.getLatitude(),
+                        product.getLongitude(), product.getLocation(), product.getCategory(), 0.0,
+                        imageService.findByProductId(product), product.getScores(), product.getFeatures()))
+                .collect(Collectors.toList()), page, products.getTotalElements());
     }
 
     @Override
-    public Page<Product> findProductsByCategory_Title(String title, Pageable page) {
-        return productRepository.findProductsByCategory_Title(title, page);
+    public Page<ProductDTO> findProductsByCategory_Title(String title, Pageable page) {
+        Page<Product> products = productRepository.findProductsByCategory_Title(title, page);
+
+        return new PageImpl<ProductDTO>(products.stream()
+                .map(product -> new ProductDTO(product.getProductId(),
+                        product.getName(), product.getDescription(), product.getSubtitle(), product.getPolicy(),
+                        product.getRule(), product.getSafety(), product.getAddress(), product.getLatitude(),
+                        product.getLongitude(), product.getLocation(), product.getCategory(), 0.0,
+                        imageService.findByProductId(product), product.getScores(), product.getFeatures()))
+                .collect(Collectors.toList()), page, products.getTotalElements());
     }
 }
