@@ -35,4 +35,5 @@ public class ProductDTO {
     private Set<Score> score;
     private Set<Feature> features;
 
+
 }
