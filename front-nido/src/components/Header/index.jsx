@@ -42,10 +42,10 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
                 {
                     user !== null && user !== undefined ?
                         <>
-                            <Link to="/1/mybooking" className="button-booking animation-button-light">
-                            </Link> 
+                            <Link to={`/${user.userId}/mybooking`} className="button-booking animation-button-light">
+                            </Link>
                             <Link to="/favorite" className="button-favorite animation-button-light" >
-                            </Link> 
+                            </Link>
                             {window.innerWidth >= 760 && <UserLogged setIsSubmitted={setIsSubmitted} user={user} />}
                         </>
                         :

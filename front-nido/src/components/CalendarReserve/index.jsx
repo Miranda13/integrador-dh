@@ -5,13 +5,15 @@ import { registerLocale, setDefaultLocale } from "react-datepicker";
 import "./CalendarReserve.css";
 import es from 'date-fns/locale/es';
 import SessionContextProvider from "../../context/sessionContext";
-
+import ReserveContext from "../../context/reserveContext";
 export default function CalendarReserve({ status, handleSelectRangeDate, idProduct, error }) {
-    const { token } = useContext(SessionContextProvider);
+    const { reserve } = useContext(ReserveContext);
     registerLocale('es', es)
     // const [startDate, setStartDate] = useState(null);
+    const dateIn = JSON.stringify(reserve) != "{}" && handleSelectRangeDate != undefined ? new Date(reserve.dateIn?.split("-")[0], reserve.dateIn?.split("-")[1] - 1, reserve.dateIn?.split("-")[2]) : null;
+    const dateOut = JSON.stringify(reserve) != "{}" && handleSelectRangeDate != undefined ? new Date(reserve.dateOut?.split("-")[0], reserve.dateOut?.split("-")[1] - 1, reserve.dateOut?.split("-")[2]) : null;
     const [arrayDaysReserve, setArrayDaysReserve] = useState([]);
-    const [dateRange, setDateRange] = useState([null, null]);
+    const [dateRange, setDateRange] = useState([dateIn, dateOut]);
     const [startDate, endDate] = dateRange;
     const onChange = (dates) => {
         if (status !== "disabled") {
@@ -41,7 +43,6 @@ export default function CalendarReserve({ status, handleSelectRangeDate, idProdu
             fetch(`http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/reserve/product/${idProduct}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     createArrayDaysReserve(data);
                 }).catch(error => console.log(error))
         }

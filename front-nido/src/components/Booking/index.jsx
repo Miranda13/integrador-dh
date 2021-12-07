@@ -6,7 +6,6 @@ import CalendarReserve from "../CalendarReserve";
 import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import SessionContextProvider from "../../context/sessionContext";
-
 function Booking({ product }) {
     const history = useNavigate();
     const { token, user } = useContext(SessionContextProvider);
@@ -86,7 +85,7 @@ function Booking({ product }) {
                 <h2 className="booking-title">Tu horario de llegada</h2>
                 <Schedule handleTime={handleTime} error={errorTime} />
             </div>
-            <DetailsBooking product={product} startDate={startDate} endDate={endDate} handleSubmitReserve={handleSubmitReserve} error={error} buttonText="Confirmar Reserva" />
+            <DetailsBooking product={product} startDate={startDate} endDate={endDate} handleEventButton={handleSubmitReserve} error={error} buttonText="Confirmar Reserva" />
         </div>
     )
 }

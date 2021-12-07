@@ -82,6 +82,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
 }
 
 /*CATEGORY*/
@@ -187,7 +188,6 @@
     font-weight: var(--font-weight-bold);
     margin: 10px 0;
     overflow: hidden;
-    white-space: nowrap;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -288,9 +288,9 @@
         margin: 0;
         display: flex;
         flex-wrap: wrap;
-}
-   
-/*LATERAL IMAGE*/
+    }
+
+    /*LATERAL IMAGE*/
 
     .card-list__image {
         height: 100%;
