@@ -16,7 +16,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/reserve")
-@CrossOrigin("*")public class ReserveController {
+@CrossOrigin("*")
+public class ReserveController {
 
     @Autowired
     private ReserveService reserveService;
