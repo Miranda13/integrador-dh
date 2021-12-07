@@ -2,8 +2,10 @@ package nido.backnido.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.Where;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -91,8 +93,8 @@ public class Product {
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<Feature> features;
 
-    //@Column(name = "active", columnDefinition = "boolean DEFAULT 'true'")
-    private Boolean active = true;
+     @Column(name = "active", columnDefinition="@boolean default true", nullable = false)
+    private Boolean active;
 
 
 //    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)

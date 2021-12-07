@@ -154,6 +154,13 @@
 							<goal>check</goal>
 						</goals>
 						<configuration>
+							<excludes>
+								<exclude>nido.backnido.entity</exclude>
+								<exclude>nido.backnido.configuration</exclude>
+								<exclude>nido.backnido.repository</exclude>
+								<exclude>nido.backnido.exception</exclude>
+								<exclude>nido.backnido.utils</exclude>
+							</excludes>
 							<rules>
 								<rule>
 									<element>PACKAGE</element>
