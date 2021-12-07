@@ -32,20 +32,33 @@ export default function AddProduct() {
                         </div>
                         <div className="add-form-div">
                             <label htmlFor="categoy" className="add-form__label">Categoría</label>
-                            <input  name="categoy" type="text" className="add-form__input" />
+                            {/* <input  name="categoy" type="text" className="add-form__input" /> */}
+                            <select name="categoy" className="add-form__input">
+                                <option value="">Seleccione una opción</option>
+                                <option value="">Seleccione una opción</option>
+                                <option value="">Seleccione una opción</option>
+                            </select>
                         </div>
                         <div className="add-form-div">
+                            {/* poner aca el mapa, sacar este campo o vincularlo con el input del mapa*/}
                             <label htmlFor="address" className="add-form__label">Dirección</label>
                             <input  name="address" type="text" className="add-form__input" />
                         </div>
                        
                         <div className="add-form-div">
                             <label htmlFor="city" className="add-form__label">Ciudad</label>
-                            <input  name="city" type="text" className="add-form__input" />
+                            {/* <input  name="city" type="text" className="add-form__input" /> */}
+                            <select name="city" className="add-form__input">
+                                <option value="">Seleccione una opción</option>
+                                <option value="">Seleccione una opción</option>
+                                <option value="">Seleccione una opción</option>
+                            </select>
                         </div>
                         <div className="add-form-div-description">
                             <label htmlFor="description" className="add-form__label">Descripción</label>
-                            <textarea  id="description" name="description" type="text" className="add-form__input__textarea" rows="100" cols="50" />
+                            <textarea  id="description" name="description" type="text" className="add-form__input__textarea" rows="100" cols="50" value="Ingrese el texto"/>
+                            
+                        
                         </div>
                         
                                                                                                                                    
@@ -122,8 +135,8 @@ export default function AddProduct() {
                         <h3>Cargar imágenes</h3>
                         <div className="add-form__images">
                             <div className="add-form-div__images">
-                                <label htmlFor="atribute" className="add-form__label">Nombre</label>
-                                <input  name="atribute" type="file" className="add-form__input__images" />
+                                <label htmlFor="image" className="add-form__label">Nombre</label>
+                                <input  name="image" type="file" className="add-form__input__images" />
                             </div>                          
                             <button className="add-form__button button-1 animation-button-filled"> +</button>                         
                         </div> 
