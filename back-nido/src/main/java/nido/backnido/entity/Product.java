@@ -93,8 +93,8 @@ public class Product {
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<Feature> features;
 
-     @Column(name = "active", columnDefinition="@boolean default true", nullable = false)
-    private Boolean active;
+     @Column(name = "active")
+    private Boolean active = true;
 
 
 //    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)

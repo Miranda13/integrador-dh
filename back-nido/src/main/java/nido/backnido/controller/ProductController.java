@@ -106,4 +106,9 @@ public class ProductController {
     public Page<ProductDTO> productByCategoryPage(@RequestParam("name") String category, @RequestParam("page") Integer page) {
         return productService.findProductsByCategory_Title(category, PageRequest.of(page, 10));
     }
+    @GetMapping("/search/location/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ProductDTO> findProductByLocation_LocationId(@PathVariable("id") Long id){
+        return productService.findProductByLocation_LocationId(id);
+    }
 }
