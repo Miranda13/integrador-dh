@@ -29,7 +29,7 @@ public interface ReserveRepository extends JpaRepository<Reserve, Long> {
 
     /*@Query(value = "SELECT r FROM Reserve r WHERE r.product.productId = :productId AND :first BETWEEN r.dateIn AND r.dateOut OR :second BETWEEN r.dateIn AND r.dateOut")*/
     /*@Query(value = "SELECT * FROM reserves r WHERE (r.products_product_id = :productId) AND ((:first BETWEEN r.date_in AND r.date_out) OR (:second BETWEEN r.date_in AND r.date_out))", nativeQuery = true*/
-    @Query(value = "SELECT r FROM Reserve r WHERE (r.product.productId = :productId) AND ((:first BETWEEN r.dateIn AND r.dateOut) OR (:second BETWEEN r.dateIn AND r.dateOut))")
+    @Query(value = "SELECT r FROM Reserve r WHERE (r.product.productId = :productId) AND ((:first BETWEEN r.dateIn AND r.dateOut) OR (:second BETWEEN r.dateIn AND r.dateOut)) AND r.active=true")
     Optional<Reserve> checkAvailability(@Param("first")LocalDate first,
                                         @Param("second")LocalDate second,@Param("productId") Long productId);
 
@@ -39,10 +39,10 @@ public interface ReserveRepository extends JpaRepository<Reserve, Long> {
      */
 
     
-    @Query(value = "SELECT r FROM Reserve r WHERE r.product.productId = :productId")
+    @Query(value = "SELECT r FROM Reserve r WHERE r.product.productId = :productId AND r.active=true")
     List<Reserve> findReservationsByProductId(@Param("productId") Long productId);
 
-    @Query(value = "SELECT r FROM Reserve r WHERE r.user.userId = :userId")
+    @Query(value = "SELECT r FROM Reserve r WHERE r.user.userId = :userId AND r.active=true")
     List<Reserve> findReservationsByUserId(@Param("userId") Long userId);
 
     @Transactional
