@@ -230,4 +230,5 @@ public class ProductServiceImpl implements ProductService {
                         imageService.findByProductId(product), product.getScores(), product.getFeatures()))
                 .collect(Collectors.toList()), page, products.getTotalElements());
     }
+
 }
