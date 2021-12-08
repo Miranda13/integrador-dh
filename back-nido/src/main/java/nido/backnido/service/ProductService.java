@@ -21,6 +21,7 @@ public interface ProductService {
     List<ProductDTO> findProductByCategory(@Param("title")String title);
     List<ProductDTO> findProductByCity(String city);
     List<ProductDTO> filterProductsByLocationAndDate(String city, LocalDate dateIn, LocalDate dateOut);
+    List<ProductDTO> findProductByLocation_LocationId(Long id);
     Page<ProductDTO> findAll(Pageable page);
     Page<ProductDTO> findProductsByCategory_Title(String title, Pageable page);
 }

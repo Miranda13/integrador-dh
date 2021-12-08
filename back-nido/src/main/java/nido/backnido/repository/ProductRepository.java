@@ -43,6 +43,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("UPDATE Product p SET p.active = false WHERE p.productId = :productId")
     void softDelete(@Param("productId") Long productId);
 
+    //@Query("select p from Product p where p.location.locationId = :id")
+    List<Product> findProductByLocation_LocationId(Long id);
+
     Page<Product> findAll(Pageable page);
     Page<Product> findProductsByCategory_Title(String title, Pageable page);
 }
