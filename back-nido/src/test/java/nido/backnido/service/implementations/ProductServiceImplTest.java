@@ -3,6 +3,7 @@ package nido.backnido.service.implementations;
 import nido.backnido.entity.*;
 import nido.backnido.entity.dto.FavoriteDTO;
 import nido.backnido.entity.dto.ProductDTO;
+import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.ProductRepository;
 import nido.backnido.service.ImageService;
 import nido.backnido.service.ScoreService;
@@ -17,8 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
@@ -92,29 +93,31 @@ class ProductServiceImplTest {
         }
 
     }
-//
-//    @Test
-//    public void updateProductTest_Ok(){
-//        Product product = buildValidProduct();
-//        product.setProductId(1L);
-//
-//        Product updatedProduct = buildValidProduct();
-//        updatedProduct.setProductId(1L);
-//        updatedProduct.setName("Updated Product");
-//
-//        Product expectedResponse = updatedProduct;
-//
-//
-//
-//        when(productRepository.findById(product.getProductId())).thenReturn(Optional.of(expectedResponse));
-//        productService.update(updatedProduct);
-//
-//        verify(productRepository).save(updatedProduct);
-//        assertEquals(updatedProduct.getName(), expectedResponse.getName());
-//        assertTrue(product.getName() != expectedResponse.getName());
-//
-//    }
-//
+
+    @Test
+    public void updateProductTest_Ok(){
+        Set<Image> image = new HashSet<>();
+        Product product = new Product(1L, "name test", "description test", "subtitle test",
+                "policy test", "rule test", "safety test", "adress test", 25.65, 35.88, location, category,image, scores, features, true);
+
+        Product productRNew = new Product(1L, "name", "description test", "subtitle test",
+                "policy test", "rule test", "safety test", "adress test", 25.65, 35.88, location, category,imageService.findByProductId(product), scores, features, true);
+
+
+        Product productResponse = new Product(1L, "name", "description test", "subtitle test",
+                "policy test", "rule test", "safety test", "adress test", 25.65, 35.88, location, category,imageService.findByProductId(product), scores, features, true);
+
+
+
+        when(productRepository.findById(product.getProductId())).thenReturn(Optional.of(productResponse));
+        productService.update(productRNew);
+
+        verify(productRepository).save(productRNew);
+        assertEquals(productRNew.getName(), productResponse.getName());
+        assertTrue(product.getName() != productResponse.getName());
+
+    }
+
     @Test
     public void deleteProductByIdTest_Ok() {
         Product product2 = new Product();
@@ -131,5 +134,37 @@ class ProductServiceImplTest {
         verify(productRepository, times(1)).softDelete(product.getProductId());
         verify(productRepository).findById(anyLong());
     }
+
+    @Test
+    public void getProductByIdException(){
+        when(productRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertThrows(CustomBaseException.class,()->{
+            productService.getById(1L);
+        });
+
+    }
+
+    @Test
+    public void updateProductrByIdException(){
+        Product product = new Product();
+        when(productRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertThrows(CustomBaseException.class,()->{
+            productService.update(product);
+        });
+
+    }
+
+    @Test
+    public void deleteProductrByIdException(){
+        when(productRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertThrows(CustomBaseException.class,()->{
+            productService.delete(1L);
+        });
+
+    }
+
 
 }

@@ -1,10 +1,7 @@
 package nido.backnido.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -18,6 +15,7 @@ import java.util.Set;
 @Where(clause = "active = true")
 @Setter @Getter
 @NoArgsConstructor @AllArgsConstructor
+@Builder
 public class Feature {
 
     @Id

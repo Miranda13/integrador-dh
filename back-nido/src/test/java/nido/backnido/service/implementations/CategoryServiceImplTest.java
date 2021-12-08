@@ -1,8 +1,9 @@
 package nido.backnido.service.implementations;
 
 import nido.backnido.entity.Category;
-import nido.backnido.entity.Location;
 import nido.backnido.entity.Product;
+import nido.backnido.entity.User;
+import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.CategoryRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -13,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -113,6 +114,34 @@ class CategoryServiceImplTest {
         assertEquals(1, categoryList.size());
     }
 
+    @Test
+    public void getCategoryByIdException(){
+        when(categoryRepository.findById(anyLong())).thenReturn(Optional.empty());
 
+        assertThrows(CustomBaseException.class,()->{
+            categoryService.getById(1L);
+        });
 
+    }
+
+    @Test
+    public void updateCategoryByIdException(){
+        Category category = new Category();
+        when(categoryRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertThrows(CustomBaseException.class,()->{
+            categoryService.update(category);
+        });
+
+    }
+
+    @Test
+    public void deleteCategoryByIdException(){
+        when(categoryRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertThrows(CustomBaseException.class,()->{
+            categoryService.delete(1L);
+        });
+
+    }
 }

@@ -2,6 +2,8 @@ package nido.backnido.service.implementations;
 
 import nido.backnido.entity.Location;
 import nido.backnido.entity.Product;
+import nido.backnido.entity.User;
+import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.LocationRepository;
 import nido.backnido.service.ImageService;
 import org.junit.jupiter.api.Test;
@@ -116,4 +118,36 @@ public class LocationServiceImplTest {
         verify(locationRepository, times(1)).deleteById(locationDB.getLocationId());
         verify(locationRepository).findById(anyLong());
     }
+
+    @Test
+    public void getLocationByIdException(){
+        when(locationRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertThrows(CustomBaseException.class,()->{
+            locationService.getById(1L);
+        });
+
+    }
+
+    @Test
+    public void updateLocationByIdException(){
+        Location location = new Location();
+        when(locationRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertThrows(CustomBaseException.class,()->{
+            locationService.update(location);
+        });
+
+    }
+
+    @Test
+    public void deleteLocationByIdException(){
+        when(locationRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertThrows(CustomBaseException.class,()->{
+            locationService.delete(1L);
+        });
+
+    }
+
 }

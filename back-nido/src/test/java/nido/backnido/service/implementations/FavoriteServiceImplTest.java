@@ -4,6 +4,7 @@ import nido.backnido.entity.*;
 import nido.backnido.entity.dto.FavoriteDTO;
 import nido.backnido.entity.dto.ProductDTO;
 import nido.backnido.entity.dto.UserDTO;
+import nido.backnido.exception.CustomBaseException;
 import nido.backnido.repository.FavoriteRepository;
 import nido.backnido.service.ImageService;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
@@ -26,7 +28,7 @@ public class FavoriteServiceImplTest {
     private FavoriteServiceImpl favoriteService;
     @Mock
     private FavoriteRepository favoriteRepository;
-    @MockBean
+    @Mock
     private ImageService imageService;
 
     @Test
@@ -73,6 +75,60 @@ public class FavoriteServiceImplTest {
 
         verify(favoriteRepository, times(1)).deleteById(favoriteDB.getFavoriteId());
         verify(favoriteRepository).findById(anyLong());
+    }
+
+    @Test
+    public void getFavoriteByIdTest_Ok(){
+        Product product = new Product();
+        Favorite favoriteDB = new Favorite(1L, getUser(), product);
+        Favorite favoriteResponse = new Favorite(1L, getUser(), product);
+
+        when(favoriteRepository.findById(anyLong())).thenReturn(Optional.of(favoriteResponse));
+        favoriteDB.getProduct().setImages(imageService.findByProductId(favoriteResponse.getProduct()));
+
+        favoriteService.getById(1L);
+
+        verify(favoriteRepository).findById(favoriteDB.getFavoriteId());
+        assertEquals(favoriteDB.getProduct(), favoriteResponse.getProduct());
+        assertEquals(1L, favoriteResponse.getFavoriteId());
+
+    }
+
+    @Test
+    public void getAllFavoriteByUserTest_Ok(){
+        Product product = new Product();
+        List<Favorite> favorites = new ArrayList<>();
+
+        Favorite favoriteDB = new Favorite(1L, getUser(), product);
+        Favorite favoriteResponse = new Favorite(1L, getUser(), product);
+        favorites.add(favoriteResponse);
+
+        when(favoriteRepository.findByUser_UserId(anyLong())).thenReturn(favorites);
+        favoriteService.findAllFavoritesByUser(1L);
+
+        verify(favoriteRepository).findByUser_UserId(getUser().getUserId());
+        assertEquals(1, favorites.size());
+
+    }
+
+    @Test
+    public void getFavoriteByIdException(){
+        when(favoriteRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertThrows(CustomBaseException.class,()->{
+            favoriteService.getById(1L);
+        });
+
+    }
+
+    @Test
+    public void deleteFavoriteByIdException(){
+        when(favoriteRepository.findById(anyLong())).thenReturn(Optional.empty());
+
+        assertThrows(CustomBaseException.class,()->{
+            favoriteService.delete(1L);
+        });
+
     }
 
     private User getUser(){
