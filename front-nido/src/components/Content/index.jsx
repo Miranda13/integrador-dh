@@ -4,7 +4,7 @@ import Recomendations from "../Recomendations";
 import "./Content.css";
 import db from "../Recomendations/cards.json";
 import ContentLoader from "react-content-loader";
-export default function Content({ handleClickCategory, products, categorys, isLoading, isLoadingProducts }) {
+export default function Content({ handleClickCategory, products, categorys, isLoading, isLoadingProducts, pages, handleChangePage, currentPage }) {
     return (
         <>
             <div className="content-superior">
@@ -76,8 +76,8 @@ export default function Content({ handleClickCategory, products, categorys, isLo
                     }
                 </div>
             </div>
-            <div className="content_recomendaciones">
-                <Recomendations products={products} isLoadingProducts={isLoadingProducts} />
+            <div id="content-hotels" className="content_recomendaciones">
+                <Recomendations currentPage={currentPage} pages={pages} products={products} isLoadingProducts={isLoadingProducts} handleChangePage={handleChangePage} />
             </div>
         </>
     );
