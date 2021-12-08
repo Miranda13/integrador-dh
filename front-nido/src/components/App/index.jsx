@@ -67,6 +67,9 @@ export default function App() {
                             <Route exact path="/success-booking" element={<PrivateRoute />}>
                                 <Route exact path="/success-booking" element={<SuccessfulMessagePage message="Su reserva se ha realizado con éxito" button="Ok" />} />
                             </Route>
+                            <Route exact path="/success-re-booking" element={<PrivateRoute />}>
+                                <Route exact path="/success-re-booking" element={<SuccessfulMessagePage message="Su reserva se ha actualizado con éxito" button="Genial!" />} />
+                            </Route>
                             <Route exact path="/success-product" element={<PrivateRoute />} >
                                 <Route exact path="/success-product" element={<SuccessfulMessagePage message="Tu propiedad se ha creado con éxito" button="Volver" />} />
                             </Route>

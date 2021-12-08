@@ -2,13 +2,16 @@ import "./FormBooking.css";
 import { useState, useEffect, useContext } from "react";
 import SessionContextProvider from "../../context/sessionContext.js";
 import ReserveContext from "../../context/reserveContext.js";
-export default function FormBooking({ handleInfo, handleCovid, reserveContext }) {
+export default function FormBooking({ handleInfo, handleCovid, handleCity }) {
     const { reserve } = useContext(ReserveContext);
     const handleOnChangeCovid = (e) => {
-        handleCovid(e.target.value)
+        handleCovid(e.target.checked)
     }
     const handleOnChangeInfo = (e) => {
         handleInfo(e.target.value)
+    }
+    const handleChangeCity = (e) => {
+        handleCity(e.target.value)
     }
     const { user } = useContext(SessionContextProvider);
     return (
@@ -27,7 +30,7 @@ export default function FormBooking({ handleInfo, handleCovid, reserveContext })
             </div>
             <div className="booking-form-div">
                 <label htmlFor="city" className="booking-form__label">Ciudad</label>
-                <input id="city" name="city" type="text" className="booking-form__input" />
+                <input id="city" name="city" type="text" onChange={handleChangeCity} className="booking-form__input" value={reserve?.city} />
             </div>
             <div className="booking-form-div covid">
                 <div className="booking-form-covid">
@@ -35,7 +38,7 @@ export default function FormBooking({ handleInfo, handleCovid, reserveContext })
                     <label htmlFor="covidYes" className="booking-form__label info">Sí{reserve?.covid ? <input onChange={handleOnChangeCovid} id="covidYes" type="checkbox" value="Si" className="booking-form-checkbox" selected /> : <input onChange={handleOnChangeCovid} id="covidYes" type="checkbox" value="Si" className="booking-form-checkbox" />}</label>
                 </div>
                 <label htmlFor="covid" className="booking-form__label info">Dejá información adicional al vendedor</label>
-                <textarea name="covid" id="covid" cols="30" rows="10" onChange={reserve} >{reserve ? reserve.info : ""}</textarea>
+                <textarea name="covid" id="covid" cols="30" rows="10" onChange={handleOnChangeInfo} >{reserve ? reserve.info : ""}</textarea>
             </div>
         </form>
     )

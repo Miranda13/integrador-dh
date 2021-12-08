@@ -36,6 +36,9 @@ export default function CalendarReserve({ status, handleSelectRangeDate, idProdu
                 aux.push(new Date(i));
             }
         })
+        if (JSON.stringify(reserve) !== "{}") {
+            aux = aux.filter(date => date.getTime() != startDate.getTime() && date.getTime() != endDate.getTime())
+        }
         setArrayDaysReserve(aux);
     }
     useEffect(() => {

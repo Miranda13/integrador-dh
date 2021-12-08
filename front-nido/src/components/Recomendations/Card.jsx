@@ -73,7 +73,6 @@ function Card({ card, handleToggleAction, setIsLoading }) {
         setFavorites(myArray);
         setProductsFavoritesLS(myArray);
     }
-    // console.log(card.product.amenities);
     return (
         <div className="card-list bg-animation-card">
             <div className="card-list__image">

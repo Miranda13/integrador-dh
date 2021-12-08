@@ -47,7 +47,6 @@ export default function Home({ toggle }) {
             .then((data) => {
                 if (data) {
                     setIsLoadingProducts(false);
-
                 }
                 setProducts(data);
             })
