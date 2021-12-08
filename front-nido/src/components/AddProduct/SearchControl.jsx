@@ -9,13 +9,17 @@ import 'leaflet/dist/leaflet.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
+
+
 const SearchControl = (props) => {
   const map = useMap();
 
-  useEffect(() => {
+ 
+  useEffect(() => {   
+  
+    
     const searchControl = new GeoSearchControl({
-      provider: props.provider,
-      ...props,
+      provider: props.provider,     
     });
 
     let DefaultIcon = L.icon({
