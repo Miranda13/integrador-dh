@@ -28,7 +28,7 @@ export default function UserLogged({ user, setIsSubmitted }) {
                         {handleAvatar()}
                     </div>
                     <div className="user-logged__container__name">
-                        <p><span>Hola,</span></p>
+                        <p className="user-logged__container__name__span">Hola,</p>
                         <p>{user.name} {user.surname}</p>
                     </div>
                 </div>

@@ -71,7 +71,7 @@ export default function MyBooking({ booking, getReserves }) {
             }
         })
         const payload = {
-            score,
+            score: score,
             user: {
                 userId: user.userId
             },
@@ -83,7 +83,8 @@ export default function MyBooking({ booking, getReserves }) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token}`,
+                "Access-Control-Allow-Origin": "*"
             },
             body: JSON.stringify(payload)
         })
@@ -97,7 +98,13 @@ export default function MyBooking({ booking, getReserves }) {
                 setMyReserveLocal({});
                 setActive(false);
                 setToggleSelectStar(false)
+<<<<<<< HEAD
             }).catch(error => console.log(error))
+=======
+            }).catch(error => {
+                console.log(error)
+            })
+>>>>>>> creacion-producto
     }
     useEffect(() => {
         getReserves();
@@ -156,6 +163,10 @@ export default function MyBooking({ booking, getReserves }) {
                         <div className="modal-score__stars_2">
                             {
                                 [1, 2, 3, 4, 5].map((i, index) => {
+<<<<<<< HEAD
+=======
+                                    // let colorIcon = i <= Math.round(myReserveLocal?.product?.avgScore) ? "fas fa-star icon-color" : " fas fa-star";
+>>>>>>> creacion-producto
                                     return (
                                         <span className="modal-score__stars__star" onClick={(e) => { handleClickScore(e, index) }} onMouseEnter={(e) => { handleHoverStarSelect(e, index) }} onMouseLeave={handleOutHoverStarSelect}><i className="fas fa-star" ></i></span>
                                     )

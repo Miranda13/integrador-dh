@@ -6,9 +6,10 @@ import "./Header.css";
 import UserLogged from "../UserLogged";
 import { useLocation } from "react-router-dom";
 import SessionContext from "../../context/sessionContext.js";
+import jwtDecode from 'jwt-decode'
 function Header({ handleChangePageHome, setIsSubmitted }) {
     const location = useLocation();
-    const { user, setToken } = useContext(SessionContext)
+    const { user, setToken, token } = useContext(SessionContext)
     useEffect(() => {
         const loginButton = document.querySelector("#login")
         const signinButton = document.querySelector("#signin")
@@ -41,13 +42,20 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
             <div className="header__buttons">
                 {
                     user !== null && user !== undefined ?
-                        <>
-                            <Link to={`/${user.userId}/mybooking`} className="button-booking animation-button-light">
-                            </Link>
-                            <Link to="/favorite" className="button-favorite animation-button-light" >
-                            </Link>
-                            {window.innerWidth >= 760 && <UserLogged setIsSubmitted={setIsSubmitted} user={user} />}
-                        </>
+                        jwtDecode(token).roles === "ROLE_ADMIN" ?
+                            <>
+                                <Link to="/addProduct">Administracion</Link>
+                                <h2>|</h2>
+                                {window.innerWidth >= 760 && <UserLogged setIsSubmitted={setIsSubmitted} user={user} />}
+                            </>
+                            :
+                            <>
+                                <Link to={`/${user.userId}/mybooking`} className="button-booking animation-button-light">
+                                </Link>
+                                <Link to="/favorite" className="button-favorite animation-button-light" >
+                                </Link>
+                                {window.innerWidth >= 760 && <UserLogged setIsSubmitted={setIsSubmitted} user={user} />}
+                            </>
                         :
                         <>
                             <Button

@@ -24,6 +24,7 @@ import FavoriteContext from "../../context/favoriteContext";
 import SessionContext from "../../context/sessionContext";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import Score from "../../components/Score";
+import Share from "../../components/Share";
 
 export default function Product({ list }) {
     const { favorites, setFavorites } = useContext(FavoriteContext);
@@ -80,6 +81,11 @@ export default function Product({ list }) {
         setFavorites(myArray);
         setProductsFavoritesLS(myArray);
     }
+    const handleClickShare = (e) => {  
+      
+    }
+
+
     return (
         <React.StrictMode>
             <div className="product-content" id={"start"}>
@@ -98,7 +104,9 @@ export default function Product({ list }) {
                 </div>
                 <div className="product__gallery">
                     <div className="icono-share">
-                        <i className="fas fa-share-alt " ></i>
+                        {/* share */}
+                        <Share  url="https://www.digitalhouse.com/"/>
+                        {/* <i className="fas fa-share-alt " onClick={handleClickShare}></i> */}
                         <i className="fas fa-heart icono-heart" style={{ "color": colorFavorite }} onClick={handleClickFavorite}></i>
                     </div>
                     <Gallery

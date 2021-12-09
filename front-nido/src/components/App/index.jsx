@@ -18,6 +18,9 @@ import MyBookingPage from "../../pages/MyBookingPage";
 import NotFoundPage from "../../pages/NotFoundPage";
 import PrivateRoute from "../../routes/PrivateRoute";
 import PublicRoute from "../../routes/PublicRoute";
+import PrivateAdminRoute from "../../routes/PrivateAdminRoute";
+import AddProductPage from "../../pages/AddProductPage";
+
 export default function App() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [toggle, setToggle] = useState();
@@ -72,6 +75,9 @@ export default function App() {
                             </Route>
                             <Route exact path="/success-product" element={<PrivateRoute />} >
                                 <Route exact path="/success-product" element={<SuccessfulMessagePage message="Tu propiedad se ha creado con éxito" button="Volver" />} />
+                            </Route>
+                            <Route exact path="/addProduct" element={<PrivateAdminRoute />} >
+                                <Route exact path="/addProduct" element={<AddProductPage />} />
                             </Route>
                             <Route exact path="/:id/mybooking" element={<MyBookingPage />} />
                             <Route path="*" element={<NotFoundPage />} />
