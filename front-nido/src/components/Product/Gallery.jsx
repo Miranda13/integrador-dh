@@ -11,11 +11,13 @@ const Gallery = ({ images }) => {
   // console.log(images);
   const [myImages, setMyImages] = useState(images);
   useEffect(() => {
-    setMyImages(images.map((image) => {
-      return {
-        src: image.url,
-      }
-    }))
+    if (images.length > 0) {
+      setMyImages(images.map((image) => {
+        return {
+          src: image.url,
+        }
+      }))
+    }
   }, [images])
   return (
     <Carousel
