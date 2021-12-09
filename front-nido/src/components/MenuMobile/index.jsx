@@ -5,10 +5,11 @@ import "./MenuMobile.css";
 import SessionContextProvider from "../../context/sessionContext.js";
 export default function MenuMobile({ setIsSubmitted }) {
   const history = useNavigate();
-  const { user, setToken } = useContext(SessionContextProvider);
+  const { user, setUser, setToken } = useContext(SessionContextProvider);
   const handleLogout = () => {
-    localStorage.removeItem("productsFavorites");
+    localStorage.removeItem('productsFavorites');
     setToken(null);
+    setUser(null)
     setIsSubmitted(false);
     history("/");
   }
