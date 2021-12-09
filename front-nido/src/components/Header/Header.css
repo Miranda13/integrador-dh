@@ -106,6 +106,16 @@
 }
 
 @media (min-width: 761px) {
+
+    #login,
+    #signin {
+        display: block;
+    }
+
+    .header__buttons .hidden {
+        display: block;
+    }
+
     .header-administracion {
         display: flex;
         align-items: center;
