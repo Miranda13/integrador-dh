@@ -5,6 +5,7 @@
     width: 100%;
     flex-direction: column;
     padding-top: 80px;
+    padding-bottom: 40px;
 }
 
 .add-product__header {
@@ -94,13 +95,19 @@
 }
 
 .add-form-div-description {
+    /* height: 120px; */
     width: 100%;
-    height: 120px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    /* padding-bottom: 20px; */
 }
 
 .add-form-div-description input {
-    height: 100%;
+    /* height: 50%; */
+}
+
+.add-product__content__general__atributos {
+    margin: 10px 0;
+    padding: 10px 20px;
 }
 
 .add-form__label {
@@ -131,8 +138,66 @@
     display: none;
 }
 
-@media (min-width: 760px) {
+.add-form__input__textarea {
+    height: 180px;
+    resize: none;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+    /* height: 140px; */
+    width: 100%;
+    margin: 10px 0;
+}
 
+.add-form__policy {
+    margin-top: 20px;
+}
+
+.add-form__policy__description__title {
+    font-weight: var(--font-weight-bold);
+    margin: 5px 0;
+}
+
+.add-form__images {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.add-form__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    /* margin-top:15px; */
+    background-color: var(--main-color);
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.add-form__map {
+    width: 100%;
+}
+
+.leaflet-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    z-index: 0;
+}
+
+.add-form__submit {
+    width: 300px;
+    padding: 20px;
+    margin: 30px auto;
+}
+
+@media (min-width: 760px) {
     .container-add {
         display: flex;
         justify-content: flex-start;
@@ -142,7 +207,6 @@
         padding-top: 80px;
         margin-bottom: 55px;
     }
-
     .add-product__header {
         background-color: var(--medium-color);
         color: var(--light-color);
@@ -155,19 +219,16 @@
         z-index: 19;
         box-shadow: 0px 0px 10px 0px rgba(0, 0, 2, 0.5);
     }
-
     .add-product__header h2 {
         color: var(--light-color);
         font-size: var(--font-size-1);
         font-weight: var(--font-weight-bold);
         margin-bottom: 0px;
     }
-
     .add-product__ubication-back-icon {
         margin-right: 10px;
         font-size: 25px;
     }
-
     .add-product__content {
         display: flex;
         flex-direction: column;
@@ -176,14 +237,12 @@
         padding: 30px;
         background-color: var(--light-medium-color);
     }
-
     .add-product__content h2 {
         color: var(--medium-color);
         font-size: var(--font-size-1);
         font-weight: var(--font-weight-bold);
         margin-bottom: 20px;
     }
-
     .add-product__content__general {
         background-color: var(--light-color);
         border-radius: 10px;
@@ -196,7 +255,6 @@
         box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
         border-radius: 10px;
     }
-
     .add-product__content__general__form {
         display: flex;
         flex-wrap: wrap;
@@ -205,14 +263,12 @@
         align-items: center;
         margin-bottom: 50px;
     }
-
     .add-product__content__general__atributos {
         background-color: var(--light-gray-color);
         width: 100%;
         margin: 10px 0;
         padding: 20px;
     }
-
     .add-form {
         width: 350px;
         background-color: var(--light-color);
@@ -224,42 +280,34 @@
         flex-wrap: wrap;
         padding: 4vw;
         margin-bottom: 50px;
-
     }
-
     .add-form-div {
         display: flex;
         flex-direction: column;
         /* margin-bottom: 3vw; */
         width: 45%;
     }
-
     .add-form-div-description {
         width: 100%;
         height: 120px;
         margin-bottom: 80px;
+        margin-top: 20px;
     }
-
-
     .add-form-div-description input {
         height: 100%;
-
     }
-
     .add-form__label {
         font-weight: var(--font-weight-bold);
         font-size: var(--font-size-3);
         /* padding-bottom: 5px; */
         color: var(--medium-color);
     }
-
     .add-form__input {
         border: 1px solid #fff;
         box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
         height: 40px;
         width: 100%;
     }
-
     .add-product__content__general__atributos {
         display: flex;
         justify-content: flex-start;
@@ -267,13 +315,11 @@
         flex-wrap: wrap;
         margin-bottom: 20px;
     }
-
     .add-product__content__general__atributos>.add-form-div {
         width: 20%;
         margin: 5px;
         /* background-color: red;  border: solid red 1px */
     }
-
     .add-form__button {
         display: flex;
         justify-content: center;
@@ -286,7 +332,6 @@
         font-size: 60px;
         font-weight: 400;
     }
-
     .add-form__policy {
         display: flex;
         margin-top: 20px;
@@ -302,18 +347,14 @@
         box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
         border-radius: 0px;
     }
-
     .add-form__policy__description {
         width: 33%;
         margin: 10px;
         line-height: 40px;
-
     }
-
     .add-form__policy__description>input {
         height: 200px;
     }
-
     .add-form__images {
         display: flex;
         background-color: var(--light-gray-color);
@@ -324,17 +365,14 @@
         justify-content: space-between;
         flex-direction: row;
     }
-
     .add-form-div__images {
         width: 90%;
         display: flex;
         gap: 20px;
     }
-
     .add-form-div__images__image {
         position: relative;
     }
-
     .photo-menu i {
         position: absolute;
         right: 10px;
@@ -342,19 +380,15 @@
         font-size: 2rem;
         color: var(--light-color);
     }
-
     .add-form__images figure img {
         width: 250px;
         height: 250px;
         position: absolute;
     }
-
     .add-form__images>input {
         width: 100%;
         border: none;
-
     }
-
     .add-form__input__textarea {
         height: 180px;
         resize: none;
@@ -365,17 +399,14 @@
         width: 100%;
         margin: 10px 0;
     }
-
     .add-form__map {
         width: 100%;
     }
-
     .add-form__submit {
         width: 300px;
         padding: 20px;
         margin: 30px auto;
     }
-
     .leaflet-container {
         height: 600px;
         width: 100%;

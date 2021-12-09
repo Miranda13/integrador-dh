@@ -168,7 +168,7 @@ export default function AddProduct({ categorys, locations, features }) {
                                 {
                                     locations.map((location, i) => {
                                         return (
-                                            <option key={i + location.locationId} value={location.locationId}>{location.city}, {location.country}</option>
+                                            <option key={i + location.locationId} value={location.locationId}><p className="claseOption">{location.city}, {location.country}</p></option>
                                         )
                                     })
                                 }
@@ -176,7 +176,7 @@ export default function AddProduct({ categorys, locations, features }) {
                         </div>
                         <div className="add-form-div-description">
                             <label htmlFor="description" className="add-form__label">Descripción</label>
-                            <textarea required id="description" name="description" type="text" className="add-form__input__textarea" rows="100" cols="50" placeholder="Ingrese el texto" />
+                            <textarea required id="description" name="description" type="text" className="add-form__input__textarea" rows="12" cols="12" placeholder="Ingrese el texto" />
 
 
                         </div>
@@ -213,17 +213,17 @@ export default function AddProduct({ categorys, locations, features }) {
                         <h3>Políticas del producto</h3>
                         <div className="add-form__policy">
                             <div className="add-form__policy__description">
-                                <h3>Normas de la Casa</h3>
+                                <p className="add-form__policy__description__title">Normas de la Casa</p>
                                 <label htmlFor="description" className="add-form__label">Descripción</label>
                                 <textarea id="policy-normas" name="rule" type="text" required className="add-form__input__textarea" rows="10" cols="50" />
                             </div>
                             <div className="add-form__policy__description">
-                                <h3>Salud y seguridad</h3>
+                                 <p className="add-form__policy__description__title">Salud y seguridad</p>
                                 <label htmlFor="description" className="add-form__label">Descripción</label>
                                 <textarea id="policy-salud" name="safety" required type="text" className="add-form__input__textarea" rows="10" cols="50" />
                             </div>
                             <div className="add-form__policy__description">
-                                <h3>Política de cancelación</h3>
+                            <p className="add-form__policy__description__title">Política de cancelación</p>
                                 <label htmlFor="description" className="add-form__label">Descripción</label>
                                 <textarea required id="policy-cancelacion" name="policy" type="text" className="add-form__input__textarea" rows="10" cols="50" />
                             </div>
@@ -267,7 +267,7 @@ export default function AddProduct({ categorys, locations, features }) {
                         </div>
 
 
-                        <h3>Ubicacion</h3>
+                        <h3>Ubicación</h3>
                         <div className="add-form__map">
                             <p>Ingrese la dirección en el icono de busqueda</p>
                             <hr />
