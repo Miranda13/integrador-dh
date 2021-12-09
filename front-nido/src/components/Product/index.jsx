@@ -15,7 +15,13 @@ import SessionContext from "../../context/sessionContext";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import Score from "../../components/Score";
 import Share from "../../components/Share";
-
+import wifi from "../../assets/images/icons/wifi.svg";
+import paw from "../../assets/images/icons/paw.svg";
+import parking from "../../assets/images/icons/parking.svg";
+import air from "../../assets/images/icons/air.svg";
+import kitchen from "../../assets/images/icons/kitchen.svg";
+import swim from "../../assets/images/icons/tv.svg";
+import tv from "../../assets/images/icons/tv.svg";
 export default function Product({ list }) {
     const { favorites, setFavorites } = useContext(FavoriteContext);
     const { user, token } = useContext(SessionContext);
