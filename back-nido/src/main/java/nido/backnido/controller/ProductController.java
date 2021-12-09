@@ -97,8 +97,8 @@ public class ProductController {
      return productService.filterProductsByLocationAndDate(city, dateIn, dateOut);
     }
 
-    @GetMapping("/page/{page}")
-    public Page<ProductDTO> productAllPage(@PathVariable("page") Integer page) {
+    @GetMapping("/page")
+    public Page<ProductDTO> productAllPage(@RequestParam("page") Integer page) {
         return productService.findAll(PageRequest.of(page, 10));
     }
 
