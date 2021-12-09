@@ -10,8 +10,8 @@ export default function CalendarReserve({ status, handleSelectRangeDate, idProdu
     const { reserve } = useContext(ReserveContext);
     registerLocale('es', es)
     // const [startDate, setStartDate] = useState(null);
-    const dateIn = JSON.stringify(reserve) != "{}" && handleSelectRangeDate != undefined ? new Date(reserve.dateIn?.split("-")[0], reserve.dateIn?.split("-")[1] - 1, reserve.dateIn?.split("-")[2]) : null;
-    const dateOut = JSON.stringify(reserve) != "{}" && handleSelectRangeDate != undefined ? new Date(reserve.dateOut?.split("-")[0], reserve.dateOut?.split("-")[1] - 1, reserve.dateOut?.split("-")[2]) : null;
+    const dateIn = JSON.stringify(reserve) != "{}" && handleSelectRangeDate !== undefined ? new Date(reserve.dateIn?.split("-")[0], reserve.dateIn?.split("-")[1] - 1, reserve.dateIn?.split("-")[2]) : null;
+    const dateOut = JSON.stringify(reserve) != "{}" && handleSelectRangeDate !== undefined ? new Date(reserve.dateOut?.split("-")[0], reserve.dateOut?.split("-")[1] - 1, reserve.dateOut?.split("-")[2]) : null;
     const [arrayDaysReserve, setArrayDaysReserve] = useState([]);
     const [dateRange, setDateRange] = useState([dateIn, dateOut]);
     const [startDate, endDate] = dateRange;

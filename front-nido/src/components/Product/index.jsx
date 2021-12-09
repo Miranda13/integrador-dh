@@ -1,22 +1,12 @@
 import React from "react";
-import credentials from "./credentials";
 import CalendarReserve from "../CalendarReserve";
 import { Link } from "react-router-dom";
 import "./Product.css";
-import wifi from "../../assets/images/icons/wifi.svg";
-import paw from "../../assets/images/icons/paw.svg";
-import parking from "../../assets/images/icons/parking.svg";
-import air from "../../assets/images/icons/air.svg";
-import kitchen from "../../assets/images/icons/kitchen.svg";
-import swim from "../../assets/images/icons/tv.svg";
-import tv from "../../assets/images/icons/tv.svg";
-import product from "./product.json";
 import Gallery from "./Gallery";
 import { useState, useEffect, useContext } from 'react';
 import db from "./product.json";
 import MapView from "./Map";
 import "./Map.css"
-// import { useNavigate } from "react-router-dom";
 import SubHeader from "../SubHeader";
 import Policy from "../Policy";
 import { useNavigate } from "react-router-dom";
