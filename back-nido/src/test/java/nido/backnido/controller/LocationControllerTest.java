@@ -1,9 +1,8 @@
 package nido.backnido.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import nido.backnido.service.ProductService;
-
+import nido.backnido.service.CategoryService;
+import nido.backnido.service.LocationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -12,13 +11,12 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ProductControllerTest {
+public class LocationControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -27,20 +25,19 @@ public class ProductControllerTest {
     private ObjectMapper objectMapper;
 
     @MockBean
-    private ProductService productService;
+    private LocationService locationService;
 
-    @Test // BACK-CONTROLLER NID-021
-    public void getAllProductsReturnsStatus200Test() throws Exception {
-        mockMvc.perform(get("/api/v1/product"))
+    @Test
+    public void listAllReturnsStatus200Test() throws Exception {
+        mockMvc.perform(get("/api/v1/location"))
                 .andExpect(status().isOk());
     }
+
     @Test //
-    public void getProductByIdReturnsStatus200Test() throws Exception {
-        mockMvc.perform(get("/api/v1/product/1")
+    public void getLocationByIdReturnsStatus200Test() throws Exception {
+        mockMvc.perform(get("/api/v1/location/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
 }
-
-

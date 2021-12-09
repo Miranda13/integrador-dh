@@ -188,12 +188,16 @@
     font-weight: var(--font-weight-bold);
     margin: 10px 0;
     overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
 
+.card-list__info__description__more {
+    color: var(--main-color);
+}
 
 /*BUTTON*/
 

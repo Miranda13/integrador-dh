@@ -1,20 +1,22 @@
 package nido.backnido.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
+@Where(clause = "active = true")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class User {
 
     @Id
@@ -31,11 +33,13 @@ public class User {
 
     @NotNull
     @NotBlank
+    @Email(message = "Error de formato de correo electrónico")
     @Column(unique = true)
     private String email;
 
     @NotNull
     @NotBlank
+    @Size(min = 6, message = "La contraseña debe tener más de 6 caracteres")
     @ToString.Exclude
     private String password;
 
@@ -47,7 +51,10 @@ public class User {
     private Role role;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "reservationId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Reserve> reservations;
+
+    @Column(name = "active", columnDefinition = "boolean DEFAULT 'true'")
+    private Boolean active = true;
 
 }

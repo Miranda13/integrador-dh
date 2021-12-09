@@ -13,6 +13,7 @@ import nido.backnido.entity.User;
 @NoArgsConstructor
 public class ScoreDTO {
     private Long scoreId;
-    private int score;
+    private Integer score;
     private User user;
+    private Product product;
 }

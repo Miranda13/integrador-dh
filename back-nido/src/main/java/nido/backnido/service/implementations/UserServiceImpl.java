@@ -100,7 +100,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         userRepository.findById(id).orElseThrow(() ->
                 new CustomBaseException("Usuario con el id: " + id + " no encontrado por favor compruebe el id e intente nuevamente ", HttpStatus.NOT_FOUND.value())
         );
-        userRepository.deleteById(id);
+        userRepository.softDelete(id);
     }
 
     @Override

@@ -1,10 +1,8 @@
 package nido.backnido.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -14,10 +12,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "features")
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
+@Where(clause = "active = true")
+@Setter @Getter
+@NoArgsConstructor @AllArgsConstructor
+@Builder
 public class Feature {
 
     @Id
@@ -35,5 +33,8 @@ public class Feature {
     @ManyToMany(mappedBy = "features", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<Product> products;
+
+    @Column(name = "active")
+    private Boolean active = true;
 
 }

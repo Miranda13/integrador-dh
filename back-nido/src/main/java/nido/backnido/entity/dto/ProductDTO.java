@@ -7,7 +7,6 @@ import lombok.Setter;
 import lombok.ToString;
 import nido.backnido.entity.*;
 
-import java.time.LocalTime;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -22,9 +21,10 @@ public class ProductDTO {
 	private Long productId;
     private String name;
     private String description;
-    /*
-    private Boolean availability;
-    private Integer score;*/
+    private String subtitle;
+    private String policy;
+    private String rule;
+    private String safety;
     private String address;
     private Double latitude;
     private Double longitude;
@@ -34,5 +34,6 @@ public class ProductDTO {
     private Set<Image> images;
     private Set<Score> score;
     private Set<Feature> features;
+
 
 }

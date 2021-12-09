@@ -4,10 +4,14 @@ import nido.backnido.entity.Product;
 import nido.backnido.entity.Reserve;
 import nido.backnido.entity.dto.ProductDTO;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -33,4 +37,15 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "OR  (:dateOut BETWEEN r.date_in AND r.date_out)  \n" +
             ") AND l.city = :city", nativeQuery = true)
     List<Product> filterProductsByLocationAndDate(@Param("city")String city,@Param("dateIn") LocalDate dateIn,@Param("dateOut") LocalDate dateOut);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Product p SET p.active = false WHERE p.productId = :productId")
+    void softDelete(@Param("productId") Long productId);
+
+    //@Query("select p from Product p where p.location.locationId = :id")
+    List<Product> findProductByLocation_LocationId(Long id);
+
+    Page<Product> findAll(Pageable page);
+    Page<Product> findProductsByCategory_Title(String title, Pageable page);
 }

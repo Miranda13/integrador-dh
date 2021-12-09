@@ -37,8 +37,8 @@ public class Score {
     private User user;
     
     @NotNull
-    @JsonIgnore
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "products_product_id", referencedColumnName = "productId")
     private Product product;
 
