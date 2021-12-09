@@ -44,7 +44,9 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
                     user !== null && user !== undefined ?
                         jwtDecode(token).roles === "ROLE_ADMIN" ?
                             <>
-                                <Link to="/addProduct">Administracion</Link>
+                                <div className="header-administracion">
+                                    <Link to="/addProduct">Administracion</Link>
+                                </div>
                                 <h2>|</h2>
                                 {window.innerWidth >= 760 && <UserLogged setIsSubmitted={setIsSubmitted} user={user} />}
                             </>

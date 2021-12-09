@@ -23,7 +23,6 @@
     display: none;
 }
 
-
 .identity__logo {
     width: 110px;
     margin: 10px 20px 0 0;
@@ -47,7 +46,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 7px 317px 0px 0px;    
+    margin: 7px 317px 0px 0px;
 }
 
 .header__buttons .button-booking::before {
@@ -103,28 +102,34 @@
 }
 
 @media (min-width: 761px) {
+    .header-administracion {
+        display: flex;
+        align-items: center;
+        color: var(--medium-color);
+        font-weight: var(--font-weight-bold);
+        font-size: var(--font-size-3);
+    }
+    .header-administracion a {
+        text-decoration: none;
+    }
     .header__buttons {
         display: flex;
         justify-content: right;
         align-items: center;
         /* width: 40vw; */
     }
-
     #login,
     #signin {
         display: inline;
     }
-
     .identity__slogan {
         display: none;
     }
-
     #login.hidden,
     #signin.hidden {
         display: none;
     }
-
-    .button-booking{
+    .button-booking {
         display: block;
         width: 45px;
         height: 45px;
@@ -144,17 +149,14 @@
     .identity__slogan {
         display: inline;
     }
-
     .identity a {
         text-decoration: none;
     }
-
     #login.hidden,
     #signin.hidden {
         display: none;
     }
-
-    .button-booking{
+    .button-booking {
         display: block;
         width: 45px;
         height: 45px;
