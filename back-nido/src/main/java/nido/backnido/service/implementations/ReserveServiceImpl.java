@@ -159,6 +159,7 @@ public class ReserveServiceImpl implements ReserveService {
         if(originalReserve.getProduct().getProductId() == updatedReserve.getProduct().getProductId() && originalReserve.getUser().getUserId() == updatedReserve.getUser().getUserId()) {
 
             // Verifica si la fecha está disponible y lo guardo. Caso contrario arroja excepción
+        	reserveRepository.softDelete(originalReserve.getReservationId());
             if(reserveRepository.checkAvailability(updatedReserve.getDateIn(), updatedReserve.getDateOut(),updatedReserve.getProduct().getProductId()).isEmpty()) {
 
                 reserveRepository.save(updatedReserve);

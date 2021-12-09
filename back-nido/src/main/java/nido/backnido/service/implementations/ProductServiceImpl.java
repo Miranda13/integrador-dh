@@ -206,11 +206,24 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<ProductDTO> findProductByLocation_LocationId(Long id) {
+        List<Product> products = productRepository.findProductByLocation_LocationId(id);
+
+      return products.stream().map(product -> new ProductDTO(product.getProductId(),
+              product.getName(), product.getDescription(), product.getSubtitle(), product.getPolicy(),
+              product.getRule(), product.getSafety(), product.getAddress(), product.getLatitude(),
+              product.getLongitude(), product.getLocation(), product.getCategory(), 0.0,
+              imageService.findByProductId(product), product.getScores(), product.getFeatures()))
+              .collect(Collectors.toList());
+    }
+
+    @Override
     public Page<ProductDTO> findAll(Pageable page) {
         Page<Product> products = productRepository.findAll(page);
-
+        System.out.println(scoreService.getAverageProductScore(6l));
         return new PageImpl<ProductDTO>(products.stream()
-                .map(product -> new ProductDTO(product.getProductId(),
+                .map(product -> 
+                		new ProductDTO(product.getProductId(),
                         product.getName(), product.getDescription(), product.getSubtitle(), product.getPolicy(),
                         product.getRule(), product.getSafety(), product.getAddress(), product.getLatitude(),
                         product.getLongitude(), product.getLocation(), product.getCategory(), 0.0,
