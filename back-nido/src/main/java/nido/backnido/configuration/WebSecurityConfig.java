@@ -35,10 +35,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/v1/user/login", "/api/v1/user/register", "/api/v1/category","/api/v1/category/{id}","/api/v1/location","/api/v1/location/{id}","/api/v1/product","/api/v1/product/{id}","/api/v1/product/search","/api/v1/product/category","/api/v1/reserve/product/{id}").permitAll()
-                .antMatchers("/api/v1/product/search/{city}/{dateIn}/{dateOut}").permitAll()
+                .antMatchers("/api/v1/user/login", "/api/v1/user/register", "/api/v1/product/page/**", "/api/v1/product/category/page/**", "/api/v1/category", "/api/v1/category/search", "/api/v1/category/{id}", "/api/v1/location", "/api/v1/location/{id}", "/api/v1/product", "/api/v1/product/{id}", "/api/v1/product/search", "/api/v1/product/category", "/api/v1/reserve/product/{id}").permitAll()
+                .antMatchers("/api/v1/product/search/{city}/{dateIn}/{dateOut}","/api/v1/product/search/location/{id}").permitAll()
+                .antMatchers("/css/**", "/fonts/**", "/templates/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint)
@@ -61,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Bean
-    public BCryptPasswordEncoder encoder(){
+    public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
 

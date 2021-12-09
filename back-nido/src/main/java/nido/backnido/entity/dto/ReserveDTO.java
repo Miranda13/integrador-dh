@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import nido.backnido.entity.Product;
-import nido.backnido.entity.User;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -20,7 +20,10 @@ public class ReserveDTO {
     private LocalDate dateIn;
     private LocalDate dateOut;
     private LocalTime hourIn;
-    private User user;
-    private Product product;
+    private Boolean covid;
+    private String city;
+    private String info;
+    private UserDTO user;
+    private ProductDTO product;
 
 }

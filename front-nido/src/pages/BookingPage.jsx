@@ -6,6 +6,7 @@ import Policy from "../components/Policy";
 import getData from "../assets/js/getData";
 import "./BookingPage.css";
 import SessionContextProvider from '../context/sessionContext.js';
+
 export default function BookingPage() {
     const history = useNavigate();
     const { token } = useContext(SessionContextProvider);

@@ -21,20 +21,24 @@ import java.util.Set;
 @Service
 public class LocationServiceImpl implements LocationService {
 
-    @Autowired
-    LocationRepository locationRepository;
 
-    @Autowired
-    ImageService imageService;
+   private final LocationRepository locationRepository;
+
+
+   private final ImageService imageService;
 
     ModelMapper modelMapper = new ModelMapper();
 
+    public LocationServiceImpl(LocationRepository locationRepository, ImageService imageService) {
+        this.locationRepository = locationRepository;
+        this.imageService = imageService;
+    }
 
     @Override
     public List<LocationDTO> getAll() {
         List<LocationDTO> locationResponse = new ArrayList<>();
-        Set<ProductDTO> productdto = new HashSet<>();
         for (Location location : locationRepository.findAll()) {
+        	Set<ProductDTO> productdto = new HashSet<>();
 
             LocationDTO locationDto = modelMapper.map(location, LocationDTO.class);
             for(Product product : location.getProducts()) {
@@ -55,12 +59,18 @@ public class LocationServiceImpl implements LocationService {
                 new CustomBaseException("Locación no encontrada, por favor compruebe", HttpStatus.BAD_REQUEST.value())
         );
         LocationDTO locationdto = modelMapper.map(response, LocationDTO.class);
+
         Set<ProductDTO> listProductdto = new HashSet<>();
+
         for(Product product : response.getProducts()) {
             ProductDTO noImgProduct = modelMapper.map(product, ProductDTO.class);
+
             noImgProduct.setImages(imageService.findByProductId(product));
+
             listProductdto.add(noImgProduct);
+
         }
+
         locationdto.setProducts(listProductdto);
         return locationdto;
     }

@@ -18,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/score")
+@CrossOrigin("*")
 public class ScoreController {
 
     private final ScoreService scoreService;
@@ -29,7 +30,7 @@ public class ScoreController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody @Valid Score score, BindingResult bindingResult){
+    public void create(@RequestBody @Valid ScoreDTO score, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             throw new CustomBindingException("Errores encontrados, por favor compruebe e intente nuevamente", HttpStatus.BAD_REQUEST.value(), UtilsException.fieldBindingErrors(bindingResult));
         }
@@ -38,7 +39,7 @@ public class ScoreController {
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public void update(@RequestBody @Valid Score score, BindingResult bindingResult){
+    public void update(@RequestBody @Valid ScoreDTO score, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             throw new CustomBindingException ("Errores encontrados, por favor compruebe e intente nuevamente",HttpStatus.NOT_FOUND.value(),UtilsException.fieldBindingErrors(bindingResult));
         }
@@ -51,9 +52,10 @@ public class ScoreController {
         scoreService.delete(id);
     }
 
-    @GetMapping("product/{id}")
-    public double getAverageProductScore(@PathVariable Long id){
-        return scoreService.getAverageProductScore(id);
+    @GetMapping("product/{productId}")
+    @ResponseStatus(HttpStatus.OK)
+    public double getAverageProductScore(@PathVariable Long productId){
+        return scoreService.getAverageProductScore(productId);
     }
 
 }
