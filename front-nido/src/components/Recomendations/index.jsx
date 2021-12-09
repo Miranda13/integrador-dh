@@ -2,7 +2,20 @@
 import Card from "./Card";
 import './styles/Card.css';
 import ContentLoader from 'react-content-loader';
-function Recomendations({ products, isLoadingProducts }) {
+function Recomendations({ products, isLoadingProducts, pages, handleChangePage, currentPage }) {
+    const handleClickNumberPage = (e) => {
+        handleChangePage(e.target.textContent)
+    }
+    const handleClickPrevPage = (e) => {
+        if (currentPage > 1) {
+            handleChangePage(currentPage - 1)
+        }
+    }
+    const handleClickNextPage = (e) => {
+        if (currentPage < pages) {
+            handleChangePage(currentPage + 1)
+        }
+    }
     return (
         <div className="recommendation">
             <h2 className="title-recommendation">Recomendaciones</h2>
@@ -102,6 +115,38 @@ function Recomendations({ products, isLoadingProducts }) {
                                 return (<Card key={card.productId} card={card} />)
                             })
                 }
+            </div>
+            <div className="pagination">
+                <div className="pagination-content">
+                    <div className="pagination-content__btn-prev">
+                        <button onClick={handleClickPrevPage} className={currentPage <= 1 ? "inactive" : ""} type="button">
+                            <span className="pagination-content__btn-prev__icon">
+                                <i className="fas fa-chevron-left"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div className="pagination-content__pages">
+                        <ol className="pagination-content__number-pages">
+                            {
+                                Array(pages).fill(0).map((page, index) => {
+                                    if (index + 1 <= pages) {
+                                        let activePage = currentPage === index + 1 ? "pagination-content__number-pages__element active" : "pagination-content__number-pages__element";
+                                        return (<li>
+                                            <button onClick={handleClickNumberPage} key={page + index} type="button" className={activePage}>{index + 1}</button>
+                                        </li>)
+                                    }
+                                })
+                            }
+                        </ol>
+                    </div>
+                    <div className="pagination-content__btn-next">
+                        <button onClick={handleClickNextPage} className={currentPage >= pages ? "inactive" : ""} type="button">
+                            <span className="pagination-content__btn-next__icon">
+                                <i className="fas fa-chevron-right"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     )
