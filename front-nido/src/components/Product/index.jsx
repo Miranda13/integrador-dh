@@ -110,7 +110,7 @@ export default function Product({ list }) {
                     />
                 </div>
                 <div className="product__description">
-                    <h2>{list.name}</h2>
+                    <h2>{list.subtitle}</h2>
                     <p>{list.description}</p>
                 </div>
                 <div className="product__features">
