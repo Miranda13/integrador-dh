@@ -2,8 +2,7 @@ import './AddProduct.css';
 import { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import AddressMap from "./AddressMap";
-import { useEffect } from 'react/cjs/react.development';
-// import "./Map.css";
+import { useEffect } from 'react';
 import SessionContext from '../../context/sessionContext';
 export default function AddProduct({ categorys, locations, features }) {
     const { token } = useContext(SessionContext);

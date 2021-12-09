@@ -3,12 +3,8 @@ import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 import './Gallery.css';
 import { useState } from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import { useEffect } from 'react';
 const Gallery = ({ images }) => {
-  // const images = [9, 8, 7, 6, 5].map((number) => ({
-  //   src: `https://placedog.net/${number}00/${number}00?id=${number}`
-  // }));
-  // console.log(images);
   const [myImages, setMyImages] = useState(images);
   useEffect(() => {
     if (images.length > 0) {
