@@ -86,9 +86,9 @@ export default function AddProduct({ categorys, locations, features }) {
             policy: e.target.policy.value,
             rule: e.target.rule.value,
             safety: e.target.safety.value,
-            address: address,
-            longitude: long,
-            latitude: lat,
+            address: "Guardia Vieja 1998",
+            longitude: -68.90958,
+            latitude: -33.00949,
             location: {
                 locationId: e.target.city.value
             },
@@ -167,7 +167,7 @@ export default function AddProduct({ categorys, locations, features }) {
                                 {
                                     locations.map((location, i) => {
                                         return (
-                                            <option key={i + location.locationId} value={location.locationId}><p className="claseOption">{location.city}, {location.country}</p></option>
+                                            <option key={i + location.locationId} value={location.locationId}>{location.city}, {location.country}</option>
                                         )
                                     })
                                 }
@@ -217,12 +217,12 @@ export default function AddProduct({ categorys, locations, features }) {
                                 <textarea id="policy-normas" name="rule" type="text" required className="add-form__input__textarea" rows="10" cols="50" />
                             </div>
                             <div className="add-form__policy__description">
-                                 <p className="add-form__policy__description__title">Salud y seguridad</p>
+                                <p className="add-form__policy__description__title">Salud y seguridad</p>
                                 <label htmlFor="description" className="add-form__label">Descripción</label>
                                 <textarea id="policy-salud" name="safety" required type="text" className="add-form__input__textarea" rows="10" cols="50" />
                             </div>
                             <div className="add-form__policy__description">
-                            <p className="add-form__policy__description__title">Política de cancelación</p>
+                                <p className="add-form__policy__description__title">Política de cancelación</p>
                                 <label htmlFor="description" className="add-form__label">Descripción</label>
                                 <textarea required id="policy-cancelacion" name="policy" type="text" className="add-form__input__textarea" rows="10" cols="50" />
                             </div>
