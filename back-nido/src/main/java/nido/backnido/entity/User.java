@@ -55,6 +55,6 @@ public class User {
     private Set<Reserve> reservations;
 
     @Column(name = "active", columnDefinition = "boolean DEFAULT 'true'")
-    private Boolean active;
+    private Boolean active = true;
 
 }
