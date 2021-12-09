@@ -24,12 +24,12 @@ export default function Home({ toggle }) {
         e.preventDefault();
         const location = document.querySelector(".container-location__title");
         if (startDate === "" && endDate === "" && location.value !== "") {
-            getData(`/api/v1/location/${location.getAttribute("id")}`)
-                .then((location) => {
-                    if (location) {
+            getData(`/api/v1/product/search/location/${location.getAttribute("id")}`)
+                .then(data => {
+                    if (data) {
                         setIsLoadingProducts(false);
                     }
-                    setProducts(location.products);
+                    setProducts(data);
                 })
         }
         if (startDate !== "" && endDate !== "" && location.value !== "") {
@@ -49,60 +49,37 @@ export default function Home({ toggle }) {
 
     }
     const handleClickCategory = (e) => {
-        fetch(`http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/product/category/page/?name=${e.target.id}&page=0`, {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then(res => res.json())
+        getData(`/api/v1/product/category/page/?name=${e.target.id}&page=0`)
             .then(data => {
-                /*Setear los products que me llegan a product y descomentar los set de abajo*/
-                // setPages(data.totalPages);
-                // setCurrentPage(data.pageable.pageNumber + 1);                
-            })
-        getData(`/api/v1/product/category?name=${e.target.id}`)
-            .then((data) => {
                 if (data) {
                     setIsLoadingProducts(false);
                 }
-                setProducts(data);
-            })
-    }
-    const handleChangePage = (numberPage) => {
-        fetch(`http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/product/page/${numberPage - 1}`, {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                /*Aqui deberia reasignar a products lo q me llega de la pagina 1 */
-            })
-    }
-    useEffect(() => {
-        fetch("http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/product/page/0", {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                /*Aqui deberia asignar lo q me llega en la pagina 0 a product */
+                setProducts(data.content);
                 setPages(data.totalPages);
                 setCurrentPage(data.pageable.pageNumber + 1);
             })
-        getData("/api/v1/product")
+    }
+    const handleChangePage = (numberPage) => {
+        getData(`/api/v1/product/page/?page=${numberPage - 1}`)
+            .then(data => {
+                setProducts(data.content);
+                setCurrentPage(data.pageable.pageNumber + 1);
+            })
+    }
+    useEffect(() => {
+        getData("/api/v1/product/page/?page=0")
             .then((data) => {
                 if (data) {
                     setIsLoadingProducts(false);
                 }
-                setProducts(data);
+                setPages(data.totalPages);
+                setCurrentPage(data.pageable.pageNumber + 1);
+                setProducts(data.content);
             })
         getData("/api/v1/category")
             .then((data) => {
                 if (data) {
                     setIsLoading(false);
-
                 }
                 setCategorys(data);
             })
@@ -114,9 +91,14 @@ export default function Home({ toggle }) {
     // }, [products])
     useEffect(() => {
         // setProductsFilter([]);
-        getData("/api/v1/product")
+        getData("/api/v1/product/page/?page=0")
             .then((data) => {
-                setProducts(data);
+                if (data) {
+                    setIsLoadingProducts(false);
+                }
+                setPages(data.totalPages);
+                setCurrentPage(data.pageable.pageNumber + 1);
+                setProducts(data.content);
             })
     }, [toggle])
     return (

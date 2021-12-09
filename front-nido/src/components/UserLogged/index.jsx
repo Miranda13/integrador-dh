@@ -8,6 +8,7 @@ export default function UserLogged({ user, setIsSubmitted }) {
     const { setToken, setUser } = useContext(SessionContextProvider)
     const history = useNavigate();
     const handleLogout = () => {
+        localStorage.removeItem('productsFavorites');
         setUserLS([])
         setToken(null);
         setUser(null)
@@ -19,7 +20,7 @@ export default function UserLogged({ user, setIsSubmitted }) {
     }
     return (
         <React.StrictMode>
-            <div className="user-logged">
+            <div className="user-logged hidden-mobile">
                 <div className="user-logged__close">
                     <Link to="/" onClick={handleLogout}><i className="fas fa-times"></i></Link>
                 </div>

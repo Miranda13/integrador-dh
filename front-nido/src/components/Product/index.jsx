@@ -34,9 +34,8 @@ export default function Product({ list }) {
     const [listProduct, setListProduct] = useState(list.images);
     const [productsFavoritesLS, setProductsFavoritesLS] = useLocalStorage("productsFavorites", []);
     useEffect(() => {
-        if (list !== {}) {
+        if (JSON.stringify(list) !== "{}") {
             setListProduct(list.images);
-
         }
     }, [list])
     // const handleBack = () => {
@@ -81,11 +80,9 @@ export default function Product({ list }) {
         setFavorites(myArray);
         setProductsFavoritesLS(myArray);
     }
-    const handleClickShare = (e) => {  
-      
+    const handleClickShare = (e) => {
+
     }
-
-
     return (
         <React.StrictMode>
             <div className="product-content" id={"start"}>
@@ -105,7 +102,7 @@ export default function Product({ list }) {
                 <div className="product__gallery">
                     <div className="icono-share">
                         {/* share */}
-                        <Share  url="https://www.digitalhouse.com/"/>
+                        <Share url="https://www.digitalhouse.com/" />
                         {/* <i className="fas fa-share-alt " onClick={handleClickShare}></i> */}
                         <i className="fas fa-heart icono-heart" style={{ "color": colorFavorite }} onClick={handleClickFavorite}></i>
                     </div>

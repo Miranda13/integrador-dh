@@ -7,6 +7,7 @@ export default function MenuMobile({ setIsSubmitted }) {
   const history = useNavigate();
   const { user, setToken } = useContext(SessionContextProvider);
   const handleLogout = () => {
+    localStorage.removeItem("productsFavorites");
     setToken(null);
     setIsSubmitted(false);
     history("/");
@@ -30,8 +31,16 @@ export default function MenuMobile({ setIsSubmitted }) {
             user !== null && user !== undefined ?
               <>
                 <div className="cerrar-sesion-mobile">
-                  <p>¿Desea <span className="logout" onClick={handleLogout}>cerrar sesión</span>?</p>
-                  <hr />
+                  <div className="menu-mini__nav">
+                    <Link to={`/${user.userId}/mybooking`} className="">Mis reservas</Link>
+                    <hr />
+                    <Link to="/favorite" className="" >Mis favoritos</Link>
+                  </div>
+                  <div className="menu-mini__logout">
+                    <p>¿Desea <span className="logout" onClick={handleLogout}>cerrar sesión</span>?</p>
+                    <hr />
+                  </div>
+
                 </div>
               </>
               :
@@ -51,9 +60,9 @@ export default function MenuMobile({ setIsSubmitted }) {
         </nav>
         <div id="menu-mobile">
           <Link to="#" id="menu_on" className="">
-            <span  id="span"></span>
-            <span  id="span"></span>
-            <span  id="span"></span>
+            <span id="span"></span>
+            <span id="span"></span>
+            <span id="span"></span>
           </Link>
         </div>
       </div>

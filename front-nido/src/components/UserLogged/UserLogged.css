@@ -1,22 +1,23 @@
-
-.user-logged{
+.user-logged {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
-.user-logged__close{
+
+.user-logged__close {
     visibility: hidden;
 }
-.user-logged__container{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-top: -15px;  
-        height: 100px;
-    }
 
-.user-logged__container__avatar{
+.user-logged__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: -15px;
+    height: 100px;
+}
+
+.user-logged__container__avatar {
     width: 45px;
     height: 45px;
     color: var(--dark-color);
@@ -28,29 +29,43 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0px;    
-}
-.user-logged__container__name__span{
-    
+    margin: 0px;
 }
 
-.user-logged__container__name p:nth-child(2n){
-   color: var(--dark-color);
+.user-logged__container__name__span {}
+
+.user-logged__container__name p:nth-child(2n) {
+    color: var(--dark-color);
 }
+
 /*el codigo esta en index general*/
-.cerrar-sesion-mobile{
-    position: relative;
-    top: 60%;
+.cerrar-sesion-mobile {
     margin-right: 20px;
+    position: relative;
+    top: 0%;
+    height: 75%;
 }
+
+.header .hidden-mobile {
+    display: none;
+}
+
+.menu-mini .hidden-mobile {
+    display: block;
+}
+
 @media (min-width: 768px) {
+    .header .hidden-mobile {
+        display: block;
+    }
+
     .user-logged {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
     }
 
-    .user-logged__close a{ 
+    .user-logged__close a {
         color: var(--dark-color);
         font-size: var(--font-size-icon);
         font-weight: var(--font-weight-bold);
@@ -58,10 +73,10 @@
         display: flex;
         justify-content: right;
         text-decoration: none;
-        visibility: visible;       
+        visibility: visible;
     }
 
-    .user-logged__container{
+    .user-logged__container {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
@@ -73,7 +88,7 @@
         height: auto;
     }
 
-    .user-logged__container__avatar{
+    .user-logged__container__avatar {
         width: 45px;
         height: 45px;
         color: var(--light-color);
@@ -86,18 +101,19 @@
         justify-content: center;
         align-items: center;
         margin: 0 10px;
-        
+
     }
+
     .user-logged__container__name__span {
         color: var(--medium-color);
         font-weight: var(--font-weight-bold);
         font-size: var(--font-size-3);
     }
 
-    .user-logged__container__name{
+    .user-logged__container__name {
         font-weight: var(--font-weight-bold);
         font-size: var(--font-size-3);
         color: var(--main-color);
-        margin: 0 10px;    
+        margin: 0 10px;
     }
 }
