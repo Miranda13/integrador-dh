@@ -57,7 +57,7 @@ export default function FavoritePage() {
         <div className="favorites">
             <div className="wrapper">
                 <div /*className="content-superior"*/ className="container-favorites">
-                    <SubHeader product="Tus favoritos"></SubHeader>
+                    <SubHeader product="Tus favoritos" pathGoBack="/"></SubHeader>
                     <div className="cards container-cards">
                         {
                             isLoading ?

@@ -44,19 +44,20 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
                     user !== null && user !== undefined ?
                         jwtDecode(token).roles === "ROLE_ADMIN" ?
                             <>
+
                                 <div className="header-administracion">
-                                    <Link to="/addProduct">Administracion</Link>
+                                    <Link className="hidden" to="/addProduct">Administracion</Link>
                                 </div>
-                                <h2>|</h2>
-                                {window.innerWidth >= 760 && <UserLogged setIsSubmitted={setIsSubmitted} user={user} />}
+                                <h2 className="hidden">|</h2>
+                                <UserLogged setIsSubmitted={setIsSubmitted} user={user} />
                             </>
                             :
                             <>
-                                <Link to={`/${user.userId}/mybooking`} className="button-booking animation-button-light">
+                                <Link to={`/${user.userId}/mybooking`} className="button-booking animation-button-light hidden">
                                 </Link>
-                                <Link to="/favorite" className="button-favorite animation-button-light" >
+                                <Link to="/favorite" className="button-favorite animation-button-light hidden" >
                                 </Link>
-                                {window.innerWidth >= 760 && <UserLogged setIsSubmitted={setIsSubmitted} user={user} />}
+                                <UserLogged setIsSubmitted={setIsSubmitted} user={user} />
                             </>
                         :
                         <>

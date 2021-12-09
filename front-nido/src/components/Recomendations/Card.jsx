@@ -4,16 +4,21 @@ import SessionContext from "../../context/sessionContext.js";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import FavoriteContextProvider from "../../context/favoriteContext.js";
 import Score from "../Score/index";
-
+import getData from "../../assets/js/getData";
 function Card({ card, handleToggleAction, setIsLoading }) {
     const location = useLocation();
     const { favorites, setFavorites } = useContext(FavoriteContextProvider);
     const [productsFavoritesLS, setProductsFavoritesLS] = useLocalStorage("productsFavorites", []);
     const { user, token } = useContext(SessionContext);
+    const [scores, setScores] = useState([]);
     const history = useNavigate();
     const colorFavorite = favorites.includes(card.productId) ? "var(--main-color)" : "white";
     useEffect(() => {
         setFavorites(productsFavoritesLS);
+        getData(`/api/v1/product/${card.productId}`)
+            .then(data => {
+                setScores(data.score)
+            })
     }, [])
     const handleClickProduct = () => {
         history(`/product/${card.productId}/`);
@@ -85,7 +90,7 @@ function Card({ card, handleToggleAction, setIsLoading }) {
                     <div className="card-list__info__category">
                         <h3 className="card-list__info__category__title">{card.category.title.toUpperCase()}</h3>
                     </div>
-                    <Score avgScore={card.avgScore} scores={card.score} />
+                    <Score avgScore={card.avgScore} scores={scores} />
                     <h2 className="card-list__info__title">{card.name}</h2>
                 </div>
                 <div className="card-list__info__location">

@@ -101,6 +101,10 @@
     color: var(--light-color);
 }
 
+.header__buttons .hidden {
+    display: none;
+}
+
 @media (min-width: 761px) {
     .header-administracion {
         display: flex;
@@ -109,26 +113,36 @@
         font-weight: var(--font-weight-bold);
         font-size: var(--font-size-3);
     }
+
     .header-administracion a {
         text-decoration: none;
     }
+
     .header__buttons {
         display: flex;
         justify-content: right;
         align-items: center;
         /* width: 40vw; */
     }
-    #login,
+
+    <<<<<<< HEAD=======.header__buttons .hidden {
+        display: block;
+    }
+
+    >>>>>>>fix-pagination-score #login,
     #signin {
         display: inline;
     }
+
     .identity__slogan {
         display: none;
     }
+
     #login.hidden,
     #signin.hidden {
         display: none;
     }
+
     .button-booking {
         display: block;
         width: 45px;
@@ -149,13 +163,16 @@
     .identity__slogan {
         display: inline;
     }
+
     .identity a {
         text-decoration: none;
     }
+
     #login.hidden,
     #signin.hidden {
         display: none;
     }
+
     .button-booking {
         display: block;
         width: 45px;

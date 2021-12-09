@@ -1,6 +1,20 @@
 
 import "./Score.css"
-export default function Score({ avgScore, scores }) {
+import { useEffect, useState } from "react"
+export default function Score({ scores }) {
+    const [avgScore, setAvgScore] = useState(0);
+    useEffect(() => {
+
+    }, [])
+    useEffect(() => {
+        let sum = 0;
+        if (scores?.length > 0) {
+            scores.forEach(score => {
+                sum += score.score
+            })
+            setAvgScore(sum / scores.length);
+        }
+    }, [scores])
     return (
         <div className="class-list__header__score">
             <div className="card-list__starts__score">

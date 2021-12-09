@@ -158,6 +158,16 @@ nav a:hover {
     color: var(--main-color)
 }
 
+.menu-mini .hidden {
+    display: block !important;
+}
+
+.menu-mini__logout {
+    position: absolute;
+    width: 100%;
+    bottom: 40px;
+}
+
 @media (min-width: 761px) {
     #menu_mini {
         display: none;

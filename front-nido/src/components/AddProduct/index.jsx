@@ -68,7 +68,7 @@ export default function AddProduct({ categorys, locations, features }) {
         var element;
         for (var i = 0; i < files.length; i++) {
             element = files[i];
-            createPreview(element, contenedor, 1);
+            createPreview(element, contenedor, idx);
         }
     }
     const handleSubmitProduct = (e) => {
@@ -99,7 +99,7 @@ export default function AddProduct({ categorys, locations, features }) {
             features: arrayObjectFeatures
         }))
         for (let i = 1; i <= acc; i++) {
-            formData.append("file", e.target[`image${i}`].files[0], e.target[`image${i}`].value);
+            formData.append("file", e.target[`image${i}`].files[0]);
         }
         fetch("http://ec2-54-144-29-135.compute-1.amazonaws.com:8080/api/v1/product", {
             method: "POST",
