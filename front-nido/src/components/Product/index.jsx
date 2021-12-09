@@ -104,8 +104,7 @@ export default function Product({ list }) {
                 </div>
                 <div className="product__gallery">
                     <div className="icono-share">
-                        {/* share */}
-                        <Share  url="https://www.digitalhouse.com/"/>
+                        <Share  url={`http://ec2-54-144-29-135.compute-1.amazonaws.com/product/'${list.productId}`}/>
                         {/* <i className="fas fa-share-alt " onClick={handleClickShare}></i> */}
                         <i className="fas fa-heart icono-heart" style={{ "color": colorFavorite }} onClick={handleClickFavorite}></i>
                     </div>
