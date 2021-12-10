@@ -1,14 +1,15 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
 import { Button } from "../Button";
 import "./Header.css";
 import UserLogged from "../UserLogged";
 import { useLocation } from "react-router-dom";
 import SessionContext from "../../context/sessionContext.js";
+import jwtDecode from 'jwt-decode'
 function Header({ handleChangePageHome, setIsSubmitted }) {
     const location = useLocation();
-    const { user, setToken } = useContext(SessionContext)
+    const { user, setToken, token } = useContext(SessionContext)
     useEffect(() => {
         const loginButton = document.querySelector("#login")
         const signinButton = document.querySelector("#signin")
@@ -27,6 +28,7 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
 
 
     }, [location])
+
     return (
         <div className="header">
             <div className="identity">
@@ -40,11 +42,23 @@ function Header({ handleChangePageHome, setIsSubmitted }) {
             <div className="header__buttons">
                 {
                     user !== null && user !== undefined ?
-                        <>
-                            <Link to="/favorite" className="button-favorite animation-button-light" >
-                            </Link>
-                            {window.innerWidth >= 760 && <UserLogged setIsSubmitted={setIsSubmitted} user={user} />}
-                        </>
+                        jwtDecode(token).roles === "ROLE_ADMIN" ?
+                            <>
+
+                                <div className="header-administracion">
+                                    <Link className="hidden" to="/addProduct">Administracion</Link>
+                                </div>
+                                <h2 className="hidden">|</h2>
+                                <UserLogged setIsSubmitted={setIsSubmitted} user={user} />
+                            </>
+                            :
+                            <>
+                                <Link to={`/${user.userId}/mybooking`} className="button-booking animation-button-light hidden">
+                                </Link>
+                                <Link to="/favorite" className="button-favorite animation-button-light hidden" >
+                                </Link>
+                                <UserLogged setIsSubmitted={setIsSubmitted} user={user} />
+                            </>
                         :
                         <>
                             <Button

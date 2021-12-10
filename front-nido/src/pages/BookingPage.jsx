@@ -1,15 +1,16 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import Booking from "../components/Booking";
-import HeaderProduct from "../components/HeaderProduct";
+import SubHeader from "../components/SubHeader";
 import Policy from "../components/Policy";
 import getData from "../assets/js/getData";
-import "./BookingPage.css";
 import SessionContextProvider from '../context/sessionContext.js';
-
+import ReserveContext from ".././context/reserveContext";
 export default function BookingPage() {
+    const location = useLocation();
+    const { reserve, setReserve } = useContext(ReserveContext);
     const history = useNavigate();
-    const { token } = useContext(SessionContextProvider);
+    const { user, token } = useContext(SessionContextProvider);
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [isLoading, setIsLoading] = useState(true);
@@ -17,12 +18,21 @@ export default function BookingPage() {
         if (token === null || token === undefined) {
             history("/login", { state: { idProduct: id, auth: "Necesitas estar logueado para reservar un hotel" } });
         }
-        getData(`/api/v1/product/${id}`)
-            .then(data => {
-                setProduct(data)
-                setIsLoading(false)
-            })
+        if (JSON.stringify(reserve) == "{}") {
+            getData(`/api/v1/product/${id}`)
+                .then(data => {
+                    setProduct(data)
+                    setIsLoading(false)
+                })
+        }
+        else {
+            setProduct(reserve.product)
+            setIsLoading(false)
+        }
     }, [])
+    useEffect(() => {
+        return () => { setReserve({}) }
+    }, [location])
     return (
         <>
             {
@@ -30,7 +40,7 @@ export default function BookingPage() {
                     :
                     <div className="wrapper">
                         <div className="container-booking">
-                            <HeaderProduct product={product} pathGoBack={`/product/${id}`} />
+                            <SubHeader product={product} pathGoBack={`/product/${id}`} />
                             <Booking product={product} />
                             <Policy />
                         </div>

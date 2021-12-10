@@ -4,7 +4,8 @@ import Recomendations from "../Recomendations";
 import "./Content.css";
 import db from "../Recomendations/cards.json";
 import ContentLoader from "react-content-loader";
-export default function Content({ handleClickCategory, products, categorys, isLoading, isLoadingProducts }) {
+export default function Content({ handleClickCategory, products, categorys, isLoading, isLoadingProducts, pages, handleChangePage, currentPage }) {
+
     return (
         <>
             <div className="content-superior">
@@ -65,8 +66,7 @@ export default function Content({ handleClickCategory, products, categorys, isLo
                                 return (
                                     <CategoryCard
                                         key={category.categoryId}
-                                        category={category}
-                                        cantidad={"896502"}/*Estaria bueno que devuelva la cantidad desde BACKEND y paginacion*/
+                                        category={category}/*Estaria bueno que devuelva la cantidad desde BACKEND y paginacion*/
                                         handleClickCategory={handleClickCategory}
                                         subtitle={category.title === "Hotel" || category.title === "Hostal" ? category.title + "es" : category.title + "s"}
                                         isLoading={isLoading}
@@ -76,8 +76,8 @@ export default function Content({ handleClickCategory, products, categorys, isLo
                     }
                 </div>
             </div>
-            <div className="content_recomendaciones">
-                <Recomendations products={products} isLoadingProducts={isLoadingProducts} />
+            <div id="content-hotels" className="content_recomendaciones">
+                <Recomendations currentPage={currentPage} pages={pages} products={products} isLoadingProducts={isLoadingProducts} handleChangePage={handleChangePage} />
             </div>
         </>
     );

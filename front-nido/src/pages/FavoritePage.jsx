@@ -5,6 +5,8 @@ import "./FavoritePage.css";
 import FavoriteContext from "../context/favoriteContext"
 import SessionContext from "../context/sessionContext"
 import ContentLoader from 'react-content-loader';
+import SubHeader from "../components/SubHeader";
+
 export default function FavoritePage() {
     const { user, token } = useContext(SessionContext)
     const { favorites, setFavorites } = useContext(FavoriteContext)
@@ -54,9 +56,9 @@ export default function FavoritePage() {
     return (
         <div className="favorites">
             <div className="wrapper">
-                <div className="content-superior">
-                    <h2>Tus favoritos</h2>
-                    <div className="cards">
+                <div /*className="content-superior"*/ className="container-favorites">
+                    <SubHeader product="Tus favoritos" pathGoBack="/"></SubHeader>
+                    <div className="cards container-cards">
                         {
                             isLoading ?
                                 <>

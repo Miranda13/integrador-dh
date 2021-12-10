@@ -1,11 +1,15 @@
-.favorites .content-superior {
-    margin: 6rem 0px;
+.favorites .container-favorites {
+   margin-top:  80px;
+   width: 100%;
+}
+
+.container-cards{
+    margin-top: 100px;
 }
 
 @media (min-width: 1361px) {
 
-
-    .favorites .content-superior h1 {
+    .favorites .container-favorites h1 {
         margin: 2rem 0px;
     }
 

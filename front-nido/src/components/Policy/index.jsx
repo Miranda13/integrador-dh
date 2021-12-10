@@ -1,6 +1,6 @@
 import "./Policy.css";
 
-function Policy() {
+function Policy({ list }) {
     return (
         <div className="product__toknow">
             <h2>Qué tenes que saber</h2>
@@ -9,25 +9,21 @@ function Policy() {
                 <div className="product__toknow-column">
                     <h3>Normas de la casa</h3>
                     <ul>
-                        <li>Check-out:10:00</li>
-                        <li>No se permiten fiestas</li>
-                        <li>No fumar</li>
+                        <li>{list?.rule}</li>
                     </ul>
                 </div>
                 <div className="product__toknow-column">
                     <h3>Salud y seguridad</h3>
                     <ul>
-                        <li>Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus.</li>
-                        <li>Detector de humo</li>
-                        <li>Depósito de seguridad</li>
+                        <li>{list?.safety}</li>
                     </ul>
                 </div>
                 <div className="product__toknow-column">
                     <h3>Política de cancelación</h3>
                     <ul>
-                        <li>Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía.</li>
+                        <li>{list?.policy}</li>
                     </ul>
-                    
+
                 </div>
             </div>
         </div>

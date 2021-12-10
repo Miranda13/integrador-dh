@@ -1,8 +1,20 @@
 import React from "react";
-import credentials from "./credentials";
 import CalendarReserve from "../CalendarReserve";
 import { Link } from "react-router-dom";
 import "./Product.css";
+import Gallery from "./Gallery";
+import { useState, useEffect, useContext } from 'react';
+import db from "./product.json";
+import MapView from "./Map";
+import "./Map.css"
+import SubHeader from "../SubHeader";
+import Policy from "../Policy";
+import { useNavigate } from "react-router-dom";
+import FavoriteContext from "../../context/favoriteContext";
+import SessionContext from "../../context/sessionContext";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import Score from "../../components/Score";
+import Share from "../../components/Share";
 import wifi from "../../assets/images/icons/wifi.svg";
 import paw from "../../assets/images/icons/paw.svg";
 import parking from "../../assets/images/icons/parking.svg";
@@ -10,21 +22,6 @@ import air from "../../assets/images/icons/air.svg";
 import kitchen from "../../assets/images/icons/kitchen.svg";
 import swim from "../../assets/images/icons/tv.svg";
 import tv from "../../assets/images/icons/tv.svg";
-import product from "./product.json";
-import Gallery from "./Gallery";
-import { useState, useEffect, useContext } from 'react';
-import db from "./product.json";
-import MapView from "./Map";
-import "./Map.css"
-// import { useNavigate } from "react-router-dom";
-import HeaderProduct from "../HeaderProduct";
-import Policy from "../Policy";
-import { useNavigate } from "react-router-dom";
-import FavoriteContext from "../../context/favoriteContext";
-import SessionContext from "../../context/sessionContext";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
-import Score from "../../components/Score";
-
 export default function Product({ list }) {
     const { favorites, setFavorites } = useContext(FavoriteContext);
     const { user, token } = useContext(SessionContext);
@@ -33,9 +30,8 @@ export default function Product({ list }) {
     const [listProduct, setListProduct] = useState(list.images);
     const [productsFavoritesLS, setProductsFavoritesLS] = useLocalStorage("productsFavorites", []);
     useEffect(() => {
-        if (list !== {}) {
+        if (JSON.stringify(list) !== "{}") {
             setListProduct(list.images);
-
         }
     }, [list])
     // const handleBack = () => {
@@ -80,10 +76,13 @@ export default function Product({ list }) {
         setFavorites(myArray);
         setProductsFavoritesLS(myArray);
     }
+    const handleClickShare = (e) => {
+
+    }
     return (
         <React.StrictMode>
             <div className="product-content" id={"start"}>
-                <HeaderProduct product={list} pathGoBack="/" />
+                <SubHeader product={list} pathGoBack="/" />
                 <div className="product__ubication-ratings">
                     <div className="product__ubication">
                         <i class="fas fa-map-marker-alt"></i>{list.address} - {list.location?.city}, {list.location?.country}
@@ -98,7 +97,8 @@ export default function Product({ list }) {
                 </div>
                 <div className="product__gallery">
                     <div className="icono-share">
-                        <i className="fas fa-share-alt " ></i>
+                        <Share url={`http://ec2-54-144-29-135.compute-1.amazonaws.com/product/'${list.productId}`} />
+                        {/* <i className="fas fa-share-alt " onClick={handleClickShare}></i> */}
                         <i className="fas fa-heart icono-heart" style={{ "color": colorFavorite }} onClick={handleClickFavorite}></i>
                     </div>
                     <Gallery
@@ -106,19 +106,20 @@ export default function Product({ list }) {
                     />
                 </div>
                 <div className="product__description">
-                    <h2>{list.name}</h2>
+                    <h2>{list.subtitle}</h2>
                     <p>{list.description}</p>
                 </div>
                 <div className="product__features">
                     <h2>¿Qué ofrece este lugar?</h2><hr />
                     <div className="product__features-amenities">
                         {
-                            db.amenities.map((amenity, index) => (
-                                <div className="product__features-amenities-item" key={index}>
-                                    <img src={amenity.icon} />
-                                    {amenity.name}
-                                </div>
-                            ))}
+                            list?.features !== undefined ?
+                                list?.features.map((feature, index) => (
+                                    <div className="product__features-amenities-item" key={index}>
+                                        <i className={feature.icon} style={{ "color": "var(--main-color)" }}></i>    {feature.name}
+                                    </div>
+                                )) : ""
+                        }
                     </div>
                 </div>
 
@@ -142,7 +143,7 @@ export default function Product({ list }) {
 
                         </div>}
                 </div>
-                <Policy />
+                <Policy list={list} />
             </div>
 
         </React.StrictMode>

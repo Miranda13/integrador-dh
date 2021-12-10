@@ -23,15 +23,20 @@
     "@testing-library/user-event": "^13.5.0",
     "jwt-decode": "^3.1.2",
     "leaflet": "^1.7.1",
+    "leaflet-geosearch": "^3.6.0",
+    "leaflet-locationpicker": "^0.3.3",
+    "leaflet-search": "^3.0.2",
+    "react-leaflet": "^3.2.2",
+    "react-leaflet-geosearch": "^0.3.4",
     "react": "^17.0.2",
     "react-content-loader": "^6.0.3",
     "react-datepicker": "^4.3.0",
     "react-dom": "^17.0.2",
     "react-gallery-carousel": "^0.2.5",
-    "react-leaflet": "^3.2.2",
     "react-router": "^6.0.2",
     "react-router-dom": "^6.0.2",
-    "react-scripts": "^4.0.3"
+    "react-scripts": "^4.0.3",
+    "react-share-social": "^0.1.48"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.15.0",

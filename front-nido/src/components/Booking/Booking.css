@@ -1,3 +1,10 @@
+.container-booking{
+    margin-top: 80px;
+    margin-bottom: 100px;
+    width: 100%;
+    /* background-color: var(--light-medium-color); */
+}
+
 .booking{
     width: 100%;
     padding: 10vw 20px;

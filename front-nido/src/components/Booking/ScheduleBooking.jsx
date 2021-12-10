@@ -1,6 +1,8 @@
 import "./ScheduleBooking.css"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import ReserveContext from "../../context/reserveContext";
 export default function ScheduleBooking({ handleTime, error }) {
+    const { reserve } = useContext(ReserveContext);
     const [showList, setShowList] = useState(false);
     const input = document.querySelector(".booking-schedule-time-input");
     const resetItemTime = () => {
@@ -37,6 +39,15 @@ export default function ScheduleBooking({ handleTime, error }) {
                 setShowList(false);
             }
         })
+        const listTime = document.querySelectorAll("li.schedule_time");
+        if (JSON.stringify(reserve) !== "{}") {
+            listTime.forEach(item => {
+                let num = item.value < 10 ? "0" + item.value : item.value;
+                if (JSON.stringify(num).includes(reserve.hourIn.substring(0, 2))) {
+                    input.value = item.innerHTML;
+                }
+            })
+        }
     }, []);
     useEffect(() => {
         const list = document.querySelector(".container-booking-time-item");
@@ -61,30 +72,30 @@ export default function ScheduleBooking({ handleTime, error }) {
                 <input placeholder="10:00 AM" name="time" id="time" type="text" className="booking-schedule-time-input" onChange={handleChangeTime} required onClick={handleListTime} />
                 <i className="booking-schedule-time-icon fas fa-chevron-down" onClick={handleListTime}></i>
                 <ol className="container-booking-time-item hideItem" key="" >
-                    <li value="01" onClick={handleSelectionTime}>01:00 AM</li>
-                    <li value="02" onClick={handleSelectionTime}>02:00 AM</li>
-                    <li value="03" onClick={handleSelectionTime}>03:00 AM</li>
-                    <li value="04" onClick={handleSelectionTime}>04:00 AM</li>
-                    <li value="05" onClick={handleSelectionTime}>05:00 AM</li>
-                    <li value="06" onClick={handleSelectionTime}>06:00 AM</li>
-                    <li value="07" onClick={handleSelectionTime}>07:00 AM</li>
-                    <li value="08" onClick={handleSelectionTime}>08:00 AM</li>
-                    <li value="09" onClick={handleSelectionTime}>09:00 AM</li>
-                    <li value="10" onClick={handleSelectionTime}>10:00 AM</li>
-                    <li value="11" onClick={handleSelectionTime}>11:00 AM</li>
-                    <li value="12" onClick={handleSelectionTime}>12:00 AM</li>
-                    <li value="13" onClick={handleSelectionTime}>01:00 PM</li>
-                    <li value="14" onClick={handleSelectionTime}>02:00 PM</li>
-                    <li value="15" onClick={handleSelectionTime}>03:00 PM</li>
-                    <li value="16" onClick={handleSelectionTime}>04:00 PM</li>
-                    <li value="17" onClick={handleSelectionTime}>05:00 PM</li>
-                    <li value="18" onClick={handleSelectionTime}>06:00 PM</li>
-                    <li value="19" onClick={handleSelectionTime}>07:00 PM</li>
-                    <li value="20" onClick={handleSelectionTime}>08:00 PM</li>
-                    <li value="21" onClick={handleSelectionTime}>09:00 PM</li>
-                    <li value="22" onClick={handleSelectionTime}>10:00 PM</li>
-                    <li value="23" onClick={handleSelectionTime}>11:00 PM</li>
-                    <li value="00" onClick={handleSelectionTime}>12:00 PM</li>
+                    <li value="01" className="schedule_time" onClick={handleSelectionTime}>01:00 AM</li>
+                    <li value="02" className="schedule_time" onClick={handleSelectionTime}>02:00 AM</li>
+                    <li value="03" className="schedule_time" onClick={handleSelectionTime}>03:00 AM</li>
+                    <li value="04" className="schedule_time" onClick={handleSelectionTime}>04:00 AM</li>
+                    <li value="05" className="schedule_time" onClick={handleSelectionTime}>05:00 AM</li>
+                    <li value="06" className="schedule_time" onClick={handleSelectionTime}>06:00 AM</li>
+                    <li value="07" className="schedule_time" onClick={handleSelectionTime}>07:00 AM</li>
+                    <li value="08" className="schedule_time" onClick={handleSelectionTime}>08:00 AM</li>
+                    <li value="09" className="schedule_time" onClick={handleSelectionTime}>09:00 AM</li>
+                    <li value="10" className="schedule_time" onClick={handleSelectionTime}>10:00 AM</li>
+                    <li value="11" className="schedule_time" onClick={handleSelectionTime}>11:00 AM</li>
+                    <li value="12" className="schedule_time" onClick={handleSelectionTime}>12:00 AM</li>
+                    <li value="13" className="schedule_time" onClick={handleSelectionTime}>01:00 PM</li>
+                    <li value="14" className="schedule_time" onClick={handleSelectionTime}>02:00 PM</li>
+                    <li value="15" className="schedule_time" onClick={handleSelectionTime}>03:00 PM</li>
+                    <li value="16" className="schedule_time" onClick={handleSelectionTime}>04:00 PM</li>
+                    <li value="17" className="schedule_time" onClick={handleSelectionTime}>05:00 PM</li>
+                    <li value="18" className="schedule_time" onClick={handleSelectionTime}>06:00 PM</li>
+                    <li value="19" className="schedule_time" onClick={handleSelectionTime}>07:00 PM</li>
+                    <li value="20" className="schedule_time" onClick={handleSelectionTime}>08:00 PM</li>
+                    <li value="21" className="schedule_time" onClick={handleSelectionTime}>09:00 PM</li>
+                    <li value="22" className="schedule_time" onClick={handleSelectionTime}>10:00 PM</li>
+                    <li value="23" className="schedule_time" onClick={handleSelectionTime}>11:00 PM</li>
+                    <li value="00" className="schedule_time" onClick={handleSelectionTime}>12:00 PM</li>
                 </ol>
             </div>
         </div>
