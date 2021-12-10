@@ -5,14 +5,12 @@ export default function Score({ avgScore, scores }) {
         <div className="class-list__header__score">
             <div className="card-list__starts__score">
                 {
-
                     [1, 2, 3, 4, 5].map(i => {
-                        console.log(avgScore, i)
+                        //console.log(avgScore, i);
                         let colorIcon = i <= Math.round(avgScore) ? "card-list__info__category__icon fas fa-star icon-color" : "card-list__info__category__icon fas fa-star";
                         return (<span key={i} ><i className={colorIcon} ></i></span>)
                     })
                 }
-
             </div>
 
             <div className="card-list__info__score">

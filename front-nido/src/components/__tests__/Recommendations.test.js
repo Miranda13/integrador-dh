@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 import Recomendations from '../Recomendations';
 import { render, screen } from '@testing-library/react';
@@ -9,34 +9,23 @@ import products from './products.json';
 import Card from "../Recomendations/Card";
 import ContentLoader from "react-content-loader";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { act } from "react-dom/test-utils";
-import Product from '../Product';
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('recommendations with data', () => {
-
-    /* let recommendations;
+    let recommendations;
 
     beforeEach (() => {
-        recommendations = shallow(<Recomendations products={products}/>) ;
-        recommendations = mount(
-            <BrowserRouter>
-                <Routes>
-                    <Route path= "/" element = {<Recomendations products={products} />}> </Route>
-                </Routes>
-            </BrowserRouter>, { attachTo: document.body });
         const TestComponent = () => (
-            <FavoriteContext.Provider value="[]">
+            <FavoriteContext.Provider value={{ favorites: [], setFavorites: jest.fn()}}>
                 <BrowserRouter>
-                <Routes>
-                    <Route path= "/" element = {<Recomendations products={products} />}> </Route>
-                </Routes>
-            </BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<Recomendations products={products} />}> </Route>
+                    </Routes>
+                </BrowserRouter>
             </FavoriteContext.Provider>
         );
-        const recommendations = render(<TestComponent />, { attachTo: document.body });
-        console.log(recommendations.debug())
+        recommendations = mount(<TestComponent />);
     });
 
     it ('render recommendations', () => {
@@ -56,73 +45,16 @@ describe('recommendations with data', () => {
     });
 
     it ("Verification cards", () => {
-        
-        const recommendation = mount(
-        <BrowserRouter>
-            <Routes>
-                <Route path= "/" element = {<Recomendations products={products}/>}> </Route>
-            </Routes>
-        </BrowserRouter>);
-        expect(recommendation.find('div.card-listo__info__amenities')).toBeTruthy();
-        expect(recommendation.find('div.card-list__info__description')).toBeTruthy();
-        expect(recommendation.find('div.card-list__info__button')).toBeTruthy();
-        expect(recommendation.find('div.card-list__info__title')).toBeTruthy();
-        expect(recommendation.find('div.card-list__info__score')).toBeTruthy();
-        expect(recommendation.find('div.card-list__info__category')).toBeTruthy();
-        expect(recommendation.find('div.card-list__image__jpg')).toBeTruthy();
-        expect(recommendation.find('button').first().text()).toEqual('Ver más');
-    }) */
+        expect(recommendations.find('div.card-listo__info__amenities')).toBeTruthy();
+        expect(recommendations.find('div.card-list__info__description')).toBeTruthy();
+        expect(recommendations.find('div.card-list__info__button')).toBeTruthy();
+        expect(recommendations.find('div.card-list__info__title')).toBeTruthy();
+        expect(recommendations.find('div.card-list__info__score')).toBeTruthy();
+        expect(recommendations.find('div.card-list__info__category')).toBeTruthy();
+        expect(recommendations.find('div.card-list__image__jpg')).toBeTruthy();
+        expect(recommendations.find('button').first().text()).toEqual('Ver más');
+    })
 });
-
-/* describe('', () => {
-    it("enzyme dive", () => { 
-        jest.mock('FavoriteContext', () => ({
-            recommendations: (products) => [[],jest.fn()]
-        }))
-        const TestComponent = () => (
-            
-            <FavoriteContext.Provider value={{favorites,setFavorites}}>
-                <BrowserRouter>
-            <Routes>
-                <Route path= "/" element = {<Recomendations products={products} />}> </Route>
-            </Routes>
-        </BrowserRouter>
-            </FavoriteContext.Provider>
-        );
-        const element = mount(<TestComponent />);
-       console.log(element.debug());
-       const favorite = [];
-       jest.spyOn(global, "fetch").mockImplementation(() =>
-       Promise.resolve({
-         json: () => Promise.resolve(favorite)
-       })
-     );
-     await act(async () => {
-        render(
-        <BrowserRouter>
-            <Routes>
-                <Route path= "/" element = {<Recomendations products={products} />}> </Route>
-            </Routes>
-        </BrowserRouter>);
-      });
-    });
-}) */
-
-describe('', () => {
-    it("enzyme dive", () => {
-        const TestComponent = () => (
-            <FavoriteContext.Provider value={{ favorites: [], setFavorites: jest.fn()}}>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<Recomendations products={products} />}> </Route>
-                    </Routes>
-                </BrowserRouter>
-            </FavoriteContext.Provider>
-        );
-        const element = mount(<TestComponent />);
-        console.log(element.debug())
-    });
-})
 
 describe('recommendations without data', () => {
 

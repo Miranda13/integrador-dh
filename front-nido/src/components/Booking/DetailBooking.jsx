@@ -1,7 +1,7 @@
 import "./DetailBooking.css";
 
 export default function DetailBooking({ product, startDate, endDate, handleSubmitReserve, error, buttonText }) {
-    console.log(product);
+
     return (
         <div className="booking-details">
             <div className="booking-details-img">
