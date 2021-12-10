@@ -1,10 +1,11 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import SessionContext from "../../context/sessionContext.js";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import FavoriteContextProvider from "../../context/favoriteContext.js";
 import Score from "../Score/index";
 import getData from "../../assets/js/getData";
+import { icon } from "leaflet";
 function Card({ card, handleToggleAction, setIsLoading }) {
     const location = useLocation();
     const { favorites, setFavorites } = useContext(FavoriteContextProvider);
@@ -96,11 +97,18 @@ function Card({ card, handleToggleAction, setIsLoading }) {
                 <div className="card-list__info__location">
                     <i className="card-list__info__location__icon fas fa-map-marker-alt"></i>
                     <div className="card-list__info__location__title">{card.location.city}, {card.location.country}</div>
-                    <a href={`/product/${card.productId}#location`} className="card-list__info__location__a">MOSTRAR EN EL MAPA</a>
+                    <Link to={`/product/${card.productId}#location`} className="card-list__info__location__a">MOSTRAR EN EL MAPA</Link>
 
                 </div>
                 <div className="card-listo__info__amenities">
-
+                    {
+                        card?.features.map((feature, index) => {
+                            let classIcon = "card-list__info__amenities__icon " + feature.icon
+                            return (
+                                <i className={classIcon}></i>
+                            )
+                        })
+                    }
                     <i className="card-list__info__amenities__icon fas fa-wifi"></i>
                     <i className="card-list__info__amenities__icon fas fa-swimmer"></i>
                 </div>

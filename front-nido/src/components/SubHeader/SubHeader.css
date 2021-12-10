@@ -18,6 +18,10 @@
     margin-top: 20px;
 }
 
+.product__header .sub-header-title-db {
+    color: var(--light-color);
+}
+
 .product__header h2 {
     color: var(--light-color);
     font-size: var(--font-size-1);

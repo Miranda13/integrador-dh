@@ -9,13 +9,13 @@ export default function SubHeader({ product, pathGoBack }) {
     return (
         <div className="product__header">
             <div className="product__header-title-category">
-                {typeof product === "object"? 
-                <>
-                <p>{product.category?.title}</p>
-                <h2>{product.name}</h2>
-                </> :
-                <h2 className="sub-header-title">{product}</h2>
-                }   
+                {typeof product === "object" ?
+                    <>
+                        <p>{product.category?.title}</p>
+                        <h2 className="sub-header-title-db">{product.name}</h2>
+                    </> :
+                    <h2 className="sub-header-title">{product}</h2>
+                }
             </div>
             <div className="product__ubication-back">
                 <i class="product__ubication-back-icon fas fa-chevron-left" onClick={handleIconGoBack}></i>

@@ -113,12 +113,13 @@ export default function Product({ list }) {
                     <h2>¿Qué ofrece este lugar?</h2><hr />
                     <div className="product__features-amenities">
                         {
-                            db.amenities.map((amenity, index) => (
-                                <div className="product__features-amenities-item" key={index}>
-                                    <img src={amenity.icon} />
-                                    {amenity.name}
-                                </div>
-                            ))}
+                            list?.features !== undefined ?
+                                list?.features.map((feature, index) => (
+                                    <div className="product__features-amenities-item" key={index}>
+                                        <i className={feature.icon} style={{ "color": "var(--main-color)" }}></i>    {feature.name}
+                                    </div>
+                                )) : ""
+                        }
                     </div>
                 </div>
 
@@ -142,7 +143,7 @@ export default function Product({ list }) {
 
                         </div>}
                 </div>
-                <Policy />
+                <Policy list={list} />
             </div>
 
         </React.StrictMode>

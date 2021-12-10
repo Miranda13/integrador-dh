@@ -15,6 +15,7 @@ export default function CalendarReserve({ status, handleSelectRangeDate, idProdu
     const [arrayDaysReserve, setArrayDaysReserve] = useState([]);
     const [dateRange, setDateRange] = useState([dateIn, dateOut]);
     const [startDate, endDate] = dateRange;
+    const [hideNav, setHideNav] = useState(false);
     const onChange = (dates) => {
         if (status !== "disabled") {
             setDateRange(dates);
@@ -58,6 +59,15 @@ export default function CalendarReserve({ status, handleSelectRangeDate, idProdu
             handleSelectRangeDate(dateStart.toLocaleDateString(), dateEnd.toLocaleDateString());
         }
     }, [startDate, endDate])
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            resize();
+
+        });
+    }, [])
+    function resize() {
+        setHideNav(window.innerWidth <= 760);
+    }
     return (
         <div className="calendarReserve">
             {error && <p className="error">{error}</p>}
@@ -119,7 +129,7 @@ export default function CalendarReserve({ status, handleSelectRangeDate, idProdu
                 selected={startDate}
                 selectsRange={true}
                 onChange={onChange}
-                monthsShown={2}
+                monthsShown={hideNav ? 1 : 2}
             />
 
         </div>
